@@ -1256,6 +1256,13 @@ const bulgarianProverbsRaw = [
   },
   {
     "category": "🌸 Acceptance, Patience & Timing",
+    "saying_bulgarian": "На търпеливия Бог помага",
+    "saying_phonetic": "Na tur-pe-LI-vi-ya bog po-MA-ga",
+    "meaning": "God helps the patient one.",
+    "advice": "Patience isn't passive waiting — it's trusting that staying steady is itself doing something."
+  },
+  {
+    "category": "🌸 Acceptance, Patience & Timing",
     "saying_bulgarian": "Търпението е горчиво, но плодът му е сладък",
     "saying_phonetic": "Tur-pe-nee-e-to e gor-chee-vo, no plo-dut moo e sla-duk",
     "meaning": "Patience is bitter, but its fruit is sweet.",
@@ -1302,6 +1309,13 @@ const bulgarianProverbsRaw = [
     "saying_phonetic": "Hoo-ba-vee-te ne-shhta sta-vat bav-no",
     "meaning": "Good things happen slowly.",
     "advice": "Sustainable healing, growth, and real inner balance cannot be rushed."
+  },
+  {
+    "category": "🪵 Inner Strength & Overcoming Hardship",
+    "saying_bulgarian": "Без труд няма плод",
+    "saying_phonetic": "Bez trood NYA-ma plod",
+    "meaning": "Without labour, there is no fruit.",
+    "advice": "Effort and calm aren't opposites — steady work now is what makes rest feel earned later."
   },
   {
     "category": "🪵 Inner Strength & Overcoming Hardship",
@@ -1389,6 +1403,13 @@ const bulgarianProverbsRaw = [
   },
   {
     "category": "🏡 Moderation & Peace of Mind",
+    "saying_bulgarian": "Всяка жаба да си знае гьола",
+    "saying_phonetic": "VSYA-ka ZHA-ba da si ZNA-e GYO-la",
+    "meaning": "Every frog should know its own pond.",
+    "advice": "Contentment often just means staying inside the size of life you actually have, rather than reaching past it."
+  },
+  {
+    "category": "🏡 Moderation & Peace of Mind",
     "saying_bulgarian": "Три пъти мери, един път режи",
     "saying_phonetic": "Tree pu-tee me-ree, e-deen put re-zhee",
     "meaning": "Measure three times, cut once.",
@@ -1431,6 +1452,13 @@ const bulgarianProverbsRaw = [
   }
 ];
 const romanianProverbsRaw = [
+  {
+    "category": "🌸 Acceptance, Patience & Timing",
+    "saying_romanian": "Răbdarea trece marea",
+    "saying_phonetic": "Rub-da-rya treh-cheh mah-rya",
+    "meaning": "Patience crosses the sea.",
+    "advice": "There's no obstacle patience can't eventually get you across — it just takes longer than force would."
+  },
   {
     "category": "🌸 Acceptance, Patience & Timing",
     "saying_romanian": "Răbdarea e ruptă din rai",
@@ -1559,6 +1587,13 @@ const romanianProverbsRaw = [
   },
   {
     "category": "🌊 Wisdom, Integrity & Actions",
+    "saying_romanian": "Cine tace nu se căiește",
+    "saying_phonetic": "Chee-neh tah-cheh noo seh kuh-yesh-teh",
+    "meaning": "He who stays silent does not regret it.",
+    "advice": "Not every reaction needs saying out loud — the words you hold back rarely cost you anything."
+  },
+  {
+    "category": "🌊 Wisdom, Integrity & Actions",
     "saying_romanian": "Cine se scoală de dimineață, departe ajunge",
     "saying_phonetic": "Chee-neh seh skwah-luh deh dee-mee-nyah-tsuh, deh-pahr-teh ah-joon-jeh",
     "meaning": "He who wakes up early goes far.",
@@ -1665,8 +1700,35 @@ function proverbCardHtml(p){
       </div>`;
 }
 
+// Drawn from a shuffled bag rather than plain random: every saying in a language's pool gets shown
+// once before any repeats, and a safeguard stops the same one appearing twice in a row even across
+// a reshuffle — plain Math.random() indexing allowed same-day duplicates and early clustering.
+// Romanian and Bulgarian each get their own independent bag, since a given day only ever draws from
+// one of the two. Still deliberately not persisted — resets on every full page reload.
+function makeProverbPicker(list){
+  let bag = [];
+  let lastIdx = -1;
+  return function(){
+    if (bag.length === 0){
+      bag = list.map((_, i) => i);
+      for (let i = bag.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [bag[i], bag[j]] = [bag[j], bag[i]];
+      }
+      if (bag.length > 1 && bag[bag.length - 1] === lastIdx){
+        const swapWith = Math.floor(Math.random() * (bag.length - 1));
+        [bag[bag.length - 1], bag[swapWith]] = [bag[swapWith], bag[bag.length - 1]];
+      }
+    }
+    const idx = bag.pop();
+    lastIdx = idx;
+    return list[idx];
+  };
+}
+const pickRomanianProverb = makeProverbPicker(romanianProverbs);
+const pickBulgarianProverb = makeProverbPicker(bulgarianProverbs);
 function randomProverb(list){
-  return list[Math.floor(Math.random() * list.length)];
+  return list === romanianProverbs ? pickRomanianProverb() : pickBulgarianProverb();
 }
 
 // ---- Fixed "in case of rain" alternatives, per day, brief with map pins ----
