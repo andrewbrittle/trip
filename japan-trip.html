@@ -679,7 +679,27 @@ function proverbCardHtml(p){
       </div>`;
 }
 
-function randomProverb(){ return calmingSayings[Math.floor(Math.random() * calmingSayings.length)]; }
+// Drawn from a shuffled bag rather than plain random: every saying gets shown once before any
+// repeats, and a safeguard stops the same one appearing twice in a row even across a reshuffle —
+// which is what was producing the same-day duplicates. Still not persisted across reloads.
+let proverbBag = [];
+let lastProverbIdx = -1;
+function randomProverb(){
+  if (proverbBag.length === 0){
+    proverbBag = calmingSayings.map((_, i) => i);
+    for (let i = proverbBag.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [proverbBag[i], proverbBag[j]] = [proverbBag[j], proverbBag[i]];
+    }
+    if (proverbBag.length > 1 && proverbBag[proverbBag.length - 1] === lastProverbIdx){
+      const swapWith = Math.floor(Math.random() * (proverbBag.length - 1));
+      [proverbBag[proverbBag.length - 1], proverbBag[swapWith]] = [proverbBag[swapWith], proverbBag[proverbBag.length - 1]];
+    }
+  }
+  const idx = proverbBag.pop();
+  lastProverbIdx = idx;
+  return calmingSayings[idx];
+}
 
 // ---- day content assembly: fixed blocks + card sections, with two proverb cards spliced in ----
 function renderDayWithProverbs(headerHtml, sections){
@@ -720,6 +740,11 @@ const calmingSayingsRaw = [
   { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Kouka fukutsure", "saying_kanji_kana": "巧遅は拙速に如かず", "meaning": "Better to be slow and deliberate than fast and sloppy.", "advice": "Remind yourself to breathe and slow down." },
   { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Un wo ten ni makaceru", "saying_kanji_kana": "運を天に任せる", "meaning": "Leave your fate to heaven.", "advice": "Do your best, then let go of the outcome entirely." },
   { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Shouganai", "saying_kanji_kana": "しょうがない", "meaning": "There is no use crying over it.", "advice": "Accept the current reality as it is to reclaim your peace." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Fukusui bon ni kaerazu", "saying_kanji_kana": "覆水盆に返らず", "meaning": "Spilt water will not return to the tray.", "advice": "Stop replaying what can't be reversed; put that energy toward what's still in front of you." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Anzuru yori umu ga yasushi", "saying_kanji_kana": "案ずるより産むが易し", "meaning": "Giving birth is easier than worrying about it.", "advice": "Let yourself begin before you feel ready — most fears shrink once you're actually inside the moment." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Kahou wa nete mate", "saying_kanji_kana": "果報は寝て待て", "meaning": "Sleep and wait for good fortune.", "advice": "Do your part, then step back and let the rest unfold in its own time." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Nokorimono ni wa fuku ga aru", "saying_kanji_kana": "残り物には福がある", "meaning": "There is fortune in what's left over.", "advice": "Don't measure your day by what you missed — what remains can be exactly enough." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Rainen no koto wo iu to oni ga warau", "saying_kanji_kana": "来年のことを言うと鬼が笑う", "meaning": "If you speak of next year, the demons laugh.", "advice": "Hold your plans loosely — nobody, however careful, can see that far ahead." },
   { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Mono no aware", "saying_kanji_kana": "物の哀れ", "meaning": "The beautiful pathos of things.", "advice": "Finding deep peace in the fleeting nature of life and beauty." },
   { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Kachou fugetsu", "saying_kanji_kana": "花鳥風月", "meaning": "Flower, bird, wind, moon.", "advice": "Experience the peace of the universe by immersing yourself in nature." },
   { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Ukiyo", "saying_kanji_kana": "浮世", "meaning": "The floating world.", "advice": "Live detached from life's anxieties, drifting calmly through its changes." },
@@ -731,6 +756,11 @@ const calmingSayingsRaw = [
   { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Kachou fugetsu ni asobu", "saying_kanji_kana": "花鳥風月に遊ぶ", "meaning": "Play with the flowers, birds, wind, and moon.", "advice": "Find tranquility by becoming a spectator of nature." },
   { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Keichou fubi", "saying_kanji_kana": "桂長風微", "meaning": "The cassia tree grows tall while the wind blows gently.", "advice": "Trust that peaceful environments nurture deep growth." },
   { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Mizu wa hounen ni shitagau", "saying_kanji_kana": "水は方円に随う", "meaning": "Water shapes itself to any container.", "advice": "Be like water and adapt effortlessly to your surroundings." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Shousha hitsumetsu, esha jouri", "saying_kanji_kana": "生者必滅、会者定離", "meaning": "All who are born must die; all who meet must part.", "advice": "Let that truth deepen your appreciation of this specific moment, rather than sadden you." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Aki no hi wa tsurube otoshi", "saying_kanji_kana": "秋の日は釣瓶落とし", "meaning": "Autumn daylight falls like a well-bucket.", "advice": "A good day can turn to evening quickly — that's a reason to notice it, not to rush it." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Minoru hodo atama wo tareru inaho kana", "saying_kanji_kana": "実るほど頭を垂れる稲穂かな", "meaning": "The riper the rice ear, the lower it bows.", "advice": "Let real growth soften you rather than harden you." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Ungai souten", "saying_kanji_kana": "雲外蒼天", "meaning": "Blue sky beyond the clouds.", "advice": "The overcast feeling passing through you is weather, not climate — it will move on." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Momo kuri sannen, kaki hachinen", "saying_kanji_kana": "桃栗三年柿八年", "meaning": "Peaches and chestnuts take three years, persimmons take eight.", "advice": "Let your own timeline be its own — comparing your pace to someone else's tree misses the point." },
   { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Wabi-sabi", "saying_kanji_kana": "侘寂", "meaning": "Perfect imperfection.", "advice": "Finding perfect peace in imperfection, incompletion, and the simple things." },
   { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Ichigo ichie", "saying_kanji_kana": "一期一会", "meaning": "One time, one meeting.", "advice": "Treasure this exact, unrepeatable moment without worrying about the next." },
   { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Heijoshin", "saying_kanji_kana": "平常心", "meaning": "Presence of mind.", "advice": "Maintain a calm, everyday spirit regardless of the chaos surrounding you." },
@@ -741,16 +771,26 @@ const calmingSayingsRaw = [
   { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Yutori", "saying_kanji_kana": "ゆとり", "meaning": "Living with spaciousness.", "advice": "Leaving breathing room in your schedule, mind, and life." },
   { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shoujin ketsujou", "saying_kanji_kana": "精進潔斎", "meaning": "Purification of the mind and body.", "advice": "Intentionally clearing away mental clutter to restore your inner sanctuary." },
   { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Anjin ritsumei", "saying_kanji_kana": "安心立命", "meaning": "Finding absolute peace of mind through faith or philosophy.", "advice": "Live completely free from existential anxiety." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shoshin wasuru bekarazu", "saying_kanji_kana": "初心忘るべからず", "meaning": "Never forget the beginner's spirit.", "advice": "Approach even the familiar with fresh eyes — it keeps you curious instead of jaded." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shiranu ga hotoke", "saying_kanji_kana": "知らぬが仏", "meaning": "Not knowing is Buddha.", "advice": "You don't have to have an opinion on everything — some peace comes from simply not checking." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Chinmoku wa kin", "saying_kanji_kana": "沈黙は金", "meaning": "Silence is gold.", "advice": "A quiet response is still a complete one — you don't owe every moment a reaction." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Onko chishin", "saying_kanji_kana": "温故知新", "meaning": "Cherish the old to know the new.", "advice": "Let old memories and old lessons inform you gently rather than pulling you backward." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Hara hachibunme ni isha irazu", "saying_kanji_kana": "腹八分目に医者いらず", "meaning": "Eat until eighty percent full and you won't need a doctor.", "advice": "Enough is a completeness of its own; you don't need to fill every last space." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Yanagi ni yukioro nashi", "saying_kanji_kana": "柳に雪折れなし", "meaning": "The willow branches do not break under the snow.", "advice": "Yielding and being flexible is your greatest strength." },
-  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ame hatte ji katamaru", "saying_kanji_kana": "あめふってじかたまる", "meaning": "After rain, the ground hardens.", "advice": "Adversity only serves to make your foundation more stable." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ame futte ji katamaru", "saying_kanji_kana": "雨降って地固まる", "meaning": "After rain, the ground hardens.", "advice": "Adversity only serves to make your foundation more stable." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Gaman", "saying_kanji_kana": "我慢", "meaning": "Enduring the seemingly unbearable with patience and dignity.", "advice": "Keep your composure through internal discipline." },
-  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Jinsei bunkuji ma ga uma", "saying_kanji_kana": "人間の万事塞翁が馬", "meaning": "Life is like the horse of an old man at the frontier.", "advice": "Bad luck can be good luck in disguise, so stay even-tempered." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ningen banji saiou ga uma", "saying_kanji_kana": "人間万事塞翁が馬", "meaning": "Life is like the horse of the old man at the frontier.", "advice": "Bad luck can be good luck in disguise, so stay even-tempered." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Shunba toufu", "saying_kanji_kana": "駿馬東風", "meaning": "Like the east wind blowing past a swift horse.", "advice": "Let criticisms and worries brush past you without leaving a scratch." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Naiteru mizu ni sakana sumu", "saying_kanji_kana": "泣いてる水に魚住む", "meaning": "Fish live even in weeping waters.", "advice": "Life can still thrive and be beautiful during sad times." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Taiki seijaku", "saying_kanji_kana": "大気静寂", "meaning": "Deep atmosphere, profound silence.", "advice": "Cultivate a quiet, vast presence that cannot be easily disturbed." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ishin-denshin", "saying_kanji_kana": "以心伝心", "meaning": "Heart to heart communication.", "advice": "Quietly understanding others without the need for loud, exhausting words." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Toko no haru", "saying_kanji_kana": "常個の春", "meaning": "An eternal spring within.", "advice": "Cultivating a mindset so warm that it stays calm even during life's winters." },
   { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Fuuha wo shinogu", "saying_kanji_kana": "風波を凌ぐ", "meaning": "Weathering the wind and waves.", "advice": "Remind yourself that you have the quiet strength to ride out any temporary storm." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ryouyaku wa kuchi ni nigashi", "saying_kanji_kana": "良薬は口に苦し", "meaning": "Good medicine tastes bitter.", "advice": "Let a hard truth or a hard season do its work — discomfort is not the same as harm." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ku areba raku ari", "saying_kanji_kana": "苦あれば楽あり", "meaning": "Where there is hardship, there is also ease.", "advice": "Whatever hard stretch you're in is already, quietly, making room for its opposite." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Korobanu saki no tsue", "saying_kanji_kana": "転ばぬ先の杖", "meaning": "A walking stick before you stumble.", "advice": "A little steady preparation now is its own form of calm — you're not being paranoid, you're being kind to your future self." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Nito wo ou mono wa itto wo mo ezu", "saying_kanji_kana": "二兎を追う者は一兎をも得ず", "meaning": "Chase two rabbits, catch neither.", "advice": "Choosing one thing to give your full attention to isn't a loss — it's how anything gets done well." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Mateba kairo no hiyori ari", "saying_kanji_kana": "待てば海路の日和あり", "meaning": "Wait, and fair sailing weather will come.", "advice": "If the timing feels wrong, that's information, not failure — hold steady and let it turn." },
   { "category": "🌊 Harmony & Balance", "saying_romaji": "Wa", "saying_kanji_kana": "和", "meaning": "Harmony.", "advice": "Living in pursuit of harmony, balance, and peaceful coexistence with all things." },
   { "category": "🌊 Harmony & Balance", "saying_romaji": "Juu noku gou wo seisu", "saying_kanji_kana": "柔よく剛を制す", "meaning": "Softness overcomes hardness.", "advice": "Gentleness is far more powerful than force." },
   { "category": "🌊 Harmony & Balance", "saying_romaji": "In-ou", "saying_kanji_kana": "陰応", "meaning": "The quiet harmony of yin and yang.", "advice": "Accepting that life requires a balance of rest and action, dark and light." },
@@ -758,7 +798,12 @@ const calmingSayingsRaw = [
   { "category": "🌊 Harmony & Balance", "saying_romaji": "Shizun de mo mata ukabu", "saying_kanji_kana": "沈んでもまた浮かぶ", "meaning": "Even if you sink, you will float to the top again.", "advice": "Trust the natural buoyancy of your spirit." },
   { "category": "🌊 Harmony & Balance", "saying_romaji": "Seiseitsuatsatsu", "saying_kanji_kana": "清々颯々", "meaning": "Pure, fresh, and rustling like the wind.", "advice": "The feeling of a mind cleared of clutter." },
   { "category": "🌊 Harmony & Balance", "saying_romaji": "Onryo jihitsu", "saying_kanji_kana": "穏良慈筆", "meaning": "Gentle, kind, and compassionate.", "advice": "Treat your own mistakes with this exact mindset." },
-  { "category": "🌊 Harmony & Balance", "saying_romaji": "Yugen", "saying_kanji_kana": "幽玄", "meaning": "A profound, mysterious sense of the beauty of the universe.", "advice": "Leaves your daily anxieties feeling distant and small." }
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Yugen", "saying_kanji_kana": "幽玄", "meaning": "A profound, mysterious sense of the beauty of the universe.", "advice": "Leaves your daily anxieties feeling distant and small." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Sannin yoreba Monju no chie", "saying_kanji_kana": "三人寄れば文殊の知恵", "meaning": "When three gather, the wisdom of Manjushri appears.", "advice": "You don't have to solve everything alone — invite others in and let the answer emerge between you." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Rui wa tomo wo yobu", "saying_kanji_kana": "類は友を呼ぶ", "meaning": "Like calls to like.", "advice": "Notice who and what you're drawn to — it says something true about where you already are." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Uogokoro areba mizugokoro", "saying_kanji_kana": "魚心あれば水心", "meaning": "If the fish has a heart for the water, the water has a heart for the fish.", "advice": "Small warmth extended rarely disappears without trace — trust the exchange." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Nasake wa hito no tame narazu", "saying_kanji_kana": "情けは人の為ならず", "meaning": "Kindness is not just for others' sake.", "advice": "Generosity is never purely one-directional, even when the return isn't visible yet." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Sode furiau mo tashou no en", "saying_kanji_kana": "袖振り合うも多生の縁", "meaning": "Even a brushing of sleeves is a bond from a past life.", "advice": "Nothing you cross paths with today is entirely without meaning, however small." }
 ];
 const calmingSayings = calmingSayingsRaw.map(p => ({...p, saying: p.saying_kanji_kana, saying_phonetic: p.saying_romaji}));
 
