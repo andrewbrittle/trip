@@ -1317,7 +1317,7 @@ const activityDetails = {
     title: "Palace of the Parliament",
     body: `<p>Ordered by Ceaușescu in the early 1980s, not long after a visit to North Korea left him wanting something similarly monumental. Construction began in 1984 and swallowed roughly a fifth of old Bucharest to clear the site — thousands of homes, along with dozens of churches and synagogues.</p><p>More than 20,000 workers built it in round-the-clock shifts. Ceaușescu was executed in the 1989 revolution before it was ever finished or lived in — he never set foot inside as its owner. It's now the second-largest administrative building in the world, beaten only by the Pentagon.</p>`
   },
-  d1a2: {
+  d1a3: {
     title: "Triumphal Arch",
     body: `<p>The first arch on this spot was thrown up out of wood in 1878, in a hurry, just so victorious troops had something to march under after Romania's war of independence. It didn't last long.</p><p>The version standing now dates to 1936 — built in stone, modelled closely on Paris's own Arc de Triomphe, and raised to mark both Romania's WWI victory and the coronation of King Ferdinand and Queen Marie. Military parades still pass beneath it every 1 December, Romania's national day.</p>`
   },
@@ -1340,6 +1340,38 @@ const activityDetails = {
   d5a0: {
     title: "Boyana Church",
     body: `<p>Small on the outside, remarkable on the inside — the church was built in three separate stages spanning nearly a thousand years, starting in the 10th century. The oldest section is barely bigger than a chapel.</p><p>Its real claim to fame is the 1259 fresco layer, painted a full century before the Italian Renaissance but showing the same startling realism — 240 individually rendered figures across 89 scenes. UNESCO listed it in 1979, and access is still deliberately restricted to small guided groups to protect the paint.</p>`
+  },
+  d4a2: {
+    title: "Ancient Serdica",
+    body: `<p>Constantine the Great liked this place enough to seriously consider making it his capital instead of Constantinople — he's said to have called it "Serdica is my Rome." A church council held here in 343 AD was a significant early Christian gathering, trying (and failing) to settle a doctrinal split across the empire.</p><p>What you're walking over today is a fraction of the ancient city — a Roman street plan that modern Sofia's centre still roughly follows, properly unearthed only during the metro's expansion. The city was later destroyed by the Huns in 447 AD and rebuilt more than once before becoming medieval Sofia.</p>`
+  },
+  d1a5: {
+    title: "Village Museum",
+    body: `<p>Built from a decade of fieldwork, not architects' drawings — sociologist Dimitrie Gusti sent teams into more than 600 Romanian villages through the 1920s and 30s to document a rural world he could see disappearing, then had entire houses physically dismantled and rebuilt here, exactly as found.</p><p>It opened in 1936, one of the first open-air museums anywhere in the world — King Carol II himself attended. It's survived two serious fires since (1997 and 2002), with the damaged buildings painstakingly restored rather than replaced.</p>`
+  },
+  d1a1: {
+    title: "Calea Victoriei",
+    body: `<p>This grand boulevard started life in 1692 as a very literal bridge — Prince Constantin Brâncoveanu paved a muddy track with oak logs to connect his residence to his estate at Mogoșoaia, and the road took the name "Mogoșoaia Bridge" from the planking underfoot.</p><p>It only became Calea Victoriei — "Victory Avenue" — in 1878, renamed the day Romanian troops marched back into the city as heroes of the War of Independence. Four years later it became the first street in Bucharest to get electric lighting.</p>`
+  },
+  d2a1: {
+    title: "Cișmigiu Garden",
+    body: `<p>The name comes from the Turkish word for a fountain-keeper — a "cișmigiu" — after ruler Alexandru Ipsilanti had public wells dug here in 1779 to supply the city with clean water. Before that it was just a marshy fishing pond on the edge of town.</p><p>The English-style garden you're walking through now was designed by Austrian landscape architect Carl Meyer starting in the 1840s. He died of typhoid in 1852, just after finishing most of the work — the layout has been tweaked since, but the oldest trees are still his.</p>`
+  },
+  d0a1: {
+    title: "Old Town (Lipscani)",
+    body: `<p>First recorded in 1589 under a much plainer name — "Ulița Mare," the Broad Lane. It only became Lipscani once merchants started making the long trip to Leipzig (Lipsca, in old Romanian) and back, bringing Western European goods to sell here.</p><p>For centuries this was the commercial heart of the city, and it still shows: the surrounding streets are named for the guilds that worked them — Blănari for furriers, Șelari for saddlemakers, Covaci for blacksmiths — each trade keeping to its own street, right next to the old princely court itself.</p>`
+  },
+  d1a2: {
+    title: "Revolution Square",
+    body: `<p>Known simply as Palace Square until December 1989 — the name changed the same month everything else did. Ceaușescu gave his final speech from the balcony of the building here on the 21st, expecting the usual staged applause. He didn't get it.</p><p>Within a day the crowd had turned, the shooting started, and Ceaușescu fled by helicopter from the roof the following morning. The tall monument in the square today — officially the Memorial of Rebirth, unofficially "The Potato" to locals — lists the names of the 1,104 people killed.</p>`
+  },
+  d2a4: {
+    title: "Patriarchal Cathedral",
+    body: `<p>Built in the 1650s by Prince Constantin Șerban and his wife Lady Bălașa as a thank-you offering after a period of war and instability — it wasn't actually a "Patriarchal" cathedral for another 270 years, only gaining that rank in 1925 when the Romanian Orthodox Church itself became a Patriarchate.</p><p>The hill it sits on has hosted more than one turning point in Romanian history — the 1859 vote to unify the Romanian principalities happened right here, and the country's independence and kingdom were both proclaimed from this same plateau.</p>`
+  },
+  d4a4: {
+    title: "Ivan Vazov National Theatre",
+    body: `<p>Designed by the Viennese firm of Fellner & Helmer, who built roughly 48 theatres across Europe and rarely repeated themselves — this one opened in January 1907, only to catch fire during a performance just 16 years later and burn out almost entirely.</p><p>It's named after Ivan Vazov, Bulgaria's most celebrated writer, who was such a devoted regular that he kept a permanently reserved seat in the second row until he died in 1921 — he never saw the fire, or the rebuilding that followed it.</p>`
   }
 };
 
@@ -1421,11 +1453,13 @@ const days = [
     `,
     cards: () => [
       activityCard("d1a0", "Morning", `Palace of the Parliament${pin("Palace of the Parliament Bucharest")}`, "<p>The must-see — second-largest administrative building in the world. Guided tours only; worth booking a slot in advance rather than turning up.</p>", "Open 9am–5pm daily · Adult ticket 85 RON (standard tour)"),
-      activityCard("d1a1", "Midday", `Calea Victoriei${pin("Calea Victoriei Bucharest")}`, `<p>Walk the grand boulevard from the Palace area up past the Romanian Athenaeum. Along the way you'll pass Revolution Square${pin("Revolution Square Bucharest")} — the site of the 1989 uprising against Ceaușescu, with the Memorial of Rebirth marking it — good for lunch somewhere along the route too.</p>`),
-      activityCard("d1a2", "Early afternoon", `Triumphal Arch${pin("Triumphal Arch Bucharest")}`, "<p>Bucharest's own (smaller) Arc de Triomphe, on the way up towards Herăstrău — a quick, easy stop rather than a destination in itself, five minutes to look at and photograph before carrying on.</p>"),
-      activityCard("d1a3", "Afternoon", `Herăstrău Park${pin("Herastrau Park Bucharest")} &amp; Village Museum${pin("Muzeul Satului Bucharest")}`, "<p>A short taxi or metro ride north. The open-air museum of traditional Romanian houses is a nice change of pace, and the park itself is pleasant for a stroll by the lake.</p>", "Museum open 9am–5pm daily (winter hours by late Oct) · Adult ticket ~40 RON, park itself is free"),
-      activityCard("d1a4", "Evening", `Option: concert at the Athenaeum${pin("Romanian Athenaeum Bucharest")}`, "<p>There's a concert at the Romanian Athenaeum on this evening at 7pm that could be worth it — since it lines up with the day you're already in the centre for the Palace of the Parliament and Calea Victoriei. Dinner could shift earlier or later around it.</p>"),
-      activityCard("d1a5", "Evening", "Dinner back in the centre", "<p>Head back towards Old Town or Calea Victoriei for dinner. Worth keeping an ear out too — Bucharest's smaller churches occasionally host organ or chamber recitals of an evening, a nice low-key alternative to a big concert hall if you spot a poster on the way past.</p>")
+      activityCard("d1a1", "Midday", `Calea Victoriei${pin("Calea Victoriei Bucharest")}`, "<p>Walk the grand boulevard from the Palace area up past the Romanian Athenaeum — good for lunch somewhere along the route too.</p>"),
+      activityCard("d1a2", "Midday", `Revolution Square${pin("Revolution Square Bucharest")}`, "<p>Right on the Calea Victoriei route — the site of the 1989 uprising against Ceaușescu, with the Memorial of Rebirth marking it. Easy to fold into the same walk without a detour.</p>"),
+      activityCard("d1a3", "Early afternoon", `Triumphal Arch${pin("Triumphal Arch Bucharest")}`, "<p>Bucharest's own (smaller) Arc de Triomphe, on the way up towards Herăstrău — a quick, easy stop rather than a destination in itself, five minutes to look at and photograph before carrying on.</p>"),
+      activityCard("d1a4", "Afternoon", `Herăstrău Park${pin("Herastrau Park Bucharest")}`, "<p>A short taxi or metro ride north — a pleasant, easy stroll by the lake before the Village Museum next door.</p>"),
+      activityCard("d1a5", "Afternoon", `Village Museum${pin("Muzeul Satului Bucharest")}`, "<p>The open-air museum of traditional Romanian houses, right next to Herăstrău Park — a nice change of pace from the day's walking.</p>", "Open 9am–5pm daily (winter hours by late Oct) · Adult ticket ~40 RON"),
+      activityCard("d1a6", "Evening", `Option: concert at the Athenaeum${pin("Romanian Athenaeum Bucharest")}`, "<p>There's a concert at the Romanian Athenaeum on this evening at 7pm that could be worth it — since it lines up with the day you're already in the centre for the Palace of the Parliament and Calea Victoriei. Dinner could shift earlier or later around it.</p>"),
+      activityCard("d1a7", "Evening", "Dinner back in the centre", "<p>Head back towards Old Town or Calea Victoriei for dinner. Worth keeping an ear out too — Bucharest's smaller churches occasionally host organ or chamber recitals of an evening, a nice low-key alternative to a big concert hall if you spot a poster on the way past.</p>")
     ]
   },
   {
@@ -1440,8 +1474,9 @@ const days = [
       activityCard("d2a0", "Morning", `Romanian Athenaeum — visit the building${pin("Romanian Athenaeum Bucharest")}`, "<p>Best in the morning, when there's no rehearsal or concert restricting access. Self-guided entry to the foyer and the main hall, with its huge fresco of Romanian history circling the walls — worth it for the interior alone, no concert required.</p>", "Open ~9:30am–5:30pm, small entry fee (~10 RON); access may be limited if a rehearsal is on"),
       activityCard("d2a1", "Midday", `Cișmigiu Garden${pin("Cismigiu Garden Bucharest")}`, "<p>The oldest park in the city, right next to Old Town — flowerbeds, a big pond with pedal boats, and a genuinely calm break between the Athenaeum and the afternoon's walking.</p>"),
       activityCard("d2a2", "Afternoon", "Coffee in Old Town", `<p>Maybe a browse through Cărturești Carusel${pin("Carturesti Carusel Bucharest")}, the six-storey bookshop housed in a restored 19th-century building nearby.</p>`, "Cărturești Carusel open 10am–10pm Mon–Wed"),
-      activityCard("d2a3", "Late afternoon", `Curtea Veche${pin("Curtea Veche Bucharest")} &amp; Manuc's Inn${pin("Hanul lui Manuc Bucharest")}`, `<p>Worth knowing before you go: the Old Princely Court ruins themselves have been closed to the public for restoration for some years, so it's an exterior stop — the courtyard and Vlad the Impaler bust are visible from the street. Manuc's Inn right next door is open as normal, with a lovely covered courtyard for coffee or a late lunch. The Patriarchal Cathedral${pin("Patriarchal Cathedral of Bucharest")} is a short walk south too, on its own hill overlooking the area, if you've got time and legs left.</p>`, "Manuc's Inn open 8am–midnight (till 2am Fri/Sat)"),
-      activityCard("d2a4", "Evening", "Look for a concert in a smaller venue", `<p>Rather than a big philharmonic night, Bucharest's churches often host organ or chamber recitals that are easy to stumble into — St. Joseph's Catholic Cathedral${pin("St Joseph Catholic Cathedral Bucharest")} is literally on the same street as Hotel Berthelot, and the Anglican Church of the Resurrection${pin("Anglican Church of the Resurrection Bucharest")} runs an occasional recital series too. These aren't usually on the big ticketing sites — check posters at the door or local listings once you're there.</p>`)
+      activityCard("d2a3", "Late afternoon", `Curtea Veche${pin("Curtea Veche Bucharest")} &amp; Manuc's Inn${pin("Hanul lui Manuc Bucharest")}`, "<p>Worth knowing before you go: the Old Princely Court ruins themselves have been closed to the public for restoration for some years, so it's an exterior stop — the courtyard and Vlad the Impaler bust are visible from the street. Manuc's Inn right next door is open as normal, with a lovely covered courtyard for coffee or a late lunch.</p>", "Manuc's Inn open 8am–midnight (till 2am Fri/Sat)"),
+      activityCard("d2a4", "Late afternoon", `Patriarchal Cathedral${pin("Patriarchal Cathedral of Bucharest")}`, "<p>A short walk south of Curtea Veche, on its own hill overlooking the area — the seat of the Romanian Orthodox Church, if you've got time and legs left.</p>", "Open daily 7am–8pm, free entry"),
+      activityCard("d2a5", "Evening", "Look for a concert in a smaller venue", `<p>Rather than a big philharmonic night, Bucharest's churches often host organ or chamber recitals that are easy to stumble into — St. Joseph's Catholic Cathedral${pin("St Joseph Catholic Cathedral Bucharest")} is literally on the same street as Hotel Berthelot, and the Anglican Church of the Resurrection${pin("Anglican Church of the Resurrection Bucharest")} runs an occasional recital series too. These aren't usually on the big ticketing sites — check posters at the door or local listings once you're there.</p>`)
     ]
   },
   {
@@ -1493,8 +1528,9 @@ const days = [
       activityCard("d4a0", "Morning", `Alexander Nevsky Cathedral${pin("Alexander Nevsky Cathedral Sofia")}`, "<p>Sofia's centrepiece — the gold-domed cathedral. Go early before the tour groups; the antique market along the square outside is worth a browse too.</p>", "Cathedral open 7am–7pm daily, free entry"),
       activityCard("d4a1", "Midday", `National Archaeological Museum${pin("National Archaeological Museum Sofia")}`, "<p>Housed in a former Ottoman mosque, just off the same square as Nevsky — Thracian gold, the Valchitran treasure, and a genuinely striking building to see it in. Easy to combine with the cathedral since it's a two-minute walk.</p>"),
       activityCard("d4a2", "Early afternoon", `Ancient Serdica ruins${pin("Ancient Serdica Sofia")}`, "<p>Roman remains sitting right in the modern city centre, near Serdika metro station — an easy, short stop on the way to lunch.</p>", "Open access during metro hours (~6am–11pm), free"),
-      activityCard("d4a3", "Afternoon", `Vitosha Boulevard${pin("Vitosha Boulevard Sofia")}`, `<p>The main pedestrian street for shops, cafés, and people-watching. The Ivan Vazov National Theatre${pin("Ivan Vazov National Theatre Sofia")} sits right at its northern end, next to the City Garden — worth a look at the building even without a ticket for that evening.</p>`),
-      activityCard("d4a4", "Evening", "Dinner near Vitosha Boulevard", `<p>Plenty of options right along the street or just off it. Sofia's churches — Sveta Nedelya Cathedral${pin("Sveta Nedelya Cathedral Sofia")} or the small St. George Rotunda${pin("St George Rotunda Sofia")} among them — sometimes host organ or chamber recitals in the evening too; these tend to be advertised locally (posters at the door, programata.bg) rather than on the big ticketing sites, so worth a look once you're there.</p>`)
+      activityCard("d4a3", "Afternoon", `Vitosha Boulevard${pin("Vitosha Boulevard Sofia")}`, "<p>The main pedestrian street for shops, cafés, and people-watching — a relaxed way to fill the afternoon.</p>"),
+      activityCard("d4a4", "Late afternoon", `Ivan Vazov National Theatre${pin("Ivan Vazov National Theatre Sofia")}`, "<p>Sits right at the northern end of Vitosha Boulevard, next to the City Garden — worth a look at the building even without a ticket for that evening.</p>"),
+      activityCard("d4a5", "Evening", "Dinner near Vitosha Boulevard", `<p>Plenty of options right along the street or just off it. Sofia's churches — Sveta Nedelya Cathedral${pin("Sveta Nedelya Cathedral Sofia")} or the small St. George Rotunda${pin("St George Rotunda Sofia")} among them — sometimes host organ or chamber recitals in the evening too; these tend to be advertised locally (posters at the door, programata.bg) rather than on the big ticketing sites, so worth a look once you're there.</p>`)
     ]
   },
   {
