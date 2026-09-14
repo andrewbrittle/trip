@@ -6,13 +6,18 @@
 <title>Bucharest &amp; Sofia — 26 Oct to 1 Nov</title>
 <script>
   (function(){
-    var theme = null;
-    try { theme = localStorage.getItem('tripTheme'); } catch(e){}
-    if (!theme){
+    var mode = null;
+    try { mode = localStorage.getItem('tripThemeMode'); } catch(e){}
+    if (!mode){
       var m = location.search.match(/[?&]theme=(light|dark)/);
-      if (m) theme = m[1];
+      if (m) mode = m[1];
     }
-    if (theme) document.documentElement.setAttribute('data-theme', theme);
+    if (!mode) mode = 'auto';
+    var resolved = mode;
+    if (mode === 'auto'){
+      resolved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', resolved);
   })();
 </script>
 <style>
@@ -473,6 +478,85 @@
   .maplink:hover{ color:var(--gold); opacity:1; }
   .maplink:active{ transform:scale(0.85); }
 
+  /* ---- Detail/history popup ---- */
+  .detail-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:16px;
+    height:16px;
+    margin-left:5px;
+    border-radius:50%;
+    border:1px solid var(--text-faint);
+    background:none;
+    color:var(--text-faint);
+    font-size:10px;
+    line-height:1;
+    font-weight:700;
+    cursor:pointer;
+    vertical-align:middle;
+    transition:color .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .detail-btn:hover{ color:var(--gold); border-color:var(--gold); }
+  .detail-btn:active{ transform:scale(0.88); }
+
+  .detail-modal{
+    position:fixed;
+    inset:0;
+    z-index:40;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    box-sizing:border-box;
+  }
+  .detail-modal[hidden]{ display:none; }
+  .detail-modal-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+  }
+  .detail-modal-card{
+    position:relative;
+    width:min(480px, 100%);
+    max-height:calc(100vh - 40px);
+    overflow-y:auto;
+    background:var(--surface);
+    border:1px solid var(--dropdown-border);
+    border-radius:16px;
+    padding:22px 20px 20px;
+    box-shadow:var(--dropdown-shadow);
+    animation:panelIn .2s ease;
+  }
+  .detail-modal-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:none;
+    background:var(--surface-hi);
+    color:var(--text-dim);
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+  }
+  .detail-modal-close:active{ transform:scale(0.9); }
+  .detail-modal-title{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-weight:600;
+    margin:0 28px 14px 0;
+  }
+  .detail-modal-body{
+    font-size:14px;
+    line-height:1.65;
+    color:var(--text);
+  }
+  .detail-modal-body p{ margin:0 0 12px; }
+  .detail-modal-body p:last-child{ margin-bottom:0; }
+
   /* ---- City name → Wikipedia link ---- */
   .citylink{ color:inherit; text-decoration:none; }
   .citylink:hover{ text-decoration:underline; }
@@ -774,10 +858,10 @@
     stroke-linejoin:round;
   }
 
-  .export-toggle{
+  .settings-toggle{
     position:fixed;
     top:22px;
-    right:116px;
+    right:20px;
     width:38px;
     height:38px;
     border-radius:50%;
@@ -790,30 +874,17 @@
     z-index:20;
     transition:background .25s ease, border-color .25s ease, transform .15s ease;
   }
-  .export-toggle:active{ transform:scale(0.92); }
-  .export-toggle svg{
+  .settings-toggle:active{ transform:scale(0.92); }
+  .settings-toggle svg{
     width:18px;
     height:18px;
     stroke:var(--toggle-icon);
     fill:none;
-    stroke-width:2;
+    stroke-width:1.8;
     stroke-linecap:round;
     stroke-linejoin:round;
   }
-  .export-panel{
-    position:fixed;
-    top:66px;
-    right:20px;
-    width:280px;
-    background:var(--surface);
-    border:1px solid var(--dropdown-border);
-    border-radius:14px;
-    padding:16px;
-    z-index:21;
-    box-shadow:var(--dropdown-shadow);
-    display:none;
-  }
-  .export-panel.open{ display:block; }
+
   .export-desc{
     font-size:12px;
     color:var(--text-dim);
@@ -849,6 +920,112 @@
     margin-top:8px;
     min-height:14px;
   }
+
+  /* ---- Settings & Instructions full-screen overlays ---- */
+  .settings-screen, .instructions-screen{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    background:var(--bg);
+    overflow-y:auto;
+    padding:28px 20px 40px;
+  }
+  .settings-screen[hidden], .instructions-screen[hidden]{ display:none; }
+  .settings-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:24px;
+  }
+  .settings-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:30px;
+    margin:0;
+    line-height:1.15;
+  }
+  .settings-close, .settings-back{
+    flex-shrink:0;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--text-dim);
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+  }
+  .settings-close:active, .settings-back:active{ transform:scale(0.9); }
+  .settings-body{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .settings-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px;
+  }
+  .settings-card-label{
+    font-size:11.5px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  .settings-card-desc{
+    font-size:13.5px;
+    color:var(--text-dim);
+    line-height:1.55;
+    margin-bottom:14px;
+  }
+  .settings-card-desc:last-child{ margin-bottom:0; }
+  .settings-btn{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--surface-hi);
+    color:var(--text);
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .settings-btn:active{ transform:scale(0.98); }
+  .settings-seg-row{
+    display:flex;
+    gap:8px;
+  }
+  .settings-seg{
+    flex:1;
+    padding:9px 0;
+    text-align:center;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:none;
+    color:var(--text-dim);
+    font-family:inherit;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .settings-seg.active{
+    background:var(--gold-dim);
+    border-color:var(--gold-border);
+    color:var(--gold-text);
+  }
+  .settings-version{
+    text-align:center;
+    font-size:11px;
+    color:var(--text-faint);
+    margin-top:26px;
+  }
+
   .fx-panel{
     position:fixed;
     top:66px;
@@ -941,17 +1118,12 @@
 </head>
 <body>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-  <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-</button>
-
 <button class="money-toggle" id="moneyToggle" aria-label="Currency converter">
   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 15.5c.5 1 1.5 1.5 2.5 1.5 1.5 0 2.5-.8 2.5-2s-1-1.7-2.5-2-2.5-.8-2.5-2 1-2 2.5-2c1 0 2 .5 2.5 1.5"/><path d="M12 6.5v1M12 16.5v1"/></svg>
 </button>
 
-<button class="export-toggle" id="exportToggle" aria-label="Export local changes">
-  <svg viewBox="0 0 24 24"><path d="M12 14V3M8 7l4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+<button class="settings-toggle" id="settingsToggle" aria-label="Settings">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
 
 <div class="fx-panel" id="fxPanel">
@@ -973,15 +1145,120 @@
   <div class="fx-result" id="fxResult">→ 0.00</div>
 </div>
 
-<div class="export-panel" id="exportPanel">
-  <div class="fx-label">Export local changes</div>
-  <div class="export-desc">Anything added, or written in Notes, on this device — paste this into a chat with Claude to have it researched properly and folded into the main plan.</div>
-  <textarea class="export-textarea" id="exportText" readonly></textarea>
-  <div class="export-btn-row">
-    <button class="quickadd-btn" onclick="copyExport()">Copy</button>
-    <button class="quickadd-btn export-btn-secondary" onclick="downloadExport()">Download .json</button>
+<div class="detail-modal" id="detailModal" hidden>
+  <div class="detail-modal-backdrop" onclick="closeDetail()"></div>
+  <div class="detail-modal-card">
+    <button class="detail-modal-close" type="button" onclick="closeDetail()" aria-label="Close">×</button>
+    <div class="detail-modal-title" id="detailModalTitle"></div>
+    <div class="detail-modal-body" id="detailModalBody"></div>
   </div>
-  <div class="export-status" id="exportStatus"></div>
+</div>
+
+<div class="settings-screen" id="settingsScreen" hidden>
+  <div class="settings-header">
+    <div>
+      <div class="eyebrow">SETTINGS</div>
+      <h1 class="settings-title">Settings</h1>
+    </div>
+    <button class="settings-close" onclick="closeSettings()" aria-label="Close">×</button>
+  </div>
+  <div class="settings-body">
+
+    <div class="settings-card">
+      <div class="settings-card-label">Instructions</div>
+      <div class="settings-card-desc">A full guide to how everything on this page and in the app works.</div>
+      <button class="settings-btn" onclick="openInstructions()">Open instructions</button>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Appearance</div>
+      <div class="settings-seg-row">
+        <button class="settings-seg" id="themeSegAuto" onclick="setThemeMode('auto')">Auto</button>
+        <button class="settings-seg" id="themeSegLight" onclick="setThemeMode('light')">☀ Light</button>
+        <button class="settings-seg" id="themeSegDark" onclick="setThemeMode('dark')">☾ Dark</button>
+      </div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Calming proverbs</div>
+      <div class="settings-card-desc">Two proverb cards are spliced into each day's plan for a bit of calm. Turn them off if you'd rather just see the plan.</div>
+      <div class="settings-seg-row">
+        <button class="settings-seg" id="proverbsSegOn" onclick="setProverbsEnabled(true)">On</button>
+        <button class="settings-seg" id="proverbsSegOff" onclick="setProverbsEnabled(false)">Off</button>
+      </div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Export updates</div>
+      <div class="settings-card-desc">Copy this and paste it into a chat with Claude to research anything new and fold it into the plan permanently.</div>
+      <textarea class="export-textarea" id="exportText" readonly></textarea>
+      <div class="export-btn-row">
+        <button class="quickadd-btn" onclick="copyExport()">Copy</button>
+        <button class="quickadd-btn export-btn-secondary" onclick="downloadExport()">Download</button>
+      </div>
+      <div class="export-status" id="exportStatus"></div>
+    </div>
+
+  </div>
+  <div class="settings-version">v260914.001</div>
+</div>
+
+<div class="instructions-screen" id="instructionsScreen" hidden>
+  <div class="settings-header">
+    <button class="settings-back" onclick="closeInstructions()" aria-label="Back to Settings">←</button>
+    <div>
+      <div class="eyebrow">INSTRUCTIONS</div>
+      <h1 class="settings-title">How this works</h1>
+    </div>
+  </div>
+  <div class="settings-body">
+
+    <div class="settings-card">
+      <div class="settings-card-label">Getting around</div>
+      <div class="settings-card-desc">Tap a date in the grid up top to jump to that day, or use the Previous/Next buttons at the bottom of each day. When you're on the trip, the highlighted date is today, based on your device's clock.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Cities and places</div>
+      <div class="settings-card-desc">The coloured bar across the top is split into Bucharest and Sofia — tap a city's name there to open its Wikipedia page. Wherever you see the pin icon next to a place, tap it to open that spot in Google Maps.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Marking things off</div>
+      <div class="settings-card-desc">Tap the circle on any card to cycle it through not done → done (✓) → skipped (✕) and back. Done/skipped cards collapse to keep the day short — tap again to bring the detail back.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">More detail</div>
+      <div class="settings-card-desc">Where a card has a small ⓘ next to its title, tap it for extra background or history on that place.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Adding your own</div>
+      <div class="settings-card-desc">Each day has an "Add something" box at the bottom for anything new that comes up on the day — it gets its own card, with a × to remove it if it doesn't work out. There's a Notes box underneath for anything else worth remembering.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Sending changes back</div>
+      <div class="settings-card-desc">Settings (⚙) → Export updates gathers everything you've added, ticked off, or noted into one block of text. Copy it (or download it as a file) and paste it into a chat with Claude to have it researched properly and folded into the plan for good.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Currency</div>
+      <div class="settings-card-desc">The coin icon top-right converts between pounds and either RON or Sofia's euros, at whatever rate you set — pick the currency and direction, then type an amount to see it converted.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Settings</div>
+      <div class="settings-card-desc">The ⚙ icon top-right opens Settings, where appearance (auto/light/dark) and whether the calming proverb cards show up can be changed, along with this page and the export.</div>
+    </div>
+
+    <div class="settings-card">
+      <div class="settings-card-label">Words</div>
+      <div class="settings-card-desc">The Words pills next to BUCHAREST and SOFIA in the calendar bar each open a small phrasebook for that language, with how to actually read each phrase out loud.</div>
+    </div>
+
+  </div>
 </div>
 
 <div class="app">
@@ -1032,10 +1309,44 @@ function flightRefInputs(flightId){
   return `<input type="text" class="ref-input" placeholder="Ref" value="${r}" oninput="saveFlightRef('${flightId}', this.value)">`;
 }
 
+// ---- extended detail/history popups: opt-in per activity via activityDetails[pid] ----
+// activityCard() below just checks whether an entry exists — expanding to more activities later
+// is only ever a matter of adding entries here, nothing else changes.
+const activityDetails = {
+  d1a0: {
+    title: "Palace of the Parliament",
+    body: `<p>Ordered by Ceaușescu in the early 1980s, not long after a visit to North Korea left him wanting something similarly monumental. Construction began in 1984 and swallowed roughly a fifth of old Bucharest to clear the site — thousands of homes, along with dozens of churches and synagogues.</p><p>More than 20,000 workers built it in round-the-clock shifts. Ceaușescu was executed in the 1989 revolution before it was ever finished or lived in — he never set foot inside as its owner. It's now the second-largest administrative building in the world, beaten only by the Pentagon.</p>`
+  },
+  d1a2: {
+    title: "Triumphal Arch",
+    body: `<p>The first arch on this spot was thrown up out of wood in 1878, in a hurry, just so victorious troops had something to march under after Romania's war of independence. It didn't last long.</p><p>The version standing now dates to 1936 — built in stone, modelled closely on Paris's own Arc de Triomphe, and raised to mark both Romania's WWI victory and the coronation of King Ferdinand and Queen Marie. Military parades still pass beneath it every 1 December, Romania's national day.</p>`
+  },
+  d4a0: {
+    title: "Alexander Nevsky Cathedral",
+    body: `<p>Built as a thank-you, not just a church — Bulgaria's population raised it to honour the Russian soldiers who died freeing the country from Ottoman rule in the war of 1877–78. Construction dragged on for 30 years, from 1882 to 1912.</p><p>It's named after a 13th-century Russian prince who had nothing to do with Bulgaria directly — he was simply the patron saint of Tsar Alexander II, the "Liberator" who led that war. The gold on the domes really is gold: roughly 8kg of it, spread across about 700 square metres.</p>`
+  },
+  d4a1: {
+    title: "National Archaeological Museum",
+    body: `<p>The building is older than the museum inside it by more than 400 years. It started life as Buyuk Mosque, begun in 1451 and finished in 1494 — once the largest mosque in the city.</p><p>After Ottoman rule ended it became a library, then in 1905 reopened as Sofia's archaeological museum, a job it's held ever since — including through a WWII bombing raid that badly damaged it. Today it holds some of Bulgaria's most striking Thracian gold, including the Valchitran treasure.</p>`
+  }
+};
+
+function showDetail(pid){
+  const detail = activityDetails[pid];
+  if (!detail) return;
+  document.getElementById('detailModalTitle').textContent = detail.title;
+  document.getElementById('detailModalBody').innerHTML = detail.body;
+  document.getElementById('detailModal').removeAttribute('hidden');
+}
+function closeDetail(){
+  document.getElementById('detailModal').setAttribute('hidden', '');
+}
+
 function activityCard(pid, when, titleHtml, bodyHtml, hoursText, extraHtml){
   const status = getStatus(pid);
   const dimClass = status !== 'default' ? ' is-dimmed' : '';
   const glyphs = { default:'–', done:'✓', skipped:'✕' };
+  const detailBtn = activityDetails[pid] ? `<button class="detail-btn" type="button" onclick="showDetail('${pid}')" aria-label="More detail">ⓘ</button>` : '';
   return `<div class="block block--activity status-${status}${dimClass}" data-pid="${pid}">
         ${extraHtml || ''}
         <div class="plan">
@@ -1044,7 +1355,7 @@ function activityCard(pid, when, titleHtml, bodyHtml, hoursText, extraHtml){
             <div class="when-label">${when}</div>
           </div>
           <div class="what">
-            <strong>${titleHtml}</strong>
+            <strong>${titleHtml}${detailBtn}</strong>
             <div class="collapsible"><div class="collapsible-inner">${bodyHtml}${hoursText ? `<span class="hours">${hoursText}</span>` : ''}</div></div>
           </div>
         </div>
@@ -1847,13 +2158,18 @@ function renderNotesBox(dayId){
 }
 
 function renderDayContent(d){
-  const proverbSet = d.city === "buc" ? romanianProverbs : bulgarianProverbs;
   const cityName = d.city === "sof" ? "Sofia" : "Bucharest";
   const quickAdds = getQuickAdds(d.id).map(qa =>
     activityCard(qa.id, "Added", `${escapeHtml(qa.title)}${pin(`${qa.title} ${cityName}`)}`, "", "",
       `<button class="qa-delete" onclick="removeQuickActivity(${d.id}, '${qa.id}')" aria-label="Remove">×</button>`)
   );
   const cards = [...d.cards(), ...quickAdds];
+
+  if (!getProverbsEnabled()){
+    return d.header + cards.join("") + renderAlternatives(d.id) + renderQuickAddBox(d.id) + renderNotesBox(d.id);
+  }
+
+  const proverbSet = d.city === "buc" ? romanianProverbs : bulgarianProverbs;
   const midProverb = proverbCardHtml(randomProverb(proverbSet));
   const bottomProverb = proverbCardHtml(randomProverb(proverbSet));
   const insertAt = cards.length > 1 ? 1 + Math.floor(Math.random() * (cards.length - 1)) : cards.length;
@@ -2105,13 +2421,55 @@ function selectWords(lang){
 
 selectDay(defaultId);
 
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  const next = isLight ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
-  try { localStorage.setItem('tripTheme', next); } catch(e){}
-});
+// ---- Theme: auto / light / dark ----
+function getThemeMode(){
+  let mode = 'auto';
+  try { mode = localStorage.getItem('tripThemeMode') || 'auto'; } catch(e){}
+  return mode;
+}
+const themeMediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+function applyThemeMode(mode){
+  let resolved = mode;
+  if (mode === 'auto'){
+    resolved = (themeMediaQuery && themeMediaQuery.matches) ? 'light' : 'dark';
+  }
+  document.documentElement.setAttribute('data-theme', resolved);
+}
+function setThemeMode(mode){
+  try { localStorage.setItem('tripThemeMode', mode); } catch(e){}
+  applyThemeMode(mode);
+  refreshThemeSegUI();
+}
+function refreshThemeSegUI(){
+  const mode = getThemeMode();
+  document.getElementById('themeSegAuto').classList.toggle('active', mode === 'auto');
+  document.getElementById('themeSegLight').classList.toggle('active', mode === 'light');
+  document.getElementById('themeSegDark').classList.toggle('active', mode === 'dark');
+}
+if (themeMediaQuery){
+  themeMediaQuery.addEventListener('change', () => {
+    if (getThemeMode() === 'auto') applyThemeMode('auto');
+  });
+}
+applyThemeMode(getThemeMode());
+
+// ---- Calming proverbs on/off ----
+function getProverbsEnabled(){
+  try {
+    const v = localStorage.getItem('tripProverbsEnabled');
+    return v === null ? true : v === 'true';
+  } catch(e){ return true; }
+}
+function setProverbsEnabled(enabled){
+  try { localStorage.setItem('tripProverbsEnabled', enabled ? 'true' : 'false'); } catch(e){}
+  refreshProverbsSegUI();
+  if (selected.type === 'day') selectDay(selected.id);
+}
+function refreshProverbsSegUI(){
+  const enabled = getProverbsEnabled();
+  document.getElementById('proverbsSegOn').classList.toggle('active', enabled);
+  document.getElementById('proverbsSegOff').classList.toggle('active', !enabled);
+}
 
 // ---- Currency converter ----
 let fxRates = { RON: 6.12, EUR: 1.15 };
@@ -2188,7 +2546,6 @@ const moneyToggle = document.getElementById('moneyToggle');
 moneyToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   const opening = !fxPanel.classList.contains('open');
-  exportPanel.classList.remove('open');
   fxPanel.classList.toggle('open');
   if (opening){
     // Currency matches whichever day is currently open, if any; direction keeps whatever was last used
@@ -2198,10 +2555,13 @@ moneyToggle.addEventListener('click', (e) => {
     fxRefreshUI();
   }
 });
+document.addEventListener('click', (e) => {
+  if (fxPanel.classList.contains('open') && !fxPanel.contains(e.target) && e.target !== moneyToggle){
+    fxPanel.classList.remove('open');
+  }
+});
 
 // ---- Export local changes ----
-const exportToggle = document.getElementById('exportToggle');
-const exportPanel = document.getElementById('exportPanel');
 const exportText = document.getElementById('exportText');
 const exportStatus = document.getElementById('exportStatus');
 
@@ -2217,17 +2577,6 @@ function gatherExportData(){
     flightRefs: readJSON('tripFlightRefs')
   };
 }
-
-exportToggle.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const opening = !exportPanel.classList.contains('open');
-  fxPanel.classList.remove('open');
-  exportPanel.classList.toggle('open');
-  if (opening){
-    exportText.value = JSON.stringify(gatherExportData(), null, 2);
-    exportStatus.textContent = '';
-  }
-});
 
 function copyExport(){
   exportText.select();
@@ -2255,13 +2604,30 @@ function downloadExport(){
   exportStatus.textContent = 'Downloaded — send this file over when you\'re ready.';
 }
 
-document.addEventListener('click', (e) => {
-  if (fxPanel.classList.contains('open') && !fxPanel.contains(e.target) && e.target !== moneyToggle){
-    fxPanel.classList.remove('open');
-  }
-  if (exportPanel.classList.contains('open') && !exportPanel.contains(e.target) && e.target !== exportToggle){
-    exportPanel.classList.remove('open');
-  }
+// ---- Settings & Instructions screens ----
+const settingsScreen = document.getElementById('settingsScreen');
+const instructionsScreen = document.getElementById('instructionsScreen');
+const settingsToggle = document.getElementById('settingsToggle');
+
+function openSettings(){
+  refreshThemeSegUI();
+  refreshProverbsSegUI();
+  exportText.value = JSON.stringify(gatherExportData(), null, 2);
+  exportStatus.textContent = '';
+  settingsScreen.removeAttribute('hidden');
+}
+function closeSettings(){
+  settingsScreen.setAttribute('hidden', '');
+}
+function openInstructions(){
+  instructionsScreen.removeAttribute('hidden');
+}
+function closeInstructions(){
+  instructionsScreen.setAttribute('hidden', '');
+}
+settingsToggle.addEventListener('click', () => {
+  fxPanel.classList.remove('open');
+  openSettings();
 });
 </script>
 
