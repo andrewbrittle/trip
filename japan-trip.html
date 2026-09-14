@@ -300,25 +300,25 @@
   .prow .pjp{ font-family:'Fraunces', serif; font-size:16px; font-weight:500; }
   .prow .proma{ font-size:12px; color:var(--text-dim); font-style:italic; margin-top:2px; }
 
-  .theme-toggle{ position:fixed; top:22px; right:20px; width:38px; height:38px; border-radius:50%; background:var(--toggle-bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:20; transition:background .25s ease, border-color .25s ease, transform .15s ease; }
-  .theme-toggle:active{ transform:scale(0.92); }
-  .theme-toggle svg{ width:18px; height:18px; stroke:var(--toggle-icon); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-  .theme-toggle .icon-sun{ display:none; }
-  html[data-theme="light"] .theme-toggle .icon-moon{ display:none; }
-  html[data-theme="light"] .theme-toggle .icon-sun{ display:block; }
-  @media (prefers-color-scheme: light){
-    html:not([data-theme="dark"]) .theme-toggle .icon-moon{ display:none; }
-    html:not([data-theme="dark"]) .theme-toggle .icon-sun{ display:block; }
-  }
+  .nav-links{ display:flex; gap:8px; flex-wrap:wrap; }
 
   .money-toggle{
-    position:fixed; top:22px; right:68px; width:38px; height:38px; border-radius:50%;
+    position:fixed; top:22px; right:20px; width:38px; height:38px; border-radius:50%;
     background:var(--toggle-bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
     cursor:pointer; z-index:20; font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--toggle-icon);
     transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
   }
   .money-toggle:active{ transform:scale(0.92); }
   .money-toggle.selected{ background:var(--kan); color:var(--bg); border-color:var(--kan); }
+
+  .settings-toggle{
+    position:fixed; top:22px; right:66px; width:38px; height:38px; border-radius:50%;
+    background:var(--toggle-bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:20; font-size:17px; color:var(--toggle-icon);
+    transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
+  }
+  .settings-toggle:active{ transform:scale(0.92); }
+  .settings-toggle.selected{ background:var(--kan); color:var(--bg); border-color:var(--kan); }
 
   .money-panel{
     position:fixed; top:68px; right:20px; width:min(320px, calc(100vw - 40px)); max-height:calc(100vh - 90px);
@@ -376,23 +376,7 @@
   }
   .qa-delete:active{ color:var(--text); transform:scale(0.85); }
 
-  /* ---- export ---- */
-  .export-toggle{
-    position:fixed; top:22px; right:116px; width:38px; height:38px; border-radius:50%;
-    background:var(--toggle-bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
-    cursor:pointer; z-index:20; color:var(--toggle-icon);
-    transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
-  }
-  .export-toggle svg{ width:17px; height:17px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-  .export-toggle:active{ transform:scale(0.92); }
-  .export-toggle.selected{ background:var(--kan); color:var(--bg); border-color:var(--kan); }
-
-  .export-panel{
-    position:fixed; top:68px; right:20px; width:min(340px, calc(100vw - 40px)); max-height:calc(100vh - 90px);
-    overflow-y:auto; background:var(--surface); border:1px solid var(--dropdown-border); border-radius:14px; padding:16px;
-    z-index:25; box-shadow:var(--dropdown-shadow); animation:panelIn .2s ease;
-  }
-  .export-panel[hidden]{ display:none; }
+  /* ---- export (now lives on the Settings page) ---- */
   .export-textarea{
     display:block; width:100%; box-sizing:border-box; min-height:140px; resize:vertical;
     font-family:'IBM Plex Mono', 'SF Mono', monospace; font-size:11px; line-height:1.5;
@@ -408,15 +392,39 @@
   }
   .export-btn:active{ transform:scale(0.96); }
   .export-status{ font-size:11px; color:var(--text-faint); margin-top:8px; min-height:14px; text-align:center; }
+
+  /* ---- detail/history popup ---- */
+  .detail-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:16px; height:16px; margin-left:5px; border-radius:50%;
+    border:1px solid var(--text-faint); background:none; color:var(--text-faint);
+    font-size:10px; line-height:1; font-weight:700; cursor:pointer; vertical-align:middle;
+    transition:color .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .detail-btn:hover{ color:var(--kan); border-color:var(--kan); }
+  .detail-btn:active{ transform:scale(0.88); }
+
+  .detail-modal{ position:fixed; inset:0; z-index:40; display:flex; align-items:center; justify-content:center; padding:20px; box-sizing:border-box; }
+  .detail-modal[hidden]{ display:none; }
+  .detail-modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
+  .detail-modal-card{
+    position:relative; width:min(480px, 100%); max-height:calc(100vh - 40px); overflow-y:auto;
+    background:var(--surface); border:1px solid var(--dropdown-border); border-radius:16px;
+    padding:22px 20px 20px; box-shadow:var(--dropdown-shadow); animation:panelIn .2s ease;
+  }
+  .detail-modal-close{
+    position:absolute; top:12px; right:12px; width:28px; height:28px; border-radius:50%;
+    border:none; background:var(--surface-hi); color:var(--text-dim); font-size:18px; line-height:1; cursor:pointer;
+  }
+  .detail-modal-close:active{ transform:scale(0.9); }
+  .detail-modal-body{ font-size:14px; line-height:1.65; color:var(--text); }
+  .detail-modal-body p{ margin:0 0 12px; }
+  .detail-modal-body p:last-child{ margin-bottom:0; }
 </style>
 </head>
 <body>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-  <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-</button>
-
+<button class="settings-toggle" id="settingsToggle" type="button" aria-label="Settings" onclick="selectSettings()">⚙</button>
 <button class="money-toggle" id="moneyToggle" type="button" aria-label="Currency converter">¥</button>
 <div class="money-panel" id="moneyPanel" hidden>
   <div class="money-section">
@@ -446,19 +454,12 @@
   </div>
 </div>
 
-<button class="export-toggle" id="exportToggle" type="button" aria-label="Export updates">
-  <svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg>
-</button>
-<div class="export-panel" id="exportPanel" hidden>
-  <div class="money-section">
-    <div class="block-label">Export updates</div>
-    <div class="money-sub">Copy this and paste it into a chat with Claude to research anything new and fold it into the plan permanently.</div>
-    <textarea class="export-textarea" id="exportText" readonly></textarea>
-    <div class="export-actions">
-      <button type="button" class="export-btn" id="copyExportBtn" onclick="copyExport()">Copy</button>
-      <button type="button" class="export-btn" id="downloadExportBtn" onclick="downloadExport()">Download</button>
-    </div>
-    <div class="export-status" id="exportStatus"></div>
+<div class="detail-modal" id="detailModal" hidden>
+  <div class="detail-modal-backdrop" onclick="closeDetail()"></div>
+  <div class="detail-modal-card">
+    <button class="detail-modal-close" type="button" onclick="closeDetail()" aria-label="Close">×</button>
+    <div class="block-label" id="detailModalTitle"></div>
+    <div class="detail-modal-body" id="detailModalBody"></div>
   </div>
 </div>
 
@@ -467,7 +468,9 @@
   <h1>Tokyo, Kyoto, Takayama <span style="color:var(--text-faint); font-style:italic; font-weight:400;">&amp;</span> Kanazawa</h1>
   <div class="daterange">
     <span>15 days · 4 cities · trains between them</span>
-    <button class="word-link" id="linkWords" type="button" onclick="selectWords()">日本語 Words</button>
+    <div class="nav-links">
+      <button class="word-link" id="linkWords" type="button" onclick="selectWords()">日本語 Words</button>
+    </div>
   </div>
 
   <div class="timeline" id="timeline"></div>
@@ -554,11 +557,32 @@ try { statusStore = JSON.parse(localStorage.getItem('tripActivityStatus') || '{}
 function getStatus(pid){ return statusStore[pid] || 'default'; }
 function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSON.stringify(statusStore)); } catch(e){} }
 
+// ---- extended detail/history popups: trial content on a couple of days, opt-in per activity ----
+// via activityDetails[pid] — activityCard() below just checks whether an entry exists, so
+// expanding to more days later is only ever a matter of adding entries here.
+const activityDetails = {
+  d0a1: { title:"Tokyo National Museum", body:`<p>Japan's oldest and largest museum traces back to a public exhibition of imperial artwork and scientific specimens held in 1872, staged partly to prepare Japanese treasures for the 1873 Vienna World's Fair. The collection moved to Ueno Park in 1881, and passed to Imperial Household ownership in the late 1880s — the point at which the museum's mission shifted from industrial showcase to cultural preservation.</p><p>The main building (Honkan) seen today isn't the original — that was destroyed in the 1923 Great Kantō earthquake. Its replacement, completed in 1938 in the "Imperial Crown Style", now holds around 120,000 cultural properties, including roughly 10% of all of Japan's National Treasures.</p>` },
+  d0a5: { title:"Sensō‑ji Temple", body:`<p>Tradition holds that in 628 CE, two fishermen brothers pulled a small statue of Kannon, the goddess of mercy, from the Sumida River. However many times they returned it to the water, it kept coming back to them — so a temple was built to house it, completed in 645. That makes Sensō‑ji Tokyo's oldest temple, older than the city itself.</p><p>Almost everything standing today is a postwar reconstruction — the original halls were destroyed in WWII bombing raids. The Kaminarimon ("Thunder Gate") out front has become the de facto symbol of Asakusa, and the Nakamise shopping street leading up to the main hall has been selling souvenirs and snacks to pilgrims for several centuries.</p>` },
+  d13a0: { title:"Myōzen‑ji Temple", body:`<p>Built in 1744, Myōzen‑ji belongs to the Jōdo Shinshū (Pure Land) school and is one of the very few Buddhist temples anywhere with a thatched main hall and bell tower — gasshō‑zukuri roofs are almost always reserved for farmhouses, not places of worship.</p><p>The former monks' quarters next door, built without a single nail or screw around 200 years ago, are now a small museum: a permanently lit central hearth, and an attic once used for silkworm cultivation, show how a gasshō‑zukuri building doubled as both home and workshop.</p>` },
+  d13a1: { title:"Wada House", body:`<p>The Wada family served as village head and local guard official through the Edo period, and built much of their wealth trading two very different goods: raw silk, and saltpetre — the key ingredient in gunpowder, which was a genuinely important source of income for Shirakawa‑go at the time.</p><p>Their house is the largest gasshō‑zukuri building in the village and is now a nationally designated Important Cultural Property. The ground and first floors are open to walk through, and in July and August you can see silkworms being reared in the upper levels, much as they would have been generations ago.</p>` }
+};
+function showDetail(pid){
+  const detail = activityDetails[pid];
+  if (!detail) return;
+  document.getElementById('detailModalTitle').textContent = detail.title;
+  document.getElementById('detailModalBody').innerHTML = detail.body;
+  document.getElementById('detailModal').removeAttribute('hidden');
+}
+function closeDetail(){
+  document.getElementById('detailModal').setAttribute('hidden', '');
+}
+
 function activityCard(pid, when, titleHtml, bodyText, opts){
   opts = opts || {};
   const status = getStatus(pid);
   const dimClass = status !== 'default' ? ' is-dimmed' : '';
   const glyphs = { default:'–', done:'✓', skipped:'✕' };
+  const detailBtn = activityDetails[pid] ? `<button class="detail-btn" type="button" onclick="showDetail('${pid}')" aria-label="More detail">ⓘ</button>` : '';
   return `<div class="block block--activity status-${status}${dimClass}" data-pid="${pid}">
       ${opts.extraHtml || ''}
       <div class="plan">
@@ -567,7 +591,7 @@ function activityCard(pid, when, titleHtml, bodyText, opts){
           ${when ? `<div class="when-label">${when}</div>` : ''}
         </div>
         <div class="what">
-          <strong>${titleHtml}</strong>
+          <strong>${titleHtml}${detailBtn}</strong>
           <div class="collapsible"><div class="collapsible-inner">
             ${bodyText ? `<p>${bodyText}</p>` : ''}
             ${opts.alt ? `<span class="alt">Alternatively: ${opts.alt}</span>` : ''}
@@ -679,6 +703,15 @@ function proverbCardHtml(p){
       </div>`;
 }
 
+// ---- proverbs on/off (Settings page), default on ----
+function getShowProverbs(){
+  try { const v = localStorage.getItem('tripShowProverbs'); return v === null ? true : v === 'true'; } catch(e){ return true; }
+}
+function setShowProverbs(val){
+  try { localStorage.setItem('tripShowProverbs', val ? 'true' : 'false'); } catch(e){}
+  if (selected.type === 'settings') selectSettings();
+}
+
 // Drawn from a shuffled bag rather than plain random: every saying gets shown once before any
 // repeats, and a safeguard stops the same one appearing twice in a row even across a reshuffle —
 // which is what was producing the same-day duplicates. Still not persisted across reloads.
@@ -711,11 +744,13 @@ function renderDayWithProverbs(headerHtml, sections){
     sec.cards.forEach(c => { cardPositions.push(flat.length); flat.push(c); });
   });
   const result = flat.slice();
-  if (cardPositions.length > 1){
-    const insertPos = cardPositions[1 + Math.floor(Math.random() * (cardPositions.length - 1))];
-    result.splice(insertPos, 0, proverbCardHtml(randomProverb()));
+  if (getShowProverbs()){
+    if (cardPositions.length > 1){
+      const insertPos = cardPositions[1 + Math.floor(Math.random() * (cardPositions.length - 1))];
+      result.splice(insertPos, 0, proverbCardHtml(randomProverb()));
+    }
+    result.push(proverbCardHtml(randomProverb()));
   }
-  result.push(proverbCardHtml(randomProverb()));
   return headerHtml + result.join('');
 }
 
@@ -867,11 +902,15 @@ const days = [
     ]},
     {label:"Afternoon", cards:[
       activityCard("d2a2", "", "Yoyogi Park"+pin("Yoyogi Park Tokyo"), "Wide green park right next to the shrine, good spot to stretch legs."),
-      activityCard("d2a3", "", "Harajuku — Takeshita Street"+pin("Takeshita Street Harajuku"), "Quirky shops, crepes, youth fashion."),
-      activityCard("d2a4", "", "Check energy/time levels — follow for the following options", "Nezu museum"+pin("Nezu Museum Tokyo")+" — Japanese & East Asian art museum with pre‑modern pieces in various media.", {alt:"Omotesandō & Cat Street"+pin("Omotesando Street Tokyo")+" — upscale, tree‑lined shopping street connecting to Shibuya (optional). Shibuya Crossing"+pin("Shibuya Crossing Tokyo")+" — up to 3,000 people crossing at once during peak hours (optional)."})
+      activityCard("d2a3", "", "Harajuku — Takeshita Street"+pin("Takeshita Street Harajuku"), "Quirky shops, crepes, youth fashion.")
+    ]},
+    {label:"If time/energy allow", cards:[
+      activityCard("d2a4", "", "Nezu Museum"+pin("Nezu Museum Tokyo"), "Japanese & East Asian art museum with pre‑modern pieces in various media."),
+      activityCard("d2a5", "", "Omotesandō & Cat Street"+pin("Omotesando Street Tokyo"), "Upscale, tree‑lined shopping street connecting to Shibuya."),
+      activityCard("d2a6", "", "Shibuya Crossing"+pin("Shibuya Crossing Tokyo"), "Up to 3,000 people crossing at once during peak hours.")
     ]},
     {label:"Evening", cards:[
-      activityCard("d2a5", "", "Shibuya & Shinjuku at night"+pin("Shibuya Tokyo"), "")
+      activityCard("d2a7", "", "Shibuya & Shinjuku at night"+pin("Shibuya Tokyo"), "")
     ]}
   ])
 },
@@ -1140,7 +1179,7 @@ const days = [
     ])},
     {fixed: refBlock("Bus booking reference", "d13-kanazawa-shirakawago")},
     {label:"Good to know", cards:[
-      activityCard("d13a6", "", "Bus timings", "Buses between Kanazawa and Shirakawa‑go run roughly every 30–60 minutes most of the day, both directions — not just the 8:40am/15:00 pair we've booked. Return departures also run around 13:25, 14:00, 14:45, 15:35, 16:35 and 17:25. Missing the booked bus isn't the end of the day — there's almost always another one within the hour."),
+      activityCard("d13a6", "", "Bus timings", "Buses between Kanazawa and Shirakawa‑go run roughly every 30–60 minutes most of the day, both directions — not just the 8:40am/15:00 pair mentioned above. Return departures also run around 13:25, 14:00, 14:45, 15:35, 16:35 and 17:25. Missing a bus isn't the end of the day — there's almost always another one within the hour."),
       activityCard("d13a7", "", "Booking", "Reservations can be made in English — online via Japan Bus Online, or by phone on +81‑76‑234‑0123 (9am–6pm Japan time). Reservation windows typically open about a month before travel, so booking a few weeks ahead is enough."),
       activityCard("d13a8", "", "Fallbacks", "If a bus is sold out or missed: a train‑plus‑bus route via Toyama works, or a guided day tour from Kanazawa that handles the transport and timing directly. Not the plan — just there if needed."),
       activityCard("d13a9", "", "Facilities", "Coin lockers and a multi‑currency exchange machine (accepts GBP) are at the Shirakawa‑go bus terminal — useful since the village itself is largely cash‑only.")
@@ -1306,11 +1345,13 @@ days.forEach((d, i) => {
 
 const panel = document.getElementById('panel');
 const linkWords = document.getElementById('linkWords');
+const settingsToggle = document.getElementById('settingsToggle');
 let selected = {type:'day', id:0};
 
 function updateSelection(){
   dayEls.forEach((el, i) => el.classList.toggle('selected', selected.type === 'day' && selected.id === i));
   linkWords.classList.toggle('selected', selected.type === 'words');
+  settingsToggle.classList.toggle('selected', selected.type === 'settings' || selected.type === 'instructions');
 }
 
 function selectDay(id){
@@ -1343,16 +1384,118 @@ function selectWords(){
   panel.innerHTML = renderWords();
 }
 
-selectDay(defaultId);
+// ---- appearance: system (default) / light / dark, persisted ----
+function getThemeSetting(){
+  try { return localStorage.getItem('tripTheme') || 'system'; } catch(e){ return 'system'; }
+}
+function setThemeSetting(mode){
+  if (mode === 'system'){
+    document.documentElement.removeAttribute('data-theme');
+    try { localStorage.removeItem('tripTheme'); } catch(e){}
+  } else {
+    document.documentElement.setAttribute('data-theme', mode);
+    try { localStorage.setItem('tripTheme', mode); } catch(e){}
+  }
+  if (selected.type === 'settings') selectSettings();
+}
 
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light'
-    || (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
-  const next = isLight ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
-  try { localStorage.setItem('tripTheme', next); } catch(e){}
-});
+function renderSettings(){
+  const theme = getThemeSetting();
+  const showProverbs = getShowProverbs();
+  return `
+    <div class="detail-date">SETTINGS</div>
+    <div class="detail-title">Settings</div>
+    <div class="block">
+      <div class="block-label">Appearance</div>
+      <div class="dir-toggle">
+        <button type="button" class="dir-pill ${theme === 'system' ? 'selected' : ''}" onclick="setThemeSetting('system')">Auto</button>
+        <button type="button" class="dir-pill ${theme === 'light' ? 'selected' : ''}" onclick="setThemeSetting('light')">☀ Light</button>
+        <button type="button" class="dir-pill ${theme === 'dark' ? 'selected' : ''}" onclick="setThemeSetting('dark')">🌙 Dark</button>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">Calming proverbs</div>
+      <div class="money-sub">Two proverb cards are spliced into each day's plan for a bit of calm. Turn them off if you'd rather just see the plan.</div>
+      <div class="dir-toggle">
+        <button type="button" class="dir-pill ${showProverbs ? 'selected' : ''}" onclick="setShowProverbs(true)">On</button>
+        <button type="button" class="dir-pill ${!showProverbs ? 'selected' : ''}" onclick="setShowProverbs(false)">Off</button>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">Export updates</div>
+      <div class="money-sub">Copy this and paste it into a chat with Claude to research anything new and fold it into the plan permanently.</div>
+      <textarea class="export-textarea" id="exportText" readonly></textarea>
+      <div class="export-actions">
+        <button type="button" class="export-btn" onclick="copyExport()">Copy</button>
+        <button type="button" class="export-btn" onclick="downloadExport()">Download</button>
+      </div>
+      <div class="export-status" id="exportStatus"></div>
+    </div>
+    <div class="block">
+      <div class="block-label">Instructions</div>
+      <div class="money-sub">A full guide to how everything on this page and in the app works.</div>
+      <div class="export-actions">
+        <button type="button" class="export-btn" onclick="selectInstructions()">Open instructions</button>
+      </div>
+    </div>
+  `;
+}
+function selectSettings(){
+  selected = {type:'settings', id:'settings'};
+  updateSelection();
+  panel.innerHTML = renderSettings();
+  refreshExportText();
+}
+
+function renderInstructions(){
+  return `
+    <div class="detail-date">INSTRUCTIONS</div>
+    <div class="detail-title">How this works</div>
+    <div class="block">
+      <div class="block-label">Getting around</div>
+      <p>Tap a date in the grid up top to jump to that day, or use the Previous/Next buttons at the bottom of each day. When you're on the trip, the highlighted date is today, based on your device's clock.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Cities and places</div>
+      <p>The coloured bar across the top is split into Tokyo, Kyoto, Takayama and Kanazawa — tap a city's name there to open its Wikipedia page. Wherever you see the pin icon next to a place, tap it to open that spot in Google Maps.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Marking things off</div>
+      <p>Tap the circle on any card to cycle it through <b>not done → done (✓) → skipped (✕)</b> and back. Done/skipped cards collapse to keep the day short — tap again to bring the detail back.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">More detail</div>
+      <p>Where a card has a small <b>ⓘ</b> next to its title, tap it for extra background or history on that place.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Adding your own</div>
+      <p>Each day has an "Add something" box at the bottom for anything new that comes up on the day — it gets its own card, with a × to remove it if it doesn't work out. There's a Notes box underneath for anything else worth remembering.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Sending changes back</div>
+      <p>Settings (⚙) → Export updates gathers everything you've added, ticked off, or noted into one block of text. Copy it (or download it as a file) and paste it into a chat with Claude to have it researched properly and folded into the plan for good.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Currency</div>
+      <p>The ¥ icon top-right converts between yen and pounds at whatever rate you set, and shows the tax-free price alongside it.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Settings</div>
+      <p>The ⚙ icon top-right opens Settings, where appearance (auto/light/dark) and whether the calming proverb cards show up can be changed, along with this page and the export.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Words</div>
+      <p>The 日本語 Words page has a small phrasebook for the trip, with how to actually read each phrase out loud.</p>
+    </div>
+  `;
+}
+function selectInstructions(){
+  selected = {type:'instructions', id:'instructions'};
+  updateSelection();
+  panel.innerHTML = renderInstructions();
+}
+
+selectDay(defaultId);
 
 // ---- currency converter: exchange rate + direction persisted, amount + tax-free price live ----
 const RATE_KEY = 'tripExchangeRate';
@@ -1445,10 +1588,7 @@ dirGbp2Yen.addEventListener('click', () => setMoneyDirection('gbp2yen'));
 moneyToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   const isHidden = moneyPanel.hasAttribute('hidden');
-  if (isHidden){
-    exportPanel.setAttribute('hidden', ''); exportToggle.classList.remove('selected');
-    moneyPanel.removeAttribute('hidden'); moneyToggle.classList.add('selected');
-  }
+  if (isHidden){ moneyPanel.removeAttribute('hidden'); moneyToggle.classList.add('selected'); }
   else { moneyPanel.setAttribute('hidden', ''); moneyToggle.classList.remove('selected'); }
 });
 document.addEventListener('click', (e) => {
@@ -1459,11 +1599,8 @@ document.addEventListener('click', (e) => {
 });
 
 // ---- export: gather local changes into JSON to hand back to a Claude conversation ----
-const exportToggle = document.getElementById('exportToggle');
-const exportPanel = document.getElementById('exportPanel');
-const exportText = document.getElementById('exportText');
-const exportStatus = document.getElementById('exportStatus');
-
+// Lives on the Settings page now rather than its own floating panel, so these look up their
+// elements fresh each call instead of caching them once at load.
 function gatherExportData(){
   function readJSON(key){
     try { return JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){ return {}; }
@@ -1478,44 +1615,36 @@ function gatherExportData(){
 }
 
 function refreshExportText(){
+  const exportText = document.getElementById('exportText');
+  if (!exportText) return;
   exportText.value = JSON.stringify(gatherExportData(), null, 2);
-  exportStatus.textContent = '';
+  const exportStatus = document.getElementById('exportStatus');
+  if (exportStatus) exportStatus.textContent = '';
 }
 
 function copyExport(){
+  const exportText = document.getElementById('exportText');
+  const exportStatus = document.getElementById('exportStatus');
+  if (!exportText) return;
   exportText.select();
   let copied = false;
   try { navigator.clipboard.writeText(exportText.value); copied = true; } catch(e){}
   if (!copied){ try { copied = document.execCommand('copy'); } catch(e){} }
-  exportStatus.textContent = copied ? 'Copied — paste it into a chat with Claude.' : 'Select the text above and copy manually.';
+  if (exportStatus) exportStatus.textContent = copied ? 'Copied — paste it into a chat with Claude.' : 'Select the text above and copy manually.';
 }
 
 function downloadExport(){
+  const exportText = document.getElementById('exportText');
+  const exportStatus = document.getElementById('exportStatus');
+  if (!exportText) return;
   const blob = new Blob([exportText.value], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = 'trip-updates.json';
   document.body.appendChild(a); a.click(); a.remove();
   URL.revokeObjectURL(url);
-  exportStatus.textContent = "Downloaded — send this file over when you're ready.";
+  if (exportStatus) exportStatus.textContent = "Downloaded — send this file over when you're ready.";
 }
-
-exportToggle.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const isHidden = exportPanel.hasAttribute('hidden');
-  if (isHidden){
-    moneyPanel.setAttribute('hidden', ''); moneyToggle.classList.remove('selected');
-    refreshExportText();
-    exportPanel.removeAttribute('hidden'); exportToggle.classList.add('selected');
-  }
-  else { exportPanel.setAttribute('hidden', ''); exportToggle.classList.remove('selected'); }
-});
-document.addEventListener('click', (e) => {
-  if (exportPanel.hasAttribute('hidden')) return;
-  if (exportPanel.contains(e.target) || e.target === exportToggle) return;
-  exportPanel.setAttribute('hidden', '');
-  exportToggle.classList.remove('selected');
-});
 </script>
 
 </body>
