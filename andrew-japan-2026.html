@@ -166,7 +166,7 @@
   .day.selected{ background:var(--text); border-color:var(--text); border-style:solid; }
   .day.selected .num, .day.selected .mon{ color:var(--bg); }
   .day.selected .dot{ background:var(--bg); }
-  .day.past:not(.selected){ opacity:.42; }
+  .day.past:not(.selected){ opacity:1; }  /* diary mode — all days fully lit */
   .day.today{ outline:2px solid var(--transit-border); outline-offset:2px; }
   .day.today .dot{ background:var(--transit-border); }
   .day.today.selected .dot{ background:var(--bg); }
@@ -261,7 +261,7 @@
     min-height:0;
   }
   .block--activity.is-dimmed .collapsible{
-    grid-template-rows:0fr;
+    grid-template-rows:1fr;
   }
 
   .status-marker{
@@ -1045,7 +1045,7 @@ function closeDetail(){
 function activityCard(pid, when, titleHtml, bodyText, opts){
   opts = Object.assign({}, CARD_HINTS[pid] || {}, opts || {});
   const status = getStatus(pid);
-  const dimClass = status !== 'default' ? ' is-dimmed' : '';
+  const dimClass = '';  // diary mode — all cards open regardless of status
   const glyphs = { default:'–', done:'✓', skipped:'✕' };
   const detailBtn = activityDetails[pid] ? `<button class="detail-btn" type="button" onclick="showDetail('${pid}')" aria-label="More detail">ⓘ</button>` : '';
   return `<div class="block block--activity status-${status}${dimClass}" data-pid="${pid}">
@@ -1078,7 +1078,7 @@ function toggleStatus(pid){
   if (!cardEl) return;
   cardEl.classList.remove('status-default', 'status-done', 'status-skipped');
   cardEl.classList.add(`status-${next}`);
-  cardEl.classList.toggle('is-dimmed', next !== 'default');
+  cardEl.classList.toggle('is-dimmed', false);  // diary mode — never collapse
   const marker = cardEl.querySelector('.status-marker');
   marker.className = `status-marker state-${next}`;
   marker.textContent = glyphs[next];
@@ -1731,64 +1731,80 @@ const days = [
 },
 // ── DAY 19: 27 Aug — Tokyo ───────────────────────────────────────────────────
 { id:19, date:"27 August", weekday:"Wednesday", month:"AUG", num:27, city:"tok", travel:false,
-  title:"Tokyo — Gotokuji, Kichijoji & Shiinamachi",
+  title:"Tokyo — Gotokuji, Kichijoji, Ikebukuro & Shiinamachi",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Wednesday, 27 August</div>
-    <div class="detail-title">West Tokyo & Shiinamachi</div>
+    <div class="detail-title">Gotokuji, Kichijoji, Ikebukuro & Shiinamachi</div>
     <span class="badge tok">TOKYO</span>
   `, [
-    {label:"Day", cards:[
-      activityCard("d19a0", "", "Gotokuji Temple"+pin("Gotokuji Temple Tokyo"), "Visited Gotokuji, the famous 'lucky cat' temple in Setagaya."),
-      activityCard("d19a1", "", "Shimokitazawa & Kichijoji"+pin("Inokashira Park Tokyo"), "Explored Shimokitazawa briefly, then spent time in Kichijoji and Inokashira Park (highlight of the day).")
+    {label:"Morning", cards:[
+      activityCard("d19a0", "", "Gotokuji Temple"+pin("Gotokuji Temple Setagaya Tokyo"), "The famous lucky cat (maneki-neko) temple in Setagaya. Hundreds of ceramic cats left by visitors line the shelves of a small shrine building — each one a wish made and returned once granted. Charming and unlike any other temple."),
+      activityCard("d19a1", "", "Shimokitazawa"+pin("Shimokitazawa Tokyo"), "Brief visit to Shimokitazawa — the indie neighbourhood of vintage shops, live music venues and cafes. Didn't feel as vibey as expected and moved on fairly quickly."),
+      activityCard("d19a2", "", "Kichijoji & Inokashira Park Zoo"+pin("Inokashira Natural Cultural Park Tokyo"), "Kichijoji felt much more enjoyable than Shimokitazawa — a genuinely pleasant neighbourhood. Inokashira Park has a small zoo (Inokashira Natural Cultural Park Zoo) built around the park lake. Highlights: the squirrel walk-through enclosure where you can stand among them, monkeys, capybara and other animals. An unexpected highlight of the Tokyo leg.")
     ]},
     {label:"Evening", cards:[
-      activityCard("d19a2", "", "Ikebukuro & Uonami Fish Bar"+pin("Shiinamachi Station Tokyo"), "Headed to Ikebukuro and visited Uonami Fish Bar in Shiinamachi for dinner.")
+      activityCard("d19a3", "", "Ikebukuro — dinner & Sunshine City"+pin("Sunshine City Ikebukuro Tokyo"), "Headed to Ikebukuro for dinner and browsed Sunshine City — the enormous complex with the anime goods floors, shops and restaurants."),
+      activityCard("d19a4", "", "Uonami Fish Bar — Shiinamachi"+pin("Shiinamachi Station Seibu Ikebukuro Line Tokyo"), "Took the Seibu Ikebukuro Line a few stops to Shiinamachi. The Uonami Fish Bar next to the station is a famous photography location — the traditional izakaya with its neon signs photographed from slightly above, the warm glow of the bar below. Went for the photo rather than the food.")
     ]}
   ])
 },
 // ── DAY 20: 28 Aug — Tokyo ───────────────────────────────────────────────────
 { id:20, date:"28 August", weekday:"Thursday", month:"AUG", num:28, city:"tok", travel:false,
-  title:"Tokyo — Nezu, Ochanomizu, Shibuya & Popmart",
+  title:"Tokyo — Gokokuji, Nezu, Ochanomizu, Shibuya & Popmart",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Thursday, 28 August</div>
-    <div class="detail-title">Culture & Shibuya</div>
+    <div class="detail-title">Gokokuji, Nezu, Ochanomizu, Shibuya & Popmart</div>
     <span class="badge tok">TOKYO</span>
   `, [
-    {label:"Day", cards:[
-      activityCard("d20a0", "", "Nezu Shrine"+pin("Nezu Shrine Tokyo"), "Visited historic Nezu Shrine (saw sword fighting being filmed)."),
-      activityCard("d20a1", "", "Ochanomizu Photography"+pin("Ochanomizu Station Tokyo"), "Photographed converging railway lines around Ochanomizu / Kanda area.")
+    {label:"Morning", cards:[
+      activityCard("d20a0", "", "Gokokuji Temple"+pin("Gokokuji Temple Tokyo"), "One of Tokyo's oldest and largest Buddhist temples. The main hall (Garan) is the original 17th-century structure — rare in Tokyo. Large, peaceful grounds with fewer foreign visitors than the big-name sites."),
+      activityCard("d20a1", "", "Nezu Shrine"+pin("Nezu Shrine Tokyo"), "The tunnel of torii gates at Nezu Shrine — less famous than Fushimi Inari in Kyoto but just as atmospheric and far less crowded. While there, a film crew was shooting what appeared to be a sword fighting scene in the shrine grounds — a memorable and unplanned thing to stumble across.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d20a2", "", "Hijiri-bashi Bridge & Ochanomizu Station"+pin("Ochanomizu Station Tokyo"), "Walked to the Hijiri-bashi pedestrian bridge above Ochanomizu Station — a famous photography spot where several JR and Tokyo Metro lines converge and run alongside the Kanda River through a deep cutting. Trains arriving from multiple directions at once. Good for photography.")
     ]},
     {label:"Evening", cards:[
-      activityCard("d20a2", "", "Shibuya Crossing, Harajuku & Popmart"+pin("Popmart Harajuku Tokyo"), "Evening in Shibuya Crossing, walked to Harajuku, visited Popmart shop.")
+      activityCard("d20a3", "", "Shibuya to Harajuku on foot"+pin("Shibuya Crossing Tokyo"), "Walked from Shibuya — watched the famous crossing for a while — then walked north toward Harajuku at night."),
+      activityCard("d20a4", "", "Popmart — Harajuku"+pin("Popmart Harajuku Tokyo"), "Visited the Popmart store in Harajuku. The Labubu and designer toy displays are good — browsed and bought.")
     ]}
   ])
 },
 // ── DAY 21: 29 Aug — Tokyo ───────────────────────────────────────────────────
 { id:21, date:"29 August", weekday:"Friday", month:"AUG", num:29, city:"tok", travel:false,
-  title:"Tokyo — Final Day Shopping",
+  title:"Tokyo — Rainy Final Day",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Friday, 29 August</div>
-    <div class="detail-title">Unstructured Final Day</div>
-    <span class="badge tok">TOKYO</span>
+    <div class="detail-title">Rainy final day across the city</div>
+    <span class="badge tok">TOKYO · RAINY</span>
   `, [
-    {label:"Full Day", cards:[
-      activityCard("d21a0", "", "Gift Shopping Tour"+pin("Akihabara Tokyo"), "Rainy day focused on covered arcades and gift shopping across Shibuya, Harajuku, Shinjuku, Akihabara, and Ikebukuro. Picked up anime merch for Rodrigo, capsule toys for Allefy, and gifts for family.")
+    {label:"Day", cards:[
+      activityCard("d21a0", "", "Shibuya to Harajuku"+pin("Takeshita Street Harajuku Tokyo"), "Started in Shibuya, walked toward Harajuku. Coffee on the way."),
+      activityCard("d21a1", "", "Jujutsu Kaisen popup shop"+pin("Harajuku Tokyo"), "Found a JJK (Jujutsu Kaisen) popup shop in Harajuku. Impressive displays but merchandise was far too expensive — looked and left.", {status:"skip"}),
+      activityCard("d21a2", "", "Google Store Harajuku"+pin("Google Store Harajuku Tokyo"), "Visited the Google Store on the main Omotesando strip — a sleek, well-designed space showing off the Pixel and Nest ranges. Worth a look even without buying."),
+      activityCard("d21a3", "", "Shinjuku"+pin("Shinjuku Tokyo"), "Passed through Shinjuku — the vast station and surrounding area."),
+      activityCard("d21a4", "", "Akihabara"+pin("Akihabara Tokyo"), "Back to Akihabara for a final browse — electronics, anime, manga."),
+      activityCard("d21a5", "", "Ikebukuro"+pin("Ikebukuro Tokyo"), "Up to Ikebukuro again for a final look around."),
+      activityCard("d21a6", "", "Tokyo Station — First Avenue"+pin("Tokyo Station First Avenue"), "Went underground at Tokyo Station to First Avenue — the long underground gallery of character goods and regional food shops running beneath the station. A good place for last-minute gifts and browsing without getting wet."),
+      activityCard("d21a7", "", "Back to Akihabara"+pin("Akihabara Tokyo"), "One more sweep through Akihabara before heading back.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d21a8", "", "Tokyo Tower at night"+pin("Tokyo Tower Tokyo"), "Walked up the road to Tokyo Tower for a final goodbye to Tokyo. The red lattice tower lit up at night — only a short walk from the Shimbashi hotel. A fitting end to the trip.")
     ]}
   ])
 },
 // ── DAY 22: 30 Aug — Fly Home ────────────────────────────────────────────────
-{ id:22, date:"30 August", weekday:"Sunday", month:"AUG", num:30, city:"tok", travel:true,
+{ id:22, date:"30 August", weekday:"Saturday", month:"AUG", num:30, city:"tok", travel:true,
   title:"Tokyo → London",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Sunday, 30 August</div>
+    <div class="detail-date">Saturday, 30 August</div>
     <div class="detail-title">Tokyo → London</div>
     <span class="badge tok">DEPARTURE DAY</span>
   `, [
     {fixed: transitBlock("Flight", [
-      { from:{code:"HND", time:"08:55"}, to:{code:"LHR", time:"15:45"}, train:"BA0008 · British Airways", dur:"13h 50m", refId:"d22-hnd-lhr" }
+      { from:{code:"HND", time:"08:55"}, to:{code:"LHR", time:"15:45"}, train:"BA0008 · British Airways · Premium Economy · Ref: Y59KDX", dur:"13h 50m", refId:"d22-hnd-lhr" }
     ])},
-    {label:"Notes", cards:[
-      activityCard("d22a0", "", "Allow early start — Asakusa Line / Keikyu through-service Shimbashi → Haneda", "Aim to be at Haneda by 06:30. Direct Asakusa/Keikyu through-service from Shimbashi is roughly 25–30 mins; allow extra buffer for a missed/slow service. BA0008 Premium Economy · Ref: Y59KDX · Paid.")
+    {label:"Getting to the airport", cards:[
+      activityCard("d22a0", "", "Metro & Tokyo Monorail to Haneda"+pin("Haneda Airport Tokyo"), "Early start from Shimbashi. The metro wasn't listed as running when arriving at the station — took the metro to the interchange with the Tokyo Monorail, then non-stop monorail directly to Haneda Airport. Aim to be at the airport by 06:30 for the 08:55 departure. BA0008 Premium Economy — a comfortable way home after 22 nights.")
     ]}
   ])
 }
