@@ -1918,9 +1918,7 @@ days.forEach(d => {
 });
 
 let todayIdx = days.findIndex(d => d.dateObj.getTime() === today.getTime());
-let defaultId = 0;
-if (todayIdx >= 0) defaultId = todayIdx;
-else if (today.getTime() > days[days.length - 1].dateObj.getTime()) defaultId = days.length - 1;
+let defaultId = 0;  // diary mode — always open on first day
 
 // ---- day grid ----
 const week = document.getElementById('week');
@@ -1946,7 +1944,7 @@ let selected = {type:'day', id:defaultId};
 function updateSelection(){
   dayEls.forEach((el, i) => el.classList.toggle('selected', selected.type === 'day' && selected.id === days[i].id));
   linkWords.classList.toggle('selected', selected.type === 'words');
-  settingsToggle.classList.toggle('selected', selected.type === 'settings');
+  settingsToggle.classList.toggle('selected', selected.type === 'settings' || selected.type === 'instructions');
 }
 
 function selectDay(id){
@@ -2003,6 +2001,13 @@ function renderSettings(){
     <div class="detail-date">SETTINGS</div>
     <div class="detail-title">Settings</div>
     <div class="block">
+      <div class="block-label">How to use this diary</div>
+      <div class="money-sub">A guide to navigating the trip diary.</div>
+      <div class="export-actions">
+        <button type="button" class="export-btn" onclick="selectInstructions()">Open guide</button>
+      </div>
+    </div>
+    <div class="block">
       <div class="block-label">Appearance</div>
       <div class="dir-toggle">
         <button type="button" class="dir-pill ${theme === 'system' ? 'selected' : ''}" onclick="setThemeSetting('system')">Auto</button>
@@ -2036,6 +2041,46 @@ function selectSettings(){
   updateSelection();
   panel.innerHTML = renderSettings();
   refreshExportText();
+}
+
+function renderInstructions(){
+  return `
+    <div class="detail-date">HOW TO USE</div>
+    <div class="detail-title">Using this diary</div>
+    <div class="block">
+      <div class="block-label">Getting around</div>
+      <p>Tap any date in the grid to jump to that day. Use the Previous / Next buttons at the bottom of each day to move through the trip in order. The diary always opens on 8 August — the first day.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Reading the cards</div>
+      <p>Each card is one place or activity from the day. The ✓ tick shows it was done. The circle on each card can be tapped to cycle through done / skipped / not done — useful if you want to mark something up for your own reference.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Maps</div>
+      <p>Wherever you see a 📍 pin icon next to a place name, tap it to open that location in Google Maps.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Background detail</div>
+      <p>Some cards have a small ⓘ button next to the title. Tap it for additional background on that place — history, what makes it notable, or why it was worth visiting.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Colours</div>
+      <p>Each region has its own colour — purple for Hokkaido, amber for Osaka, teal for Hiroshima and Miyajima, terracotta for Kyoto, and blue for Tokyo. The bar across the top shows the shape of the whole trip at a glance.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Currency</div>
+      <p>The ¥ icon top-right lets you set an exchange rate and converts yen amounts shown on cards to pounds.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Appearance</div>
+      <p>The ⚙ icon top-right opens Settings where you can switch between light and dark mode, and turn the Japanese proverb cards on or off.</p>
+    </div>
+  `;
+}
+function selectInstructions(){
+  selected = {type:'instructions', id:'instructions'};
+  updateSelection();
+  panel.innerHTML = renderInstructions();
 }
 
 selectDay(defaultId);
