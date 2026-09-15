@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan — August 2026</title>
+<script>
+  (function(){
+    var theme = null;
+    try { theme = localStorage.getItem('tripTheme'); } catch(e){}
+    if (!theme){
+      var m = location.search.match(/[?&]theme=(light|dark)/);
+      if (m) theme = m[1];
+    }
+    if (theme) document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#14181C;
+    --surface:#1D242A;
+    --surface-hi:#262F37;
+    --line:#313B43;
+    --text:#F3EEE3;
+    --text-dim:#A3AFB8;
+    --text-faint:#7C8A94;
+    --toggle-bg:#262F37;
+    --toggle-icon:#D4A64C;
+
+    --tok:#4A90C4; --tok-dim:#1B3247; --tok-text:#B7D9F0; --tok-border:#254257;
+    --kyo:#BE5F35; --kyo-dim:#5A3324; --kyo-text:#F0C4A8; --kyo-border:#4A2E22;
+    --sap:#7B6FCC; --sap-dim:#2A2450; --sap-text:#C4BCE8; --sap-border:#3D3570;
+    --osa:#D4A64C; --osa-dim:#5C4A26; --osa-text:#F0D999; --osa-border:#4A3D22;
+    --miy:#4FB3A9; --miy-dim:#1A3A38; --miy-text:#A8DDD9; --miy-border:#2A5250;
+
+    --transit-bg:#132A20; --transit-border:#3FA06B; --transit-icon:#7FDDA5;
+    --hotel-bg:#241D14; --hotel-border:#B08838; --hotel-icon:#E4BE6F;
+
+    --status-blue:#5B9BD5; --status-skip:#6E7A85;
+    --cat-rose:#D98BA5; --cat-teal:#4FB3A9; --cat-wood:#B98553; --cat-sky:#6FC3D9; --cat-lavender:#B79AE0;
+    --accent:#D4A64C;
+    --dropdown-border:#75818D; --dropdown-shadow:0 12px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#F6F1E6; --surface:#FFFFFF; --surface-hi:#F1EADC; --line:#E3D9C6;
+      --text:#241F18; --text-dim:#5C5042; --text-faint:#7A6F60;
+      --toggle-bg:#FFFFFF; --toggle-icon:#A9791F;
+
+      --tok:#255E8C; --tok-dim:#DCEAF5; --tok-text:#17456B; --tok-border:#BEDAEC;
+      --kyo:#A8501F; --kyo-dim:#F1DAC3; --kyo-text:#8C3E17; --kyo-border:#E3C6A8;
+      --sap:#4D3FAA; --sap-dim:#DDD9F5; --sap-text:#3A2E8C; --sap-border:#BDB8E8;
+      --osa:#A9791F; --osa-dim:#F3E6BE; --osa-text:#7A5813; --osa-border:#E3CE8F;
+      --miy:#1E7F73; --miy-dim:#D4F0ED; --miy-text:#155E55; --miy-border:#A8DDD9;
+
+      --transit-bg:#E3F3EA; --transit-border:#2F7D4F; --transit-icon:#1F6E45;
+      --hotel-bg:#FBF2DF; --hotel-border:#A9791F; --hotel-icon:#7A5813;
+
+      --status-blue:#2F6EA8; --status-skip:#6B7075;
+      --cat-rose:#B23E63; --cat-teal:#1E7F73; --cat-wood:#8A5A2E; --cat-sky:#2C7A94; --cat-lavender:#6A4FA0;
+      --accent:#A9791F;
+      --dropdown-border:#E3D9C6; --dropdown-shadow:0 14px 34px rgba(0,0,0,.16);
+      color-scheme: light;
+    }
+  }
+  html[data-theme="light"]{
+    --bg:#F6F1E6; --surface:#FFFFFF; --surface-hi:#F1EADC; --line:#E3D9C6;
+    --text:#241F18; --text-dim:#5C5042; --text-faint:#7A6F60;
+    --toggle-bg:#FFFFFF; --toggle-icon:#A9791F;
+
+    --tok:#255E8C; --tok-dim:#DCEAF5; --tok-text:#17456B; --tok-border:#BEDAEC;
+    --kyo:#A8501F; --kyo-dim:#F1DAC3; --kyo-text:#8C3E17; --kyo-border:#E3C6A8;
+    --sap:#4D3FAA; --sap-dim:#DDD9F5; --sap-text:#3A2E8C; --sap-border:#BDB8E8;
+    --osa:#A9791F; --osa-dim:#F3E6BE; --osa-text:#7A5813; --osa-border:#E3CE8F;
+    --miy:#1E7F73; --miy-dim:#D4F0ED; --miy-text:#155E55; --miy-border:#A8DDD9;
+
+    --transit-bg:#E3F3EA; --transit-border:#2F7D4F; --transit-icon:#1F6E45;
+    --hotel-bg:#FBF2DF; --hotel-border:#A9791F; --hotel-icon:#7A5813;
+
+    --status-blue:#2F6EA8; --status-skip:#6B7075;
+    --cat-rose:#B23E63; --cat-teal:#1E7F73; --cat-wood:#8A5A2E; --cat-sky:#2C7A94; --cat-lavender:#6A4FA0;
+    --accent:#A9791F;
+      --dropdown-border:#E3D9C6; --dropdown-shadow:0 14px 34px rgba(0,0,0,.16);
+    color-scheme: light;
+  }
+  html[data-theme="dark"]{
+    --bg:#14181C; --surface:#1D242A; --surface-hi:#262F37; --line:#313B43;
+    --text:#F3EEE3; --text-dim:#A3AFB8; --text-faint:#7C8A94;
+    --toggle-bg:#262F37; --toggle-icon:#D4A64C;
+
+    --tok:#4A90C4; --tok-dim:#1B3247; --tok-text:#B7D9F0; --tok-border:#254257;
+    --kyo:#BE5F35; --kyo-dim:#5A3324; --kyo-text:#F0C4A8; --kyo-border:#4A2E22;
+    --sap:#7B6FCC; --sap-dim:#2A2450; --sap-text:#C4BCE8; --sap-border:#3D3570;
+    --osa:#D4A64C; --osa-dim:#5C4A26; --osa-text:#F0D999; --osa-border:#4A3D22;
+    --miy:#4FB3A9; --miy-dim:#1A3A38; --miy-text:#A8DDD9; --miy-border:#2A5250;
+
+    --transit-bg:#132A20; --transit-border:#3FA06B; --transit-icon:#7FDDA5;
+    --hotel-bg:#241D14; --hotel-border:#B08838; --hotel-icon:#E4BE6F;
+
+    --status-blue:#5B9BD5; --status-skip:#6E7A85;
+    --cat-rose:#D98BA5; --cat-teal:#4FB3A9; --cat-wood:#B98553; --cat-sky:#6FC3D9; --cat-lavender:#B79AE0;
+    --accent:#D4A64C;
+    --dropdown-border:#75818D; --dropdown-shadow:0 12px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05);
+    color-scheme: dark;
+  }
+
+  body{ transition: background .25s ease, color .25s ease; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .app{ max-width:460px; margin:0 auto; padding:28px 20px 60px; position:relative; min-height:100vh; }
+
+  .eyebrow{ font-size:13.5px; color:var(--text-dim); letter-spacing:.02em; margin-bottom:6px; }
+  h1{ font-family:'Fraunces', serif; font-optical-sizing:auto; font-weight:500; font-size:32px; line-height:1.12; margin:0 0 4px; text-wrap:balance; }
+  .daterange{ color:var(--text-dim); font-size:15.5px; margin-bottom:18px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+
+  .word-link{
+    display:inline-block; padding:4px 11px; border-radius:20px; text-decoration:none;
+    border:1px solid var(--text-faint); color:var(--text-dim); background:none; appearance:none;
+    font-family:inherit; font-size:11px; font-weight:600; letter-spacing:.03em; text-transform:uppercase;
+    cursor:pointer; transition:transform .15s ease, opacity .15s ease, background .15s ease, color .15s ease;
+    flex-shrink:0;
+  }
+  .word-link:active{ transform:scale(0.94); }
+  .word-link.selected{ background:var(--text); color:var(--bg); border-color:var(--text); }
+
+  .timeline{ display:flex; height:38px; border-radius:9px; overflow:hidden; margin-bottom:16px; }
+  .timeline .seg{ display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:600; letter-spacing:.02em; border-right:1px solid var(--bg); }
+  .timeline .seg:last-child{ border-right:none; }
+  .timeline .seg.tok{ background:var(--tok-dim); color:var(--tok-text); }
+  .timeline .seg.kyo{ background:var(--kyo-dim); color:var(--kyo-text); }
+  .timeline .seg.sap{ background:var(--sap-dim); color:var(--sap-text); }
+  .timeline .seg.osa{ background:var(--osa-dim); color:var(--osa-text); }
+  .timeline .seg.miy{ background:var(--miy-dim); color:var(--miy-text); }
+  .citylink{ color:inherit; text-decoration:none; }
+  .citylink:hover{ text-decoration:underline; }
+
+  .weekgrid{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+  .day{
+    flex:0 0 calc((100% - 42px)/8);
+    aspect-ratio:1/1.12; background:var(--surface); border:1px solid var(--line); border-radius:9px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer;
+    padding:4px 2px; transition:transform .15s ease, background .15s ease, border-color .15s ease; position:relative;
+  }
+  .day:active{ transform:scale(0.94); }
+  .day:hover{ background:var(--surface-hi); }
+  .day .num{ font-family:'Fraunces', serif; font-size:17px; font-weight:600; line-height:1; }
+  .day .mon{ font-size:8.5px; font-weight:600; color:var(--text-dim); margin-top:2px; letter-spacing:.03em; }
+  .day .dot{ width:5px;height:5px;border-radius:50%; margin-top:4px; }
+  .day.tok{ border-color:var(--tok-border); } .day.tok .dot{ background:var(--tok); }
+  .day.kyo{ border-color:var(--kyo-border); } .day.kyo .dot{ background:var(--kyo); }
+  .day.sap{ border-color:var(--sap-border); } .day.sap .dot{ background:var(--sap); }
+  .day.osa{ border-color:var(--osa-border); } .day.osa .dot{ background:var(--osa); }
+  .day.miy{ border-color:var(--miy-border); } .day.miy .dot{ background:var(--miy); }
+  .day.trip{ border-style:dashed; }
+  .day.travel{ background:linear-gradient(135deg, var(--surface-hi), var(--surface)); }
+  .day.travel .num{ text-decoration:underline; text-decoration-color:var(--text-faint); text-decoration-style:dotted; text-underline-offset:3px; }
+  .day.selected{ background:var(--text); border-color:var(--text); border-style:solid; }
+  .day.selected .num, .day.selected .mon{ color:var(--bg); }
+  .day.selected .dot{ background:var(--bg); }
+  .day.past:not(.selected){ opacity:.42; }
+  .day.today{ outline:2px solid var(--transit-border); outline-offset:2px; }
+  .day.today .dot{ background:var(--transit-border); }
+  .day.today.selected .dot{ background:var(--bg); }
+
+  .weekgrid-note{ font-size:11.5px; color:var(--text-faint); margin:-6px 0 18px; display:flex; gap:14px; flex-wrap:wrap; }
+  .weekgrid-note span{ display:inline-flex; align-items:center; gap:5px; }
+  .weekgrid-note i{ width:7px;height:7px;border-radius:50%; display:inline-block; }
+  .week-divider{ height:1px; background:linear-gradient(90deg, transparent, var(--accent) 15%, var(--accent) 85%, transparent); opacity:.55; margin-bottom:22px; }
+
+  .panel{ animation:panelIn .25s ease; }
+  @keyframes panelIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:translateY(0); } }
+
+  .detail-date{ font-size:13.5px; color:var(--text-dim); margin-bottom:4px; }
+  .detail-title{ font-family:'Fraunces', serif; font-weight:500; font-size:27px; margin:0 0 18px; line-height:1.15; text-wrap:balance; }
+
+  .badge{ display:inline-block; font-size:12px; font-weight:600; padding:4px 10px; border-radius:20px; margin-bottom:18px; letter-spacing:.02em; }
+  .badge.tok{ background:var(--tok-dim); color:var(--tok-text); }
+  .badge.kyo{ background:var(--kyo-dim); color:var(--kyo-text); }
+  .badge.sap{ background:var(--sap-dim); color:var(--sap-text); }
+  .badge.osa{ background:var(--osa-dim); color:var(--osa-text); }
+  .badge.miy{ background:var(--miy-dim); color:var(--miy-text); }
+
+  .block{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:15px 17px; margin-bottom:12px; }
+  .block-label{ font-size:11.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; }
+  .block--transit{ background:var(--transit-bg); border-color:var(--transit-border); }
+  .block--transit .block-label{ color:var(--transit-icon); }
+  .block--hotel{ background:var(--hotel-bg); border-color:var(--hotel-border); }
+  .block--hotel .block-label{ color:var(--hotel-icon); }
+
+  .leg{ margin-bottom:10px; }
+  .leg:last-child{ margin-bottom:0; }
+  .route{ display:flex; align-items:center; justify-content:space-between; }
+  .route .pt{ text-align:center; }
+  .route .pt .code{ font-family:'Fraunces', serif; font-size:19px; font-weight:500; }
+  .route .pt .time{ font-size:13.5px; color:var(--text-dim); margin-top:2px; }
+  .route .pt .tz{ font-size:10.5px; color:var(--text-faint); margin-top:1px; }
+  .route .mid{ flex:1; display:flex; flex-direction:column; align-items:center; padding:0 10px; color:var(--text-faint); }
+  .route .mid .line{ width:100%; height:1px; background:var(--line); position:relative; margin:4px 0; }
+  .route .mid .line:after{ content:"🚅"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); background:var(--transit-bg); padding:0 6px; font-size:13px; }
+  .route .mid .line[data-mode="flight"]:after{ content:"✈️"; }
+  .route .mid .dur{ font-size:11.5px; }
+  .change{ font-size:11.5px; color:var(--text-faint); text-align:center; padding:6px 0; font-style:italic; }
+  .meta-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:13.5px; color:var(--text-dim); padding-top:9px; border-top:1px solid var(--line); margin-top:9px; }
+
+  .ref-input{
+    width:90px; flex-shrink:0; padding:4px 8px; border-radius:6px;
+    border:1px solid var(--line); background:var(--surface-hi); color:var(--text);
+    font-family:inherit; font-size:12px; text-align:center;
+  }
+  .ref-input::placeholder{ color:var(--text-faint); }
+  .ref-input:focus{ outline:none; border-color:var(--accent); }
+
+  .hotel-name{ font-family:'Fraunces', serif; font-size:19px; font-weight:500; margin-bottom:6px; }
+  .addr{ font-size:14px; color:var(--text-dim); margin-bottom:10px; }
+  .hoursrow{ display:flex; gap:20px; font-size:13.5px; }
+  .hoursrow div span{ display:block; color:var(--text-dim); font-size:11px; margin-bottom:2px;}
+
+  .tip{ font-size:14px; line-height:1.55; color:var(--text); }
+  .tip strong{ color:var(--accent); font-weight:600; }
+  .tip + .tip{ margin-top:9px; padding-top:9px; border-top:1px solid var(--line); }
+
+  .maplink{ display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; margin-left:5px; color:var(--text-faint); vertical-align:middle; opacity:.85; transition:opacity .15s ease, color .15s ease, transform .15s ease; }
+  .maplink svg{ width:100%; height:100%; fill:currentColor; }
+  .maplink:hover{ color:var(--accent); opacity:1; }
+  .maplink:active{ transform:scale(0.85); }
+
+  .plan{ display:flex; gap:13px; }
+  .plan .when{ width:52px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:6px; padding-top:1px; }
+  .plan .when-label{ font-size:11px; color:var(--text-dim); text-align:center; line-height:1.25; }
+  .plan .what strong{ display:block; font-size:15px; font-weight:600; margin-bottom:3px; }
+  .plan .what p{ margin:0; font-size:13.5px; color:var(--text-dim); line-height:1.5; }
+  .plan .what .alt{ display:block; margin-top:5px; font-size:12.5px; color:var(--text-faint); font-style:italic; }
+  .plan .what .hours{ display:inline-block; margin-top:6px; font-size:12px; color:var(--accent); font-style:italic; }
+  .plan .what .cash{ display:inline-block; margin-top:6px; margin-left:10px; font-size:12px; color:var(--text-faint); font-style:italic; }
+
+  .section-label{ font-size:11.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; margin:20px 0 8px; }
+  .section-label:first-child{ margin-top:0; }
+
+  .block--activity{ border-left:3px solid var(--status-blue); position:relative; }
+  .block--activity.status-default{ border-left-color:var(--status-blue); }
+  .block--activity.status-done{ border-left-color:var(--transit-border); }
+  .block--activity.status-skipped{ border-left-color:var(--status-skip); }
+  .block--activity.is-dimmed .what strong{ opacity:.65; }
+
+  .collapsible{
+    display:grid;
+    grid-template-rows:1fr;
+    transition:grid-template-rows .28s ease;
+  }
+  .collapsible-inner{
+    overflow:hidden;
+    min-height:0;
+  }
+  .block--activity.is-dimmed .collapsible{
+    grid-template-rows:0fr;
+  }
+
+  .status-marker{
+    width:22px; height:22px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:inherit; font-size:12px; font-weight:700; cursor:pointer;
+    border:1.5px solid; background:transparent; padding:0; appearance:none; -webkit-appearance:none;
+    user-select:none; flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .status-marker:active{ transform:scale(0.85); }
+  .status-marker:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .status-marker.state-default{ border-color:var(--status-blue); color:var(--status-blue); background:transparent; }
+  .status-marker.state-done{ border-color:var(--transit-border); background:var(--transit-border); color:#fff; }
+  .status-marker.state-skipped{ border-color:var(--status-skip); background:var(--status-skip); color:#fff; }
+
+  .proverb{
+    background:var(--surface);
+    border:1px solid var(--pc);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:12px;
+    opacity:.88;
+  }
+  .proverb.cat-rose{ --pc:var(--cat-rose); }
+  .proverb.cat-teal{ --pc:var(--cat-teal); }
+  .proverb.cat-wood{ --pc:var(--cat-wood); }
+  .proverb.cat-sky{ --pc:var(--cat-sky); }
+  .proverb.cat-lavender{ --pc:var(--cat-lavender); }
+  .proverb-cat{ font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--pc); font-weight:600; opacity:.85; margin-bottom:7px; }
+  .proverb-native{ font-family:'Fraunces', serif; font-size:14.5px; font-weight:500; color:var(--text-dim); margin-bottom:2px; }
+  .proverb-phonetic{ font-size:11.5px; font-style:italic; font-weight:500; color:var(--text-dim); margin-bottom:7px; }
+  .proverb-meaning{ font-size:12px; color:var(--text-dim); font-style:italic; font-weight:500; margin-bottom:7px; }
+  .proverb-advice{ font-size:12.5px; color:var(--text-dim); line-height:1.5; padding-top:7px; border-top:1px solid var(--line); }
+
+  .navrow{ display:flex; justify-content:space-between; margin-top:24px; padding-top:16px; border-top:1px solid var(--line); }
+  .navbtn{ background:none; border:none; color:var(--text-dim); font-family:'IBM Plex Sans', sans-serif; font-size:14px; cursor:pointer; display:flex; flex-direction:column; gap:2px; }
+  .navbtn.next{ text-align:right; align-items:flex-end; }
+  .navbtn span{ font-size:11.5px; color:var(--text-dim); }
+  .navbtn:active{ opacity:.6; }
+  .navbtn.hidden{ visibility:hidden; }
+
+  .words-legend{ border-radius:12px; padding:14px 16px; margin-bottom:14px; font-size:13px; line-height:1.6; background:var(--surface-hi); color:var(--text); }
+  .trip-note{ margin-top:0; }
+  .words-legend b{ font-family:'Fraunces', serif; font-weight:600; color:var(--accent); }
+  .words-legend .rules{ margin-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:4px 14px; }
+  .prow{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:7px 0; border-bottom:1px solid var(--line); }
+  .prow:last-child{ border-bottom:none; }
+  .prow .pen{ font-size:13px; color:var(--text-dim); flex-shrink:0; width:42%; padding-top:2px; }
+  .prow .pnative{ text-align:right; }
+  .prow .pjp{ font-family:'Fraunces', serif; font-size:16px; font-weight:500; }
+  .prow .proma{ font-size:12px; color:var(--text-dim); font-style:italic; margin-top:2px; }
+
+  .nav-links{ display:flex; gap:8px; flex-wrap:wrap; }
+
+  .money-toggle{
+    position:fixed; top:22px; right:20px; width:38px; height:38px; border-radius:50%;
+    background:var(--toggle-bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:20; font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--toggle-icon);
+    transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
+  }
+  .money-toggle:active{ transform:scale(0.92); }
+  .money-toggle.selected{ background:var(--accent); color:var(--bg); border-color:var(--accent); }
+
+  .settings-toggle{
+    position:fixed; top:22px; right:66px; width:38px; height:38px; border-radius:50%;
+    background:var(--toggle-bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:20; font-size:17px; color:var(--toggle-icon);
+    transition:background .2s ease, border-color .2s ease, color .2s ease, transform .15s ease;
+  }
+  .settings-toggle:active{ transform:scale(0.92); }
+  .settings-toggle.selected{ background:var(--accent); color:var(--bg); border-color:var(--accent); }
+
+  .money-panel{
+    position:fixed; top:68px; right:20px; width:min(320px, calc(100vw - 40px)); max-height:calc(100vh - 90px);
+    overflow-y:auto; background:var(--surface); border:1px solid var(--dropdown-border); border-radius:14px; padding:16px;
+    z-index:25; box-shadow:var(--dropdown-shadow); animation:panelIn .2s ease;
+  }
+  .money-panel[hidden]{ display:none; }
+  .money-sub{ font-size:11px; color:var(--text-faint); margin:-6px 0 12px; line-height:1.4; }
+  .money-section + .money-section{ margin-top:18px; padding-top:16px; border-top:1px solid var(--line); }
+
+  .rate-row{ display:flex; align-items:center; justify-content:center; gap:8px; font-family:'Fraunces', serif; font-size:18px; font-weight:600; }
+  .rate-input{ width:76px; text-align:center; font-family:inherit; font-size:18px; font-weight:700; color:var(--text); background:var(--surface-hi); border:1px solid var(--line); border-radius:8px; padding:6px 4px; }
+  .rate-input:focus{ outline:none; border-color:var(--accent); }
+
+  .dir-toggle{ display:flex; gap:8px; margin-bottom:12px; justify-content:center; }
+  .dir-pill{ padding:6px 14px; border-radius:20px; border:1px solid var(--text-faint); background:none; color:var(--text-dim); font-family:inherit; font-size:12.5px; font-weight:600; cursor:pointer; transition:background .15s ease, color .15s ease, border-color .15s ease; }
+  .dir-pill.selected{ background:var(--accent); color:var(--bg); border-color:var(--accent); }
+
+  .amount-input{ display:block; width:100%; box-sizing:border-box; font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--text); background:var(--surface-hi); border:1px solid var(--line); border-radius:10px; padding:11px 13px; margin-bottom:12px; }
+  .amount-input:focus{ outline:none; border-color:var(--accent); }
+
+  .money-result{ background:var(--surface-hi); border-radius:10px; padding:14px; text-align:center; }
+  .result-main{ font-family:'Fraunces', serif; font-size:22px; font-weight:600; }
+  .result-sub{ font-size:12px; color:var(--text-dim); margin-top:2px; }
+  .result-divider{ height:1px; background:var(--line); margin:12px 0; }
+
+  /* ---- quick-add / notes ---- */
+  .quickadd-row{ display:flex; gap:8px; }
+  .quickadd-input{
+    flex:1; min-width:0; padding:9px 11px; border-radius:8px; border:1px solid var(--line);
+    background:var(--surface-hi); color:var(--text); font-family:inherit; font-size:13.5px;
+  }
+  .quickadd-input::placeholder{ color:var(--text-faint); }
+  .quickadd-input:focus{ outline:none; border-color:var(--accent); }
+  .quickadd-btn{
+    padding:9px 16px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:var(--bg);
+    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; transition:transform .15s ease;
+  }
+  .quickadd-btn:active{ transform:scale(0.94); }
+
+  .notes-textarea{
+    display:block; width:100%; box-sizing:border-box; min-height:72px; resize:vertical;
+    font-family:inherit; font-size:13.5px; line-height:1.5; color:var(--text);
+    background:var(--surface-hi); border:1px solid var(--line); border-radius:10px; padding:10px 11px;
+  }
+  .notes-textarea::placeholder{ color:var(--text-faint); }
+  .notes-textarea:focus{ outline:none; border-color:var(--accent); }
+
+  .qa-delete{
+    position:absolute; top:10px; right:12px;
+    width:22px; height:22px; border-radius:50%;
+    border:none; background:none;
+    color:var(--text-faint); font-size:17px; line-height:1;
+    cursor:pointer;
+  }
+  .qa-delete:active{ color:var(--text); transform:scale(0.85); }
+
+  /* ---- export (now lives on the Settings page) ---- */
+  .export-textarea{
+    display:block; width:100%; box-sizing:border-box; min-height:140px; resize:vertical;
+    font-family:'IBM Plex Mono', 'SF Mono', monospace; font-size:11px; line-height:1.5;
+    color:var(--text-dim); background:var(--surface-hi); border:1px solid var(--line); border-radius:10px; padding:10px;
+    margin-bottom:10px;
+  }
+  .export-textarea:focus{ outline:none; border-color:var(--accent); }
+  .export-actions{ display:flex; gap:8px; }
+  .export-btn{
+    flex:1; padding:9px 0; border-radius:8px; border:1px solid var(--line); background:var(--surface-hi);
+    color:var(--text); font-family:inherit; font-size:12.5px; font-weight:600; cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .export-btn:active{ transform:scale(0.96); }
+  .export-status{ font-size:11px; color:var(--text-faint); margin-top:8px; min-height:14px; text-align:center; }
+
+  .app-version{ text-align:center; font-size:11px; color:var(--text-faint); letter-spacing:.03em; margin-top:18px; }
+
+  /* ---- detail/history popup ---- */
+  .detail-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:16px; height:16px; margin-left:5px; border-radius:50%;
+    border:1px solid var(--text-faint); background:none; color:var(--text-faint);
+    font-size:10px; line-height:1; font-weight:700; cursor:pointer; vertical-align:middle;
+    transition:color .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .detail-btn:hover{ color:var(--accent); border-color:var(--accent); }
+  .detail-btn:active{ transform:scale(0.88); }
+
+  .detail-modal{ position:fixed; inset:0; z-index:40; display:flex; align-items:center; justify-content:center; padding:20px; box-sizing:border-box; }
+  .detail-modal[hidden]{ display:none; }
+  .detail-modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
+  .detail-modal-card{
+    position:relative; width:min(480px, 100%); max-height:calc(100vh - 40px); overflow-y:auto;
+    background:var(--surface); border:1px solid var(--dropdown-border); border-radius:16px;
+    padding:22px 20px 20px; box-shadow:var(--dropdown-shadow); animation:panelIn .2s ease;
+  }
+  .detail-modal-close{
+    position:absolute; top:12px; right:12px; width:28px; height:28px; border-radius:50%;
+    border:none; background:var(--surface-hi); color:var(--text-dim); font-size:18px; line-height:1; cursor:pointer;
+  }
+  .detail-modal-close:active{ transform:scale(0.9); }
+  .detail-modal-body{ font-size:14px; line-height:1.65; color:var(--text); }
+  .detail-modal-body p{ margin:0 0 12px; }
+  .detail-modal-body p:last-child{ margin-bottom:0; }
+
+  .detail-sources{ margin-top:18px; padding-top:14px; border-top:1px solid var(--line); }
+  .detail-sources-label{ font-size:10.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:7px; }
+  .detail-sources a{ display:block; color:var(--accent); font-size:12.5px; line-height:1.45; text-decoration:none; margin:5px 0; }
+  .detail-sources a:hover{ text-decoration:underline; }
+  .detail-source-note{ margin-top:8px; font-size:10.5px; line-height:1.45; color:var(--text-faint); }
+</style>
+</head>
+<body>
+
+<button class="settings-toggle" id="settingsToggle" type="button" aria-label="Settings" onclick="selectSettings()">⚙</button>
+<button class="money-toggle" id="moneyToggle" type="button" aria-label="Currency converter">¥</button>
+<div class="money-panel" id="moneyPanel" hidden>
+  <div class="money-section">
+    <div class="block-label">Exchange rate</div>
+    <div class="money-sub">Approximate — edit to match what you're actually getting</div>
+    <div class="rate-row">
+      <span>£1 =</span>
+      <input type="number" id="rateInput" class="rate-input" inputmode="decimal" step="0.5">
+      <span>¥</span>
+    </div>
+  </div>
+  <div class="money-section">
+    <div class="block-label">Currency converter</div>
+    <div class="money-sub">Convert between yen and pounds, and see an indicative price excluding 10% consumption tax</div>
+    <div class="dir-toggle">
+      <button type="button" class="dir-pill" id="dirYen2Gbp" data-dir="yen2gbp">¥ → £</button>
+      <button type="button" class="dir-pill" id="dirGbp2Yen" data-dir="gbp2yen">£ → ¥</button>
+    </div>
+    <input type="number" id="amountInput" class="amount-input" inputmode="decimal">
+    <div class="money-result">
+      <div class="result-main" id="resultMain"></div>
+      <div class="result-sub" id="resultSub"></div>
+      <div class="result-divider"></div>
+      <div class="result-main" id="taxFreeMain"></div>
+      <div class="result-sub" id="taxFreeSub"></div>
+      <div class="money-sub" style="margin:10px 0 0;">Planning only: actual card/cash rates vary, and tax-free shopping depends on eligibility and the shop.</div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-modal" id="detailModal" hidden>
+  <div class="detail-modal-backdrop" onclick="closeDetail()"></div>
+  <div class="detail-modal-card">
+    <button class="detail-modal-close" type="button" onclick="closeDetail()" aria-label="Close">×</button>
+    <div class="block-label" id="detailModalTitle"></div>
+    <div class="detail-modal-body" id="detailModalBody"></div>
+  </div>
+</div>
+
+<div class="app">
+  <div class="eyebrow">TRIP · 8 AUG – 30 AUG 2026</div>
+  <h1>Hokkaido, Osaka, Miyajima, Kyoto <span style="color:var(--text-faint); font-style:italic; font-weight:400;">&amp;</span> Tokyo</h1>
+  <div class="daterange">
+    <span>22 nights · 5 regions · August 2026</span>
+    <div class="nav-links">
+      <button class="word-link" id="linkWords" type="button" onclick="selectWords()">日本語 Words</button>
+    </div>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <div class="weekgrid" id="week"></div>
+  <div class="weekgrid-note">
+    <span><i style="background:var(--sap)"></i>Hokkaido</span>
+    <span><i style="background:var(--osa)"></i>Osaka</span>
+    <span><i style="background:var(--miy)"></i>Hiroshima/Miyajima</span>
+    <span><i style="background:var(--kyo)"></i>Kyoto</span>
+    <span><i style="background:var(--tok)"></i>Tokyo</span>
+  </div>
+  <div class="week-divider"></div>
+
+  <div class="panel" id="panel"></div>
+</div>
+
+<script>
+const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
+function pin(query){
+  return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
+}
+
+// ---- shared block renderers ----
+function hotelBlock(name, mapQuery, addr, checkin, checkout, note){
+  return `
+    <div class="block block--hotel">
+      <div class="block-label">Stay</div>
+      <div class="hotel-name">${name}${mapQuery ? pin(mapQuery) : ''}</div>
+      ${addr ? `<div class="addr">${addr}</div>` : ''}
+      ${checkin || checkout ? `<div class="hoursrow">
+        <div><span>Check-in</span>${checkin || '—'}</div>
+        <div><span>Check-out</span>${checkout || '—'}</div>
+      </div>` : ''}
+      ${note ? `<div class="addr" style="margin-top:8px;margin-bottom:0;">${note}</div>` : ''}
+    </div>`;
+}
+
+function transitBlock(label, legs){
+  const legsHtml = legs.map((leg, i) => `
+    ${i > 0 ? `<div class="change">Change at ${leg.changeAt || leg.from.code} — ${leg.changeGap || ''}</div>` : ''}
+    <div class="leg">
+      <div class="route">
+        <div class="pt"><div class="code">${leg.from.code}</div><div class="time">${leg.from.time}</div>${leg.from.tz ? `<div class="tz">${leg.from.tz}</div>` : ''}</div>
+        <div class="mid"><div class="line" data-mode="${/BA\d|British Airways/i.test(leg.train||'') ? 'flight' : 'rail'}"></div><div class="dur">${leg.dur}</div></div>
+        <div class="pt"><div class="code">${leg.to.code}</div><div class="time">${leg.to.time}</div>${leg.to.tz ? `<div class="tz">${leg.to.tz}</div>` : ''}</div>
+      </div>
+      <div class="meta-row"><span>${leg.train}</span>${leg.refId ? bookingRefInput(leg.refId) : `<span>${leg.note || ''}</span>`}</div>
+    </div>
+  `).join('');
+  return `<div class="block block--transit"><div class="block-label">${label}</div>${legsHtml}</div>`;
+}
+
+function tipBlock(label, tips){
+  return `<div class="block"><div class="block-label">${label}</div>${tips.map(t=>`<div class="tip">${t}</div>`).join('')}</div>`;
+}
+
+// ---- booking references: one per reserved leg/journey, persisted, blank by default ----
+function getBookingRef(id){
+  let refs = {};
+  try { refs = JSON.parse(localStorage.getItem('tripBookingRefs') || '{}'); } catch(e){}
+  return refs[id] || '';
+}
+function saveBookingRef(id, value){
+  let refs = {};
+  try { refs = JSON.parse(localStorage.getItem('tripBookingRefs') || '{}'); } catch(e){}
+  refs[id] = value;
+  try { localStorage.setItem('tripBookingRefs', JSON.stringify(refs)); } catch(e){}
+}
+function bookingRefInput(id){
+  const r = getBookingRef(id);
+  return `<input type="text" class="ref-input" placeholder="Ref" value="${escapeHtml(r)}" oninput="saveBookingRef('${id}', this.value)">`;
+}
+function refBlock(label, id){
+  return `<div class="block" style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+    <div class="block-label" style="margin-bottom:0;">${label}</div>
+    ${bookingRefInput(id)}
+  </div>`;
+}
+
+// ---- small practical hints attached to selected activity cards ----
+const CARD_HINTS = {
+  "d2a4": {
+    "hours": "Casual visits: last admission 15:30 · guided tours require advance booking",
+    "cash": "Museum/distillery grounds visit can be free"
+  },
+  "d3a0": {
+    "hours": "Open year-round · Aug parking 07:00–19:00",
+    "cash": "Parking from ¥1,000 per car from 1 Jul 2026"
+  },
+  "d3a6": {
+    "hours": "09:00–17:00",
+    "cash": "Admission: free"
+  },
+  "d5a0": {
+    "hours": "Closed Mondays",
+    "cash": "~¥420"
+  },
+  "d17a1": {
+    "hours": "Allow 2–3 hrs if going up the tower",
+    "cash": "Observation decks are ticketed; booking ahead can save time"
+  },
+  "d18a1": {
+    "hours": "Both gardens generally 09:00–17:00",
+    "cash": "Hamarikyu ¥300 · Kiyosumi ¥150"
+  },
+  "d19a0": {
+    "hours": "Temple grounds 06:00–17:00 · office 08:00–15:00",
+    "cash": "Free"
+  },
+  "d20a0": {
+    "hours": "06:00–17:00",
+    "cash": "Free"
+  },
+  "d21a0": {
+    "alt": "Use covered arcades on wet days; group the shopping by district rather than crossing Tokyo repeatedly"
+  }
+};
+
+// ---- activity status: default (blue) / done (green) / skipped (grey), persisted ----
+let statusStore = {};
+try { statusStore = JSON.parse(localStorage.getItem('tripActivityStatus') || '{}'); } catch(e){ statusStore = {}; }
+function getStatus(pid){ return statusStore[pid] || 'done'; }
+function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSON.stringify(statusStore)); } catch(e){} }
+
+// ---- extended detail/history popups: trial content on a couple of days, opt-in per activity ----
+// ---- extended detail/history popups ----
+const activityDetails = {
+  // --- DAY 0 ---
+  "d0a0": {
+    title: "Mercure Tokyo Haneda & Arrival Logistics",
+    body: "<p>Arriving at Haneda Airport early in the morning via British Airways Business Class provides a smooth landing, but standard hotel check-ins in Japan rarely open before 15:00.</p><p>By staying at the Mercure Haneda Airport, you can take advantage of their early luggage storage from 07:00. This frees you to head straight out into Tokyo for a full day of sightseeing unencumbered, before returning later to check in and rest ahead of your domestic flight to Hokkaido.</p>"
+  },
+
+  // --- DAY 1 ---
+  "d1a1": {
+    title: "The Hill of the Buddha (Atama Daibutsu)",
+    body: "<p>Designed by world-renowned architect Tadao Ando and completed in 2015, the Hill of the Buddha at Makomanai Takino Cemetery is one of Hokkaido's most extraordinary modern architectural wonders.</p><p>The 13.5-meter tall stone Buddha statue was previously standing outdoors, but Ando built a massive lavender-covered hill surrounding it. From the outside, only the top of the Buddha's head is visible above the crest. Visitors walk through a dramatic 40-meter concrete tunnel into a sunken rotunda where the full statue is revealed, framed by an open ceiling skylight.</p>"
+  },
+  "d1a3": {
+    title: "Sapporo TV Tower & Grid Planning",
+    body: "<p>Built in 1957 by Tachū Naitō (the same architect behind Tokyo Tower), the 147.2-meter tall tower stands at the eastern terminus of Odori Park.</p><p>Unlike ancient Japanese cities that grew organically around castles or rivers, Sapporo was laid out in the 1870s on a strict American-style grid system under the advice of foreign agricultural pioneers. The TV Tower's observation deck (90m) provides a clear view of this geometric layout dividing the city into north/south and east/west sectors.</p>"
+  },
+
+  // --- DAY 2 ---
+  "d2a1": {
+    title: "Otaru Canal & Merchant History",
+    body: "<p>Completed in 1923, the Otaru Canal was the heart of Hokkaido’s primary port city, built to allow smaller barges (sampans) to offload cargo directly into stone warehouses.</p><p>As modern port facilities expanded in the mid-20th century, the canal fell out of commercial use. Rather than being filled in for highway development, local citizens campaigned to preserve it in the 1980s. The stone and brick warehouses in Meiji and Taisho revival styles were repurposed into artisan craft shops, glass studios, and microbreweries.</p>"
+  },
+  "d2a4": {
+    title: "Yoichi & Nikka Whisky Heritage",
+    body: "<p>Yoichi is the birthplace of Japanese malt whisky. In 1934, Masataka Taketsuru—who had traveled to Scotland to study whisky production—founded the Yoichi Distillery here because Hokkaido's crisp climate, peat bogs, and clean water mirrored the Scottish Highlands.</p><p>The distillery still uses traditional coal-fired pot stills, a rare historical technique preserved to give Nikka whisky its distinctive rich, smoky profile.</p>"
+  },
+
+  // --- DAY 3 ---
+  "d3a0": {
+    title: "Shirogane Blue Pond (Aoi-ike)",
+    body: "<p>The famous turquoise-blue pond in Biei was created entirely by accident. Following the 1988 eruption of nearby Mount Tokachi, a concrete dam was built across the Biei River to protect the town from mudflows.</p><p>Water impounded behind the dam filled a forest clearing, dissolving natural minerals—specifically aluminum from nearby thermal springs. The dissolved colloidal particles scatter sunlight, producing an intense cyan-blue color that changes hue depending on the light, angle, and season.</p>"
+  },
+  "d3a6": {
+    title: "Farm Tomita & Hokkaido Agriculture",
+    body: "<p>Farm Tomita is famous for introducing lavender cultivation to Furano in the mid-20th century. When synthetic lavender flavorings nearly ruined the local essential oil industry in the 1970s, Farm Tomita transitioned into a tourist destination after its vibrant purple fields were featured on a national JR calendar.</p><p>Although peak lavender wanes by mid-August, the farm plants multi-colored strips of sunflowers, marigolds, dahlias, and ageratum that form vibrant rainbow hill fields into late summer.</p>"
+  },
+
+  // --- DAY 4 ---
+  "d4a0": {
+    title: "Jigokudani (Hell Valley)",
+    body: "<p>Jigokudani is a dramatic 24-acre geothermal crater formed during the eruption of Mt. Kuttara approximately 20,000 years ago.</p><p>Steaming sulfur vents, boiling mud activity, and mineral streams give the barren grey canyon an unearthly look. The valley pumps out roughly 10,000 tons of hot spring water daily, supplying the nearby onsen baths of Noboribetsu with 9 different types of mineral waters.</p>"
+  },
+  "d4a4": {
+    title: "Showa-Shinzan (The Young Mountain)",
+    body: "<p>Showa-Shinzan is one of the newest mountain peaks on Earth. Between December 1943 and September 1945, violent seismic activity caused a flat wheat field to suddenly rise, giving birth to a red lava dome that reached 398 meters in height.</p><p>Because the eruption occurred during WWII, official records were kept secret by the government to prevent public panic. However, local postmaster Masao Mimatsu mapped the mountain's daily growth on tracing paper—a historical record known as the 'Mimatsu Diagram.' He later bought the land with his own savings to preserve the volcano for scientific study.</p>"
+  },
+
+  // --- DAY 5 ---
+  "d5a0": {
+    title: "Sapporo Botanical Garden",
+    body: "<p>Established in 1886 by Hokkaido University, this 13.3-hectare botanical garden is older than Hokkaido's municipal grid and preserves a rare pocket of the virgin forest that once covered the Ishikari Plain.</p><p>It houses over 4,000 plant species, a historic alpine greenhouse, and the Natural History Museum—which features preserved specimens collected by 19th-century British naturalist Thomas Blakiston.</p>"
+  },
+  "d5a2": {
+    title: "Tanukikoji Shopping Arcade",
+    body: "<p>Stretching over 1 kilometer across 7 blocks, Tanukikoji is one of Hokkaido’s best-known covered commercial arcades, dating back to 1873.</p><p>Originally established by merchants and tea houses serving local laborers and travelers during Hokkaido's pioneer era, its name roughly translates to 'Raccoon Dog Alley'—referencing either the folklore spirit or the cunning nature of the original shopkeepers.</p>"
+  },
+
+  // --- DAY 6 ---
+  "d6a1": {
+    title: "Onsen Culture & Super Hotel Premier Honmachi",
+    body: "<p>While many city business hotels in Japan rely on simple tiled showers, Super Hotel Premier Honmachi features its own natural hot springs baths brought directly to the property.</p><p>Soaking in rich, mineralized geothermal waters at the end of a dense travel day is a quintessential Japanese tradition—helping unwind after transitioning from Hokkaido's northern climate into Osaka's vibrant summer energy.</p>"
+  },
+
+  // --- DAY 7 ---
+  "d7a0": {
+    title: "Sumiyoshi Taisha (Ancient Grand Shrine)",
+    body: "<p>Founded in 211 AD before Buddhism arrived in Japan, Sumiyoshi Taisha is the head shrine for all 2,000 Sumiyoshi shrines nationwide. It is built in <i>Sumiyoshi-zukuri</i>, one of Japan's oldest purely indigenous architectural styles, characterized by straight gabled roofs, red trim, and white walls.</p><p>The shrine's central icon is the iconic Sorihashi Bridge (Taiko Bridge), which arches steeply over a duck pond. Walking over the bridge's high incline is traditionally believed to cleanse visitors of spiritual impurities before they approach the sacred inner halls.</p>"
+  },
+  "d7a1": {
+    title: "Namba Yasaka Shrine (The Lion Head Stage)",
+    body: "<p>Hidden within the backstreets of Namba, Namba Yasaka Shrine is famous for its striking 12-meter-tall lion head stage (Ema-den), built in 1975.</p><p>The massive gaping mouth—complete with gold teeth and piercing eyes—is believed to swallow evil spirits and bring good fortune, academic success, and business prosperity to visitors. It stands out as one of the most unique photo subjects in central Osaka.</p>"
+  },
+  "d7a2": {
+    title: "Tombori Riverwalk & Lantern Festival",
+    body: "<p>Running along the canal in the heart of Dotonbori, the Tombori Riverwalk transforms every summer night between July and August when nearly 2,000 traditional paper lanterns light up both sides of the river.</p><p>Dotonbori was established in 1612 by merchant Yasui Doton, who invested his personal fortune to expand the river network for trade. Today, the area is world-famous for its neon signboards (including the Glico Running Man) and its vibrant street food culture—summarized by the Osakan concept of <i>kuidaore</i> ('eat until you drop').</p>"
+  },
+
+  // --- DAY 8 ---
+  "d8a0": {
+    title: "Himeji Castle (The White Heron)",
+    body: "<p>Himeji Castle (Himeji-jo) is Japan’s largest and best-preserved original feudal castle, designated a UNESCO World Heritage site. Founded in 1333 and vastly expanded by daimyo Ikeda Terumasa in 1609, its brilliant white plaster walls resemble a soaring white heron taking flight.</p><p>Unlike many major Japanese castles destroyed during WWII, Himeji survived carpet bombing raids and natural disasters completely intact. Surrounding the castle is Koko-en, a series of nine distinct walled gardens constructed in 1990 on the archaeological remains of the samurai residences.</p>"
+  },
+  "d8a1": {
+    title: "Kobe Kitano-cho & Foreign Settlement",
+    body: "<p>Nestled at the foot of Mount Rokko, Kitano-cho is a historic district where foreign merchants, diplomats, and traders settled following the opening of Kobe Port to international trade in 1868.</p><p>Over 30 preserved Western-style residences (known as <i>Ijinkan</i>) remain along its cobbled hillside streets. Featuring European brick architecture, weatherboard siding, and Victorian detailing, Kitano-cho presents an architectural landscape completely distinct from traditional Japanese urban centers.</p>"
+  },
+
+  // --- DAY 9 ---
+  "d9a0": {
+    title: "Osaka's Culinary Identity & Food Culture",
+    body: "<p>Historically known as the 'Kitchen of the Nation' (<i>Tenka no Daidokoro</i>) during the Edo period, Osaka controlled Japan's rice trade and shipping networks. This wealth birthed a casual, flavor-obsessed street food tradition that contrasts sharply with Kyoto's refined court cuisine.</p><p>Exploring local food districts with a resident reveals local staples like <i>takoyaki</i> (octopus balls cooked in molded iron pans), <i>okonomiyaki</i> (savory shredded cabbage pancakes), and <i>kushikatsu</i> (crispy deep-fried skewered meats and vegetables).</p>"
+  },
+
+  // --- DAY 10 ---
+  "d10a0": {
+    title: "Shinsaibashi & America-mura (Amemura)",
+    body: "<p>Shinsaibashi-suji has been Osaka's premier retail strip since the Edo era, centered around a covered shopping street that runs over 600 meters.</p><p>Directly to the west lies America-mura (Amemura), which emerged in the 1970s as Osaka's youth culture hub. Originally filled with warehouses importing American vintage clothes, vinyl records, and jeans, Amemura is famous for its central landmark, Sankaku Koen (Triangle Park), street murals, and unique mini Liberty Bell statue.</p>"
+  },
+
+  // --- DAY 11 ---
+  "d11a0": {
+    title: "Hiroshima Peace Memorial Park & Ota River",
+    body: "<p>Built at the epicenter of the atomic blast on August 6, 1945, Peace Memorial Park sits in the Nakajima district—formerly Hiroshima's bustling commercial heart.</p><p>The centerpiece Genbaku Dome (Atomic Bomb Dome) was originally the Hiroshima Prefecture Industrial Promotion Hall, designed by Czech architect Jan Letzel and completed in 1915. Positioned almost directly beneath the explosion's hypocenter, its steel dome skeleton survived and was preserved as a permanent UNESCO World Heritage monument dedicated to global peace.</p>"
+  },
+  "d11a2": {
+    title: "Itsukushima Shrine & The Floating Torii Gate",
+    body: "<p>Itsukushima Shrine was constructed on stilts over Miyajima’s tidal bay so that commoners were not required to set foot on the sacred ground of the island.</p><p>The iconic 16-meter-tall vermillion Torii gate stands unattached in the seabed, weighed down purely by its own massive timber mass and tons of stones packed into its upper roof beam. At high tide, the shrine and gate appear floating on the Seto Inland Sea; at low tide, the sea recedes to allow visitors to walk out to its base. Staying overnight at a local ryokan like Kikugawa allows you to experience the island in peaceful stillness after day-trippers return to the mainland.</p>"
+  },
+
+  // --- DAY 12 ---
+  "d12a2": {
+    title: "Nanzen-ji & The Lake Biwa Aqueduct",
+    body: "<p>Founded in 1291 by Emperor Kameyama, Nanzen-ji is one of Kyoto's most important Rinzai Zen temples.</p><p>A striking and unexpected architectural feature within its tranquil Zen gardens is the Suirokaku Aqueduct. Constructed in 1890 out of red brick and granite in a Roman style, it was built to carry water and goods from Lake Biwa to Kyoto as part of the city's early industrial modernization, forming a dramatic contrast against traditional timber halls.</p>"
+  },
+
+  // --- DAY 13 ---
+  "d13a0": {
+    title: "Ginkaku-ji (Silver Pavilion) & Philosopher's Path",
+    body: "<p>Ginkaku-ji was built in 1482 by Shogun Ashikaga Yoshimasa as a mountain retreat to mirror his grandfather's Golden Pavilion (Kinkaku-ji). Although Yoshimasa intended to cover it in silver leaf, political unrest halted the plan, leaving the raw dark wood exposed—embodying the refined <i>wabi-sabi</i> aesthetic of understated beauty.</p><p>Leading away from the temple is the Philosopher's Path (Tetsugaku-no-michi), a stone walkway alongside a canal named after Kyoto University philosophy professor Nishida Kitaro, who walked it daily for meditation.</p>"
+  },
+  "d13a1": {
+    title: "teamLab Biovortex Kyoto",
+    body: "<p>Located near Kyoto Station, teamLab Biovortex is an immersive digital art experience that blurs the lines between art, technology, and nature.</p><p>Through projection mapping, motion sensors, and responsive environments, visitors interact with dynamic light sculptures and fluid digital ecosystems that shift in real time based on human movement and touch.</p>"
+  },
+
+  // --- DAY 14 ---
+  "d14a1": {
+    title: "Kinkaku-ji (The Golden Pavilion)",
+    body: "<p>Kinkaku-ji is a Zen Buddhist temple whose top two floors are completely covered in pure gold leaf. Overlooking the Kyoko-chi (Mirror Pond), the pavilion harmonizes three architectural styles: shinden (palace), samurai, and Zen.</p><p>In 1950, the structure was tragically burned down by a young novice monk, an event famously dramatized by author Yukio Mishima in his novel <i>The Temple of the Golden Pavilion</i>. The current structure was meticulously rebuilt in 1955, accurately replicating the original 14th-century design.</p>"
+  },
+  "d14a2": {
+    title: "Arashiyama & Togetsukyo Bridge",
+    body: "<p>Located at the base of Kyoto's western mountains, Arashiyama has been a scenic retreat for imperial nobles since the Heian period (794–1185).</p><p>Its iconic wooden Togetsukyo Bridge ('Moon Crossing Bridge') spans the Katsura River, named by Emperor Kameyama who remarked that a full moon appeared to be crossing the bridge. Beyond the bridge lies the famous Arashiyama Bamboo Grove, where towering bamboo stalks filter natural light and rustle quietly in the mountain breeze.</p>"
+  },
+
+  // --- DAY 15 ---
+  "d15a0": {
+    title: "Ryoan-ji (Dry Landscape Zen Rock Garden)",
+    body: "<p>Ryoan-ji is home to Japan's most famous <i>karesansui</i> (dry landscape) Zen rock garden, created in the late 15th century.</p><p>The rectangular garden consists of raked white gravel and 15 carefully arranged rocks encased in moss. The rocks are positioned so that from the usual viewing area, not all 15 rocks can be seen at once. The garden is deliberately open to interpretation rather than having one officially prescribed meaning.</p>"
+  },
+  "d15a1": {
+    title: "Ninnaji Temple & Imperial Heritage",
+    body: "<p>Founded in 888 AD by Emperor Uda, Ninnaji is a UNESCO World Heritage site and head temple of the Omuro school of Shingon Buddhism. Historically, a member of the Imperial Family served as the temple's head priest for centuries, earning it the title Omuro Imperial Palace.</p><p>The grounds feature a Five-Story Pagoda, elegant Palace Hall buildings connected by covered walkways, and the famous Omuro Cherry trees—a late-blooming dwarf variety.</p>"
+  },
+
+  // --- DAY 16 ---
+  "d16a1": {
+    title: "Pontocho Alley & The Kamo River",
+    body: "<p>Pontocho is a narrow cobblestone alley running parallel to the Kamo River, famous for its preserved geiko (geisha) culture and traditional nightlife.</p><p>Dating back to the 1670s, the alley is lined with wooden <i>machiya</i> townhouses illuminated by paper lanterns. During summer, many riverfront restaurants construct <i>kawayuka</i>—temporary raised wooden platforms built over the water that allow diners to eat outdoors in cool river breezes.</p>"
+  },
+
+  // --- DAY 17 ---
+  "d17a1": {
+    title: "Tokyo Skytree & Shimbashi Salaryman Culture",
+    body: "<p>Standing at 634 meters, Tokyo Skytree is the tallest structure in Japan and among the world's tallest structures. The height (6-3-4) was chosen as a wordplay on 'Musashi', the ancient province encompassing modern Tokyo.</p><p>Returning south to Shimbashi places you at the heart of Tokyo's corporate culture. Known as 'Salaryman Town', Shimbashi's SL Plaza features a preserved steam locomotive where office workers gather after work around lively <i>yakitori</i> stalls and <i>izakayas</i> nestled beneath the train arches.</p>"
+  },
+
+  // --- DAY 18 ---
+  "d18a1": {
+    title: "Hamarikyu & Kiyosumi Strolling Gardens",
+    body: "<p>Hamarikyu Gardens is a traditional Edo-period shogun's garden surrounding a tidal pond fed directly by Tokyo Bay. As the tide shifts, the water level changes, altering the scenery around its central teahouse.</p><p>Kiyosumi Garden, built by industrialist Iwasaki Yataro (founder of Mitsubishi) in 1880, is an exquisite landscape garden featuring <i>isowatari</i> (stepping stones set across the water) and rare stones collected from across Japan aboard Mitsubishi ships.</p>"
+  },
+
+  // --- DAY 19 ---
+  "d19a0": {
+    title: "Gotokuji Temple (Birthplace of the Maneki-neko)",
+    body: "<p>Gotokuji in Setagaya is widely considered the birthplace of the <i>Maneki-neko</i> (beckoning cat figurine).</p><p>According to legend, feudal lord Ii Naotaka was caught in a sudden thunderstorm near the temple during the 17th century when a cat beckoned him inside with a raised paw. Moments later, lightning struck the tree he had been sheltering under. Grateful for his salvation, the lord adopted the temple, and today thousands of white cat statues are left by visitors in gratitude.</p>"
+  },
+  "d19a1": {
+    title: "Kichijoji & Inokashira Park",
+    body: "<p>Consistently voted one of Tokyo's most desirable neighborhoods to live in, Kichijoji centers around Inokashira Park, established in 1917 as Japan's first public suburban park.</p><p>The park surrounds Inokashira Pond—an important historic water source for Edo/Tokyo. Today, the area is a cultural hub featuring vintage shops, jazz cafes, and Harmonica Yokocho (a grid of retro post-war alleyway bars).</p>"
+  },
+
+  // --- DAY 20 ---
+  "d20a0": {
+    title: "Nezu Shrine & Torii Tunnel",
+    body: "<p>Established in the early 18th century, Nezu Shrine is one of Tokyo's oldest preserved Shinto precincts, having survived both the 1923 Great Kanto Earthquake and WWII bombings.</p><p>Built in <i>Ishi-no-ma-zukuri</i> style inspired by Nikko Toshogu, its hillside feature is a tunnel of miniature vermillion <i>torii</i> gates (Otome Inari) that winds through lush greenery. Its tranquil grounds frequently host traditional cultural performances and filming sets.</p>"
+  },
+
+  // --- DAY 21 ---
+  "d21a0": {
+    title: "Gashapon & Otaku Culture Districts",
+    body: "<p>Tokyo's anime and character shopping spans distinct subculture districts. Akihabara remains the global center for electronic goods, <i>gashapon</i> (capsule toy vending machines), and character merchandise.</p><p>Ikebukuro’s Otome Road caters to female otaku culture and anime collectibles, while Harajuku's Takeshita Street features pop culture hubs like Popmart alongside street fashion stores.</p>"
+  }
+};
+const DETAIL_SOURCES = {
+  "d0a0": [
+    [
+      "Mercure Tokyo Haneda Airport — Accor",
+      "https://all.accor.com/hotel/9558/index.en.shtml"
+    ]
+  ],
+  "d1a1": [
+    [
+      "Visit Sapporo — Hill of the Buddha",
+      "https://visit.sapporo.travel/discover/art-culture/hill-of-the-buddha/"
+    ]
+  ],
+  "d1a3": [
+    [
+      "Sapporo TV Tower",
+      "https://tv-tower.co.jp/"
+    ]
+  ],
+  "d2a1": [
+    [
+      "Hokkaido Official Tourism — Otaru Canal",
+      "https://www.visit-hokkaido.jp/en/spot/detail_10040.html"
+    ]
+  ],
+  "d2a4": [
+    [
+      "Nikka Whisky — Yoichi Distillery",
+      "https://www.nikka.com/en/distilleries/yoichi/"
+    ]
+  ],
+  "d3a0": [
+    [
+      "Biei Tourism Association — Shirogane Blue Pond",
+      "https://www.biei-hokkaido.jp/en/facility/shirogane-blue-pond"
+    ]
+  ],
+  "d3a6": [
+    [
+      "Farm Tomita — official site",
+      "https://www.farm-tomita.co.jp/en/"
+    ]
+  ],
+  "d4a0": [
+    [
+      "Noboribetsu Tourism — Jigokudani",
+      "https://noboribetsu-spa.jp/en/"
+    ]
+  ],
+  "d4a4": [
+    [
+      "Toya-Usu Geopark",
+      "https://www.toya-usu-geopark.org/en/"
+    ]
+  ],
+  "d5a0": [
+    [
+      "Hokkaido University — Botanical Gardens",
+      "https://www.hokudai.ac.jp/fsc/bg/"
+    ]
+  ],
+  "d5a2": [
+    [
+      "Tanukikoji Shopping Street",
+      "https://tanukikoji.or.jp/"
+    ]
+  ],
+  "d6a1": [
+    [
+      "Super Hotel Premier Osaka Honmachi",
+      "https://www.superhotel.co.jp/s_hotels/honmachi/"
+    ]
+  ],
+  "d7a0": [
+    [
+      "Sumiyoshi Taisha",
+      "https://www.sumiyoshitaisha.net/en/"
+    ]
+  ],
+  "d7a1": [
+    [
+      "Namba Yasaka Shrine",
+      "https://nambayasaka.jp/"
+    ]
+  ],
+  "d7a2": [
+    [
+      "Dotonbori — official tourism association",
+      "https://www.dotonbori.or.jp/en/"
+    ]
+  ],
+  "d8a0": [
+    [
+      "UNESCO — Himeji-jo",
+      "https://whc.unesco.org/en/list/661/"
+    ]
+  ],
+  "d8a1": [
+    [
+      "Kobe Kitano Ijinkan",
+      "https://www.kobeijinkan.com/"
+    ]
+  ],
+  "d9a0": [
+    [
+      "Osaka Convention & Tourism Bureau",
+      "https://osaka-info.jp/en/"
+    ]
+  ],
+  "d10a0": [
+    [
+      "Osaka Convention & Tourism Bureau",
+      "https://osaka-info.jp/en/"
+    ]
+  ],
+  "d11a0": [
+    [
+      "UNESCO — Hiroshima Peace Memorial",
+      "https://whc.unesco.org/en/list/775/"
+    ]
+  ],
+  "d11a2": [
+    [
+      "UNESCO — Itsukushima Shinto Shrine",
+      "https://whc.unesco.org/en/list/776/"
+    ]
+  ],
+  "d12a2": [
+    [
+      "Nanzen-ji",
+      "https://nanzenji.or.jp/"
+    ]
+  ],
+  "d13a0": [
+    [
+      "Ginkaku-ji — Shokoku-ji",
+      "https://www.shokoku-ji.jp/ginkakuji/"
+    ]
+  ],
+  "d13a1": [
+    [
+      "teamLab Biovortex Kyoto",
+      "https://www.teamlab.art/e/biovortexkyoto/"
+    ]
+  ],
+  "d14a1": [
+    [
+      "Kinkaku-ji — Shokoku-ji",
+      "https://www.shokoku-ji.jp/kinkakuji/"
+    ]
+  ],
+  "d14a2": [
+    [
+      "Kyoto City Tourism Association — Arashiyama",
+      "https://ja.kyoto.travel/tourism/single01.php?category_id=1&tourism_id=1"
+    ]
+  ],
+  "d15a0": [
+    [
+      "Ryoan-ji",
+      "https://www.ryoanji.jp/"
+    ]
+  ],
+  "d15a1": [
+    [
+      "Ninna-ji — official site",
+      "https://ninnaji.jp/en/"
+    ]
+  ],
+  "d16a1": [
+    [
+      "Kyoto City Tourism Association — Pontocho",
+      "https://ja.kyoto.travel/tourism/single01.php?category_id=3&tourism_id=44"
+    ]
+  ],
+  "d17a1": [
+    [
+      "GO TOKYO — Tokyo Skytree",
+      "https://www.gotokyo.org/en/spot/6/index.html"
+    ]
+  ],
+  "d18a1": [
+    [
+      "GO TOKYO — Hama-rikyu Gardens",
+      "https://www.gotokyo.org/en/spot/20/"
+    ],
+    [
+      "GO TOKYO — Kiyosumi Gardens",
+      "https://www.gotokyo.org/en/spot/25/index.html"
+    ]
+  ],
+  "d19a0": [
+    [
+      "Gotokuji Temple — official site",
+      "https://gotokuji.jp/en/"
+    ]
+  ],
+  "d19a1": [
+    [
+      "GO TOKYO — Inokashira Park",
+      "https://www.gotokyo.org/en/spot/624/"
+    ]
+  ],
+  "d20a0": [
+    [
+      "GO TOKYO — Nezu-jinja Shrine",
+      "https://www.gotokyo.org/en/spot/70/"
+    ]
+  ],
+  "d21a0": [
+    [
+      "GO TOKYO — Akihabara",
+      "https://www.gotokyo.org/en/destinations/eastern-tokyo/akihabara/"
+    ]
+  ]
+};
+
+function renderDetailSources(pid){
+  const srcs = DETAIL_SOURCES[pid] || [];
+  if (!srcs.length) return '';
+  return `<div class="detail-sources"><div class="detail-sources-label">Background sources</div>` +
+    srcs.map(([label,url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a>`).join('') +
+    `<div class="detail-source-note">Background/history links only. Check the venue's own site for live opening hours, closures and booking rules.</div></div>`;
+}
+function showDetail(pid){
+  const detail = activityDetails[pid];
+  if (!detail) return;
+  document.getElementById('detailModalTitle').textContent = detail.title;
+  document.getElementById('detailModalBody').innerHTML = detail.body + renderDetailSources(pid);
+  document.getElementById('detailModal').removeAttribute('hidden');
+}
+function closeDetail(){
+  document.getElementById('detailModal').setAttribute('hidden', '');
+}
+
+function activityCard(pid, when, titleHtml, bodyText, opts){
+  opts = Object.assign({}, CARD_HINTS[pid] || {}, opts || {});
+  const status = getStatus(pid);
+  const dimClass = status !== 'default' ? ' is-dimmed' : '';
+  const glyphs = { default:'–', done:'✓', skipped:'✕' };
+  const detailBtn = activityDetails[pid] ? `<button class="detail-btn" type="button" onclick="showDetail('${pid}')" aria-label="More detail">ⓘ</button>` : '';
+  return `<div class="block block--activity status-${status}${dimClass}" data-pid="${pid}">
+      ${opts.extraHtml || ''}
+      <div class="plan">
+        <div class="when">
+          <button type="button" class="status-marker state-${status}" onclick="toggleStatus('${pid}')" aria-label="${status === 'default' ? 'Mark as done' : status === 'done' ? 'Mark as skipped' : 'Mark as not done'}">${glyphs[status]}</button>
+          ${when ? `<div class="when-label">${when}</div>` : ''}
+        </div>
+        <div class="what">
+          <strong>${titleHtml}${detailBtn}</strong>
+          <div class="collapsible"><div class="collapsible-inner">
+            ${bodyText ? `<p>${bodyText}</p>` : ''}
+            ${opts.alt ? `<span class="alt">Alternatively: ${opts.alt}</span>` : ''}
+            ${opts.hours ? `<span class="hours">${opts.hours}</span>` : ''}
+            ${opts.cash ? `<span class="cash">💴 ${opts.cash}</span>` : ''}
+          </div></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleStatus(pid){
+  const order = ['default','done','skipped'];
+  const next = order[(order.indexOf(getStatus(pid)) + 1) % order.length];
+  statusStore[pid] = next;
+  saveStatusStore();
+  const glyphs = { default:'–', done:'✓', skipped:'✕' };
+  const cardEl = document.querySelector(`[data-pid="${pid}"]`);
+  if (!cardEl) return;
+  cardEl.classList.remove('status-default', 'status-done', 'status-skipped');
+  cardEl.classList.add(`status-${next}`);
+  cardEl.classList.toggle('is-dimmed', next !== 'default');
+  const marker = cardEl.querySelector('.status-marker');
+  marker.className = `status-marker state-${next}`;
+  marker.textContent = glyphs[next];
+}
+
+function escapeHtml(str){
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ---- quick-add: lightweight new activities ----
+function getQuickAdds(dayId){
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem('tripQuickAdds') || '{}'); } catch(e){}
+  return all[dayId] || [];
+}
+function addQuickActivity(dayId){
+  const input = document.getElementById(`quickAddInput-${dayId}`);
+  const val = (input.value || '').trim();
+  if (!val) return;
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem('tripQuickAdds') || '{}'); } catch(e){}
+  if (!all[dayId]) all[dayId] = [];
+  all[dayId].push({ id: 'q' + Date.now(), title: val });
+  try { localStorage.setItem('tripQuickAdds', JSON.stringify(all)); } catch(e){}
+  selectDay(dayId);
+}
+function removeQuickActivity(dayId, id){
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem('tripQuickAdds') || '{}'); } catch(e){}
+  if (all[dayId]) all[dayId] = all[dayId].filter(qa => qa.id !== id);
+  try { localStorage.setItem('tripQuickAdds', JSON.stringify(all)); } catch(e){}
+  let statusAll = {};
+  try { statusAll = JSON.parse(localStorage.getItem('tripActivityStatus') || '{}'); } catch(e){}
+  delete statusAll[id];
+  try { localStorage.setItem('tripActivityStatus', JSON.stringify(statusAll)); } catch(e){}
+  statusStore = statusAll;
+  selectDay(dayId);
+}
+function renderQuickAddBox(dayId){
+  return `<div class="block quickadd-block">
+        <div class="block-label">Add something</div>
+        <div class="quickadd-row">
+          <input type="text" id="quickAddInput-${dayId}" class="quickadd-input" placeholder="e.g. a place someone recommended">
+          <button class="quickadd-btn" type="button" onclick="addQuickActivity(${dayId})">Add</button>
+        </div>
+      </div>`;
+}
+
+// ---- notes ----
+function getNote(dayId){
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem('tripNotes') || '{}'); } catch(e){}
+  return all[dayId] || '';
+}
+function saveNote(dayId, value){
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem('tripNotes') || '{}'); } catch(e){}
+  all[dayId] = value;
+  try { localStorage.setItem('tripNotes', JSON.stringify(all)); } catch(e){}
+}
+function renderNotesBox(dayId){
+  return `<div class="block notes-block">
+        <div class="block-label">Notes</div>
+        <textarea class="notes-textarea" id="notesInput-${dayId}" placeholder="Anything to remember about today..." oninput="saveNote(${dayId}, this.value)">${escapeHtml(getNote(dayId))}</textarea>
+      </div>`;
+}
+
+// ---- calming proverb cards ----
+function categoryClass(category){
+  if (category.includes("Acceptance")) return "cat-rose";
+  if (category.includes("Nature") || category.includes("Impermanence")) return "cat-teal";
+  if (category.includes("Mindset") || category.includes("Inner Stillness")) return "cat-wood";
+  if (category.includes("Resilience") || category.includes("Subtle Strength")) return "cat-sky";
+  if (category.includes("Harmony") || category.includes("Balance")) return "cat-lavender";
+  return "cat-rose";
+}
+
+function proverbCardHtml(p){
+  const cls = categoryClass(p.category);
+  return `<div class="proverb ${cls}">
+        <div class="proverb-cat">${p.category}</div>
+        <div class="proverb-native">${p.saying_kanji_kana}</div>
+        <div class="proverb-phonetic">${p.saying_romaji}</div>
+        <div class="proverb-meaning">"${p.meaning}"</div>
+        <div class="proverb-advice">${p.advice}</div>
+      </div>`;
+}
+
+function getShowProverbs(){
+  try { const v = localStorage.getItem('tripShowProverbs'); return v === null ? true : v === 'true'; } catch(e){ return true; }
+}
+function setShowProverbs(val){
+  try { localStorage.setItem('tripShowProverbs', val ? 'true' : 'false'); } catch(e){}
+  if (selected.type === 'settings') selectSettings();
+}
+
+let proverbBag = [];
+let lastProverbIdx = -1;
+function randomProverb(){
+  if (proverbBag.length === 0){
+    proverbBag = calmingSayings.map((_, i) => i);
+    for (let i = proverbBag.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [proverbBag[i], proverbBag[j]] = [proverbBag[j], proverbBag[i]];
+    }
+    if (proverbBag.length > 1 && proverbBag[proverbBag.length - 1] === lastProverbIdx){
+      const swapWith = Math.floor(Math.random() * (proverbBag.length - 1));
+      [proverbBag[proverbBag.length - 1], proverbBag[swapWith]] = [proverbBag[swapWith], proverbBag[proverbBag.length - 1]];
+    }
+  }
+  const idx = proverbBag.pop();
+  lastProverbIdx = idx;
+  return calmingSayings[idx];
+}
+
+function renderDayWithProverbs(headerHtml, sections){
+  const flat = [];
+  const cardPositions = [];
+  sections.forEach(sec => {
+    if (sec.fixed !== undefined){ flat.push(sec.fixed); return; }
+    flat.push(`<div class="section-label">${sec.label}</div>`);
+    sec.cards.forEach(c => { cardPositions.push(flat.length); flat.push(c); });
+  });
+  const result = flat.slice();
+  if (getShowProverbs()){
+    if (cardPositions.length > 1){
+      const insertPos = cardPositions[1 + Math.floor(Math.random() * (cardPositions.length - 1))];
+      result.splice(insertPos, 0, proverbCardHtml(randomProverb()));
+    }
+    result.push(proverbCardHtml(randomProverb()));
+  }
+  return headerHtml + result.join('');
+}
+
+// ---- trip data ----
+const CITY_NAMES = { tok:"Tokyo", kyo:"Kyoto", sap:"Hokkaido", osa:"Osaka", miy:"Miyajima" };
+const CITY_WIKI = {
+  tok:"https://en.wikipedia.org/wiki/Tokyo",
+  kyo:"https://en.wikipedia.org/wiki/Kyoto",
+  sap:"https://en.wikipedia.org/wiki/Hokkaido",
+  osa:"https://en.wikipedia.org/wiki/Osaka",
+  miy:"https://en.wikipedia.org/wiki/Miyajima"
+};
+
+const calmingSayingsRaw = [
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Shikata ga nai", "saying_kanji_kana": "仕方がない", "meaning": "It cannot be helped.", "advice": "Focus your energy on what you can change, not what you cannot." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Nana korobi ya oki", "saying_kanji_kana": "七転び八起き", "meaning": "Fall seven times, stand up eight.", "advice": "True peace comes from knowing you can always rebuild." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Sarumono wa ozu, kitarmono wa kobamazu", "saying_kanji_kana": "去る者は追わず、来る者は拒まず", "meaning": "Do not chase those who leave, do not reject those who arrive.", "advice": "Flow with life's social currents without resistance." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Meido no miyage", "saying_kanji_kana": "冥土の土産", "meaning": "A souvenir from life.", "advice": "View your current struggles as just another interesting story for the future." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Akirame wa kanjin", "saying_kanji_kana": "諦めは肝心", "meaning": "Acceptance is vital.", "advice": "Giving up on the unchangeable brings immediate peace." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Omoitatta ga kikitsujitsu", "saying_kanji_kana": "思い立ったが吉日", "meaning": "The day you decide to do it is your lucky day.", "advice": "Don't stress about the past or the perfect timing." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Mizu ni nagasu", "saying_kanji_kana": "水に流す", "meaning": "Let it flow in the water.", "advice": "Forgive, forget, and let past grievances wash away." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Asahi wa nishi kara noboranai", "saying_kanji_kana": "朝日は西から昇らない", "meaning": "The morning sun does not rise in the west.", "advice": "Accept the natural, unchangeable laws of reality." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Kouka fukutsure", "saying_kanji_kana": "巧遅は拙速に如かず", "meaning": "Better to be slow and deliberate than fast and sloppy.", "advice": "Remind yourself to breathe and slow down." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Un wo ten ni makaceru", "saying_kanji_kana": "運を天に任せる", "meaning": "Leave your fate to heaven.", "advice": "Do your best, then let go of the outcome entirely." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Shouganai", "saying_kanji_kana": "しょうがない", "meaning": "There is no use crying over it.", "advice": "Accept the current reality as it is to reclaim your peace." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Fukusui bon ni kaerazu", "saying_kanji_kana": "覆水盆に返らず", "meaning": "Spilt water will not return to the tray.", "advice": "Stop replaying what can't be reversed; put that energy toward what's still in front of you." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Anzuru yori umu ga yasushi", "saying_kanji_kana": "案ずるより産むが易し", "meaning": "Giving birth is easier than worrying about it.", "advice": "Let yourself begin before you feel ready — most fears shrink once you're actually inside the moment." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Kahou wa nete mate", "saying_kanji_kana": "果報は寝て待て", "meaning": "Sleep and wait for good fortune.", "advice": "Do your part, then step back and let the rest unfold in its own time." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Nokorimono ni wa fuku ga aru", "saying_kanji_kana": "残り物には福がある", "meaning": "There is fortune in what's left over.", "advice": "Don't measure your day by what you missed — what remains can be exactly enough." },
+  { "category": "🌸 Acceptance & Letting Go", "saying_romaji": "Rainen no koto wo iu to oni ga warau", "saying_kanji_kana": "来年のことを言うと鬼が笑う", "meaning": "If you speak of next year, the demons laugh.", "advice": "Hold your plans loosely — nobody, however careful, can see that far ahead." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Mono no aware", "saying_kanji_kana": "物の哀れ", "meaning": "The beautiful pathos of things.", "advice": "Finding deep peace in the fleeting nature of life and beauty." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Kachou fugetsu", "saying_kanji_kana": "花鳥風月", "meaning": "Flower, bird, wind, moon.", "advice": "Experience the peace of the universe by immersing yourself in nature." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Ukiyo", "saying_kanji_kana": "浮世", "meaning": "The floating world.", "advice": "Live detached from life's anxieties, drifting calmly through its changes." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Sanka suimei", "saying_kanji_kana": "山華水明", "meaning": "Purple mountains, clear streams.", "advice": "A reminder of the pristine, untouched quiet of the natural world." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Seifu meigetsu", "saying_kanji_kana": "清風明月", "meaning": "Pure wind and a bright moon.", "advice": "True peace requires zero wealth or material possessions." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Shiki oriori", "saying_kanji_kana": "四季折々", "meaning": "Season by season.", "advice": "Trust that your current emotional winter will naturally shift into spring." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Taika bansei", "saying_kanji_kana": "大器晩成", "meaning": "Great talents mature late.", "advice": "Do not rush your growth; nature never rushes, yet everything gets done." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Chiri mo tsumoreba yama to naru", "saying_kanji_kana": "ちりもつもればやまとなる", "meaning": "Even dust, when piled up, becomes a mountain.", "advice": "Calmly make small daily progress." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Kachou fugetsu ni asobu", "saying_kanji_kana": "花鳥風月に遊ぶ", "meaning": "Play with the flowers, birds, wind, and moon.", "advice": "Find tranquility by becoming a spectator of nature." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Keichou fubi", "saying_kanji_kana": "桂長風微", "meaning": "The cassia tree grows tall while the wind blows gently.", "advice": "Trust that peaceful environments nurture deep growth." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Mizu wa hounen ni shitagau", "saying_kanji_kana": "水は方円に随う", "meaning": "Water shapes itself to any container.", "advice": "Be like water and adapt effortlessly to your surroundings." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Shousha hitsumetsu, esha jouri", "saying_kanji_kana": "生者必滅、会者定離", "meaning": "All who are born must die; all who meet must part.", "advice": "Let that truth deepen your appreciation of this specific moment, rather than sadden you." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Aki no hi wa tsurube otoshi", "saying_kanji_kana": "秋の日は釣瓶落とし", "meaning": "Autumn daylight falls like a well-bucket.", "advice": "A good day can turn to evening quickly — that's a reason to notice it, not to rush it." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Minoru hodo atama wo tareru inaho kana", "saying_kanji_kana": "実るほど頭を垂れる稲穂かな", "meaning": "The riper the rice ear, the lower it bows.", "advice": "Let real growth soften you rather than harden you." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Ungai souten", "saying_kanji_kana": "雲外蒼天", "meaning": "Blue sky beyond the clouds.", "advice": "The overcast feeling passing through you is weather, not climate — it will move on." },
+  { "category": "🌿 Nature & Impermanence (Mono no Aware)", "saying_romaji": "Momo kuri sannen, kaki hachinen", "saying_kanji_kana": "桃栗三年柿八年", "meaning": "Peaches and chestnuts take three years, persimmons take eight.", "advice": "Let your own timeline be its own — comparing your pace to someone else's tree misses the point." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Wabi-sabi", "saying_kanji_kana": "侘寂", "meaning": "Perfect imperfection.", "advice": "Finding perfect peace in imperfection, incompletion, and the simple things." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Ichigo ichie", "saying_kanji_kana": "一期一会", "meaning": "One time, one meeting.", "advice": "Treasure this exact, unrepeatable moment without worrying about the next." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Heijoshin", "saying_kanji_kana": "平常心", "meaning": "Presence of mind.", "advice": "Maintain a calm, everyday spirit regardless of the chaos surrounding you." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shinra bansho", "saying_kanji_kana": "森羅万象", "meaning": "All things in nature.", "advice": "Remember how small your current worry is in the grand scope of the universe." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Fudoshin", "saying_kanji_kana": "不動心", "meaning": "Immovable mind.", "advice": "Cultivate a heart that cannot be shaken by external storms." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Meikyo shisui", "saying_kanji_kana": "明鏡止水", "meaning": "Clear mirror, still water.", "advice": "A mind kept so calm and clear that it perfectly reflects reality." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Chisoku", "saying_kanji_kana": "知足", "meaning": "Know what is enough.", "advice": "True wealth and tranquility belong to those who are content with what they have." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Yutori", "saying_kanji_kana": "ゆとり", "meaning": "Living with spaciousness.", "advice": "Leaving breathing room in your schedule, mind, and life." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shoujin ketsujou", "saying_kanji_kana": "精進潔斎", "meaning": "Purification of the mind and body.", "advice": "Intentionally clearing away mental clutter to restore your inner sanctuary." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Anjin ritsumei", "saying_kanji_kana": "安心立命", "meaning": "Finding absolute peace of mind through faith or philosophy.", "advice": "Live completely free from existential anxiety." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shoshin wasuru bekarazu", "saying_kanji_kana": "初心忘るべからず", "meaning": "Never forget the beginner's spirit.", "advice": "Approach even the familiar with fresh eyes — it keeps you curious instead of jaded." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Shiranu ga hotoke", "saying_kanji_kana": "知らぬが仏", "meaning": "Not knowing is Buddha.", "advice": "You don't have to have an opinion on everything — some peace comes from simply not checking." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Chinmoku wa kin", "saying_kanji_kana": "沈黙は金", "meaning": "Silence is gold.", "advice": "A quiet response is still a complete one — you don't owe every moment a reaction." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Onko chishin", "saying_kanji_kana": "温故知新", "meaning": "Cherish the old to know the new.", "advice": "Let old memories and old lessons inform you gently rather than pulling you backward." },
+  { "category": "🍵 Mindset & Inner Stillness", "saying_romaji": "Hara hachibunme ni isha irazu", "saying_kanji_kana": "腹八分目に医者いらず", "meaning": "Eat until eighty percent full and you won't need a doctor.", "advice": "Enough is a completeness of its own; you don't need to fill every last space." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Yanagi ni yukioro nashi", "saying_kanji_kana": "柳に雪折れなし", "meaning": "The willow branches do not break under the snow.", "advice": "Yielding and being flexible is your greatest strength." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ame futte ji katamaru", "saying_kanji_kana": "雨降って地固まる", "meaning": "After rain, the ground hardens.", "advice": "Adversity only serves to make your foundation more stable." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Gaman", "saying_kanji_kana": "我慢", "meaning": "Enduring the seemingly unbearable with patience and dignity.", "advice": "Keep your composure through internal discipline." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ningen banji saiou ga uma", "saying_kanji_kana": "人間万事塞翁が馬", "meaning": "Life is like the horse of the old man at the frontier.", "advice": "Bad luck can be good luck in disguise, so stay even-tempered." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Shunba toufu", "saying_kanji_kana": "駿馬東風", "meaning": "Like the east wind blowing past a swift horse.", "advice": "Let criticisms and worries brush past you without leaving a scratch." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Naiteru mizu ni sakana sumu", "saying_kanji_kana": "泣いてる水に魚住む", "meaning": "Fish live even in weeping waters.", "advice": "Life can still thrive and be beautiful during sad times." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Taiki seijaku", "saying_kanji_kana": "大気静寂", "meaning": "Deep atmosphere, profound silence.", "advice": "Cultivate a quiet, vast presence that cannot be easily disturbed." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ishin-denshin", "saying_kanji_kana": "以心伝心", "meaning": "Heart to heart communication.", "advice": "Quietly understanding others without the need for loud, exhausting words." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Toko no haru", "saying_kanji_kana": "常個の春", "meaning": "An eternal spring within.", "advice": "Cultivating a mindset so warm that it stays calm even during life's winters." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Fuuha wo shinogu", "saying_kanji_kana": "風波を凌ぐ", "meaning": "Weathering the wind and waves.", "advice": "Remind yourself that you have the quiet strength to ride out any temporary storm." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ryouyaku wa kuchi ni nigashi", "saying_kanji_kana": "良薬は口に苦し", "meaning": "Good medicine tastes bitter.", "advice": "Let a hard truth or a hard season do its work — discomfort is not the same as harm." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Ku areba raku ari", "saying_kanji_kana": "苦あれば楽あり", "meaning": "Where there is hardship, there is also ease.", "advice": "Whatever hard stretch you're in is already, quietly, making room for its opposite." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Korobanu saki no tsue", "saying_kanji_kana": "転ばぬ先の杖", "meaning": "A walking stick before you stumble.", "advice": "A little steady preparation now is its own form of calm — you're not being paranoid, you're being kind to your future self." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Nito wo ou mono wa itto wo mo ezu", "saying_kanji_kana": "二兎を追う者は一兎をも得ず", "meaning": "Chase two rabbits, catch neither.", "advice": "Choosing one thing to give your full attention to isn't a loss — it's how anything gets done well." },
+  { "category": "🪵 Resilience & Subtle Strength", "saying_romaji": "Mateba kairo no hiyori ari", "saying_kanji_kana": "待てば海路の日和あり", "meaning": "Wait, and fair sailing weather will come.", "advice": "If the timing feels wrong, that's information, not failure — hold steady and let it turn." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Wa", "saying_kanji_kana": "和", "meaning": "Harmony.", "advice": "Living in pursuit of harmony, balance, and peaceful coexistence with all things." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Juu noku gou wo seisu", "saying_kanji_kana": "柔よく剛を制す", "meaning": "Softness overcomes hardness.", "advice": "Gentleness is far more powerful than force." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "In-ou", "saying_kanji_kana": "陰応", "meaning": "The quiet harmony of yin and yang.", "advice": "Accepting that life requires a balance of rest and action, dark and light." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Ikigai", "saying_kanji_kana": "生き甲斐", "meaning": "A reason for being.", "advice": "Finding peace by focusing purely on what brings you quiet joy and purpose." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Shizun de mo mata ukabu", "saying_kanji_kana": "沈んでもまた浮かぶ", "meaning": "Even if you sink, you will float to the top again.", "advice": "Trust the natural buoyancy of your spirit." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Seiseitsuatsatsu", "saying_kanji_kana": "清々颯々", "meaning": "Pure, fresh, and rustling like the wind.", "advice": "The feeling of a mind cleared of clutter." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Onryo jihitsu", "saying_kanji_kana": "穏良慈筆", "meaning": "Gentle, kind, and compassionate.", "advice": "Treat your own mistakes with this exact mindset." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Yugen", "saying_kanji_kana": "幽玄", "meaning": "A profound, mysterious sense of the beauty of the universe.", "advice": "Leaves your daily anxieties feeling distant and small." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Sannin yoreba Monju no chie", "saying_kanji_kana": "三人寄れば文殊の知恵", "meaning": "When three gather, the wisdom of Manjushri appears.", "advice": "You don't have to solve everything alone — invite others in and let the answer emerge between you." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Rui wa tomo wo yobu", "saying_kanji_kana": "類は友を呼ぶ", "meaning": "Like calls to like.", "advice": "Notice who and what you're drawn to — it says something true about where you already are." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Uogokoro areba mizugokoro", "saying_kanji_kana": "魚心あれば水心", "meaning": "If the fish has a heart for the water, the water has a heart for the fish.", "advice": "Small warmth extended rarely disappears without trace — trust the exchange." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Nasake wa hito no tame narazu", "saying_kanji_kana": "情けは人の為ならず", "meaning": "Kindness is not just for others' sake.", "advice": "Generosity is never purely one-directional, even when the return isn't visible yet." },
+  { "category": "🌊 Harmony & Balance", "saying_romaji": "Sode furiau mo tashou no en", "saying_kanji_kana": "袖振り合うも多生の縁", "meaning": "Even a brushing of sleeves is a bond from a past life.", "advice": "Nothing you cross paths with today is entirely without meaning, however small." }
+];
+const calmingSayings = calmingSayingsRaw.map(p => ({...p, saying: p.saying_kanji_kana, saying_phonetic: p.saying_romaji}));
+
+const days = [
+// ── DAY 0: 8 Aug — Arrive Tokyo (Haneda) ──────────────────────────────────────
+{ id:0, date:"8 August", weekday:"Friday", month:"AUG", num:8, city:"tok", travel:true,
+  title:"London → Tokyo",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Friday, 8 August</div>
+    <div class="detail-title">London → Tokyo</div>
+    <span class="badge tok">ARRIVAL DAY · TOKYO</span>
+  `, [
+    {fixed: transitBlock("Flight", [
+      { from:{code:"LHR", time:"09:25", tz:"BST"}, to:{code:"HND", time:"07:00", tz:"JST +1"}, train:"BA0007 · Business · Seat 9A · Ref: ZM8FNB", dur:"11h 35m", refId:"d0-lhr-hnd" }
+    ])},
+    {fixed: hotelBlock("Mercure Tokyo Haneda Airport", "Mercure Tokyo Haneda Airport", null, "3:00pm", "9 Aug until 11:00", "Ref: QJKHFLCK · Paid · Luggage storage available from 07:00 arrival")},
+    {label:"Morning", cards:[
+      activityCard("d0a0", "07:00", "Arrive Haneda"+pin("Haneda Airport International Terminal Tokyo"), "Arrived on BA0007 Business Class. Immigration, bags collected, luggage dropped at Mercure bag storage. Headed straight into Tokyo for the day."),
+      activityCard("d0a1", "10:30", "Imperial Palace Interior Tour"+pin("Imperial Palace Tokyo"), "The Imperial Household Agency runs two free guided tours daily (10:00 and 13:30) for up to 300 visitors — first come, first served, no booking required. Walked through the palace grounds and inner areas with a guide, seeing parts of the imperial residence not visible from the East Garden.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d0a2", "", "Kanda"+pin("Kanda Tokyo"), "Wandered through the Kanda area after the palace — the district around the station has an old Tokyo character, bookshops, specialist shops and narrow streets."),
+      activityCard("d0a3", "", "Akihabara"+pin("Akihabara Tokyo"), "Walked around Akihabara for a while — the electronics and anime district, familiar from previous visits but always worth a browse.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d0a4", "", "Return to hotel · Early night", "Back to the Mercure Haneda. Early night ahead of the HD21 flight to Sapporo tomorrow at 11:15.")
+    ]}
+  ])
+},
+// ── DAY 1: 9 Aug — Arrive Sapporo ─────────────────────────────────────────────
+{ id:1, date:"9 August", weekday:"Saturday", month:"AUG", num:9, city:"sap", travel:true,
+  title:"Tokyo → Sapporo",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Saturday, 9 August</div>
+    <div class="detail-title">Tokyo → Sapporo</div>
+    <span class="badge sap">TRAVEL DAY · TOKYO → SAPPORO</span>
+  `, [
+    {fixed: transitBlock("Flight", [
+      { from:{code:"HND", time:"11:15", tz:"T2"}, to:{code:"CTS", time:"12:45", tz:"T D"}, train:"HD21 · Air Do · Economy · Seat 12A · Ref: DSX8A4", dur:"1h 30m", refId:"d1-hnd-cts" }
+    ])},
+    {fixed: hotelBlock("JR Inn Sapporo Kita 2-jo", "JR Inn Sapporo Kita 2-jo", "Chuo-ku Kita 2Jo Nishi 2-8-1, Sapporo", "3:00pm", "14 Aug until 10:00", "Conf: 6756954803 · PIN: 1457 · Paid · Breakfast included each morning")},
+    {label:"Morning", cards:[
+      activityCard("d1a0", "", "Metro to Haneda · Automatic check-in"+pin("Haneda Airport Domestic Terminal Tokyo"), "Took the metro to Haneda domestic terminal. Automatic check-in for the Air Do flight to New Chitose.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d1a1", "12:45", "Arrive New Chitose · Train to Sapporo"+pin("Sapporo Station"), "JR Rapid Airport from New Chitose to Sapporo (~37 mins, ¥1,150). Too early to check in — left luggage at the hotel and headed out on foot."),
+      activityCard("d1a2", "", "Walk along Odori Park"+pin("Odori Park Sapporo"), "The long central park running east-west through the city, with the TV Tower at the eastern end. A good first walk to get a feel for the city's grid layout.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d1a3", "", "Check in · Sapporo TV Tower"+pin("Sapporo TV Tower"), "Checked in to the JR Inn. Then up the TV Tower — walk-up, ¥1,000, city grid views and mountain backdrop in the evening light."),
+      activityCard("d1a4", "", "Susukino · Night photography"+pin("Susukino Sapporo"), "Walked to Susukino, the entertainment district — neon signs, covered arcades, izakayas and ramen shops. Good for night photography. Walked back through Odori Park at night.")
+    ]}
+  ])
+},
+// ── DAY 2: 10 Aug — Otaru ────────────────────────────────────────────────────
+{ id:2, date:"10 August", weekday:"Sunday", month:"AUG", num:10, city:"sap", travel:false,
+  title:"Sapporo — Otaru & Mt Moiwa",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Sunday, 10 August</div>
+    <div class="detail-title">Otaru & Mt Moiwa Ropeway</div>
+    <span class="badge sap">HOKKAIDO · DAY TRIP</span>
+  `, [
+    {label:"Getting there", cards:[
+      activityCard("d2a0", "~11:00", "JR to Otaru"+pin("Otaru Station"), "JR Hakodate Line from Sapporo to Otaru — ~40 minutes, ¥750.")
+    ]},
+    {label:"Otaru", cards:[
+      activityCard("d2a1", "", "Miyakodori Shopping District"+pin("Miyakodori Otaru"), "The covered shopping street in central Otaru — a good introduction to the town before heading toward the waterfront."),
+      activityCard("d2a2", "", "Otaru Canal"+pin("Otaru Canal"), "The 1.3km canal lined with old Meiji and Taisho-era stone warehouses converted into restaurants, cafes and craft shops. Very photogenic — walked the towpath and explored the side streets."),
+      activityCard("d2a3", "", "Waterfront & Cruise Terminal"+pin("Otaru Port Cruise Terminal"), "Walked along the waterfront to the cruise terminal area — the working port side of Otaru, quite different in character from the canal district."),
+      activityCard("d2a4", "", "Sakaimachi Street"+pin("Sakaimachi Street Otaru"), "The main historic shopping street — glassblowing shops (originally for fishing floats) and music boxes. Browsed without pressure to buy."),
+      activityCard("d2a5", "", "Steam Clock"+pin("Otaru Steam Clock"), "The famous steam-powered clock on Sakaimachi Street, imported from Vancouver. Sounds every quarter hour."),
+      activityCard("d2a6", "", "Suitengu Shrine & Viewpoint"+pin("Suitengu Shrine Otaru"), "The small shrine dedicated to the sea god, with a viewpoint over the port and Otaru bay — a good spot for photos looking back over the town and harbour.")
+    ]},
+    {label:"Evening — back in Sapporo", cards:[
+      activityCard("d2a7", "", "Return to Sapporo · Mt Moiwa Ropeway"+pin("Sapporo Moiwa Ropeway"), "Back to Sapporo then out again to Mt Moiwa ropeway for dusk and night views. Two-stage ropeway to the 531m summit. One of Sapporo's great night views — the city grid spread out below with the mountains behind, lit up after dark.")
+    ]}
+  ])
+},
+// ── DAY 3: 11 Aug — Furano/Biei Tour ─────────────────────────────────────────
+{ id:3, date:"11 August", weekday:"Monday", month:"AUG", num:11, city:"sap", travel:false,
+  title:"Sapporo — Furano & Biei",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Monday, 11 August</div>
+    <div class="detail-title">Furano & Biei Photo Tour</div>
+    <span class="badge sap">HOKKAIDO · ORGANISED TOUR</span>
+  `, [
+    {fixed: tipBlock("GetYourGuide Tour", [
+      "Pickup 08:15 at Kanamotohall (Sapporo Civic Hall). Duration ~10 hours. Ref: GYGX7M9HYM3A · Paid · Free cancellation until 10 Aug.",
+      "11 Aug is Mountain Day (public holiday) — organised tour removes all train stress and covers stops impossible to reach independently."
+    ])},
+    {label:"Tour stops", cards:[
+      activityCard("d3a0", "", "Shirogane Blue Pond"+pin("Shirogane Blue Pond Biei"), "30 mins, guided tour and photo stop. The famous turquoise-blue pond caused by minerals — equally stunning in any weather."),
+      activityCard("d3a1", "", "Shiroganefudono Falls"+pin("Shirogane Fudono Falls Biei"), "20 mins, photo stop. A waterfall not reachable independently — a bonus of the organised tour."),
+      activityCard("d3a2", "", "Roller Coaster Road"+pin("Roller Coaster Road Biei"), "Scenic drive through the famous undulating patchwork fields of Kamifurano."),
+      activityCard("d3a3", "", "Shikisai No Oka"+pin("Shikisai no Oka Biei"), "1 hour, guided tour and free time. Flower hill with panoramic views — better for August blooms than Farm Tomita, with a wider variety of summer flowers."),
+      activityCard("d3a4", "", "Christmas Tree"+pin("Christmas Tree Biei"), "15 mins. The iconic lone tree in a field — a classic Hokkaido photography subject."),
+      activityCard("d3a5", "", "Herb Garden Furano"+pin("Herb Garden Furano"), "20 min break."),
+      activityCard("d3a6", "", "Farm Tomita"+pin("Farm Tomita Furano"), "1 hour, guided tour. The famous flower farm. By mid-August lavender is largely finished but sunflowers, dahlias, ageratum and other summer flowers bloom across the 12 gardens.")
+    ]}
+  ])
+},
+// ── DAY 4: 12 Aug — Noboribetsu/Lake Toya Tour ───────────────────────────────
+{ id:4, date:"12 August", weekday:"Tuesday", month:"AUG", num:12, city:"sap", travel:false,
+  title:"Sapporo — Noboribetsu & Lake Toya",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Tuesday, 12 August</div>
+    <div class="detail-title">Noboribetsu & Lake Toya Tour</div>
+    <span class="badge sap">HOKKAIDO · ORGANISED TOUR</span>
+  `, [
+    {fixed: tipBlock("GetYourGuide Tour", [
+      "Pickup 07:40 at Sapporo TV Tower (1st floor tourist information centre). Duration ~10 hours. Ref: GYGZGZXFGK6V · Paid.",
+      "Photography-focused tour — almost every stop labelled 'photo stop, free time'. Bring cash for Mt Usu ropeway (additional fee, not included in tour price)."
+    ])},
+    {label:"Tour stops", cards:[
+      activityCard("d4a0", "", "Jigokudani — Hell Valley"+pin("Jigokudani Hell Valley Noboribetsu"), "35 mins, photo stop. Volcanic hell valley with steaming vents, vivid mineral colours and an unearthly landscape."),
+      activityCard("d4a1", "", "Cape Chikyu"+pin("Cape Chikyu Noboribetsu"), "25 mins, photo stop. Dramatic coastal headland with sea cliff views — unique to this tour and very photogenic."),
+      activityCard("d4a2", "", "Shikotsu-Toya Silo Observation Deck"+pin("Shikotsu Toya National Park Observation Deck"), "30 mins, panoramic views over the national park."),
+      activityCard("d4a3", "", "Mt Usu-Shinzan Ropeway"+pin("Usuzan Ropeway Lake Toya"), "80 mins, additional fee. Up the active volcano above Lake Toya — extraordinary views of eruption scars, lava fields and the lake below."),
+      activityCard("d4a4", "", "Showa-Shinzan"+pin("Showa Shinzan Lava Dome"), "20 mins. The lava dome that grew from a flat wheat field during the 1943–45 eruption — bizarre and unmistakable."),
+      activityCard("d4a5", "", "Shikotsu-Toya National Park"+pin("Lake Toya"), "35 mins lakeside. Lake Toya caldera lake with island in the centre.")
+    ]}
+  ])
+},
+// ── DAY 5: 13 Aug — Local Sapporo / Hill of Buddha ───────────────────────────
+{ id:5, date:"13 August", weekday:"Wednesday", month:"AUG", num:13, city:"sap", travel:false,
+  title:"Sapporo — Hill of the Buddha & Summer Festival",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Wednesday, 13 August</div>
+    <div class="detail-title">Hill of the Buddha & Sapporo Summer Festival</div>
+    <span class="badge sap">HOKKAIDO · SAPPORO</span>
+  `, [
+    {label:"Morning", cards:[
+      activityCard("d5a0", "", "Hill of the Buddha"+pin("Hill of the Buddha Makomanai Takino Cemetery Sapporo"), "Metro (Namboku Line) to Makomanai, then local bus to Makomanai Takino Cemetery. Tadao Ando's extraordinary buried Buddha — the giant seated figure emerges from a lavender-covered hill, only the head visible above the crest from outside. A long concrete tunnel leads into a sunken rotunda where the full 13.5m statue is revealed, framed by an open skylight. Unlike anything else in Japan.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d5a1", "", "Back into central Sapporo"+pin("Odori Park Sapporo"), "Returned to the city centre. Odori Park was hosting the Hokkai Bon Odori festival — traditional Japanese folk dancing in a circle around a wooden yagura scaffold, with live Bon Uta music. One of Hokkaido's most vibrant summer festivals, running 13–16 August as part of Obon. Visitors welcomed to join the dancing.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d5a2", "", "Sapporo Odori Beer Garden"+pin("Sapporo Odori Beer Garden"), "Further along Odori Park — the Sapporo Odori Beer Garden, Japan's largest beer garden, seating around 13,000 across a kilometre of the park. Beers from Sapporo's major breweries and international labels, with Hokkaido seasonal food. Ran from July to 18 August as part of the Sapporo Summer Festival. Final evening in Hokkaido.")
+    ]}
+  ])
+},
+// ── DAY 6: 14 Aug — Fly to Osaka ─────────────────────────────────────────────
+{ id:6, date:"14 August", weekday:"Thursday", month:"AUG", num:14, city:"osa", travel:true,
+  title:"Sapporo → Osaka",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Thursday, 14 August</div>
+    <div class="detail-title">Sapporo → Osaka</div>
+    <span class="badge osa">TRAVEL DAY · SAPPORO → OSAKA</span>
+  `, [
+    {fixed: transitBlock("Flight", [
+      { from:{code:"CTS", time:"11:10"}, to:{code:"ITM", time:"13:00"}, train:"NH774 · ANA · Economy · Seat 18H · Ref: D9DF7V", dur:"1h 50m", refId:"d6-cts-itm" }
+    ])},
+    {fixed: hotelBlock("Super Hotel Premier Osaka Honmachi Ekimae Natural Hot Springs", "Super Hotel Premier Osaka Honmachi", "Nishi-ku Nishihonmachi 1-5-10, Osaka", "3:00pm", "19 Aug until 11:00", "Conf: 5715569197 · PIN: 8096 · Pay at property · Natural hot springs onsen")},
+    {label:"Afternoon", cards:[
+      activityCard("d6a0", "13:00", "Arrive Itami · Metro to Honmachi"+pin("Super Hotel Premier Osaka Honmachi"), "Landed Itami. Metro to Honmachi. Waited a short while before checking in."),
+      activityCard("d6a1", "", "Shinsekai"+pin("Shinsekai Osaka"), "Walked around Shinsekai — the retro working-class district built in the early 20th century around the Tsutenkaku Tower. Atmospheric, slightly faded, very different from tourist Osaka."),
+      activityCard("d6a2", "", "Tsutenkaku Tower"+pin("Tsutenkaku Tower Osaka"), "Viewed from the ground — the iconic lattice tower that gives Shinsekai its character. Didn't go up.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d6a3", "", "Dotonbori at night"+pin("Dotonbori Osaka"), "Walked through Dotonbori in the evening — neon signs, the Glico Running Man, street food crowds."),
+      activityCard("d6a4", "", "Tombori Riverwalk Lantern Festival"+pin("Tombori Riverwalk Osaka"), "Walked along the Tombori Riverwalk lit by nearly 2,000 lanterns on both sides of the canal. Running nightly 19:00–02:00 throughout July and August as part of the Dotonbori summer festival.")
+    ]}
+  ])
+},
+// ── DAY 7: 15 Aug — Osaka (Obon) ─────────────────────────────────────────────
+{ id:7, date:"15 August", weekday:"Friday", month:"AUG", num:15, city:"osa", travel:false,
+  title:"Osaka — Namba Yasaka, Sumiyoshi Taisha & Nagai Park",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Friday, 15 August</div>
+    <div class="detail-title">Namba Yasaka, Sumiyoshi Taisha & Nagai Park</div>
+    <span class="badge osa">OSAKA · OBON PEAK</span>
+  `, [
+    {label:"Morning", cards:[
+      activityCard("d7a0", "", "Namba Yasaka Shrine — Lion Head Stage"+pin("Namba Yasaka Shrine Osaka"), "The striking 12-metre lion head stage in the backstreets of Namba — one of Osaka's most distinctive photo subjects. The gaping mouth is said to swallow evil spirits and bring good fortune."),
+      activityCard("d7a1", "", "Sumiyoshi Taisha"+pin("Sumiyoshi Taisha Osaka"), "Took the Nankai line south. One of Japan's oldest shrines, founded in 211 AD. The iconic arched Sorihashi bridge over the pond — walking over its steep curve is said to cleanse visitors of spiritual impurities. Explored the main shrine precincts at a relaxed pace."),
+      activityCard("d7a2", "Lunch", "Lunch by the temple"+pin("Sumiyoshi Taisha Osaka"), "Had lunch in the area around Sumiyoshi Taisha before heading north.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d7a3", "", "Nagai Botanical Garden"+pin("Nagai Botanical Garden Osaka"), "Went to the botanical gardens in Nagai Park rather than Sakai — closer and more practical in exceptional heat. Sunflowers were past their best but still in bloom. Caught glimpses of teamLab installations through the garden in daylight — an unexpected bonus."),
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d7a4", "", "Hotel onsen"+pin("Super Hotel Premier Osaka Honmachi"), "Returned to the hotel for the natural hot springs onsen — a welcome end to a very warm day.")
+    ]}
+  ])
+},
+// ── DAY 8: 16 Aug — Kobe & Himeji ────────────────────────────────────────────
+{ id:8, date:"16 August", weekday:"Saturday", month:"AUG", num:16, city:"osa", travel:false, trip:true,
+  title:"Osaka — Himeji & Kobe Day Trip",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Saturday, 16 August</div>
+    <div class="detail-title">Himeji & Kobe Day Trip</div>
+    <span class="badge osa">OSAKA · DAY TRIP · VERY HOT</span>
+  `, [
+    {fixed: tipBlock("Note", [
+      "Upper 30s all day — one of the hottest days of the trip. Air conditioning was a priority whenever available."
+    ])},
+    {label:"Morning — Himeji", cards:[
+      activityCard("d8a0", "", "Local train to Himeji"+pin("Himeji Station"), "Local trains from Osaka to Himeji — the castle is visible framed at the end of the main boulevard as you exit the station."),
+      activityCard("d8a1", "", "Himeji Castle"+pin("Himeji Castle"), "Walked to the castle and around the castle grounds. One of Japan's twelve original unmodified castles — the brilliant white exterior earns its nickname of the White Heron. Explored the grounds rather than going inside. Koko-en Garden adjacent.")
+    ]},
+    {label:"Afternoon — Kobe", cards:[
+      activityCard("d8a2", "", "Local train to Kobe"+pin("Sannomiya Station Kobe"), "Local train west to Kobe."),
+      activityCard("d8a3", "", "Kobe Harbour walk"+pin("Meriken Park Kobe"), "Walked along the harbour to Meriken Park. Saw the Kobe Port Tower from the ground. Examined the earthquake memorial — the section of pier preserved exactly as the 1995 Great Hanshin earthquake left it, with the tilted columns and collapsed walkway."),
+      activityCard("d8a4", "", "Nankinmachi — Kobe Chinatown"+pin("Nankinmachi Chinatown Kobe"), "Walked west to Nankinmachi, Kobe's compact Chinatown — colourful gate, food stalls, busy atmosphere."),
+      activityCard("d8a5", "", "Lunch in the centre"+pin("Sannomiya Kobe"), "Lunch in the central Sannomiya area."),
+      activityCard("d8a6", "", "Ikuta Shrine"+pin("Ikuta Shrine Kobe"), "Walked to Ikuta Shrine — one of Japan's oldest shrines, tucked into the city behind the shopping streets. A surprisingly serene spot."),
+      activityCard("d8a7", "", "Nunobiki Falls — Ontaki section"+pin("Nunobiki Falls Kobe"), "Subway back to Shin-Kobe Station then walked up the steep path above the station to the Ontaki (lower) waterfall section of Nunobiki Falls. Upper 30s heat — made it to the falls, cooling air near the water, then turned back. The path continues up to the herb garden but the heat made further climbing impractical.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d8a8", "", "Return to Osaka · Dotonbori at night"+pin("Dotonbori Osaka"), "Train back to Osaka. Evening walk through Dotonbori again at night — neon, lanterns along the Tombori Riverwalk, street food. Onsen at the hotel.")
+    ]}
+  ])
+},
+// ── DAY 9: 17 Aug — Osaka food/city ──────────────────────────────────────────
+{ id:9, date:"17 August", weekday:"Sunday", month:"AUG", num:17, city:"osa", travel:false,
+  title:"Osaka — Tondabayashi & Denden Town",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Sunday, 17 August</div>
+    <div class="detail-title">Tondabayashi & Denden Town</div>
+    <span class="badge osa">OSAKA</span>
+  `, [
+    {label:"Morning", cards:[
+      activityCard("d9a0", "", "Brunch in Shinsekai"+pin("Shinsekai Osaka"), "Started the day with brunch in Shinsekai — the retro district around Tsutenkaku, good for kushikatsu and a relaxed start.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d9a1", "", "Tondabayashi Jinaimachi"+pin("Tondabayashi Jinaimachi Osaka"), "Subway and train to Tondabayashi. The Jinaimachi district is one of Japan's best-preserved pre-modern townscapes — 16th-century merchant streets, old machiya houses, original layout almost entirely intact. Almost completely off the tourist trail. Unfortunately the entire area was closed — not a single building, shop or cafe open. Walked around the eerily deserted streets and photographed them, then headed back."),
+      activityCard("d9a2", "", "Tenjinbashisuji Shopping Street"+pin("Tenjinbashisuji Shopping Street Osaka"), "Returned to central Osaka. Walked along Tenjinbashisuji — Japan's longest covered shopping arcade, stretching about 2.6km through the city. Browsed shops, looked in windows, mostly just walked and absorbed the atmosphere."),
+      activityCard("d9a3", "", "Denden Town"+pin("Denden Town Osaka"), "Osaka's equivalent of Akihabara — the electronics and anime district around Nipponbashi. Had a browse around the shops.")
+    ]}
+  ])
+},
+// ── DAY 10: 18 Aug — Osaka city day ──────────────────────────────────────────
+{ id:10, date:"18 August", weekday:"Monday", month:"AUG", num:18, city:"osa", travel:false,
+  title:"Osaka — Relaxed City Day",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Monday, 18 August</div>
+    <div class="detail-title">Relaxed City Day</div>
+    <span class="badge osa">OSAKA</span>
+  `, [
+    {label:"Day", cards:[
+      activityCard("d10a0", "", "Relaxed Osaka wander"+pin("Namba Osaka"), "A deliberately slow day — walking around Osaka, looking in shops, photographing the city at a relaxed pace. No agenda, just existing in the city."),
+      activityCard("d10a1", "", "Dotonbori Ferris Wheel"+pin("Dotonbori Ferris Wheel Osaka"), "Rode the Dotonbori Ferris Wheel — the glittering gondola wheel mounted on the Ebisu-bashi building, with views over the Dotonbori canal and the city neon."),
+      activityCard("d10a2", "", "Tombori Riverwalk lanterns"+pin("Tombori Riverwalk Osaka"), "Another evening walk along the lantern-lit Tombori Riverwalk — a ritual by this point in the Osaka stay.")
+    ]}
+  ])
+},
+// ── DAY 11: 19 Aug — Hiroshima & Miyajima ────────────────────────────────────
+{ id:11, date:"19 August", weekday:"Tuesday", month:"AUG", num:19, city:"miy", travel:true,
+  title:"Osaka → Hiroshima → Miyajima",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Tuesday, 19 August</div>
+    <div class="detail-title">Hiroshima & Miyajima</div>
+    <span class="badge miy">TRAVEL DAY · HIROSHIMA → MIYAJIMA</span>
+  `, [
+    {fixed: transitBlock("Shinkansen & Ferry", [
+      { from:{code:"SHIN-OSAKA", time:"09:17"}, to:{code:"HIROSHIMA", time:"10:42"}, train:"Nozomi 7 · Car 14, Seat 17-E", dur:"1h 25m", refId:"d11-osaka-hiroshima" }
+    ])},
+    {fixed: hotelBlock("Itsukushimahigashimonzen Kikugawa", "Kikugawa Miyajima", "Miyajimacho 796, Hiroshima", "3:00pm–9:00pm", "20 Aug until 10:00", "Conf: 6671473298 · PIN: 3515 · Paid · Breakfast included · Traditional ryokan")},
+    {label:"Morning / Afternoon", cards:[
+      activityCard("d11a0", "10:42", "Hiroshima Peace Memorial Park"+pin("Hiroshima Peace Memorial Park"), "Forwarded main luggage from Osaka hotel to Kyoto. Visited Atomic Bomb Dome, cenotaph, and Ota River precinct in Hiroshima."),
+      activityCard("d11a1", "14:30", "Ferry to Miyajima"+pin("Miyajima Pier"), "High-speed Aqua Net ferry from Peace Park pier directly across the bay to Miyajima Island.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d11a2", "", "Miyajima at Dusk & Ryokan Stay"+pin("Itsukushima Shrine Miyajima"), "Checked into Kikugawa Ryokan. Explored Itsukushima Shrine and the floating Torii gate as day-trippers departed.")
+    ]}
+  ])
+},
+// ── DAY 12: 20 Aug — Miyajima → Kyoto ────────────────────────────────────────
+{ id:12, date:"20 August", weekday:"Wednesday", month:"AUG", num:20, city:"kyo", travel:true,
+  title:"Miyajima → Kyoto",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Wednesday, 20 August</div>
+    <div class="detail-title">Miyajima → Kyoto</div>
+    <span class="badge kyo">TRAVEL DAY · MIYAJIMA → KYOTO</span>
+  `, [
+    {fixed: transitBlock("Shinkansen", [
+      { from:{code:"HIROSHIMA", time:"12:03"}, to:{code:"KYOTO", time:"13:43"}, train:"Nozomi 94 · Car 14, Seat 8-E", dur:"1h 40m", refId:"d12-hiroshima-kyoto" }
+    ])},
+    {fixed: hotelBlock("Tokyu Stay Kyoto Sanjo-Karasuma", "Tokyu Stay Kyoto Sanjo Karasuma", "Nakagyo-ku Kakimotocho 392, Kyoto", "3:00pm", "25 Aug until 11:00", "Conf: 6592835246 · PIN: 2610 · Paid · Standard Double with washing machine")},
+    {label:"Morning", cards:[
+      activityCard("d12a0", "", "Quiet Morning on Miyajima"+pin("Itsukushima Shrine Miyajima"), "Early morning walks around Miyajima shrine precincts with deer before catching the ferry back to Miyajimaguchi and train to Hiroshima.")
+    ]},
+    {label:"Afternoon / Evening", cards:[
+      activityCard("d12a1", "13:43", "Arrive Kyoto & Check-in"+pin("Tokyu Stay Kyoto Sanjo Karasuma"), "Arrived Kyoto Station on Nozomi 94. Checked into Tokyu Stay Sanjo-Karasuma (forwarded luggage arrived safely)."),
+      activityCard("d12a2", "", "Nanzen-ji & Heian Shrine Area"+pin("Nanzen-ji Temple Kyoto"), "Evening wander around Nanzen-ji and Heian Shrine area.")
+    ]}
+  ])
+},
+// ── DAY 13: 21 Aug — Kyoto ───────────────────────────────────────────────────
+{ id:13, date:"21 August", weekday:"Thursday", month:"AUG", num:21, city:"kyo", travel:false,
+  title:"Kyoto — Ginkaku-ji & teamLab",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Thursday, 21 August</div>
+    <div class="detail-title">Ginkaku-ji & teamLab</div>
+    <span class="badge kyo">KYOTO</span>
+  `, [
+    {label:"Morning / Afternoon", cards:[
+      activityCard("d13a0", "", "Ginkaku-ji, Philosopher's Path & Nanzen-ji"+pin("Ginkaku-ji Kyoto"), "Visited Silver Pavilion (Ginkaku-ji), walked along the Philosopher's Path, and explored Nanzen-ji temple grounds.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d13a1", "17:00", "teamLab Biovortex Kyoto"+pin("teamLab Biovortex Kyoto"), "Visited teamLab Biovortex exhibition near Kyoto Station. (Booking ref: ERX937366).")
+    ]}
+  ])
+},
+// ── DAY 14: 22 Aug — Kyoto ───────────────────────────────────────────────────
+{ id:14, date:"22 August", weekday:"Friday", month:"AUG", num:22, city:"kyo", travel:false,
+  title:"Kyoto — Kinkaku-ji & Arashiyama",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Friday, 22 August</div>
+    <div class="detail-title">Kyoto Highlights</div>
+    <span class="badge kyo">KYOTO</span>
+  `, [
+    {label:"Morning", cards:[
+      activityCard("d14a0", "", "Kyoto Gyoen"+pin("Kyoto Imperial Palace"), "Morning visit to Kyoto Gyoen (Imperial Palace Park)."),
+      activityCard("d14a1", "", "Kinkaku-ji (Golden Pavilion)"+pin("Kinkaku-ji Kyoto"), "Rain redemption visit to Kinkaku-ji — stunning view of the Golden Pavilion.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d14a2", "", "Arashiyama"+pin("Arashiyama Bamboo Grove Kyoto"), "Headed to Arashiyama in the afternoon to explore the bamboo groves and riverside precinct.")
+    ]}
+  ])
+},
+// ── DAY 15: 23 Aug — Kyoto ───────────────────────────────────────────────────
+{ id:15, date:"23 August", weekday:"Saturday", month:"AUG", num:23, city:"kyo", travel:false,
+  title:"Kyoto — Ryoan-ji & Ninnaji",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Saturday, 23 August</div>
+    <div class="detail-title">Ryoan-ji & Ninnaji</div>
+    <span class="badge kyo">KYOTO</span>
+  `, [
+    {label:"Full Day", cards:[
+      activityCard("d15a0", "", "Ryoan-ji Rock Garden"+pin("Ryoan-ji Kyoto"), "Completed visit to Ryoan-ji Zen rock garden."),
+      activityCard("d15a1", "", "Ninnaji Temple"+pin("Ninno-ji Temple Kyoto"), "Explored nearby Ninnaji temple complex."),
+      activityCard("d15a2", "", "Ginkaku-ji Area Revisited"+pin("Ginkaku-ji Kyoto"), "Revisited the serene Ginkaku-ji area in the afternoon.")
+    ]}
+  ])
+},
+// ── DAY 16: 24 Aug — Kyoto ───────────────────────────────────────────────────
+{ id:16, date:"24 August", weekday:"Sunday", month:"AUG", num:24, city:"kyo", travel:false,
+  title:"Kyoto — Okazaki & Pontocho",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Sunday, 24 August</div>
+    <div class="detail-title">Okazaki & Evening Out</div>
+    <span class="badge kyo">KYOTO</span>
+  `, [
+    {label:"Day & Evening", cards:[
+      activityCard("d16a0", "", "Okazaki & Heian Shrine Area"+pin("Heian Shrine Kyoto"), "Explored the Okazaki cultural district and Heian Shrine grounds."),
+      activityCard("d16a1", "", "Pontocho & Kamo River Night"+pin("Pontocho Alley Kyoto"), "Evening dinner and stroll along Pontocho Alley and the Kamo River banks.")
+    ]}
+  ])
+},
+// ── DAY 17: 25 Aug — Kyoto → Tokyo ───────────────────────────────────────────
+{ id:17, date:"25 August", weekday:"Monday", month:"AUG", num:25, city:"tok", travel:true,
+  title:"Kyoto → Tokyo",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Monday, 25 August</div>
+    <div class="detail-title">Kyoto → Tokyo</div>
+    <span class="badge tok">TRAVEL DAY · KYOTO → TOKYO</span>
+  `, [
+    {fixed: transitBlock("Shinkansen", [
+      { from:{code:"KYOTO", time:"12:30"}, to:{code:"TOKYO", time:"14:45"}, train:"Nozomi 252 · Car 14, Seat 8-A", dur:"2h 15m", refId:"d17-kyoto-tokyo" }
+    ])},
+    {fixed: hotelBlock("Tokyu Stay Shimbashi – Ginza area", "Tokyu Stay Shimbashi Ginza Tokyo", "Minato-ku Shimbashi 4-23-1, Tokyo", "3:00pm", "30 Aug until 11:00", "Conf: 5140481674 · PIN: 4306 · Paid · Comfort Double with city view and washing machine")},
+    {label:"Afternoon", cards:[
+      activityCard("d17a0", "14:45", "Arrive Tokyo · Check-in Shimbashi"+pin("Tokyu Stay Shimbashi Ginza Tokyo"), "Yamanote line from Tokyo Station to Shimbashi (~8 mins). Checked into Tokyu Stay Shimbashi.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d17a1", "", "Skytree, Asakusa & Roppongi"+pin("Tokyo Skytree"), "Explored Asakusa and Tokyo Skytree area before heading south to Roppongi and Akasaka for the night.")
+    ]}
+  ])
+},
+// ── DAY 18: 26 Aug — Tokyo ───────────────────────────────────────────────────
+{ id:18, date:"26 August", weekday:"Tuesday", month:"AUG", num:26, city:"tok", travel:false,
+  title:"Tokyo — Hamarikyu & Kiyosumi Gardens",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Tuesday, 26 August</div>
+    <div class="detail-title">Gardens & Monzen-Nakacho</div>
+    <span class="badge tok">TOKYO</span>
+  `, [
+    {label:"Day & Evening", cards:[
+      activityCard("d18a0", "", "Akihabara & Tsukiji Area"+pin("Akihabara Tokyo"), "Morning wander through Akihabara and Tsukiji area."),
+      activityCard("d18a1", "", "Hamarikyu & Kiyosumi Gardens"+pin("Kiyosumi Gardens Tokyo"), "Visited Hamarikyu Gardens and Kiyosumi Garden — both excellent peaceful retreats."),
+      activityCard("d18a2", "", "Monzen-Nakacho Izakayas"+pin("Monzen-Nakacho Tokyo"), "Met friend for evening izakayas in the atmospheric shitamachi area of Monzen-Nakacho.")
+    ]}
+  ])
+},
+// ── DAY 19: 27 Aug — Tokyo ───────────────────────────────────────────────────
+{ id:19, date:"27 August", weekday:"Wednesday", month:"AUG", num:27, city:"tok", travel:false,
+  title:"Tokyo — Gotokuji, Kichijoji & Shiinamachi",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Wednesday, 27 August</div>
+    <div class="detail-title">West Tokyo & Shiinamachi</div>
+    <span class="badge tok">TOKYO</span>
+  `, [
+    {label:"Day", cards:[
+      activityCard("d19a0", "", "Gotokuji Temple"+pin("Gotokuji Temple Tokyo"), "Visited Gotokuji, the famous 'lucky cat' temple in Setagaya."),
+      activityCard("d19a1", "", "Shimokitazawa & Kichijoji"+pin("Inokashira Park Tokyo"), "Explored Shimokitazawa briefly, then spent time in Kichijoji and Inokashira Park (highlight of the day).")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d19a2", "", "Ikebukuro & Uonami Fish Bar"+pin("Shiinamachi Station Tokyo"), "Headed to Ikebukuro and visited Uonami Fish Bar in Shiinamachi for dinner.")
+    ]}
+  ])
+},
+// ── DAY 20: 28 Aug — Tokyo ───────────────────────────────────────────────────
+{ id:20, date:"28 August", weekday:"Thursday", month:"AUG", num:28, city:"tok", travel:false,
+  title:"Tokyo — Nezu, Ochanomizu, Shibuya & Popmart",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Thursday, 28 August</div>
+    <div class="detail-title">Culture & Shibuya</div>
+    <span class="badge tok">TOKYO</span>
+  `, [
+    {label:"Day", cards:[
+      activityCard("d20a0", "", "Nezu Shrine"+pin("Nezu Shrine Tokyo"), "Visited historic Nezu Shrine (saw sword fighting being filmed)."),
+      activityCard("d20a1", "", "Ochanomizu Photography"+pin("Ochanomizu Station Tokyo"), "Photographed converging railway lines around Ochanomizu / Kanda area.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d20a2", "", "Shibuya Crossing, Harajuku & Popmart"+pin("Popmart Harajuku Tokyo"), "Evening in Shibuya Crossing, walked to Harajuku, visited Popmart shop.")
+    ]}
+  ])
+},
+// ── DAY 21: 29 Aug — Tokyo ───────────────────────────────────────────────────
+{ id:21, date:"29 August", weekday:"Friday", month:"AUG", num:29, city:"tok", travel:false,
+  title:"Tokyo — Final Day Shopping",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Friday, 29 August</div>
+    <div class="detail-title">Unstructured Final Day</div>
+    <span class="badge tok">TOKYO</span>
+  `, [
+    {label:"Full Day", cards:[
+      activityCard("d21a0", "", "Gift Shopping Tour"+pin("Akihabara Tokyo"), "Rainy day focused on covered arcades and gift shopping across Shibuya, Harajuku, Shinjuku, Akihabara, and Ikebukuro. Picked up anime merch for Rodrigo, capsule toys for Allefy, and gifts for family.")
+    ]}
+  ])
+},
+// ── DAY 22: 30 Aug — Fly Home ────────────────────────────────────────────────
+{ id:22, date:"30 August", weekday:"Sunday", month:"AUG", num:30, city:"tok", travel:true,
+  title:"Tokyo → London",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Sunday, 30 August</div>
+    <div class="detail-title">Tokyo → London</div>
+    <span class="badge tok">DEPARTURE DAY</span>
+  `, [
+    {fixed: transitBlock("Flight", [
+      { from:{code:"HND", time:"08:55"}, to:{code:"LHR", time:"15:45"}, train:"BA0008 · British Airways", dur:"13h 50m", refId:"d22-hnd-lhr" }
+    ])},
+    {label:"Notes", cards:[
+      activityCard("d22a0", "", "Allow early start — Asakusa Line / Keikyu through-service Shimbashi → Haneda", "Aim to be at Haneda by 06:30. Direct Asakusa/Keikyu through-service from Shimbashi is roughly 25–30 mins; allow extra buffer for a missed/slow service. BA0008 Premium Economy · Ref: Y59KDX · Paid.")
+    ]}
+  ])
+}
+];
+
+const wordCategories = [
+  {title:"Essentials", rows:[
+    ["Hello","こんにちは","kon‑ni‑chi‑wa"],
+    ["Good morning","おはようございます","o‑ha‑yō go‑zai‑mas"],
+    ["Good evening","こんばんは","kon‑ban‑wa"],
+    ["Goodbye","さようなら","sa‑yō‑na‑ra"],
+    ["Please","お願いします","o‑ne‑gai shi‑mas"],
+    ["Thank you","ありがとうございます","a‑ri‑ga‑tō go‑zai‑mas"],
+    ["Yes / No","はい / いいえ","hai / ī‑e"],
+    ["Excuse me / Sorry","すみません","su‑mi‑ma‑sen"],
+    ["Do you speak English?","英語を話せますか？","ei‑go o ha‑na‑se‑mas ka"],
+    ["I don't understand","わかりません","wa‑ka‑ri‑ma‑sen"]
+  ]},
+  {title:"Numbers", rows:[
+    ["1 / 2 / 3","一 / 二 / 三","i‑chi / ni / san"],
+    ["4 / 5 / 6","四 / 五 / 六","yon / go / ro‑ku"],
+    ["7 / 8 / 9","七 / 八 / 九","na‑na / ha‑chi / kyū"],
+    ["10 / 100","十 / 百","jū / hya‑ku"]
+  ]},
+  {title:"Directions", rows:[
+    ["Where is...?","...はどこですか？","...wa do‑ko des ka"],
+    ["Left / Right","左 / 右","hi‑da‑ri / mi‑gi"],
+    ["Straight ahead","まっすぐ","mas‑su‑gu"],
+    ["Near / Far","近い / 遠い","chi‑kai / tō‑i"]
+  ]},
+  {title:"Trains & transport", rows:[
+    ["Station","駅","e‑ki"],
+    ["Ticket","切符","kip‑pu"],
+    ["Reserved seat","指定席","shi‑tei‑se‑ki"],
+    ["What platform?","何番線ですか？","nan‑ban‑sen des ka"],
+    ["Does this go to...?","これは...行きですか？","ko‑re wa ...yu‑ki des ka"],
+    ["Change (trains)","乗り換え","no‑ri‑ka‑e"]
+  ]},
+  {title:"Hotel", rows:[
+    ["Reservation","予約","yo‑ya‑ku"],
+    ["Room / Key","部屋 / 鍵","he‑ya / ka‑gi"],
+    ["Is breakfast included?","朝食は付いていますか？","chō‑sho‑ku wa tsu‑i‑te i‑mas ka"],
+    ["What time is check‑out?","チェックアウトは何時ですか？","chek‑ku‑au‑to wa nan‑ji des ka"]
+  ]},
+  {title:"Restaurant", rows:[
+    ["Table for two","二人です","fu‑ta‑ri des"],
+    ["Menu / Water","メニュー / お水","me‑nyū / o‑mi‑zu"],
+    ["The bill, please","お会計お願いします","o‑kai‑kei o‑ne‑gai shi‑mas"],
+    ["I'm vegetarian","ベジタリアンです","be‑ji‑ta‑ri‑an des"],
+    ["Cheers!","乾杯！","kam‑pai"],
+    ["Delicious","おいしい","oi‑shī"]
+  ]},
+  {title:"Money & shopping", rows:[
+    ["How much is this?","いくらですか？","i‑ku‑ra des ka"],
+    ["Can I pay by card?","カードで払えますか？","kā‑do de ha‑ra‑e‑mas ka"],
+    ["Receipt","領収書","ryō‑shū‑sho"]
+  ]},
+  {title:"Emergency", rows:[
+    ["Help!","助けて！","ta‑su‑ke‑te"],
+    ["I need a doctor","医者が必要です","i‑sha ga hi‑tsu‑yō des"],
+    ["Police","警察","kei‑sa‑tsu"],
+    ["Emergency number","110 (police) / 119 (ambulance, fire)",""]
+  ]}
+];
+
+const wordsLegend = `<b>How to read it</b> — the transliteration is the important bit, since kanji/kana can't be sounded out on sight. Vowels are short and pure (a‑i‑u‑e‑o, as in "father, machine, rule, met, so"); a bar or double vowel means hold it a beat longer.
+  <div class="rules">
+    <span><b>tsu</b> = quick "ts" (cats)</span>
+    <span><b>r</b> = soft, between "r" and "l"</span>
+    <span><b>fu</b> = light, breathy "f"</span>
+    <span><b>ei</b> = long "ay"</span>
+  </div>`;
+
+function renderWords(){
+  let html = `<div class="detail-date">PHRASEBOOK</div><div class="detail-title">Japanese</div>`;
+  html += `<div class="words-legend">${wordsLegend}</div>`;
+  wordCategories.forEach(cat => {
+    html += `<div class="block"><div class="block-label">${cat.title}</div>`;
+    cat.rows.forEach(r => {
+      html += `<div class="prow"><div class="pen">${r[0]}</div><div class="pnative"><div class="pjp">${r[1]}</div>${r[2] ? `<div class="proma">${r[2]}</div>` : ''}</div></div>`;
+    });
+    html += `</div>`;
+  });
+  return html;
+}
+
+// ---- timeline (proportional by day count per city) ----
+const timeline = document.getElementById('timeline');
+const cityCounts = {};
+days.forEach(d => cityCounts[d.city] = (cityCounts[d.city]||0) + 1);
+let lastCity = null;
+Object.keys(cityCounts).forEach(c => {});
+const cityOrder = [];
+days.forEach(d => { if (!cityOrder.includes(d.city)) cityOrder.push(d.city); });
+cityOrder.forEach(c => {
+  const seg = document.createElement('div');
+  seg.className = `seg ${c}`;
+  seg.style.flex = cityCounts[c];
+  seg.innerHTML = `<a class="citylink" href="${CITY_WIKI[c]}" target="_blank" rel="noopener">${CITY_NAMES[c].toUpperCase()}</a>`;
+  timeline.appendChild(seg);
+});
+
+// ---- today/past highlighting ----
+const today = new Date();
+today.setHours(0,0,0,0);
+
+days.forEach(d => {
+  const monthIdx = d.month === 'SEP' ? 8 : 7;
+  d.dateObj = new Date(2026, monthIdx, d.num);
+  d.dateObj.setHours(0,0,0,0);
+});
+
+let todayIdx = days.findIndex(d => d.dateObj.getTime() === today.getTime());
+let defaultId = 0;
+if (todayIdx >= 0) defaultId = todayIdx;
+else if (today.getTime() > days[days.length - 1].dateObj.getTime()) defaultId = days.length - 1;
+
+// ---- day grid ----
+const week = document.getElementById('week');
+const dayEls = [];
+days.forEach((d, i) => {
+  const el = document.createElement('button');
+  el.type = 'button';
+  el.setAttribute('aria-label', `${d.date} — ${CITY_NAMES[d.city] || ''}`);
+  const isPast = d.dateObj.getTime() < today.getTime();
+  const isToday = i === todayIdx;
+  el.className = `day ${d.city}${d.travel ? ' travel' : ''}${d.trip ? ' trip' : ''}${isPast ? ' past' : ''}${isToday ? ' today' : ''}`;
+  el.innerHTML = `<div class="num">${d.num}</div><div class="mon">${d.month}</div><div class="dot"></div>`;
+  el.addEventListener('click', () => selectDay(d.id));
+  week.appendChild(el);
+  dayEls.push(el);
+});
+
+const panel = document.getElementById('panel');
+const linkWords = document.getElementById('linkWords');
+const settingsToggle = document.getElementById('settingsToggle');
+let selected = {type:'day', id:defaultId};
+
+function updateSelection(){
+  dayEls.forEach((el, i) => el.classList.toggle('selected', selected.type === 'day' && selected.id === days[i].id));
+  linkWords.classList.toggle('selected', selected.type === 'words');
+  settingsToggle.classList.toggle('selected', selected.type === 'settings');
+}
+
+function selectDay(id){
+  selected = {type:'day', id};
+  updateSelection();
+  const d = days[id];
+  const prev = days[id-1];
+  const next = days[id+1];
+  const cityName = CITY_NAMES[d.city] || '';
+  const quickAddCards = getQuickAdds(id).map(qa =>
+    activityCard(qa.id, "Added", `${escapeHtml(qa.title)}${pin(`${qa.title} ${cityName}`)}`, "", {
+      extraHtml: `<button class="qa-delete" type="button" onclick="removeQuickActivity(${id}, '${qa.id}')" aria-label="Remove">×</button>`
+    })
+  );
+  panel.innerHTML = `
+    ${d.render()}
+    ${quickAddCards.length ? `<div class="section-label">Added</div>${quickAddCards.join('')}` : ''}
+    ${renderQuickAddBox(id)}
+    ${renderNotesBox(id)}
+    <div class="navrow">
+      <button class="navbtn ${prev ? '' : 'hidden'}" onclick="selectDay(${id-1})"><span>← Previous</span>${prev ? prev.weekday : ''}</button>
+      <button class="navbtn next ${next ? '' : 'hidden'}" onclick="selectDay(${id+1})"><span>Next →</span>${next ? next.weekday : ''}</button>
+    </div>
+  `;
+}
+
+function selectWords(){
+  selected = {type:'words', id:'words'};
+  updateSelection();
+  panel.innerHTML = renderWords();
+}
+
+// ---- appearance ----
+function getThemeSetting(){
+  try { return localStorage.getItem('tripTheme') || 'system'; } catch(e){ return 'system'; }
+}
+function setThemeSetting(mode){
+  if (mode === 'system'){
+    document.documentElement.removeAttribute('data-theme');
+    try { localStorage.removeItem('tripTheme'); } catch(e){}
+  } else {
+    document.documentElement.setAttribute('data-theme', mode);
+    try { localStorage.setItem('tripTheme', mode); } catch(e){}
+  }
+  if (selected.type === 'settings') selectSettings();
+}
+
+const APP_VERSION = 'v260914.007';
+
+function renderSettings(){
+  const theme = getThemeSetting();
+  const showProverbs = getShowProverbs();
+  return `
+    <div class="detail-date">SETTINGS</div>
+    <div class="detail-title">Settings</div>
+    <div class="block">
+      <div class="block-label">Appearance</div>
+      <div class="dir-toggle">
+        <button type="button" class="dir-pill ${theme === 'system' ? 'selected' : ''}" onclick="setThemeSetting('system')">Auto</button>
+        <button type="button" class="dir-pill ${theme === 'light' ? 'selected' : ''}" onclick="setThemeSetting('light')">☀ Light</button>
+        <button type="button" class="dir-pill ${theme === 'dark' ? 'selected' : ''}" onclick="setThemeSetting('dark')">🌙 Dark</button>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">Calming proverbs</div>
+      <div class="money-sub">Two proverb cards are spliced into each day's plan for a bit of calm. Turn them off if you'd rather just see the plan.</div>
+      <div class="dir-toggle">
+        <button type="button" class="dir-pill ${showProverbs ? 'selected' : ''}" onclick="setShowProverbs(true)">On</button>
+        <button type="button" class="dir-pill ${!showProverbs ? 'selected' : ''}" onclick="setShowProverbs(false)">Off</button>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">Export updates</div>
+      <div class="money-sub">Copy this and paste it into a chat to research anything new and fold it into the plan permanently. Booking references are included so you can keep one working copy of the trip.</div>
+      <textarea class="export-textarea" id="exportText" readonly></textarea>
+      <div class="export-actions">
+        <button type="button" class="export-btn" onclick="copyExport()">Copy</button>
+        <button type="button" class="export-btn" onclick="downloadExport()">Download</button>
+      </div>
+      <div class="export-status" id="exportStatus"></div>
+    </div>
+    <div class="app-version">${APP_VERSION}</div>
+  `;
+}
+function selectSettings(){
+  selected = {type:'settings', id:'settings'};
+  updateSelection();
+  panel.innerHTML = renderSettings();
+  refreshExportText();
+}
+
+selectDay(defaultId);
+
+// ---- currency converter ----
+const RATE_KEY = 'tripExchangeRate';
+const DIR_KEY = 'tripMoneyDirection';
+let exchangeRate = 215;
+try { const r = parseFloat(localStorage.getItem(RATE_KEY)); if (!isNaN(r) && r > 0) exchangeRate = r; } catch(e){}
+let moneyDirection = 'yen2gbp';
+try { const d = localStorage.getItem(DIR_KEY); if (d === 'yen2gbp' || d === 'gbp2yen') moneyDirection = d; } catch(e){}
+
+const rateInput = document.getElementById('rateInput');
+const amountInput = document.getElementById('amountInput');
+const dirYen2Gbp = document.getElementById('dirYen2Gbp');
+const dirGbp2Yen = document.getElementById('dirGbp2Yen');
+const resultMain = document.getElementById('resultMain');
+const resultSub = document.getElementById('resultSub');
+const taxFreeMain = document.getElementById('taxFreeMain');
+const taxFreeSub = document.getElementById('taxFreeSub');
+const moneyToggle = document.getElementById('moneyToggle');
+const moneyPanel = document.getElementById('moneyPanel');
+
+function fmtGBP(n){ return '£' + n.toLocaleString('en-GB', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function fmtYen(n){ return '¥' + Math.round(n).toLocaleString('en-GB'); }
+function defaultAmountFor(dir){ return 0; }
+
+function updateDirButtons(){
+  dirYen2Gbp.classList.toggle('selected', moneyDirection === 'yen2gbp');
+  dirGbp2Yen.classList.toggle('selected', moneyDirection === 'gbp2yen');
+}
+
+function recalcMoney(){
+  const amount = parseFloat(amountInput.value);
+  if (isNaN(amount) || exchangeRate <= 0){
+    resultMain.textContent = '—'; resultSub.textContent = '';
+    taxFreeMain.textContent = '—'; taxFreeSub.textContent = '';
+    return;
+  }
+  let yenAmount, gbpAmount;
+  if (moneyDirection === 'yen2gbp'){
+    yenAmount = amount;
+    gbpAmount = amount / exchangeRate;
+    resultMain.textContent = fmtGBP(gbpAmount);
+    resultSub.textContent = fmtYen(yenAmount);
+  } else {
+    gbpAmount = amount;
+    yenAmount = amount * exchangeRate;
+    resultMain.textContent = fmtYen(yenAmount);
+    resultSub.textContent = fmtGBP(gbpAmount);
+  }
+  const taxFreeYen = yenAmount / 1.1;
+  const taxFreeGbp = taxFreeYen / exchangeRate;
+  taxFreeMain.textContent = fmtYen(taxFreeYen);
+  taxFreeSub.textContent = `indicative price excluding 10% consumption tax (${fmtGBP(taxFreeGbp)})`;
+}
+
+rateInput.value = exchangeRate;
+amountInput.value = defaultAmountFor(moneyDirection);
+updateDirButtons();
+recalcMoney();
+
+rateInput.addEventListener('input', () => {
+  const v = parseFloat(rateInput.value);
+  if (!isNaN(v) && v > 0){
+    exchangeRate = v;
+    try { localStorage.setItem(RATE_KEY, String(v)); } catch(e){}
+    recalcMoney();
+  }
+});
+
+amountInput.addEventListener('input', recalcMoney);
+
+function setMoneyDirection(dir){
+  if (dir === moneyDirection) return;
+  const amount = parseFloat(amountInput.value);
+  let yenAmount, gbpAmount;
+  if (!isNaN(amount) && exchangeRate > 0){
+    if (moneyDirection === 'yen2gbp'){ yenAmount = amount; gbpAmount = amount / exchangeRate; }
+    else { gbpAmount = amount; yenAmount = amount * exchangeRate; }
+  }
+  moneyDirection = dir;
+  try { localStorage.setItem(DIR_KEY, dir); } catch(e){}
+  updateDirButtons();
+  amountInput.value = yenAmount !== undefined
+    ? (dir === 'yen2gbp' ? Math.round(yenAmount) : Math.round(gbpAmount * 100) / 100)
+    : defaultAmountFor(dir);
+  recalcMoney();
+}
+dirYen2Gbp.addEventListener('click', () => setMoneyDirection('yen2gbp'));
+dirGbp2Yen.addEventListener('click', () => setMoneyDirection('gbp2yen'));
+
+moneyToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isHidden = moneyPanel.hasAttribute('hidden');
+  if (isHidden){ moneyPanel.removeAttribute('hidden'); moneyToggle.classList.add('selected'); }
+  else { moneyPanel.setAttribute('hidden', ''); moneyToggle.classList.remove('selected'); }
+});
+document.addEventListener('click', (e) => {
+  if (moneyPanel.hasAttribute('hidden')) return;
+  if (moneyPanel.contains(e.target) || e.target === moneyToggle) return;
+  moneyPanel.setAttribute('hidden', '');
+  moneyToggle.classList.remove('selected');
+});
+
+// ---- export ----
+function gatherExportData(){
+  function readJSON(key){
+    try { return JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){ return {}; }
+  }
+  return {
+    exportedAt: new Date().toISOString(),
+    quickAdds: readJSON('tripQuickAdds'),
+    notes: readJSON('tripNotes'),
+    activityStatus: readJSON('tripActivityStatus'),
+    bookingRefs: readJSON('tripBookingRefs')
+  };
+}
+
+function refreshExportText(){
+  const exportText = document.getElementById('exportText');
+  if (!exportText) return;
+  exportText.value = JSON.stringify(gatherExportData(), null, 2);
+  const exportStatus = document.getElementById('exportStatus');
+  if (exportStatus) exportStatus.textContent = '';
+}
+
+function copyExport(){
+  const exportText = document.getElementById('exportText');
+  const exportStatus = document.getElementById('exportStatus');
+  if (!exportText) return;
+  exportText.select();
+  let copied = false;
+  try { navigator.clipboard.writeText(exportText.value); copied = true; } catch(e){}
+  if (!copied){ try { copied = document.execCommand('copy'); } catch(e){} }
+  if (exportStatus) exportStatus.textContent = copied ? 'Copied — paste it into a chat.' : 'Select the text above and copy manually.';
+}
+
+function downloadExport(){
+  const exportText = document.getElementById('exportText');
+  const exportStatus = document.getElementById('exportStatus');
+  if (!exportText) return;
+  const blob = new Blob([exportText.value], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'trip-updates.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  if (exportStatus) exportStatus.textContent = "Downloaded — send this file over when you're ready.";
+}
+</script>
+
+</body>
+</html>
