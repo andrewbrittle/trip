@@ -1589,28 +1589,38 @@ const days = [
       { from:{code:"HIROSHIMA", time:"12:03"}, to:{code:"KYOTO", time:"13:43"}, train:"Nozomi 94 · Car 14, Seat 8-E", dur:"1h 40m", refId:"d12-hiroshima-kyoto" }
     ])},
     {fixed: hotelBlock("Tokyu Stay Kyoto Sanjo-Karasuma", "Tokyu Stay Kyoto Sanjo Karasuma", "Nakagyo-ku Kakimotocho 392, Kyoto", "3:00pm", "25 Aug until 11:00", "Conf: 6592835246 · PIN: 2610 · Paid · Standard Double with washing machine")},
-    {label:"Morning", cards:[
-      activityCard("d12a0", "", "Quiet Morning on Miyajima"+pin("Itsukushima Shrine Miyajima"), "Early morning walks around Miyajima shrine precincts with deer before catching the ferry back to Miyajimaguchi and train to Hiroshima.")
+    {label:"Morning on Miyajima", cards:[
+      activityCard("d12a0", "", "Traditional Japanese breakfast"+pin("Kikugawa Miyajima"), "Breakfast at Kikugawa Ryokan — a traditional Japanese set, served in the room. One of the highlights of the ryokan stay."),
+      activityCard("d12a1", "", "Deer and the island at dawn"+pin("Miyajima Island"), "Wandered around the island taking photos of the deer — completely at home among the shrine buildings and streets, entirely unbothered by people.")
     ]},
-    {label:"Afternoon / Evening", cards:[
-      activityCard("d12a1", "13:43", "Arrive Kyoto & Check-in"+pin("Tokyu Stay Kyoto Sanjo Karasuma"), "Arrived Kyoto Station on Nozomi 94. Checked into Tokyu Stay Sanjo-Karasuma (forwarded luggage arrived safely)."),
-      activityCard("d12a2", "", "Nanzen-ji & Heian Shrine Area"+pin("Nanzen-ji Temple Kyoto"), "Evening wander around Nanzen-ji and Heian Shrine area.")
+    {label:"Journey to Kyoto", cards:[
+      activityCard("d12a2", "", "Ferry · Local train · Shinkansen"+pin("Kyoto Station"), "Ferry back to the mainland, local JR train to Hiroshima, then Nozomi 94 to Kyoto arriving 13:43. Briefly explored Kyoto Station — a remarkable modernist building by Hiroshi Hara — before heading to the hotel."),
+      activityCard("d12a3", "", "Check in · Suitcases arrive"+pin("Tokyu Stay Kyoto Sanjo Karasuma"), "Checked into Tokyu Stay Sanjo-Karasuma. The suitcases forwarded from the Osaka hotel arrived shortly after — the takkyubin service worked perfectly.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d12a4", "", "Dinner at Kyoto Station food court"+pin("Kyoto Station"), "Had dinner in the food court at Kyoto Station — a good introduction to Kyoto eating without having to search far on a travel day. Settled in for the Kyoto leg.")
     ]}
   ])
 },
 // ── DAY 13: 21 Aug — Kyoto ───────────────────────────────────────────────────
 { id:13, date:"21 August", weekday:"Thursday", month:"AUG", num:21, city:"kyo", travel:false,
-  title:"Kyoto — Ginkaku-ji & teamLab",
+  title:"Kyoto — Ginkaku-ji, Philosopher's Path & teamLab",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Thursday, 21 August</div>
-    <div class="detail-title">Ginkaku-ji & teamLab</div>
+    <div class="detail-title">Ginkaku-ji, Philosopher's Path & teamLab Biovortex</div>
     <span class="badge kyo">KYOTO</span>
   `, [
-    {label:"Morning / Afternoon", cards:[
-      activityCard("d13a0", "", "Ginkaku-ji, Philosopher's Path & Nanzen-ji"+pin("Ginkaku-ji Kyoto"), "Visited Silver Pavilion (Ginkaku-ji), walked along the Philosopher's Path, and explored Nanzen-ji temple grounds.")
+    {label:"Morning", cards:[
+      activityCard("d13a0", "", "Ginkaku-ji — Silver Pavilion"+pin("Ginkaku-ji Kyoto"), "Took the local bus from Kyoto Station. The Silver Pavilion, the famous Kogetsudai sand cone and the hillside moss garden above. Already loved this in the rain on a previous visit — just as good in better weather. The approach path lined with old stone walls and hedges sets the mood before you even arrive."),
+      activityCard("d13a1", "", "Philosopher's Path"+pin("Philosopher's Path Kyoto"), "Walked south along the 2km canal-side path from Ginkaku-ji. Green and leafy in August, the canal clear. Named after the philosopher Nishida Kitaro who walked here daily.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d13a2", "", "Eikando (Zenrin-ji)"+pin("Eikando Temple Kyoto"), "Went inside Eikando — a beautiful temple complex famous for its Mikaeri Amida statue, the Buddha looking back over his shoulder to check no one is being left behind. The multi-level temple buildings stepping up the hillside with views over the garden are excellent."),
+      activityCard("d13a3", "", "Nanzen-ji"+pin("Nanzen-ji Temple Kyoto"), "One of Kyoto's great Zen temple complexes. The enormous sanmon gate — climbed it for views over the rooftops and treetops. The 19th-century brick aqueduct running through the grounds is incongruous and very photogenic."),
+      activityCard("d13a4", "", "Keage Incline"+pin("Keage Incline Kyoto"), "On the walk to Keage Station — the preserved tracks of the old funicular railway, laid in 1891 to haul canal boats between the two levels of the Lake Biwa Canal. The rails run up a steep wooded hillside with Nanzen-ji visible below. A great photography spot.")
     ]},
     {label:"Evening", cards:[
-      activityCard("d13a1", "17:00", "teamLab Biovortex Kyoto"+pin("teamLab Biovortex Kyoto"), "Visited teamLab Biovortex exhibition near Kyoto Station. (Booking ref: ERX937366).")
+      activityCard("d13a5", "17:00", "teamLab Biovortex Kyoto"+pin("teamLab Biovortex Kyoto"), "Visited teamLab Biovortex near Kyoto Station. Really enjoyable — immersive digital art installations that respond to movement and presence. Worth every penny. Booking ref: ERX937366.")
     ]}
   ])
 },
@@ -1619,52 +1629,68 @@ const days = [
   title:"Kyoto — Kinkaku-ji & Arashiyama",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Friday, 22 August</div>
-    <div class="detail-title">Kyoto Highlights</div>
+    <div class="detail-title">Kinkaku-ji & Arashiyama</div>
     <span class="badge kyo">KYOTO</span>
   `, [
+    {fixed: tipBlock("Getting around", [
+      "Day bus and subway pass available from the bus station at Kyoto Station. Get on at the back, same fare anywhere in the city, tap to get off at the front."
+    ])},
     {label:"Morning", cards:[
-      activityCard("d14a0", "", "Kyoto Gyoen"+pin("Kyoto Imperial Palace"), "Morning visit to Kyoto Gyoen (Imperial Palace Park)."),
-      activityCard("d14a1", "", "Kinkaku-ji (Golden Pavilion)"+pin("Kinkaku-ji Kyoto"), "Rain redemption visit to Kinkaku-ji — stunning view of the Golden Pavilion.")
+      activityCard("d14a0", "", "Kinkaku-ji — Golden Pavilion"+pin("Kinkaku-ji Kyoto"), "Subway to Kitaoji then bus to Kinkakuji-michi. The Golden Pavilion reflected in the Kyoko-chi pond — a previous visit was in the rain, so this was the redemption. The gold leaf exterior is extraordinary in good light. The path loops around the pond and back out via the tea house.")
     ]},
-    {label:"Afternoon", cards:[
-      activityCard("d14a2", "", "Arashiyama"+pin("Arashiyama Bamboo Grove Kyoto"), "Headed to Arashiyama in the afternoon to explore the bamboo groves and riverside precinct.")
+    {label:"Arashiyama", cards:[
+      activityCard("d14a1", "", "Bus and train to Saga-Arashiyama via Emmachi"+pin("Saga-Arashiyama Station"), "Bus then JR San-in Line from Emmachi to Saga-Arashiyama. Walked through the town toward the temple."),
+      activityCard("d14a2", "", "Tenryu-ji & Bamboo Forest"+pin("Tenryu-ji Kyoto"), "Through Tenryu-ji — one of Kyoto's great Zen gardens, with a pond garden framing the Arashiyama mountains as borrowed scenery. Then through the temple grounds and out into the bamboo forest — tall, dense, the light filtering through in a distinctive way even in summer."),
+      activityCard("d14a3", "", "Arashiyama Park & Togetsukyo Bridge"+pin("Togetsukyo Bridge Arashiyama Kyoto"), "Through the park to the river and along to the Togetsukyo Bridge. Crossed and walked back through the busy tourist area on the south bank."),
+      activityCard("d14a4", "", "Randen streetcar back to central Kyoto"+pin("Arashiyama Station Randen Kyoto"), "Took the Randen (Keifuku Electric Railway) — the charming old single-carriage tram from Arashiyama Station back into the city. One of Kyoto's oldest tram lines, still running the same route through residential streets.")
     ]}
   ])
 },
 // ── DAY 15: 23 Aug — Kyoto ───────────────────────────────────────────────────
-{ id:15, date:"23 August", weekday:"Saturday", month:"AUG", num:23, city:"kyo", travel:false,
-  title:"Kyoto — Ryoan-ji & Ninnaji",
+{ id:15, date:"23 August", weekday:"Sunday", month:"AUG", num:23, city:"kyo", travel:false,
+  title:"Kyoto — Shops, Nishiki Market & Imperial Palace",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Saturday, 23 August</div>
-    <div class="detail-title">Ryoan-ji & Ninnaji</div>
-    <span class="badge kyo">KYOTO</span>
+    <div class="detail-date">Sunday, 23 August</div>
+    <div class="detail-title">Shops, Nishiki Market & Imperial Palace</div>
+    <span class="badge kyo">KYOTO · SUNDAY</span>
   `, [
-    {label:"Full Day", cards:[
-      activityCard("d15a0", "", "Ryoan-ji Rock Garden"+pin("Ryoan-ji Kyoto"), "Completed visit to Ryoan-ji Zen rock garden."),
-      activityCard("d15a1", "", "Ninnaji Temple"+pin("Ninno-ji Temple Kyoto"), "Explored nearby Ninnaji temple complex."),
-      activityCard("d15a2", "", "Ginkaku-ji Area Revisited"+pin("Ginkaku-ji Kyoto"), "Revisited the serene Ginkaku-ji area in the afternoon.")
+    {label:"Morning", cards:[
+      activityCard("d15a0", "", "Shopping around Kyoto"+pin("Shijo Street Kyoto"), "Walked around the shops in central Kyoto — browsing without a fixed plan."),
+      activityCard("d15a1", "", "Jins — prescription glasses"+pin("Jins Kyoto"), "Bought reading and distance prescription glasses at Jins. Fast turnaround, good value, and prescription glasses as a holiday purchase feels very Japanese."),
+      activityCard("d15a2", "", "Nishiki Market"+pin("Nishiki Market Kyoto"), "Walked through Nishiki Market — Kyoto's famous narrow covered food market, known as Kyoto's Kitchen. The coloured glass ceiling (red, green and yellow) filters the light beautifully. Street food, pickles, fresh tofu, grilled skewers.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d15a3", "", "Kamo River & east bank"+pin("Kamo River Kyoto"), "Walked to and across the Kamo River, exploring the east bank area."),
+      activityCard("d15a4", "", "Kyoto Imperial Palace Gardens & Interior"+pin("Kyoto Imperial Palace"), "Walked around the outside of the Imperial Palace gardens and then went inside. The Imperial Household Agency runs free guided tours of the palace interior — formal garden areas, the main ceremonial halls and residential buildings all included.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d15a5", "", "Traditional dinner — Kyomachiyaobanzai Kohaku"+pin("Kyomachiyaobanzai Kohaku Kyoto"), "Dinner at a traditional Kyoto restaurant — obanzai style (small dishes of Kyoto's traditional home cooking). A lovely meal."),
+      activityCard("d15a6", "", "Kamo River in the evening"+pin("Kamo River Kyoto"), "Back to the riverside in the evening — musicians performing along the banks, people relaxing on the steps above the water. A very Kyoto summer evening.")
     ]}
   ])
 },
 // ── DAY 16: 24 Aug — Kyoto ───────────────────────────────────────────────────
-{ id:16, date:"24 August", weekday:"Sunday", month:"AUG", num:24, city:"kyo", travel:false,
-  title:"Kyoto — Okazaki & Pontocho",
+{ id:16, date:"24 August", weekday:"Monday", month:"AUG", num:24, city:"kyo", travel:false,
+  title:"Kyoto — Ryoan-ji, Ninnaji & Randen",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Sunday, 24 August</div>
-    <div class="detail-title">Okazaki & Evening Out</div>
+    <div class="detail-date">Monday, 24 August</div>
+    <div class="detail-title">Ryoan-ji, Ninnaji & Randen streetcar</div>
     <span class="badge kyo">KYOTO</span>
   `, [
-    {label:"Day & Evening", cards:[
-      activityCard("d16a0", "", "Okazaki & Heian Shrine Area"+pin("Heian Shrine Kyoto"), "Explored the Okazaki cultural district and Heian Shrine grounds."),
-      activityCard("d16a1", "", "Pontocho & Kamo River Night"+pin("Pontocho Alley Kyoto"), "Evening dinner and stroll along Pontocho Alley and the Kamo River banks.")
+    {label:"Morning", cards:[
+      activityCard("d16a0", "", "Ryoan-ji — Rock Garden"+pin("Ryoan-ji Temple Kyoto"), "The famous rock garden — fifteen stones arranged in raked white gravel, from which it is said you can never see all fifteen at once from any position along the viewing veranda. One of Japan's most contemplative spaces. The surrounding temple garden and pond are an often-overlooked counterpart to the rock garden itself."),
+      activityCard("d16a1", "", "Ninnaji"+pin("Ninnaji Temple Kyoto"), "A short walk from Ryoan-ji. The spacious Ninnaji complex is less visited and more relaxed — a handsome five-storey pagoda, the Omuro Palace gardens, and wide grounds that feel uncrowded even in August.")
+    ]},
+    {label:"Return to Kyoto", cards:[
+      activityCard("d16a2", "", "Randen streetcar & metro back into Kyoto"+pin("Omuro-Ninnaji Station Randen Kyoto"), "Took the Randen (Keifuku Electric Railway) from Omuro-Ninnaji station — the charming old single-carriage tram threading through residential streets back toward the city, then transferred to the metro for central Kyoto.")
     ]}
   ])
 },
 // ── DAY 17: 25 Aug — Kyoto → Tokyo ───────────────────────────────────────────
-{ id:17, date:"25 August", weekday:"Monday", month:"AUG", num:25, city:"tok", travel:true,
+{ id:17, date:"25 August", weekday:"Tuesday", month:"AUG", num:25, city:"tok", travel:true,
   title:"Kyoto → Tokyo",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Monday, 25 August</div>
+    <div class="detail-date">Tuesday, 25 August</div>
     <div class="detail-title">Kyoto → Tokyo</div>
     <span class="badge tok">TRAVEL DAY · KYOTO → TOKYO</span>
   `, [
@@ -1673,25 +1699,33 @@ const days = [
     ])},
     {fixed: hotelBlock("Tokyu Stay Shimbashi – Ginza area", "Tokyu Stay Shimbashi Ginza Tokyo", "Minato-ku Shimbashi 4-23-1, Tokyo", "3:00pm", "30 Aug until 11:00", "Conf: 5140481674 · PIN: 4306 · Paid · Comfort Double with city view and washing machine")},
     {label:"Afternoon", cards:[
-      activityCard("d17a0", "14:45", "Arrive Tokyo · Check-in Shimbashi"+pin("Tokyu Stay Shimbashi Ginza Tokyo"), "Yamanote line from Tokyo Station to Shimbashi (~8 mins). Checked into Tokyu Stay Shimbashi.")
+      activityCard("d17a0", "", "Metro to Kyoto Station · Shinkansen to Tokyo"+pin("Tokyo Station"), "Metro to Kyoto Station, then Nozomi 252 arriving Tokyo 14:45. Metro from Tokyo Station to Shimbashi, check in to Tokyu Stay.")
     ]},
-    {label:"Evening", cards:[
-      activityCard("d17a1", "", "Skytree, Asakusa & Roppongi"+pin("Tokyo Skytree"), "Explored Asakusa and Tokyo Skytree area before heading south to Roppongi and Akasaka for the night.")
+    {label:"Evening — Asakusa & Skytree", cards:[
+      activityCard("d17a1", "", "Walk along the river near Asakusa"+pin("Sumida River Asakusa Tokyo"), "Walked along the Sumida River near Asakusa — the river at dusk, with the Skytree rising beyond. Good for photography toward the tower."),
+      activityCard("d17a2", "", "Senso-ji Temple"+pin("Senso-ji Temple Asakusa Tokyo"), "Visited Senso-ji — Tokyo's oldest temple, the Kaminarimon gate and the Nakamise shopping approach leading to the main hall. Atmospheric at night with the lanterns lit."),
+      activityCard("d17a3", "", "River walk after dark · Tokyo Skytree"+pin("Tokyo Skytree"), "Walked further along the river once it was darker, then to the Skytree. Didn't go up — mainly photographed the tower from the surrounding area and Skytree Town below it. At 634m it dominates the skyline from every angle. A clearer day would have been better for the observation deck.")
     ]}
   ])
 },
 // ── DAY 18: 26 Aug — Tokyo ───────────────────────────────────────────────────
 { id:18, date:"26 August", weekday:"Tuesday", month:"AUG", num:26, city:"tok", travel:false,
-  title:"Tokyo — Hamarikyu & Kiyosumi Gardens",
+  title:"Tokyo — Gardens, Hibiya & Odaiba",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Tuesday, 26 August</div>
-    <div class="detail-title">Gardens & Monzen-Nakacho</div>
+    <div class="detail-title">Gardens, Hibiya Park & Odaiba</div>
     <span class="badge tok">TOKYO</span>
   `, [
-    {label:"Day & Evening", cards:[
-      activityCard("d18a0", "", "Akihabara & Tsukiji Area"+pin("Akihabara Tokyo"), "Morning wander through Akihabara and Tsukiji area."),
-      activityCard("d18a1", "", "Hamarikyu & Kiyosumi Gardens"+pin("Kiyosumi Gardens Tokyo"), "Visited Hamarikyu Gardens and Kiyosumi Garden — both excellent peaceful retreats."),
-      activityCard("d18a2", "", "Monzen-Nakacho Izakayas"+pin("Monzen-Nakacho Tokyo"), "Met friend for evening izakayas in the atmospheric shitamachi area of Monzen-Nakacho.")
+    {label:"Morning", cards:[
+      activityCard("d18a0", "", "Hamarikyu Gardens"+pin("Hamarikyu Gardens Tokyo"), "The tidal garden right by the hotel, bordered by the river. A formal strolling garden with a central pond, teahouse on an island, and an extraordinary contrast between the traditional landscape and the Shiodome skyscrapers rising directly behind. Dull near the entrance but increasingly lovely deeper in."),
+      activityCard("d18a1", "", "Kiyosumi Garden"+pin("Kiyosumi Garden Tokyo"), "Took the metro east to Kiyosumi-Shirakawa. The garden has large stepping stones across the pond — a distinctive feature. Very peaceful, less visited than the big-name gardens. Excellent.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d18a2", "", "Morishita & Kiyosumi-Shirakawa area"+pin("Kiyosumi-Shirakawa Tokyo"), "Walked through the Morishita and Kiyosumi-Shirakawa neighbourhood — a quietly interesting area known for its specialty coffee scene and independent shops."),
+      activityCard("d18a3", "", "Hibiya Park"+pin("Hibiya Park Tokyo"), "Walked through Hibiya Park and stopped for coffee at a cafe there. A pleasant enough park — one of Tokyo's oldest Western-style parks — but not much to specifically see.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d18a4", "", "Odaiba — fountain display"+pin("Odaiba Tokyo"), "Metro out to Odaiba for a fountain display — runs for 8 minutes every hour and a half. Not really worth the journey. Odaiba is a long way out for something that underwhelming.", {status:"skip"})
     ]}
   ])
 },
