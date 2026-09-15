@@ -1303,36 +1303,49 @@ const calmingSayingsRaw = [
 const calmingSayings = calmingSayingsRaw.map(p => ({...p, saying: p.saying_kanji_kana, saying_phonetic: p.saying_romaji}));
 
 const days = [
-// ── DAY 0: 8 Aug — Arrive Tokyo (Haneda) ──────────────────────────────────────
-{ id:0, date:"8 August", weekday:"Friday", month:"AUG", num:8, city:"tok", travel:true,
+// ── DAY 0: 7 Aug — Depart London ──────────────────────────────────────────────
+{ id:0, date:"7 August", weekday:"Friday", month:"AUG", num:7, city:"tok", travel:true,
   title:"London → Tokyo",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Friday, 8 August</div>
-    <div class="detail-title">London → Tokyo</div>
-    <span class="badge tok">ARRIVAL DAY · TOKYO</span>
+    <div class="detail-date">Friday, 7 August</div>
+    <div class="detail-title">Depart London</div>
+    <span class="badge tok">DEPARTURE DAY · LONDON</span>
   `, [
     {fixed: transitBlock("Flight", [
       { from:{code:"LHR", time:"09:25", tz:"BST"}, to:{code:"HND", time:"07:00", tz:"JST +1"}, train:"BA0007 · Business · Seat 9A · Ref: ZM8FNB", dur:"11h 35m", refId:"d0-lhr-hnd" }
     ])},
-    {fixed: hotelBlock("Mercure Tokyo Haneda Airport", "Mercure Tokyo Haneda Airport", null, "3:00pm", "9 Aug until 11:00", "Ref: QJKHFLCK · Paid · Luggage storage available from 07:00 arrival")},
-    {label:"Morning", cards:[
-      activityCard("d0a0", "07:00", "Arrive Haneda"+pin("Haneda Airport International Terminal Tokyo"), "Arrived on BA0007 Business Class. Immigration, bags collected, luggage dropped at Mercure bag storage. Headed straight into Tokyo for the day."),
-      activityCard("d0a1", "10:30", "Imperial Palace Interior Tour"+pin("Imperial Palace Tokyo"), "The Imperial Household Agency runs two free guided tours daily (10:00 and 13:30) for up to 300 visitors — first come, first served, no booking required. Walked through the palace grounds and inner areas with a guide, seeing parts of the imperial residence not visible from the East Garden.")
-    ]},
-    {label:"Afternoon", cards:[
-      activityCard("d0a2", "", "Kanda"+pin("Kanda Tokyo"), "Wandered through the Kanda area after the palace — the district around the station has an old Tokyo character, bookshops, specialist shops and narrow streets."),
-      activityCard("d0a3", "", "Akihabara"+pin("Akihabara Tokyo"), "Walked around Akihabara for a while — the electronics and anime district, familiar from previous visits but always worth a browse.")
-    ]},
-    {label:"Evening", cards:[
-      activityCard("d0a4", "", "Return to hotel · Early night", "Back to the Mercure Haneda. Early night ahead of the HD21 flight to Sapporo tomorrow at 11:15.")
+    {label:"Departure", cards:[
+      activityCard("d0a0", "09:25", "Depart London Heathrow"+pin("London Heathrow Airport"), "BA0007 departs 09:25 from Heathrow on Avios business class. Overnight flight arriving Tokyo Haneda 07:00 Saturday 8 August.")
     ]}
   ])
 },
-// ── DAY 1: 9 Aug — Arrive Sapporo ─────────────────────────────────────────────
-{ id:1, date:"9 August", weekday:"Saturday", month:"AUG", num:9, city:"sap", travel:true,
+// ── DAY 1: 8 Aug — Arrive Tokyo ───────────────────────────────────────────────
+{ id:1, date:"8 August", weekday:"Saturday", month:"AUG", num:8, city:"tok", travel:true,
+  title:"Arrive Tokyo",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Saturday, 8 August</div>
+    <div class="detail-title">Arrive Tokyo</div>
+    <span class="badge tok">ARRIVAL DAY · TOKYO</span>
+  `, [
+    {fixed: hotelBlock("Mercure Tokyo Haneda Airport", "Mercure Tokyo Haneda Airport", null, "3:00pm", "9 Aug until 11:00", "Ref: QJKHFLCK · Paid · Luggage storage available from 07:00 arrival")},
+    {label:"Morning", cards:[
+      activityCard("d1tok0", "07:00", "Arrive Haneda"+pin("Haneda Airport International Terminal Tokyo"), "Arrived on BA0007 Business Class. Immigration, bags collected, luggage dropped at Mercure bag storage. Headed straight into Tokyo for the day."),
+      activityCard("d1tok1", "10:30", "Imperial Palace Interior Tour"+pin("Imperial Palace Tokyo"), "The Imperial Household Agency runs two free guided tours daily (10:00 and 13:30) for up to 300 visitors — first come, first served, no booking required. Walked through the palace grounds and inner areas with a guide, seeing parts of the imperial residence not visible from the East Garden.")
+    ]},
+    {label:"Afternoon", cards:[
+      activityCard("d1tok2", "", "Kanda"+pin("Kanda Tokyo"), "Wandered through the Kanda area after the palace — the district around the station has an old Tokyo character, bookshops, specialist shops and narrow streets."),
+      activityCard("d1tok3", "", "Akihabara"+pin("Akihabara Tokyo"), "Walked around Akihabara for a while — the electronics and anime district, familiar from previous visits but always worth a browse.")
+    ]},
+    {label:"Evening", cards:[
+      activityCard("d1tok4", "", "Return to hotel · Early night", "Back to the Mercure Haneda. Early night ahead of the HD21 flight to Sapporo tomorrow at 11:15.")
+    ]}
+  ])
+},
+// ── DAY 2: 9 Aug — Arrive Sapporo ─────────────────────────────────────────────
+{ id:2, date:"9 August", weekday:"Sunday", month:"AUG", num:9, city:"sap", travel:true,
   title:"Tokyo → Sapporo",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Saturday, 9 August</div>
+    <div class="detail-date">Sunday, 9 August</div>
     <div class="detail-title">Tokyo → Sapporo</div>
     <span class="badge sap">TRAVEL DAY · TOKYO → SAPPORO</span>
   `, [
@@ -1354,10 +1367,10 @@ const days = [
   ])
 },
 // ── DAY 2: 10 Aug — Otaru ────────────────────────────────────────────────────
-{ id:2, date:"10 August", weekday:"Sunday", month:"AUG", num:10, city:"sap", travel:false,
+{ id:3, date:"10 August", weekday:"Monday", month:"AUG", num:10, city:"sap", travel:false,
   title:"Sapporo — Otaru & Mt Moiwa",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Sunday, 10 August</div>
+    <div class="detail-date">Monday, 10 August</div>
     <div class="detail-title">Otaru & Mt Moiwa Ropeway</div>
     <span class="badge sap">HOKKAIDO · DAY TRIP</span>
   `, [
@@ -1378,10 +1391,10 @@ const days = [
   ])
 },
 // ── DAY 3: 11 Aug — Furano/Biei Tour ─────────────────────────────────────────
-{ id:3, date:"11 August", weekday:"Monday", month:"AUG", num:11, city:"sap", travel:false,
+{ id:4, date:"11 August", weekday:"Tuesday", month:"AUG", num:11, city:"sap", travel:false,
   title:"Sapporo — Furano & Biei",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Monday, 11 August</div>
+    <div class="detail-date">Tuesday, 11 August</div>
     <div class="detail-title">Furano & Biei Photo Tour</div>
     <span class="badge sap">HOKKAIDO · ORGANISED TOUR</span>
   `, [
@@ -1401,10 +1414,10 @@ const days = [
   ])
 },
 // ── DAY 4: 12 Aug — Noboribetsu/Lake Toya Tour ───────────────────────────────
-{ id:4, date:"12 August", weekday:"Tuesday", month:"AUG", num:12, city:"sap", travel:false,
+{ id:5, date:"12 August", weekday:"Wednesday", month:"AUG", num:12, city:"sap", travel:false,
   title:"Sapporo — Noboribetsu & Lake Toya",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Tuesday, 12 August</div>
+    <div class="detail-date">Wednesday, 12 August</div>
     <div class="detail-title">Noboribetsu & Lake Toya Tour</div>
     <span class="badge sap">HOKKAIDO · ORGANISED TOUR</span>
   `, [
@@ -1423,10 +1436,10 @@ const days = [
   ])
 },
 // ── DAY 5: 13 Aug — Local Sapporo / Hill of Buddha ───────────────────────────
-{ id:5, date:"13 August", weekday:"Wednesday", month:"AUG", num:13, city:"sap", travel:false,
+{ id:6, date:"13 August", weekday:"Thursday", month:"AUG", num:13, city:"sap", travel:false,
   title:"Sapporo — Hill of the Buddha & Summer Festival",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Wednesday, 13 August</div>
+    <div class="detail-date">Thursday, 13 August</div>
     <div class="detail-title">Hill of the Buddha & Sapporo Summer Festival</div>
     <span class="badge sap">HOKKAIDO · SAPPORO</span>
   `, [
@@ -1442,10 +1455,10 @@ const days = [
   ])
 },
 // ── DAY 6: 14 Aug — Fly to Osaka ─────────────────────────────────────────────
-{ id:6, date:"14 August", weekday:"Thursday", month:"AUG", num:14, city:"osa", travel:true,
+{ id:7, date:"14 August", weekday:"Friday", month:"AUG", num:14, city:"osa", travel:true,
   title:"Sapporo → Osaka",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Thursday, 14 August</div>
+    <div class="detail-date">Friday, 14 August</div>
     <div class="detail-title">Sapporo → Osaka</div>
     <span class="badge osa">TRAVEL DAY · SAPPORO → OSAKA</span>
   `, [
@@ -1465,10 +1478,10 @@ const days = [
   ])
 },
 // ── DAY 7: 15 Aug — Osaka (Obon) ─────────────────────────────────────────────
-{ id:7, date:"15 August", weekday:"Friday", month:"AUG", num:15, city:"osa", travel:false,
+{ id:8, date:"15 August", weekday:"Saturday", month:"AUG", num:15, city:"osa", travel:false,
   title:"Osaka — Namba Yasaka, Sumiyoshi Taisha & Nagai Park",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Friday, 15 August</div>
+    <div class="detail-date">Saturday, 15 August</div>
     <div class="detail-title">Namba Yasaka, Sumiyoshi Taisha & Nagai Park</div>
     <span class="badge osa">OSAKA · OBON PEAK</span>
   `, [
@@ -1486,10 +1499,10 @@ const days = [
   ])
 },
 // ── DAY 8: 16 Aug — Kobe & Himeji ────────────────────────────────────────────
-{ id:8, date:"16 August", weekday:"Saturday", month:"AUG", num:16, city:"osa", travel:false, trip:true,
+{ id:9, date:"16 August", weekday:"Sunday", month:"AUG", num:16, city:"osa", travel:false, trip:true,
   title:"Osaka — Himeji & Kobe Day Trip",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Saturday, 16 August</div>
+    <div class="detail-date">Sunday, 16 August</div>
     <div class="detail-title">Himeji & Kobe Day Trip</div>
     <span class="badge osa">OSAKA · DAY TRIP · VERY HOT</span>
   `, [
@@ -1514,10 +1527,10 @@ const days = [
   ])
 },
 // ── DAY 9: 17 Aug — Osaka food/city ──────────────────────────────────────────
-{ id:9, date:"17 August", weekday:"Sunday", month:"AUG", num:17, city:"osa", travel:false,
+{ id:10, date:"17 August", weekday:"Monday", month:"AUG", num:17, city:"osa", travel:false,
   title:"Osaka — Tondabayashi & Denden Town",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Sunday, 17 August</div>
+    <div class="detail-date">Monday, 17 August</div>
     <div class="detail-title">Tondabayashi & Denden Town</div>
     <span class="badge osa">OSAKA</span>
   `, [
@@ -1532,10 +1545,10 @@ const days = [
   ])
 },
 // ── DAY 10: 18 Aug — Osaka city day ──────────────────────────────────────────
-{ id:10, date:"18 August", weekday:"Monday", month:"AUG", num:18, city:"osa", travel:false,
+{ id:11, date:"18 August", weekday:"Tuesday", month:"AUG", num:18, city:"osa", travel:false,
   title:"Osaka — Relaxed City Day",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Monday, 18 August</div>
+    <div class="detail-date">Tuesday, 18 August</div>
     <div class="detail-title">Relaxed City Day</div>
     <span class="badge osa">OSAKA</span>
   `, [
@@ -1547,10 +1560,10 @@ const days = [
   ])
 },
 // ── DAY 11: 19 Aug — Hiroshima & Miyajima ────────────────────────────────────
-{ id:11, date:"19 August", weekday:"Tuesday", month:"AUG", num:19, city:"miy", travel:true,
+{ id:12, date:"19 August", weekday:"Wednesday", month:"AUG", num:19, city:"miy", travel:true,
   title:"Hiroshima & Miyajima",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Tuesday, 19 August</div>
+    <div class="detail-date">Wednesday, 19 August</div>
     <div class="detail-title">Hiroshima & Miyajima</div>
     <span class="badge miy">HIROSHIMA · MIYAJIMA</span>
   `, [
@@ -1578,10 +1591,10 @@ const days = [
   ])
 },
 // ── DAY 12: 20 Aug — Miyajima → Kyoto ────────────────────────────────────────
-{ id:12, date:"20 August", weekday:"Wednesday", month:"AUG", num:20, city:"kyo", travel:true,
+{ id:13, date:"20 August", weekday:"Thursday", month:"AUG", num:20, city:"kyo", travel:true,
   title:"Miyajima → Kyoto",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Wednesday, 20 August</div>
+    <div class="detail-date">Thursday, 20 August</div>
     <div class="detail-title">Miyajima → Kyoto</div>
     <span class="badge kyo">TRAVEL DAY · MIYAJIMA → KYOTO</span>
   `, [
@@ -1603,10 +1616,10 @@ const days = [
   ])
 },
 // ── DAY 13: 21 Aug — Kyoto ───────────────────────────────────────────────────
-{ id:13, date:"21 August", weekday:"Thursday", month:"AUG", num:21, city:"kyo", travel:false,
+{ id:14, date:"21 August", weekday:"Friday", month:"AUG", num:21, city:"kyo", travel:false,
   title:"Kyoto — Ginkaku-ji, Philosopher's Path & teamLab",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Thursday, 21 August</div>
+    <div class="detail-date">Friday, 21 August</div>
     <div class="detail-title">Ginkaku-ji, Philosopher's Path & teamLab Biovortex</div>
     <span class="badge kyo">KYOTO</span>
   `, [
@@ -1625,10 +1638,10 @@ const days = [
   ])
 },
 // ── DAY 14: 22 Aug — Kyoto ───────────────────────────────────────────────────
-{ id:14, date:"22 August", weekday:"Friday", month:"AUG", num:22, city:"kyo", travel:false,
+{ id:15, date:"22 August", weekday:"Saturday", month:"AUG", num:22, city:"kyo", travel:false,
   title:"Kyoto — Kinkaku-ji & Arashiyama",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Friday, 22 August</div>
+    <div class="detail-date">Saturday, 22 August</div>
     <div class="detail-title">Kinkaku-ji & Arashiyama</div>
     <span class="badge kyo">KYOTO</span>
   `, [
@@ -1647,10 +1660,10 @@ const days = [
   ])
 },
 // ── DAY 15: 23 Aug — Kyoto ───────────────────────────────────────────────────
-{ id:15, date:"23 August", weekday:"Sunday", month:"AUG", num:23, city:"kyo", travel:false,
+{ id:16, date:"25 August", weekday:"Tuesday", month:"AUG", num:25, city:"kyo", travel:false,
   title:"Kyoto — Shops, Nishiki Market & Imperial Palace",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Sunday, 23 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Shops, Nishiki Market & Imperial Palace</div>
     <span class="badge kyo">KYOTO · SUNDAY</span>
   `, [
@@ -1670,10 +1683,10 @@ const days = [
   ])
 },
 // ── DAY 16: 24 Aug — Kyoto ───────────────────────────────────────────────────
-{ id:16, date:"24 August", weekday:"Monday", month:"AUG", num:24, city:"kyo", travel:false,
+{ id:17, date:"23 August", weekday:"Sunday", month:"AUG", num:23, city:"kyo", travel:false,
   title:"Kyoto — Ryoan-ji, Ninnaji & Randen",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Monday, 24 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Ryoan-ji, Ninnaji & Randen streetcar</div>
     <span class="badge kyo">KYOTO</span>
   `, [
@@ -1687,10 +1700,10 @@ const days = [
   ])
 },
 // ── DAY 17: 25 Aug — Kyoto → Tokyo ───────────────────────────────────────────
-{ id:17, date:"25 August", weekday:"Tuesday", month:"AUG", num:25, city:"tok", travel:true,
+{ id:18, date:"24 August", weekday:"Monday", month:"AUG", num:24, city:"tok", travel:true,
   title:"Kyoto → Tokyo",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Tuesday, 25 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Kyoto → Tokyo</div>
     <span class="badge tok">TRAVEL DAY · KYOTO → TOKYO</span>
   `, [
@@ -1709,10 +1722,10 @@ const days = [
   ])
 },
 // ── DAY 18: 26 Aug — Tokyo ───────────────────────────────────────────────────
-{ id:18, date:"26 August", weekday:"Tuesday", month:"AUG", num:26, city:"tok", travel:false,
+{ id:19, date:"29 August", weekday:"Saturday", month:"AUG", num:29, city:"tok", travel:false,
   title:"Tokyo — Gardens, Hibiya & Odaiba",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Tuesday, 26 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Gardens, Hibiya Park & Odaiba</div>
     <span class="badge tok">TOKYO</span>
   `, [
@@ -1730,10 +1743,10 @@ const days = [
   ])
 },
 // ── DAY 19: 27 Aug — Tokyo ───────────────────────────────────────────────────
-{ id:19, date:"27 August", weekday:"Wednesday", month:"AUG", num:27, city:"tok", travel:false,
+{ id:20, date:"26 August", weekday:"Wednesday", month:"AUG", num:26, city:"tok", travel:false,
   title:"Tokyo — Gotokuji, Kichijoji, Ikebukuro & Shiinamachi",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Wednesday, 27 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Gotokuji, Kichijoji, Ikebukuro & Shiinamachi</div>
     <span class="badge tok">TOKYO</span>
   `, [
@@ -1749,10 +1762,10 @@ const days = [
   ])
 },
 // ── DAY 20: 28 Aug — Tokyo ───────────────────────────────────────────────────
-{ id:20, date:"28 August", weekday:"Thursday", month:"AUG", num:28, city:"tok", travel:false,
+{ id:21, date:"27 August", weekday:"Thursday", month:"AUG", num:27, city:"tok", travel:false,
   title:"Tokyo — Gokokuji, Nezu, Ochanomizu, Shibuya & Popmart",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Thursday, 28 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Gokokuji, Nezu, Ochanomizu, Shibuya & Popmart</div>
     <span class="badge tok">TOKYO</span>
   `, [
@@ -1770,10 +1783,10 @@ const days = [
   ])
 },
 // ── DAY 21: 29 Aug — Tokyo ───────────────────────────────────────────────────
-{ id:21, date:"29 August", weekday:"Friday", month:"AUG", num:29, city:"tok", travel:false,
+{ id:22, date:"28 August", weekday:"Friday", month:"AUG", num:28, city:"tok", travel:false,
   title:"Tokyo — Rainy Final Day",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Friday, 29 August</div>
+    <div class="detail-date">Saturday, 29 August</div>
     <div class="detail-title">Rainy final day across the city</div>
     <span class="badge tok">TOKYO · RAINY</span>
   `, [
@@ -1793,10 +1806,10 @@ const days = [
   ])
 },
 // ── DAY 22: 30 Aug — Fly Home ────────────────────────────────────────────────
-{ id:22, date:"30 August", weekday:"Saturday", month:"AUG", num:30, city:"tok", travel:true,
+{ id:23, date:"30 August", weekday:"Sunday", month:"AUG", num:30, city:"tok", travel:true,
   title:"Tokyo → London",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Saturday, 30 August</div>
+    <div class="detail-date">Sunday, 30 August</div>
     <div class="detail-title">Tokyo → London</div>
     <span class="badge tok">DEPARTURE DAY</span>
   `, [
@@ -2049,7 +2062,7 @@ function renderInstructions(){
     <div class="detail-title">Using this diary</div>
     <div class="block">
       <div class="block-label">Getting around</div>
-      <p>Tap any date in the grid to jump to that day. Use the Previous / Next buttons at the bottom of each day to move through the trip in order. The diary always opens on 8 August — the first day.</p>
+      <p>Tap any date in the grid to jump to that day. Use the Previous / Next buttons at the bottom of each day to move through the trip in order. The diary always opens on 7 August — the departure day from London.</p>
     </div>
     <div class="block">
       <div class="block-label">Reading the cards</div>
