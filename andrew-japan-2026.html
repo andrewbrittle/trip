@@ -1548,22 +1548,32 @@ const days = [
 },
 // ── DAY 11: 19 Aug — Hiroshima & Miyajima ────────────────────────────────────
 { id:11, date:"19 August", weekday:"Tuesday", month:"AUG", num:19, city:"miy", travel:true,
-  title:"Osaka → Hiroshima → Miyajima",
+  title:"Hiroshima & Miyajima",
   render:()=>renderDayWithProverbs(`
     <div class="detail-date">Tuesday, 19 August</div>
     <div class="detail-title">Hiroshima & Miyajima</div>
-    <span class="badge miy">TRAVEL DAY · HIROSHIMA → MIYAJIMA</span>
+    <span class="badge miy">HIROSHIMA · MIYAJIMA</span>
   `, [
     {fixed: transitBlock("Shinkansen & Ferry", [
       { from:{code:"SHIN-OSAKA", time:"09:17"}, to:{code:"HIROSHIMA", time:"10:42"}, train:"Nozomi 7 · Car 14, Seat 17-E", dur:"1h 25m", refId:"d11-osaka-hiroshima" }
     ])},
-    {fixed: hotelBlock("Itsukushimahigashimonzen Kikugawa", "Kikugawa Miyajima", "Miyajimacho 796, Hiroshima", "3:00pm–9:00pm", "20 Aug until 10:00", "Conf: 6671473298 · PIN: 3515 · Paid · Breakfast included · Traditional ryokan")},
-    {label:"Morning / Afternoon", cards:[
-      activityCard("d11a0", "10:42", "Hiroshima Peace Memorial Park"+pin("Hiroshima Peace Memorial Park"), "Forwarded main luggage from Osaka hotel to Kyoto. Visited Atomic Bomb Dome, cenotaph, and Ota River precinct in Hiroshima."),
-      activityCard("d11a1", "14:30", "Ferry to Miyajima"+pin("Miyajima Pier"), "High-speed Aqua Net ferry from Peace Park pier directly across the bay to Miyajima Island.")
+    {fixed: hotelBlock("Itsukushimahigashimonzen Kikugawa", "Kikugawa Miyajima", "Miyajimacho 796, Hiroshima", "3:00pm–9:00pm", "20 Aug until 10:00", "Conf: 6671473298 · PIN: 3515 · Paid · Breakfast included · Traditional ryokan · No shoes inside")},
+    {label:"Hiroshima", cards:[
+      activityCard("d11a0", "10:42", "Arrive Hiroshima"+pin("Hiroshima Station"), "Shinkansen from Osaka, arriving 10:42. Main luggage forwarded to Kyoto from the Osaka hotel — travelling with overnight bag only."),
+      activityCard("d11a1", "", "Shukkei-en Garden"+pin("Shukkei-en Garden Hiroshima"), "Found this lovely garden on the walk toward the castle and spent over an hour inside. A miniature landscape garden created in 1620, with a central pond, islands, tea houses and stone bridges. Survived the atomic bomb with some damage but was restored. One of the highlights of the Hiroshima visit."),
+      activityCard("d11a2", "", "Hiroshima Castle"+pin("Hiroshima Castle"), "The reconstructed castle — the original was destroyed in the atomic blast. Good views from the top, interesting museum inside about Hiroshima before the war."),
+      activityCard("d11a3", "", "Atomic Bomb Dome"+pin("Atomic Bomb Dome Hiroshima"), "The iconic ruin — the only structure left standing near the bomb's hypocentre, preserved exactly as the blast left it. One of the most sobering sights in Japan."),
+      activityCard("d11a4", "", "Peace Memorial Park & Flame of Peace"+pin("Hiroshima Peace Memorial Park"), "Walked through the park along the Ota River. The Flame of Peace has burned continuously since 1964 and will remain lit until all nuclear weapons are abolished. The cenotaph frames the dome perfectly across the river.")
     ]},
-    {label:"Evening", cards:[
-      activityCard("d11a2", "", "Miyajima at Dusk & Ryokan Stay"+pin("Itsukushima Shrine Miyajima"), "Checked into Kikugawa Ryokan. Explored Itsukushima Shrine and the floating Torii gate as day-trippers departed.")
+    {label:"Ferry to Miyajima", cards:[
+      activityCard("d11a5", "", "Metro to Miyajimaguchi · Ferry to Miyajima"+pin("Miyajima Ferry Terminal"), "Metro to Miyajimaguchi then ferry across to the island. Checked straight into Kikugawa Ryokan — traditional, no shoes inside, yukata provided.")
+    ]},
+    {label:"Evening on Miyajima", cards:[
+      activityCard("d11a6", "", "Explore as day trippers leave"+pin("Itsukushima Shrine Miyajima"), "Went out as the day trippers were leaving — the island transforms completely. Much quieter, deer wandering freely, atmospheric light."),
+      activityCard("d11a7", "", "Daisho-in Temple"+pin("Daisho-in Temple Miyajima"), "Walked up the hill to Daisho-in — a fascinating temple complex on the lower slopes with hundreds of Jizo statues, stone lanterns, and prayer wheels. Didn't attempt Mt Misen in the heat."),
+      activityCard("d11a8", "", "Torii Gate at water level"+pin("Itsukushima Torii Gate Miyajima"), "Walked around the bar of sand surrounding the torii gate. The gate up close is enormous — you only appreciate the scale when you're standing next to it."),
+      activityCard("d11a9", "", "Street food · Starbucks"+pin("Miyajima Shopping Street"), "Had street food along the shopping street, then stopped at the Starbucks on the island for coffee. Not very traditional, but the view from the terrace over the water made up for it."),
+      activityCard("d11a10", "", "Torii gate at sunset and after dark"+pin("Itsukushima Torii Gate Miyajima"), "Went back out later to walk to the torii gate at sunset, then stayed as the lights came on in the dark. One of the most memorable evenings of the trip.")
     ]}
   ])
 },
