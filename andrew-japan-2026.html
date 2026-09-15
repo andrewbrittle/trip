@@ -617,7 +617,7 @@ const CARD_HINTS = {
 // ---- activity status: default (blue) / done (green) / skipped (grey), persisted ----
 let statusStore = {};
 try { statusStore = JSON.parse(localStorage.getItem('tripActivityStatus') || '{}'); } catch(e){ statusStore = {}; }
-function getStatus(pid){ return statusStore[pid] || 'done'; }
+function getStatus(pid){ return 'done'; }  // diary mode — all activities done
 function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSON.stringify(statusStore)); } catch(e){} }
 
 // ---- extended detail/history popups: trial content on a couple of days, opt-in per activity ----
