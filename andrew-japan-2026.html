@@ -577,40 +577,97 @@ function refBlock(label, id){
 
 // ---- small practical hints attached to selected activity cards ----
 const CARD_HINTS = {
-  "d2a4": {
-    "hours": "Casual visits: last admission 15:30 · guided tours require advance booking",
-    "cash": "Museum/distillery grounds visit can be free"
+  "d1tok1": {
+    "hours": "Tours at 10:00 and 13:30 · arrive 30 mins early to queue",
+    "cash": "Free — no booking required"
   },
-  "d3a0": {
-    "hours": "Open year-round · Aug parking 07:00–19:00",
-    "cash": "Parking from ¥1,000 per car from 1 Jul 2026"
+  "d3a1": {
+    "hours": "Canal district always accessible",
+    "cash": "Free to walk · individual sites charge separately"
   },
-  "d3a6": {
+  "d4a0": {
+    "hours": "Blue Pond: always accessible · parking area closes at dusk",
+    "cash": "Free"
+  },
+  "d4a6": {
+    "hours": "Farm Tomita: 08:30–17:30 (summer)",
+    "cash": "Free admission · café and shop on site"
+  },
+  "d6a0": {
+    "hours": "09:00–16:00 (last entry 15:30)",
+    "cash": "¥500 (separate from cemetery admission)"
+  },
+  "d8a1": {
+    "hours": "Open daily · grounds 06:00–18:00",
+    "cash": "¥500 for grounds · additional for individual halls"
+  },
+  "d9a1": {
+    "hours": "09:00–17:00 (last entry 16:00)",
+    "cash": "¥1,000 (grounds only — no interior)"
+  },
+  "d9a3": {
+    "hours": "Open 24hrs · earthquake memorial always accessible",
+    "cash": "Free"
+  },
+  "d11a1": {
+    "hours": "09:00–17:00 (last entry 16:30)",
+    "cash": "¥260"
+  },
+  "d13a0": {
+    "hours": "08:30–17:00 (last entry 16:30)",
+    "cash": "¥500"
+  },
+  "d13a2": {
+    "hours": "09:00–17:00 (last entry 16:30)",
+    "cash": "¥600"
+  },
+  "d13a3": {
+    "hours": "Sanmon gate 08:40–17:00",
+    "cash": "Grounds free · sanmon ¥600 · sub-temples vary"
+  },
+  "d13a5": {
+    "hours": "10:00–22:00 (last entry 21:00)",
+    "cash": "From ¥3,200 · no cancellation"
+  },
+  "d14a0": {
+    "hours": "09:00–17:00 (last entry 16:40)",
+    "cash": "¥500"
+  },
+  "d14a2": {
+    "hours": "08:30–17:30",
+    "cash": "¥500 garden · ¥500 additional for Omuro Palace"
+  },
+  "d16a0": {
+    "hours": "08:00–17:00 (Dec–Feb closes 16:30)",
+    "cash": "¥600"
+  },
+  "d16a1": {
     "hours": "09:00–17:00",
-    "cash": "Admission: free"
+    "cash": "Grounds free · Omuro Palace ¥800 · inner garden ¥500"
   },
-  "d5a0": {
-    "hours": "Closed Mondays",
-    "cash": "~¥420"
+  "d17a3": {
+    "hours": "Observation deck 10:00–21:00",
+    "cash": "From ¥2,000 · advance booking reduces queues"
   },
-  "d17a1": {
-    "hours": "Allow 2–3 hrs if going up the tower",
-    "cash": "Observation decks are ticketed; booking ahead can save time"
+  "d18a0": {
+    "hours": "09:00–17:00 (last entry 16:30)",
+    "cash": "¥300"
   },
   "d18a1": {
-    "hours": "Both gardens generally 09:00–17:00",
-    "cash": "Hamarikyu ¥300 · Kiyosumi ¥150"
+    "hours": "09:00–17:00 (last entry 16:30)",
+    "cash": "¥150"
   },
   "d19a0": {
-    "hours": "Temple grounds 06:00–17:00 · office 08:00–15:00",
+    "hours": "Temple grounds 06:00–17:00",
     "cash": "Free"
   },
   "d20a0": {
     "hours": "06:00–17:00",
     "cash": "Free"
   },
-  "d21a0": {
-    "alt": "Use covered arcades on wet days; group the shopping by district rather than crossing Tokyo repeatedly"
+  "d20a1": {
+    "hours": "09:00–17:00",
+    "cash": "Free"
   }
 };
 
@@ -623,404 +680,332 @@ function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSO
 // ---- extended detail/history popups: trial content on a couple of days, opt-in per activity ----
 // ---- extended detail/history popups ----
 const activityDetails = {
-  // --- DAY 0 ---
+  // --- DAY 0 (7 Aug - depart London) ---
   "d0a0": {
-    title: "Mercure Tokyo Haneda & Arrival Logistics",
-    body: "<p>Arriving at Haneda Airport early in the morning via British Airways Business Class provides a smooth landing, but standard hotel check-ins in Japan rarely open before 15:00.</p><p>By staying at the Mercure Haneda Airport, you can take advantage of their early luggage storage from 07:00. This frees you to head straight out into Tokyo for a full day of sightseeing unencumbered, before returning later to check in and rest ahead of your domestic flight to Hokkaido.</p>"
+    title: "BA0007 — Business Class to Tokyo",
+    body: "<p>British Airways flight BA0007 operates from London Heathrow Terminal 5 to Tokyo Haneda Terminal 3, departing 09:25 and arriving the following morning at 07:00 JST.</p><p>The flight covers approximately 9,560km and takes around 11h 35m. Business class on this route features Club Suites with direct aisle access and lie-flat beds — ideal for arriving rested on a long-haul eastbound flight.</p>"
   },
 
-  // --- DAY 1 ---
-  "d1a1": {
-    title: "The Hill of the Buddha (Atama Daibutsu)",
-    body: "<p>Designed by world-renowned architect Tadao Ando and completed in 2015, the Hill of the Buddha at Makomanai Takino Cemetery is one of Hokkaido's most extraordinary modern architectural wonders.</p><p>The 13.5-meter tall stone Buddha statue was previously standing outdoors, but Ando built a massive lavender-covered hill surrounding it. From the outside, only the top of the Buddha's head is visible above the crest. Visitors walk through a dramatic 40-meter concrete tunnel into a sunken rotunda where the full statue is revealed, framed by an open ceiling skylight.</p>"
+  // --- DAY 1 (8 Aug - arrive Tokyo) ---
+  "d1tok1": {
+    title: "Imperial Palace Interior Tour",
+    body: "<p>The Imperial Palace is the main residence of the Emperor of Japan. The palace grounds occupy the former site of Edo Castle, the seat of the Tokugawa shogunate until 1868.</p><p>The Imperial Household Agency runs free guided tours of the palace interior twice daily at 10:00 and 13:30 for up to 300 visitors per session — first come, first served, no advance booking required. Tours take approximately 75 minutes and include the Fujimi-yagura watchtower, the Niju-bashi bridge, the Seimon Ishibashi stone bridge, and the main ceremonial buildings.</p>"
   },
-  "d1a3": {
-    title: "Sapporo TV Tower & Grid Planning",
-    body: "<p>Built in 1957 by Tachū Naitō (the same architect behind Tokyo Tower), the 147.2-meter tall tower stands at the eastern terminus of Odori Park.</p><p>Unlike ancient Japanese cities that grew organically around castles or rivers, Sapporo was laid out in the 1870s on a strict American-style grid system under the advice of foreign agricultural pioneers. The TV Tower's observation deck (90m) provides a clear view of this geometric layout dividing the city into north/south and east/west sectors.</p>"
+  "d1tok2": {
+    title: "Kanda — Old Tokyo Character",
+    body: "<p>Kanda is one of Tokyo's oldest surviving shitamachi (downtown) districts, with a character distinct from the polished commercial areas nearby. The district around Kanda Station and Jinbocho is famous for its concentration of second-hand bookshops — over 170 of them — as well as specialist shops for sporting goods, musical instruments, and crafts.</p><p>The area survived the Great Kanto Earthquake of 1923 and the wartime firebombing better than most of Tokyo, giving it an older, denser urban texture.</p>"
   },
 
-  // --- DAY 2 ---
+  // --- DAY 2 (9 Aug - arrive Sapporo) ---
   "d2a1": {
-    title: "Otaru Canal & Merchant History",
-    body: "<p>Completed in 1923, the Otaru Canal was the heart of Hokkaido’s primary port city, built to allow smaller barges (sampans) to offload cargo directly into stone warehouses.</p><p>As modern port facilities expanded in the mid-20th century, the canal fell out of commercial use. Rather than being filled in for highway development, local citizens campaigned to preserve it in the 1980s. The stone and brick warehouses in Meiji and Taisho revival styles were repurposed into artisan craft shops, glass studios, and microbreweries.</p>"
+    title: "Odori Park & Sapporo's Grid",
+    body: "<p>Odori Park is a 1.5km linear park running east-west through central Sapporo, dividing the city into north and south. It was laid out in the Meiji era as a firebreak and public space, and remains the civic heart of the city.</p><p>Sapporo was one of Japan's first planned cities, laid out on an American-style grid by the Hokkaido Development Commission in the 1870s with the assistance of American agricultural advisors. The grid is unusually legible by Japanese standards — streets run in straight lines and the numbering system (North 1, East 3, etc.) makes navigation straightforward.</p>"
   },
-  "d2a4": {
-    title: "Yoichi & Nikka Whisky Heritage",
-    body: "<p>Yoichi is the birthplace of Japanese malt whisky. In 1934, Masataka Taketsuru—who had traveled to Scotland to study whisky production—founded the Yoichi Distillery here because Hokkaido's crisp climate, peat bogs, and clean water mirrored the Scottish Highlands.</p><p>The distillery still uses traditional coal-fired pot stills, a rare historical technique preserved to give Nikka whisky its distinctive rich, smoky profile.</p>"
+  "d2a3": {
+    title: "Sapporo TV Tower",
+    body: "<p>The Sapporo TV Tower was completed in 1957 and stands 147.2m tall at the eastern end of Odori Park. Its observation deck at 90.38m offers panoramic views across the city grid to the mountains beyond.</p><p>The tower was designed by Tachū Naitō, the same engineer who designed Tokyo Tower. It serves as the visual anchor of Odori Park and the unofficial symbol of Sapporo, appearing on much of the city's tourist material.</p>"
   },
 
-  // --- DAY 3 ---
-  "d3a0": {
-    title: "Shirogane Blue Pond (Aoi-ike)",
-    body: "<p>The famous turquoise-blue pond in Biei was created entirely by accident. Following the 1988 eruption of nearby Mount Tokachi, a concrete dam was built across the Biei River to protect the town from mudflows.</p><p>Water impounded behind the dam filled a forest clearing, dissolving natural minerals—specifically aluminum from nearby thermal springs. The dissolved colloidal particles scatter sunlight, producing an intense cyan-blue color that changes hue depending on the light, angle, and season.</p>"
+  // --- DAY 3 (10 Aug - Otaru & Moiwa) ---
+  "d3a1": {
+    title: "Otaru Canal & Warehouse District",
+    body: "<p>The Otaru Canal was completed in 1923 to service the port — goods were transferred from ships to small boats which were then rowed along the canal to the warehouses lining its banks. At its peak, Otaru was one of Hokkaido's most important trading cities, particularly for herring fishing and coal export.</p><p>The canal fell into disuse as container shipping took over in the 1960s. A campaign to fill it in was narrowly defeated in the 1980s, and the surviving 1.3km section was preserved along with its stone warehouses, which were converted into shops, cafes and restaurants. The gas lamps along the towpath were added during the renovation.</p>"
+  },
+  "d3a4": {
+    title: "Suitengu Shrine",
+    body: "<p>Suitengu is a small Shinto shrine on the hillside above Otaru port, dedicated to Suiten — the god of water and safe seafaring. Shrines dedicated to Suiten are traditionally located near fishing ports and harbours throughout Japan.</p><p>The hillside location above Otaru provides one of the best viewpoints over the port and Ishikari Bay, particularly good for photography toward the harbour and the mountains behind the city.</p>"
   },
   "d3a6": {
-    title: "Farm Tomita & Hokkaido Agriculture",
-    body: "<p>Farm Tomita is famous for introducing lavender cultivation to Furano in the mid-20th century. When synthetic lavender flavorings nearly ruined the local essential oil industry in the 1970s, Farm Tomita transitioned into a tourist destination after its vibrant purple fields were featured on a national JR calendar.</p><p>Although peak lavender wanes by mid-August, the farm plants multi-colored strips of sunflowers, marigolds, dahlias, and ageratum that form vibrant rainbow hill fields into late summer.</p>"
+    title: "Mt Moiwa Ropeway",
+    body: "<p>Mt Moiwa (531m) sits to the southwest of central Sapporo and offers one of the best panoramic views of the city. The two-stage ropeway (gondola to mid-station, then a smaller mini cable car to the summit) was rebuilt in 2011.</p><p>The summit view at night is considered one of the great night views of Hokkaido — the city's grid spreads out below in a vast grid of lights, with the dark mountains of the Ishikari plain visible beyond. A restaurant and observation terrace at the top make it a popular evening destination year-round.</p>"
   },
 
-  // --- DAY 4 ---
+  // --- DAY 4 (11 Aug - Furano/Biei tour) ---
   "d4a0": {
-    title: "Jigokudani (Hell Valley)",
-    body: "<p>Jigokudani is a dramatic 24-acre geothermal crater formed during the eruption of Mt. Kuttara approximately 20,000 years ago.</p><p>Steaming sulfur vents, boiling mud activity, and mineral streams give the barren grey canyon an unearthly look. The valley pumps out roughly 10,000 tons of hot spring water daily, supplying the nearby onsen baths of Noboribetsu with 9 different types of mineral waters.</p>"
+    title: "Shirogane Blue Pond (Aoi-ike)",
+    body: "<p>The Shirogane Blue Pond was formed accidentally in 1988 when a volcanic mudflow barrier was constructed on the Biei River to protect against eruptions of Mt Tokachidake. The distinctive turquoise-blue colour comes from naturally occurring aluminium hydroxide particles suspended in the water, which scatter reflected light.</p><p>Dozens of dead white birch trees stand in the water, their bleached trunks creating a stark, otherworldly composition against the blue. The colour intensity varies with the weather and season — overcast days often produce richer, more saturated blues than bright sunshine.</p>"
   },
-  "d4a4": {
-    title: "Showa-Shinzan (The Young Mountain)",
-    body: "<p>Showa-Shinzan is one of the newest mountain peaks on Earth. Between December 1943 and September 1945, violent seismic activity caused a flat wheat field to suddenly rise, giving birth to a red lava dome that reached 398 meters in height.</p><p>Because the eruption occurred during WWII, official records were kept secret by the government to prevent public panic. However, local postmaster Masao Mimatsu mapped the mountain's daily growth on tracing paper—a historical record known as the 'Mimatsu Diagram.' He later bought the land with his own savings to preserve the volcano for scientific study.</p>"
+  "d4a6": {
+    title: "Farm Tomita & Hokkaido Lavender",
+    body: "<p>Farm Tomita was established in 1903 by the Tomita family and became famous for lavender when Tokuma Tomita planted his first fields in 1958. The farm is credited with saving Hokkaido's lavender industry, which had collapsed in the 1970s due to cheaper synthetic fragrance oils — a 1976 Japan National Railways calendar photograph of the farm's purple fields triggered a tourism boom that revived it.</p><p>The farm now maintains 12 different flower gardens that bloom in succession across the summer, with lavender peaking in early July and other varieties — sunflowers, dahlias, salvia and cosmos — carrying colour through August and September.</p>"
   },
 
-  // --- DAY 5 ---
+  // --- DAY 5 (12 Aug - Noboribetsu/Toya tour) ---
   "d5a0": {
-    title: "Sapporo Botanical Garden",
-    body: "<p>Established in 1886 by Hokkaido University, this 13.3-hectare botanical garden is older than Hokkaido's municipal grid and preserves a rare pocket of the virgin forest that once covered the Ishikari Plain.</p><p>It houses over 4,000 plant species, a historic alpine greenhouse, and the Natural History Museum—which features preserved specimens collected by 19th-century British naturalist Thomas Blakiston.</p>"
+    title: "Jigokudani — Hell Valley",
+    body: "<p>Jigokudani (Hell Valley) is a volcanic crater field covering approximately 11 hectares at the edge of Noboribetsu Onsen. The name comes from the appearance of the landscape — steaming sulphurous vents, boiling mud pools, vivid mineral deposits in ochre, red and grey, and the constant sound of underground activity.</p><p>The valley produces around 3,000 tonnes of hot water per day at temperatures up to 130°C, supplying the onsen hotels of Noboribetsu below. A boardwalk trail allows visitors to walk through the most active areas safely, though the smell of hydrogen sulphide is strong throughout.</p>"
   },
-  "d5a2": {
-    title: "Tanukikoji Shopping Arcade",
-    body: "<p>Stretching over 1 kilometer across 7 blocks, Tanukikoji is one of Hokkaido’s best-known covered commercial arcades, dating back to 1873.</p><p>Originally established by merchants and tea houses serving local laborers and travelers during Hokkaido's pioneer era, its name roughly translates to 'Raccoon Dog Alley'—referencing either the folklore spirit or the cunning nature of the original shopkeepers.</p>"
+  "d5a4": {
+    title: "Showa-Shinzan — The Young Mountain",
+    body: "<p>Showa-Shinzan is a lava dome that grew from flat wheat farmland between December 1943 and September 1945 — entirely within living memory. The eruption was classified as wartime information and suppressed by the Japanese military, but local postmaster Masao Mimatsu secretly documented the entire growth process in detailed sketches and measurements, creating an invaluable scientific record.</p><p>The dome grew 407m above its original ground level and is still classified as an active volcano. It remains privately owned by the Mimatsu family. The distinctive conical orange lava dome sits next to the older Mt Usu with steam still rising from its flanks.</p>"
   },
 
-  // --- DAY 6 ---
+  // --- DAY 6 (13 Aug - local Sapporo/Hill of Buddha) ---
+  "d6a0": {
+    title: "Hill of the Buddha (Atama Daibutsu)",
+    body: "<p>The Hill of the Buddha at Makomanai Takino Cemetery was designed by Tadao Ando and completed in 2016. The concept is radical: a 13.5m seated Buddha figure is buried within a conical hill, invisible from outside. Visitors enter through a long underground concrete tunnel that opens into a sunken circular rotunda, where the full scale of the statue is revealed with the sky as a backdrop through an open oculus above.</p><p>From outside, only the Buddha's head is visible above the lavender-covered hillside. The lavender blooms in July; in August the hill is green. The effect from any angle is extraordinary — a giant head emerging from a field. Ando designed the building as a meditation on the relationship between the monumental and the natural world.</p>"
+  },
   "d6a1": {
-    title: "Onsen Culture & Super Hotel Premier Honmachi",
-    body: "<p>While many city business hotels in Japan rely on simple tiled showers, Super Hotel Premier Honmachi features its own natural hot springs baths brought directly to the property.</p><p>Soaking in rich, mineralized geothermal waters at the end of a dense travel day is a quintessential Japanese tradition—helping unwind after transitioning from Hokkaido's northern climate into Osaka's vibrant summer energy.</p>"
+    title: "Hokkai Bon Odori",
+    body: "<p>Bon Odori is a form of traditional Japanese folk dance performed during the Obon festival in mid-August, when the spirits of the deceased are said to return to visit their families. Communities gather to dance in circles around a wooden yagura scaffold, to the accompaniment of taiko drums and traditional Bon Uta songs.</p><p>The Hokkai Bon Odori is Hokkaido's version of the dance, with regional variations in the music and dance steps distinct from the mainland traditions. The Odori Park festival in Sapporo, running 13–16 August, is one of the largest Bon Odori events in Hokkaido. Visitors are welcomed to join the dancing circles regardless of ability.</p>"
+  },
+  "d6a2": {
+    title: "Sapporo Odori Beer Garden",
+    body: "<p>The Sapporo Odori Beer Garden is held annually from late July to mid-August as part of the Sapporo Summer Festival, occupying approximately one kilometre of Odori Park across multiple themed sections. With seating for around 13,000 people at once, it is one of Japan's largest beer gardens.</p><p>Sapporo Beer — founded in the city in 1876 and Japan's oldest beer brand — anchors one section, alongside other Japanese breweries and international labels. Hokkaido seasonal food including corn, lamb (Genghis Khan barbecue), and seafood is served throughout. The festival has run since 1959.</p>"
   },
 
-  // --- DAY 7 ---
-  "d7a0": {
-    title: "Sumiyoshi Taisha (Ancient Grand Shrine)",
-    body: "<p>Founded in 211 AD before Buddhism arrived in Japan, Sumiyoshi Taisha is the head shrine for all 2,000 Sumiyoshi shrines nationwide. It is built in <i>Sumiyoshi-zukuri</i>, one of Japan's oldest purely indigenous architectural styles, characterized by straight gabled roofs, red trim, and white walls.</p><p>The shrine's central icon is the iconic Sorihashi Bridge (Taiko Bridge), which arches steeply over a duck pond. Walking over the bridge's high incline is traditionally believed to cleanse visitors of spiritual impurities before they approach the sacred inner halls.</p>"
-  },
-  "d7a1": {
-    title: "Namba Yasaka Shrine (The Lion Head Stage)",
-    body: "<p>Hidden within the backstreets of Namba, Namba Yasaka Shrine is famous for its striking 12-meter-tall lion head stage (Ema-den), built in 1975.</p><p>The massive gaping mouth—complete with gold teeth and piercing eyes—is believed to swallow evil spirits and bring good fortune, academic success, and business prosperity to visitors. It stands out as one of the most unique photo subjects in central Osaka.</p>"
-  },
-  "d7a2": {
-    title: "Tombori Riverwalk & Lantern Festival",
-    body: "<p>Running along the canal in the heart of Dotonbori, the Tombori Riverwalk transforms every summer night between July and August when nearly 2,000 traditional paper lanterns light up both sides of the river.</p><p>Dotonbori was established in 1612 by merchant Yasui Doton, who invested his personal fortune to expand the river network for trade. Today, the area is world-famous for its neon signboards (including the Glico Running Man) and its vibrant street food culture—summarized by the Osakan concept of <i>kuidaore</i> ('eat until you drop').</p>"
+  // --- DAY 7 (14 Aug - arrive Osaka) ---
+  "d7a3": {
+    title: "Tombori Riverwalk Lantern Festival",
+    body: "<p>The Tombori Riverwalk runs along both banks of the Dotonbori canal for approximately 600m through Osaka's Namba entertainment district. During the summer festival season (1 July–31 August), nearly 2,000 lanterns are hung along both sides of the canal, lit nightly from 19:00 to 02:00.</p><p>The Dotonbori canal was constructed in 1615 by a merchant named Doton Yasui, who financed its construction and died before its completion. The area has been Osaka's entertainment and commercial heart ever since, and the illuminated lanterns reflect in the canal water below the famous neon signs.</p>"
   },
 
-  // --- DAY 8 ---
+  // --- DAY 8 (15 Aug - lion head/Sumiyoshi/Nagai) ---
   "d8a0": {
-    title: "Himeji Castle (The White Heron)",
-    body: "<p>Himeji Castle (Himeji-jo) is Japan’s largest and best-preserved original feudal castle, designated a UNESCO World Heritage site. Founded in 1333 and vastly expanded by daimyo Ikeda Terumasa in 1609, its brilliant white plaster walls resemble a soaring white heron taking flight.</p><p>Unlike many major Japanese castles destroyed during WWII, Himeji survived carpet bombing raids and natural disasters completely intact. Surrounding the castle is Koko-en, a series of nine distinct walled gardens constructed in 1990 on the archaeological remains of the samurai residences.</p>"
+    title: "Namba Yasaka Shrine — Lion Head Stage",
+    body: "<p>The lion head stage (shishi-butai) at Namba Yasaka Shrine was built in 1974 and stands approximately 12 metres tall. The structure is used as a performance stage for traditional arts — the open mouth serves as the stage area — but is primarily known as one of Osaka's most photographed landmarks.</p><p>In Shinto tradition, lion figures (shishi) are protective deities believed to swallow evil spirits and bring good fortune. The exaggerated scale and vivid colours of the Yasaka lion make it one of the city's most striking photo subjects, tucked into a quiet residential backstreet just south of Namba.</p>"
   },
   "d8a1": {
-    title: "Kobe Kitano-cho & Foreign Settlement",
-    body: "<p>Nestled at the foot of Mount Rokko, Kitano-cho is a historic district where foreign merchants, diplomats, and traders settled following the opening of Kobe Port to international trade in 1868.</p><p>Over 30 preserved Western-style residences (known as <i>Ijinkan</i>) remain along its cobbled hillside streets. Featuring European brick architecture, weatherboard siding, and Victorian detailing, Kitano-cho presents an architectural landscape completely distinct from traditional Japanese urban centers.</p>"
+    title: "Sumiyoshi Taisha",
+    body: "<p>Sumiyoshi Taisha is one of Japan's oldest Shinto shrines, with origins traditionally dated to 211 AD. It is the head shrine of approximately 2,300 Sumiyoshi shrines across Japan and is dedicated to three sea deities and the Empress Jingu, who is credited with founding it.</p><p>The distinctive Sorihashi bridge — a steeply arched drum bridge over the central pond — is the shrine's iconic feature. Walking over its sharp curve is said to symbolically cleanse visitors of impurities. The main shrine buildings are built in the pre-Buddhist Sumiyoshi-zukuri architectural style, one of Japan's oldest surviving shrine forms, with characteristic straight roof ridges.</p>"
   },
 
-  // --- DAY 9 ---
-  "d9a0": {
-    title: "Osaka's Culinary Identity & Food Culture",
-    body: "<p>Historically known as the 'Kitchen of the Nation' (<i>Tenka no Daidokoro</i>) during the Edo period, Osaka controlled Japan's rice trade and shipping networks. This wealth birthed a casual, flavor-obsessed street food tradition that contrasts sharply with Kyoto's refined court cuisine.</p><p>Exploring local food districts with a resident reveals local staples like <i>takoyaki</i> (octopus balls cooked in molded iron pans), <i>okonomiyaki</i> (savory shredded cabbage pancakes), and <i>kushikatsu</i> (crispy deep-fried skewered meats and vegetables).</p>"
+  // --- DAY 9 (16 Aug - Himeji/Kobe) ---
+  "d9a1": {
+    title: "Himeji Castle",
+    body: "<p>Himeji Castle is widely considered Japan's finest surviving feudal castle and was designated a UNESCO World Heritage Site in 1993. The current structures date primarily from 1609 and have never been destroyed by war, earthquake, or fire — extraordinary for a Japanese castle.</p><p>Its white plastered walls give it the nickname Hakuro-jo or Shirasagi-jo (White Heron Castle). The castle system comprises 83 buildings connected by a complex of walls, gates, and corridors designed to confuse attackers. The main keep is 46.4m tall across six floors. The complex survived World War II bombing intact, partly due to a failure of incendiary bombs to detonate.</p>"
+  },
+  "d9a3": {
+    title: "Meriken Park & 1995 Earthquake Memorial",
+    body: "<p>Meriken Park was created on reclaimed land on Kobe's waterfront and takes its name from 'American' — a corruption of the Japanese pronunciation of the old American consulate that stood nearby.</p><p>The earthquake memorial preserves a section of the original pier exactly as the Great Hanshin Earthquake of 17 January 1995 left it. The 7.2 magnitude earthquake killed 6,434 people, injured over 43,000, and left 300,000 homeless. The preserved pier section — with its tilted columns, cracked concrete, and collapsed walkway — was kept deliberately intact as a reminder of the earthquake's power. The adjacent Kobe Port Tower and Maritime Museum were also damaged and later rebuilt.</p>"
+  },
+  "d9a6": {
+    title: "Ikuta Shrine",
+    body: "<p>Ikuta Shrine is one of Japan's oldest shrines, with origins traditionally dated to 201 AD — predating Kobe's modern development by almost two millennia. It is dedicated to Wakahirume-no-Mikoto, a weaving deity associated with the sun goddess Amaterasu.</p><p>The shrine's forest (Ikuta-no-mori) is a rare patch of ancient woodland in the heart of a major city. The shrine gives its name to the surrounding Sannomiya district. Despite being rebuilt multiple times after fires, earthquakes and wartime bombing, the shrine maintains an atmosphere of genuine antiquity unusual for a city-centre location.</p>"
+  },
+  "d9a7": {
+    title: "Nunobiki Falls — Ontaki Section",
+    body: "<p>Nunobiki Falls is one of Japan's three great waterfalls, mentioned in 10th-century poetry as one of the great sights of the Settsu region. The falls comprise four sections: the Ontaki (male falls, 43m), Menotaki (female falls, 19m), Tsutsumi-ga-fuchi, and Fudo-no-taki.</p><p>The Ontaki section is reached via a steep path from just above Shin-Kobe Station. The falls are fed by the Nunobiki Reservoir above, which also supplies water to Kobe city. The upper sections and the herb garden ropeway require considerably more climbing — in upper-30s August heat, reaching the lower falls and turning back is the sensible call.</p>"
   },
 
-  // --- DAY 10 ---
-  "d10a0": {
-    title: "Shinsaibashi & America-mura (Amemura)",
-    body: "<p>Shinsaibashi-suji has been Osaka's premier retail strip since the Edo era, centered around a covered shopping street that runs over 600 meters.</p><p>Directly to the west lies America-mura (Amemura), which emerged in the 1970s as Osaka's youth culture hub. Originally filled with warehouses importing American vintage clothes, vinyl records, and jeans, Amemura is famous for its central landmark, Sankaku Koen (Triangle Park), street murals, and unique mini Liberty Bell statue.</p>"
+  // --- DAY 10 (17 Aug - Tondabayashi/Denden) ---
+  "d10a1": {
+    title: "Tondabayashi Jinaimachi",
+    body: "<p>Tondabayashi Jinaimachi is one of Japan's most intact pre-modern townscapes, founded in 1558 around the Koshindo Buddhist temple. The district was established as a temple town (jinaichi) — a self-governing settlement under the protection of the temple — and its street grid, plot divisions, and many of its buildings survive from the 16th and 17th centuries.</p><p>Unlike many preserved historic districts, Jinaimachi was never significantly damaged by fire, earthquake or wartime bombing. It remains a living neighbourhood rather than a museum — which is also why it can appear entirely closed on a quiet weekday in August when residents are away for Obon.</p>"
+  },
+  "d10a2": {
+    title: "Tenjinbashisuji Shopping Street",
+    body: "<p>Tenjinbashisuji is Japan's longest covered shopping arcade, stretching approximately 2.6km through the Kita ward of Osaka between Minami-Morimachi and Tenjinbashisuji-rokuchome stations. The arcade has been in continuous operation since the early 20th century.</p><p>Unlike the tourist-facing arcades around Namba and Shinsaibashi, Tenjinbashisuji is primarily a neighbourhood shopping street for local residents, with a mix of traditional food shops, small restaurants, clothing stores and everyday services. The long walk from one end to the other gives a good sense of how Osaka's shitamachi districts function day-to-day.</p>"
   },
 
-  // --- DAY 11 ---
-  "d11a0": {
-    title: "Hiroshima Peace Memorial Park & Ota River",
-    body: "<p>Built at the epicenter of the atomic blast on August 6, 1945, Peace Memorial Park sits in the Nakajima district—formerly Hiroshima's bustling commercial heart.</p><p>The centerpiece Genbaku Dome (Atomic Bomb Dome) was originally the Hiroshima Prefecture Industrial Promotion Hall, designed by Czech architect Jan Letzel and completed in 1915. Positioned almost directly beneath the explosion's hypocenter, its steel dome skeleton survived and was preserved as a permanent UNESCO World Heritage monument dedicated to global peace.</p>"
+  // --- DAY 11 (18 Aug - Hiroshima/Miyajima) ---
+  "d11a1": {
+    title: "Shukkei-en Garden",
+    body: "<p>Shukkei-en (Shrunken Scenery Garden) was created in 1620 by the daimyo Asano Nagaakira, designed to evoke the scenery of China's West Lake in miniature. The garden takes its name from the concept of shukkeishiki — the art of condensing a large natural landscape into a small garden space.</p><p>The garden was almost completely destroyed in the atomic bombing of 6 August 1945 — it sat only 1.4km from the hypocentre — and was used as a triage and treatment area for bomb survivors in the days that followed. It was carefully restored to its original design and reopened in 1951. Its survival and restoration are considered part of Hiroshima's broader story of recovery.</p>"
   },
-  "d11a2": {
+  "d11a3": {
+    title: "Atomic Bomb Dome",
+    body: "<p>The Atomic Bomb Dome (Genbaku Dome) was the Hiroshima Prefectural Industrial Promotion Hall, completed in 1915. On 6 August 1945, the first atomic bomb used in warfare detonated approximately 600m above it. The structure was almost directly beneath the hypocentre, which meant the blast force came from above rather than sideways — paradoxically allowing the walls to survive while everything for kilometres around was destroyed.</p><p>The ruin was preserved as a memorial on the recommendation of Hiroshima city residents, despite initial opposition from some who found the sight too painful. It was designated a UNESCO World Heritage Site in 1996. The dome sits at the north end of the Peace Memorial Park, visible from the cenotaph across the Motoyasu River.</p>"
+  },
+  "d11a8": {
     title: "Itsukushima Shrine & The Floating Torii Gate",
-    body: "<p>Itsukushima Shrine was constructed on stilts over Miyajima’s tidal bay so that commoners were not required to set foot on the sacred ground of the island.</p><p>The iconic 16-meter-tall vermillion Torii gate stands unattached in the seabed, weighed down purely by its own massive timber mass and tons of stones packed into its upper roof beam. At high tide, the shrine and gate appear floating on the Seto Inland Sea; at low tide, the sea recedes to allow visitors to walk out to its base. Staying overnight at a local ryokan like Kikugawa allows you to experience the island in peaceful stillness after day-trippers return to the mainland.</p>"
+    body: "<p>Itsukushima Shrine was founded in 593 AD and has been rebuilt many times, with the current structures dating from the 12th century. The shrine was built over the sea to avoid defiling the sacred island — in Shinto tradition, Miyajima itself is a deity and ordinary people were historically forbidden from being born or dying on the island.</p><p>The great torii gate was first erected in 1168 and has been rebuilt eight times; the current gate dates from 1875. It stands 16.6m tall and weighs approximately 60 tonnes. At high tide, both the shrine and the gate appear to float on the water. At low tide, visitors can walk across the exposed seabed to the gate's base and touch it — the sand around the gate's feet is said to have protective properties.</p>"
   },
 
-  // --- DAY 12 ---
+  // --- DAY 12 (19 Aug - Miyajima morning/Kyoto) ---
   "d12a2": {
-    title: "Nanzen-ji & The Lake Biwa Aqueduct",
-    body: "<p>Founded in 1291 by Emperor Kameyama, Nanzen-ji is one of Kyoto's most important Rinzai Zen temples.</p><p>A striking and unexpected architectural feature within its tranquil Zen gardens is the Suirokaku Aqueduct. Constructed in 1890 out of red brick and granite in a Roman style, it was built to carry water and goods from Lake Biwa to Kyoto as part of the city's early industrial modernization, forming a dramatic contrast against traditional timber halls.</p>"
+    title: "Kyoto Station — Hiroshi Hara's Cathedral",
+    body: "<p>Kyoto Station was designed by architect Hiroshi Hara and opened in 1997, replacing an earlier building that had stood since 1914. The design was deeply controversial — a modernist steel and glass structure in a city famous for traditional architecture — and remains divisive among Kyoto residents.</p><p>The building is one of Japan's largest station buildings by floor area, covering 238,000 square metres across 16 floors. Its soaring atrium rises 60 metres, housing a hotel, department store, shopping mall, theatre, and multiple restaurant floors in addition to the station itself. The dramatic interior staircase rising to a rooftop sky garden is the building's most photographed feature.</p>"
+  },
+  "d12a3": {
+    title: "Takkyubin — Luggage Forwarding Service",
+    body: "<p>Takkyubin (literally 'courier service') is Japan's door-to-door luggage delivery network, operated primarily by Yamato Transport (the black cat logo) and Sagawa Express. The service allows luggage to be sent ahead to a hotel the following day for a fee of approximately ¥1,500–2,000 per bag.</p><p>Hotels routinely accept forwarded luggage on behalf of guests and will store it safely until check-in. The service is widely used by travellers moving between cities and is particularly valuable for Miyajima, where carrying large bags on and off ferries is impractical. Delivery is typically guaranteed within 24 hours anywhere in Japan.</p>"
   },
 
-  // --- DAY 13 ---
+  // --- DAY 13 (20 Aug - Ginkakuji/teamLab) ---
   "d13a0": {
-    title: "Ginkaku-ji (Silver Pavilion) & Philosopher's Path",
-    body: "<p>Ginkaku-ji was built in 1482 by Shogun Ashikaga Yoshimasa as a mountain retreat to mirror his grandfather's Golden Pavilion (Kinkaku-ji). Although Yoshimasa intended to cover it in silver leaf, political unrest halted the plan, leaving the raw dark wood exposed—embodying the refined <i>wabi-sabi</i> aesthetic of understated beauty.</p><p>Leading away from the temple is the Philosopher's Path (Tetsugaku-no-michi), a stone walkway alongside a canal named after Kyoto University philosophy professor Nishida Kitaro, who walked it daily for meditation.</p>"
+    title: "Ginkaku-ji (Silver Pavilion)",
+    body: "<p>Ginkaku-ji (Temple of the Silver Pavilion) was built in 1482 as a retirement villa for shogun Ashikaga Yoshimasa, modelled on Kinkaku-ji (the Golden Pavilion) built by his grandfather. Despite its name, the pavilion was never covered in silver — plans to do so were apparently abandoned, though the reason is unknown.</p><p>The temple garden is considered one of the finest examples of Japanese garden design, featuring the Kogetsudai sand cone (representing Mt Fuji) and the Sea of Silver Sand — a raked gravel platform designed to reflect moonlight during moon-viewing ceremonies. The hillside moss garden above the main garden offers elevated views over the entire composition.</p>"
   },
-  "d13a1": {
+  "d13a2": {
+    title: "Eikando (Zenrin-ji) & Mikaeri Amida",
+    body: "<p>Eikando (formally Zenrin-ji) was founded in 853 AD and belongs to the Seizan branch of Pure Land Buddhism. It is most famous for its Mikaeri Amida statue — a figure of the Amida Buddha looking back over his left shoulder, an unusual pose unique among Japanese Buddhist sculpture.</p><p>The legend holds that the temple's abbot Eikan was walking around the main hall in devotional practice when the statue of Amida stepped down from its pedestal and walked ahead of him. When Eikan stopped in astonishment, Amida turned back and said 'Eikan, you are falling behind' — hence the backward glance. The multi-level temple buildings stepping up the hillside, with corridors connecting different levels and garden views at each turn, make it one of Kyoto's most architecturally interesting temples.</p>"
+  },
+  "d13a3": {
+    title: "Nanzen-ji & the Victorian Aqueduct",
+    body: "<p>Nanzen-ji was established in 1291 and is one of the most important Zen temple complexes in Japan, ranking at the top of the Kyoto Gozan (five great Zen temples) hierarchy. The massive sanmon gate was rebuilt in 1628 and stands 22m tall — climbing it provides views across the forested hillside and the temple rooftops below.</p><p>The brick aqueduct running through the temple grounds was completed in 1890 as part of the Lake Biwa Canal project, which brought water from Lake Biwa to Kyoto for the first time. The Victorian-era engineering sits incongruously among the classical Zen architecture but has become one of Nanzen-ji's most photographed features. Water still flows through it today.</p>"
+  },
+  "d13a4": {
+    title: "Keage Incline",
+    body: "<p>The Keage Incline was built in 1891 as part of the Lake Biwa Canal system — a funicular railway designed to move canal boats between the upper and lower canal levels, which differed by approximately 36 metres in elevation. Boats were loaded onto wheeled cradles and hauled up the 582m slope by a steam-powered cable system.</p><p>The incline operated until 1948, when road transport made it economically unviable. The tracks were preserved in situ and the site became a public park. In spring the incline is famous for its cherry blossom tunnel; in summer the old rails running through the trees and down toward Nanzen-ji create a striking industrial-heritage photography location.</p>"
+  },
+  "d13a5": {
     title: "teamLab Biovortex Kyoto",
-    body: "<p>Located near Kyoto Station, teamLab Biovortex is an immersive digital art experience that blurs the lines between art, technology, and nature.</p><p>Through projection mapping, motion sensors, and responsive environments, visitors interact with dynamic light sculptures and fluid digital ecosystems that shift in real time based on human movement and touch.</p>"
+    body: "<p>teamLab is a Tokyo-based art collective founded in 2001, working at the intersection of digital technology, art, and nature. Biovortex Kyoto is one of several permanent teamLab installations in Japan, featuring large-scale immersive digital environments that respond to the movement and presence of visitors in real time.</p><p>The installations use projection mapping, sensor technology and generative algorithms to create environments where the boundary between the artwork and the viewer dissolves. The 'Biovortex' concept draws on biological patterns — the spiralling forms found in shells, galaxies, weather systems and living organisms — rendered in light and motion at architectural scale.</p>"
   },
 
-  // --- DAY 14 ---
-  "d14a1": {
+  // --- DAY 14 (21 Aug - Kinkakuji/Arashiyama) ---
+  "d14a0": {
     title: "Kinkaku-ji (The Golden Pavilion)",
-    body: "<p>Kinkaku-ji is a Zen Buddhist temple whose top two floors are completely covered in pure gold leaf. Overlooking the Kyoko-chi (Mirror Pond), the pavilion harmonizes three architectural styles: shinden (palace), samurai, and Zen.</p><p>In 1950, the structure was tragically burned down by a young novice monk, an event famously dramatized by author Yukio Mishima in his novel <i>The Temple of the Golden Pavilion</i>. The current structure was meticulously rebuilt in 1955, accurately replicating the original 14th-century design.</p>"
+    body: "<p>Kinkaku-ji (Temple of the Golden Pavilion) was built in 1397 as a retirement villa for shogun Ashikaga Yoshimitsu and converted to a Zen temple after his death. The current building is a 1955 reconstruction — the original was burned down in 1950 by a young novice monk, an act of arson later fictionalised in Yukio Mishima's novel 'The Temple of the Golden Pavilion'.</p><p>The three-storey pavilion is covered in gold leaf on its upper two floors, reflecting in the Kyoko-chi (Mirror Pond) below. The reflection is the centrepiece of every photograph of the building — the combination of gold, water, and the forested hillside behind is designed as a unified composition. The garden around the pond was laid out in the Muromachi period and incorporates several small islands and stone compositions.</p>"
   },
   "d14a2": {
-    title: "Arashiyama & Togetsukyo Bridge",
-    body: "<p>Located at the base of Kyoto's western mountains, Arashiyama has been a scenic retreat for imperial nobles since the Heian period (794–1185).</p><p>Its iconic wooden Togetsukyo Bridge ('Moon Crossing Bridge') spans the Katsura River, named by Emperor Kameyama who remarked that a full moon appeared to be crossing the bridge. Beyond the bridge lies the famous Arashiyama Bamboo Grove, where towering bamboo stalks filter natural light and rustle quietly in the mountain breeze.</p>"
+    title: "Tenryu-ji & the Borrowed Landscape Garden",
+    body: "<p>Tenryu-ji was founded in 1339 by shogun Ashikaga Takauji in memory of Emperor Go-Daigo, and is the highest-ranking Zen temple in Arashiyama. The temple has burned down and been rebuilt eight times; the current buildings date from the Meiji era.</p><p>The garden, attributed to the monk Muso Soseki, uses the technique of shakkei (borrowed scenery) — the Arashiyama mountains and Kameyama hill form the backdrop to the central pond, incorporated into the garden composition as if they were part of the designed landscape. The effect is one of the most successful examples of the technique in Japan. The garden is considered Soseki's masterwork and is designated a Special Historic Site.</p>"
+  },
+  "d14a4": {
+    title: "Randen — Keifuku Electric Railway",
+    body: "<p>The Randen (Arashiyama Electric Railway) is operated by the Keifuku Electric Railroad and runs two lines connecting Arashiyama to the Kitano-Hakubaicho and Shijo-Omiya areas of central Kyoto. The railway has operated since 1910 and retains much of its original character — single-carriage trams running through residential streets and past garden walls at low speed.</p><p>The Arashiyama Line covers 7.2km and takes approximately 25 minutes. The trams are small enough to feel like part of the neighbourhood rather than public transit. In winter, the company runs a special 'Hanatouro' illumination service with flower-decorated carriages. The railway is beloved by Kyoto residents as one of the city's most characterful survivals.</p>"
   },
 
-  // --- DAY 15 ---
-  "d15a0": {
-    title: "Ryoan-ji (Dry Landscape Zen Rock Garden)",
-    body: "<p>Ryoan-ji is home to Japan's most famous <i>karesansui</i> (dry landscape) Zen rock garden, created in the late 15th century.</p><p>The rectangular garden consists of raked white gravel and 15 carefully arranged rocks encased in moss. The rocks are positioned so that from the usual viewing area, not all 15 rocks can be seen at once. The garden is deliberately open to interpretation rather than having one officially prescribed meaning.</p>"
-  },
+  // --- DAY 15 (22 Aug - Shops/Nishiki/Imperial Palace) ---
   "d15a1": {
-    title: "Ninnaji Temple & Imperial Heritage",
-    body: "<p>Founded in 888 AD by Emperor Uda, Ninnaji is a UNESCO World Heritage site and head temple of the Omuro school of Shingon Buddhism. Historically, a member of the Imperial Family served as the temple's head priest for centuries, earning it the title Omuro Imperial Palace.</p><p>The grounds feature a Five-Story Pagoda, elegant Palace Hall buildings connected by covered walkways, and the famous Omuro Cherry trees—a late-blooming dwarf variety.</p>"
+    title: "Jins — Japanese Prescription Eyewear",
+    body: "<p>Jins (formally JINS) is one of Japan's largest eyewear chains, founded in 2001 in Gunma Prefecture. The brand is known for its combination of affordable pricing, rapid turnaround (prescription glasses often ready in 30 minutes), and genuinely good design that has won multiple Good Design Awards.</p><p>Buying prescription glasses in Japan is a popular activity for visiting tourists — the turnaround is fast, prices are competitive with UK opticians for equivalent quality, and the range of frames tends toward styles not commonly found in British high streets. Reading and distance prescriptions can both be accommodated in a single visit.</p>"
+  },
+  "d15a2": {
+    title: "Nishiki Market — Kyoto's Kitchen",
+    body: "<p>Nishiki Market (Nishiki Ichiba) is a narrow covered shopping street approximately 400m long in the heart of central Kyoto, lined with around 130 shops and restaurants specialising in traditional Kyoto food products. It has been a market since the Heian period, though its current form dates from the 17th century when it was designated a wholesale fish market.</p><p>The distinctive coloured glass ceiling panels — red, green and yellow — were added during a mid-20th-century renovation and filter the light in a characteristic warm way. Specialities include Kyoto-style pickles (tsukemono), fresh tofu, grilled skewers, dashi stock, and seasonal sweets. The street is known as 'Kyoto no Daidokoro' — Kyoto's kitchen.</p>"
+  },
+  "d15a4": {
+    title: "Kyoto Imperial Palace Interior Tour",
+    body: "<p>The Kyoto Imperial Palace served as the residence of Japan's emperors from 794 until 1869, when the capital was moved to Tokyo following the Meiji Restoration. The current palace buildings date primarily from 1855, rebuilt after a fire that destroyed the previous structures.</p><p>The Imperial Household Agency offers free guided tours of the palace interior, including the Shishinden (the main ceremonial hall used for enthronements and major court events), the Seiryoden (the former emperor's private quarters), and the formal garden areas with their meticulously raked gravel and carefully placed stones. The palace grounds occupy approximately 110 hectares within the larger Kyoto Gyoen park.</p>"
   },
 
-  // --- DAY 16 ---
+  // --- DAY 16 (23 Aug - Ryoan-ji/Ninnaji) ---
+  "d16a0": {
+    title: "Ryoan-ji — The Rock Garden",
+    body: "<p>The rock garden at Ryoan-ji was created in the late 15th or early 16th century, though its creator remains unknown. It consists of 15 stones arranged in five groups on a bed of raked white gravel, enclosed by an oil-and-clay wall that has darkened attractively with age. From any position along the viewing veranda, at least one of the 15 stones is hidden from view — a deliberate design choice whose meaning has been debated for centuries.</p><p>The garden has been interpreted as islands in a sea, tiger cubs crossing a river, islands in clouds, and as a Zen koan (riddle) with no definitive answer. Muso Soseki, the garden's probable designer, is said to have described it as representing the infinite within the finite. The garden measures just 25m × 10m — its apparent depth is an optical illusion created by the slightly tapered walls.</p>"
+  },
   "d16a1": {
-    title: "Pontocho Alley & The Kamo River",
-    body: "<p>Pontocho is a narrow cobblestone alley running parallel to the Kamo River, famous for its preserved geiko (geisha) culture and traditional nightlife.</p><p>Dating back to the 1670s, the alley is lined with wooden <i>machiya</i> townhouses illuminated by paper lanterns. During summer, many riverfront restaurants construct <i>kawayuka</i>—temporary raised wooden platforms built over the water that allow diners to eat outdoors in cool river breezes.</p>"
+    title: "Ninnaji Temple & Omuro Palace",
+    body: "<p>Ninnaji was founded in 888 AD by Emperor Uda, who abdicated and became its first abbot — establishing a tradition of imperial abbots that continued for over a thousand years. The temple is the head of the Omuro school of Shingon Buddhism.</p><p>The Omuro Palace (Goten) within the temple complex preserves the domestic architecture of a noble residence from the early Edo period — understated, refined, and very different in atmosphere from the grand ceremonial halls of other Kyoto temples. The five-storey pagoda dates from 1637. The temple is famous for its late-blooming cherry trees (Omuro cherry) which flower two weeks after the city's main trees, extending Kyoto's cherry season — though in August they are simply large and leafy.</p>"
   },
 
-  // --- DAY 17 ---
-  "d17a1": {
-    title: "Tokyo Skytree & Shimbashi Salaryman Culture",
-    body: "<p>Standing at 634 meters, Tokyo Skytree is the tallest structure in Japan and among the world's tallest structures. The height (6-3-4) was chosen as a wordplay on 'Musashi', the ancient province encompassing modern Tokyo.</p><p>Returning south to Shimbashi places you at the heart of Tokyo's corporate culture. Known as 'Salaryman Town', Shimbashi's SL Plaza features a preserved steam locomotive where office workers gather after work around lively <i>yakitori</i> stalls and <i>izakayas</i> nestled beneath the train arches.</p>"
+  // --- DAY 17 (24 Aug - Kyoto->Tokyo) ---
+  "d17a3": {
+    title: "Senso-ji — Tokyo's Oldest Temple",
+    body: "<p>Senso-ji is the oldest temple in Tokyo, founded in 628 AD according to tradition, when two fishermen reportedly pulled a golden statue of Kannon (the goddess of mercy) from the Sumida River. The current main hall dates from 1958, rebuilt after wartime bombing destroyed the previous structure.</p><p>The approach from the Kaminarimon (Thunder Gate) through the Nakamise shopping street to the main hall is one of Tokyo's great public spaces — busy by day, dramatic at night when the lanterns are lit and the crowds thin. The giant red lantern at Kaminarimon weighs 700kg and is replaced every ten years. The temple receives approximately 30 million visitors per year, making it Japan's most visited spiritual site.</p>"
   },
 
-  // --- DAY 18 ---
+  // --- DAY 18 (25 Aug - Gardens/Odaiba) ---
+  "d18a0": {
+    title: "Hamarikyu Gardens",
+    body: "<p>Hamarikyu Gardens were created as a hunting ground and sea-duck hunting spot for the Tokugawa shogunate in 1654. The garden is tidal — seawater from Tokyo Bay flows in and out through sluice gates, keeping the central pond at varying levels throughout the day and allowing saltwater plants to grow alongside traditional garden species.</p><p>The garden was opened to the public in 1945. It sits in one of Tokyo's most dramatic locations: a Edo-period landscape enclosed within the high-rise towers of Shiodome on one side and the waters of Tokyo Bay on the other. The teahouse on the central island is a traditional matcha service spot. The outer areas near the entrance are less carefully maintained; the inner garden around the pond is the primary draw.</p>"
+  },
   "d18a1": {
-    title: "Hamarikyu & Kiyosumi Strolling Gardens",
-    body: "<p>Hamarikyu Gardens is a traditional Edo-period shogun's garden surrounding a tidal pond fed directly by Tokyo Bay. As the tide shifts, the water level changes, altering the scenery around its central teahouse.</p><p>Kiyosumi Garden, built by industrialist Iwasaki Yataro (founder of Mitsubishi) in 1880, is an exquisite landscape garden featuring <i>isowatari</i> (stepping stones set across the water) and rare stones collected from across Japan aboard Mitsubishi ships.</p>"
+    title: "Kiyosumi Garden",
+    body: "<p>Kiyosumi Garden was created in 1878 by the Mitsubishi founder Iwasaki Yataro on the site of an Edo-period merchant's estate. Iwasaki collected large stepping stones from across Japan — some transported by his own shipping fleets — and placed them across the central pond to create one of the garden's defining features.</p><p>The garden was donated to Tokyo in 1932. It is considerably less visited than Hamarikyu and has a more intimate, neighbourhood atmosphere. The Kiyosumi-Shirakawa district around it has become a centre of Tokyo's specialty coffee scene — the Allpress, Fuglen, and Blue Bottle roasters all have outlets in the immediate area.</p>"
   },
 
-  // --- DAY 19 ---
+  // --- DAY 19 (26 Aug - Gotokuji/Kichijoji etc) ---
   "d19a0": {
-    title: "Gotokuji Temple (Birthplace of the Maneki-neko)",
-    body: "<p>Gotokuji in Setagaya is widely considered the birthplace of the <i>Maneki-neko</i> (beckoning cat figurine).</p><p>According to legend, feudal lord Ii Naotaka was caught in a sudden thunderstorm near the temple during the 17th century when a cat beckoned him inside with a raised paw. Moments later, lightning struck the tree he had been sheltering under. Grateful for his salvation, the lord adopted the temple, and today thousands of white cat statues are left by visitors in gratitude.</p>"
+    title: "Gotokuji Temple — Origin of the Maneki-neko",
+    body: "<p>Gotokuji Temple in Setagaya is widely credited as the birthplace of the maneki-neko (beckoning cat) — the ceramic lucky cat figure found in shop windows across Japan and internationally. According to legend, the temple cat beckoned a passing feudal lord inside, saving him from a lightning strike. In gratitude, the lord became the temple's patron and the beckoning cat became its symbol.</p><p>Visitors who receive good fortune traditionally return a ceramic cat to the temple as an offering of thanks. The accumulated cats — hundreds of them, in multiple sizes, all with one paw raised — are arranged on shelves in a small shrine building and create one of the most distinctive photographic subjects in Tokyo.</p>"
   },
-  "d19a2": {
-    title: "Kichijoji & Inokashira Park",
-    body: "<p>Consistently voted one of Tokyo's most desirable neighborhoods to live in, Kichijoji centers around Inokashira Park, established in 1917 as Japan's first public suburban park.</p><p>The park surrounds Inokashira Pond—an important historic water source for Edo/Tokyo. Today, the area is a cultural hub featuring vintage shops, jazz cafes, and Harmonica Yokocho (a grid of retro post-war alleyway bars).</p>"
+  "d19a3": {
+    title: "Sunshine City & Ikebukuro",
+    body: "<p>Sunshine City is a large commercial complex in Ikebukuro built on the former site of Sugamo Prison, where class-A war criminals including Hideki Tojo were executed in 1948. The complex opened in 1978 and includes a shopping mall, aquarium, planetarium, and the World Import Mart building housing multiple floors of anime goods retailers.</p><p>Ikebukuro is often considered Tokyo's second major anime and manga district after Akihabara, with a character skewing toward female-oriented content — Otome Road, near the east exit, concentrates shops specialising in Boys' Love manga, idol culture, and otome games. The area around Sunshine City has a more international feel than central Tokyo, with a significant Chinese and Korean community.</p>"
+  },
+  "d19a4": {
+    title: "Uonami Fish Bar — Shiinamachi",
+    body: "<p>The Uonami Fish Bar (海鮮酒場 魚波) at Shiinamachi is a traditional izakaya that has become one of Tokyo's most photographed night scenes. The bar sits at a junction next to Shiinamachi Station on the Seibu Ikebukuro Line, with its traditional wooden signage, warm interior lighting, and the surrounding neon signs of the neighbourhood creating a composition that reads as quintessentially old Tokyo.</p><p>The elevated viewpoint from the pedestrian bridge or nearby vantage point above the junction is the standard shooting position — looking down at the bar's entrance with the kanji sign visible and the city street receding behind it. The scene photographs best after dark and is even more atmospheric in rain, when the neon reflects in the wet street surface.</p>"
   },
 
-  // --- DAY 20 ---
+  // --- DAY 20 (27 Aug - Gokokuji/Nezu/Ochanomizu) ---
   "d20a0": {
+    title: "Gokokuji Temple — Surviving Edo",
+    body: "<p>Gokokuji was built in 1681 by the fifth Tokugawa shogun Tsunayoshi for his mother, and is one of the few major Buddhist temples in Tokyo whose original main hall survives intact from the Edo period. Most of Tokyo's historic buildings were destroyed in the 1923 earthquake, the 1945 firebombing, or postwar redevelopment — Gokokuji's survival is exceptional.</p><p>The temple is the mausoleum of several imperial family members and high-ranking Meiji-era figures. Its scale is large by Tokyo standards, with extensive grounds and multiple secondary buildings. It receives far fewer visitors than the famous Senso-ji, which makes it a quieter and more contemplative experience.</p>"
+  },
+  "d20a1": {
     title: "Nezu Shrine & Torii Tunnel",
-    body: "<p>Established in the early 18th century, Nezu Shrine is one of Tokyo's oldest preserved Shinto precincts, having survived both the 1923 Great Kanto Earthquake and WWII bombings.</p><p>Built in <i>Ishi-no-ma-zukuri</i> style inspired by Nikko Toshogu, its hillside feature is a tunnel of miniature vermillion <i>torii</i> gates (Otome Inari) that winds through lush greenery. Its tranquil grounds frequently host traditional cultural performances and filming sets.</p>"
+    body: "<p>Nezu Shrine is one of Tokyo's oldest, with origins traditionally dated to the early Edo period though the site may be considerably older. The current shrine buildings were constructed in 1706 by the fifth Tokugawa shogun Tsunayoshi and are among the few complete Edo-period shrine complexes surviving in the city.</p><p>The tunnel of approximately 3,000 small torii gates winding up the hillside through the azalea garden is the shrine's most photographed feature — an intimate, enclosed version of the famous torii tunnels at Fushimi Inari in Kyoto. The gates are donated by worshippers, each inscribed with the donor's name and the date of offering. The azalea festival in April–May is the shrine's peak season, but the tunnel is photogenic year-round.</p>"
+  },
+  "d20a2": {
+    title: "Ochanomizu — Railway Convergence",
+    body: "<p>Ochanomizu Station sits in a dramatic cutting where the Kanda River has carved through the plateau on which central Tokyo stands. Multiple railway lines converge at this point: the JR Chuo Line and Sobu Line run parallel across the river, while the Tokyo Metro Marunouchi Line curves below them through a separate cutting.</p><p>The Hijiri-bashi pedestrian bridge provides an elevated view of all lines simultaneously, with trains arriving from multiple directions and the Gothic towers of Nicolai Cathedral visible behind. The area has been a railway photography location since the early 20th century. Ochanomizu is also home to Instrument Street (Ochanomizu Gakki Machi), a concentration of music shops selling guitars, violins, and band instruments that has no equivalent elsewhere in Tokyo.</p>"
   },
 
-  // --- DAY 21 ---
-  "d21a0": {
-    title: "Gashapon & Otaku Culture Districts",
-    body: "<p>Tokyo's anime and character shopping spans distinct subculture districts. Akihabara remains the global center for electronic goods, <i>gashapon</i> (capsule toy vending machines), and character merchandise.</p><p>Ikebukuro’s Otome Road caters to female otaku culture and anime collectibles, while Harajuku's Takeshita Street features pop culture hubs like Popmart alongside street fashion stores.</p>"
+  // --- DAY 21 (28 Aug - Gokokuji/Nezu etc) ---
+  "d21a2": {
+    title: "Google Store Harajuku",
+    body: "<p>The Google Store Harajuku opened in 2021 as Google's first permanent retail store outside the United States, occupying a prime location on Omotesando. The store showcases the Pixel smartphone range, Nest smart home products, and Google's broader hardware ecosystem in a retail environment designed by Japanese architects.</p><p>The store is notable for its architectural approach — large sliding panels allow the shopfront to open completely to the street, and the interior uses Japanese craft materials and techniques alongside the technology displays. It functions partly as a brand experience space rather than purely a retail outlet, reflecting the importance of the Japanese market to Google's hardware division.</p>"
+  },
+  "d21a6": {
+    title: "Tokyo Station First Avenue",
+    body: "<p>Tokyo Station's underground concourse includes First Avenue Tokyo Station, a long gallery of themed retail sections running beneath the station building. The Character Street section concentrates official merchandise stores for major Japanese characters and properties — Pokemon, Ghibli, Jump Shop (Shonen Jump manga properties), and regional character goods from across Japan.</p><p>The adjacent Ramen Street brings together eight notable ramen restaurants from different Japanese regions in a single underground location. The overall retail complex is one of the largest station commercial developments in Japan, with the basement levels extending well beyond the station footprint into the surrounding blocks. It stays open late and provides shelter from rain while covering most Japanese gift-buying requirements.</p>"
+  },
+  "d21a8": {
+    title: "Tokyo Tower — Zojoji & the Night View",
+    body: "<p>Tokyo Tower was completed in 1958 and stands 332.9m, modelled structurally on the Eiffel Tower but painted in aviation warning colours (white and international orange) and designed to function as a broadcasting antenna. It held the record as Japan's tallest structure until the Tokyo Skytree surpassed it in 2012.</p><p>Zojoji Temple immediately adjacent to the tower is a major Jodo Buddhist temple founded in 1393. The juxtaposition of the vermillion temple gate against the illuminated tower is one of Tokyo's classic night photography compositions, and the temple grounds provide the elevated angle that shows both structures together. The Shiba Park area around the temple and tower is one of Tokyo's better night photography locations.</p>"
+  },
+
+  // --- DAY 23 (30 Aug - fly home) ---
+  "d22a0": {
+    title: "Tokyo Monorail to Haneda",
+    body: "<p>The Tokyo Monorail connects Hamamatsucho Station (one stop from Shimbashi on the Yamanote Line) to Haneda Airport in approximately 18 minutes. The non-stop Airport Express service runs to the international terminal.</p><p>The monorail opened in 1964 in time for the Tokyo Olympics and was Japan's first commercial monorail. It runs elevated above the reclaimed land of the Ota waterfront area, offering views over Tokyo Bay and the industrial districts south of the city before arriving at the airport complex. The early morning service is reliable and the journey to the international terminal is straightforward.</p>"
   }
 };
 const DETAIL_SOURCES = {
   "d0a0": [
-    [
-      "Mercure Tokyo Haneda Airport — Accor",
-      "https://all.accor.com/hotel/9558/index.en.shtml"
-    ]
+    ["British Airways — BA0007 route info", "https://www.britishairways.com/travel/home/public/en_gb"]
   ],
-  "d1a1": [
-    [
-      "Visit Sapporo — Hill of the Buddha",
-      "https://visit.sapporo.travel/discover/art-culture/hill-of-the-buddha/"
-    ]
+  "d1tok1": [
+    ["Imperial Household Agency — Palace tours", "https://www.kunaicho.go.jp/e-event/oukyusankan.html"]
   ],
-  "d1a3": [
-    [
-      "Sapporo TV Tower",
-      "https://tv-tower.co.jp/"
-    ]
-  ],
-  "d2a1": [
-    [
-      "Hokkaido Official Tourism — Otaru Canal",
-      "https://www.visit-hokkaido.jp/en/spot/detail_10040.html"
-    ]
-  ],
-  "d2a4": [
-    [
-      "Nikka Whisky — Yoichi Distillery",
-      "https://www.nikka.com/en/distilleries/yoichi/"
-    ]
-  ],
-  "d3a0": [
-    [
-      "Biei Tourism Association — Shirogane Blue Pond",
-      "https://www.biei-hokkaido.jp/en/facility/shirogane-blue-pond"
-    ]
-  ],
-  "d3a6": [
-    [
-      "Farm Tomita — official site",
-      "https://www.farm-tomita.co.jp/en/"
-    ]
-  ],
-  "d4a0": [
-    [
-      "Noboribetsu Tourism — Jigokudani",
-      "https://noboribetsu-spa.jp/en/"
-    ]
-  ],
-  "d4a4": [
-    [
-      "Toya-Usu Geopark",
-      "https://www.toya-usu-geopark.org/en/"
-    ]
-  ],
-  "d5a0": [
-    [
-      "Hokkaido University — Botanical Gardens",
-      "https://www.hokudai.ac.jp/fsc/bg/"
-    ]
-  ],
-  "d5a2": [
-    [
-      "Tanukikoji Shopping Street",
-      "https://tanukikoji.or.jp/"
-    ]
-  ],
-  "d6a1": [
-    [
-      "Super Hotel Premier Osaka Honmachi",
-      "https://www.superhotel.co.jp/s_hotels/honmachi/"
-    ]
-  ],
-  "d7a0": [
-    [
-      "Sumiyoshi Taisha",
-      "https://www.sumiyoshitaisha.net/en/"
-    ]
-  ],
-  "d7a1": [
-    [
-      "Namba Yasaka Shrine",
-      "https://nambayasaka.jp/"
-    ]
-  ],
-  "d7a2": [
-    [
-      "Dotonbori — official tourism association",
-      "https://www.dotonbori.or.jp/en/"
-    ]
-  ],
-  "d8a0": [
-    [
-      "UNESCO — Himeji-jo",
-      "https://whc.unesco.org/en/list/661/"
-    ]
+  "d6a0": [
+    ["Makomanai Takino Cemetery — Hill of the Buddha", "https://www.takinoreien.com/english/"]
   ],
   "d8a1": [
-    [
-      "Kobe Kitano Ijinkan",
-      "https://www.kobeijinkan.com/"
-    ]
+    ["Sumiyoshi Taisha — official site", "https://www.sumiyoshitaisha.net/"]
   ],
-  "d9a0": [
-    [
-      "Osaka Convention & Tourism Bureau",
-      "https://osaka-info.jp/en/"
-    ]
+  "d9a1": [
+    ["Himeji Castle — official site", "https://www.himejicastle.jp/en/"]
   ],
-  "d10a0": [
-    [
-      "Osaka Convention & Tourism Bureau",
-      "https://osaka-info.jp/en/"
-    ]
+  "d11a1": [
+    ["Shukkei-en Garden — Hiroshima", "https://shukkeien.jp/"]
   ],
-  "d11a0": [
-    [
-      "UNESCO — Hiroshima Peace Memorial",
-      "https://whc.unesco.org/en/list/775/"
-    ]
-  ],
-  "d11a2": [
-    [
-      "UNESCO — Itsukushima Shinto Shrine",
-      "https://whc.unesco.org/en/list/776/"
-    ]
-  ],
-  "d12a2": [
-    [
-      "Nanzen-ji",
-      "https://nanzenji.or.jp/"
-    ]
+  "d11a3": [
+    ["Hiroshima Peace Memorial Museum", "https://hpmmuseum.jp/?lang=eng"]
   ],
   "d13a0": [
-    [
-      "Ginkaku-ji — Shokoku-ji",
-      "https://www.shokoku-ji.jp/ginkakuji/"
-    ]
+    ["Ginkaku-ji — official site", "https://www.shokoku-ji.jp/ginkakuji/"]
   ],
-  "d13a1": [
-    [
-      "teamLab Biovortex Kyoto",
-      "https://www.teamlab.art/e/biovortexkyoto/"
-    ]
+  "d13a2": [
+    ["Eikando Zenrin-ji — official site", "https://www.eikando.or.jp/English/"]
   ],
-  "d14a1": [
-    [
-      "Kinkaku-ji — Shokoku-ji",
-      "https://www.shokoku-ji.jp/kinkakuji/"
-    ]
+  "d13a3": [
+    ["Nanzen-ji — official site", "https://www.nanzenji.or.jp/"]
+  ],
+  "d13a5": [
+    ["teamLab Biovortex Kyoto", "https://www.teamlab.art/e/kyoto/"]
+  ],
+  "d14a0": [
+    ["Kinkaku-ji — official site", "https://www.shokoku-ji.jp/kinkakuji/"]
   ],
   "d14a2": [
-    [
-      "Kyoto City Tourism Association — Arashiyama",
-      "https://ja.kyoto.travel/tourism/single01.php?category_id=1&tourism_id=1"
-    ]
+    ["Tenryu-ji — official site", "https://www.tenryuji.com/en/"]
   ],
-  "d15a0": [
-    [
-      "Ryoan-ji",
-      "https://www.ryoanji.jp/"
-    ]
-  ],
-  "d15a1": [
-    [
-      "Ninna-ji — official site",
-      "https://ninnaji.jp/en/"
-    ]
+  "d16a0": [
+    ["Ryoan-ji — official site", "https://www.ryoanji.jp/smph/eng/"]
   ],
   "d16a1": [
-    [
-      "Kyoto City Tourism Association — Pontocho",
-      "https://ja.kyoto.travel/tourism/single01.php?category_id=3&tourism_id=44"
-    ]
+    ["Ninnaji — official site", "https://ninnaji.jp/en/"]
   ],
-  "d17a1": [
-    [
-      "GO TOKYO — Tokyo Skytree",
-      "https://www.gotokyo.org/en/spot/6/index.html"
-    ]
+  "d18a0": [
+    ["Hamarikyu Gardens — Tokyo Park Association", "https://www.tokyo-park.or.jp/park/format/index028.html"]
   ],
   "d18a1": [
-    [
-      "GO TOKYO — Hama-rikyu Gardens",
-      "https://www.gotokyo.org/en/spot/20/"
-    ],
-    [
-      "GO TOKYO — Kiyosumi Gardens",
-      "https://www.gotokyo.org/en/spot/25/index.html"
-    ]
+    ["Kiyosumi Garden — Tokyo Park Association", "https://www.tokyo-park.or.jp/park/format/index030.html"]
   ],
   "d19a0": [
-    [
-      "Gotokuji Temple — official site",
-      "https://gotokuji.jp/en/"
-    ]
-  ],
-  "d19a2": [
-    [
-      "GO TOKYO — Inokashira Park",
-      "https://www.gotokyo.org/en/spot/624/"
-    ]
+    ["Gotokuji Temple — Setagaya", "https://www.gotokuji.jp/"]
   ],
   "d20a0": [
-    [
-      "GO TOKYO — Nezu-jinja Shrine",
-      "https://www.gotokyo.org/en/spot/70/"
-    ]
+    ["Gokokuji Temple — official site", "https://www.gokokuji.or.jp/"]
   ],
-  "d21a0": [
-    [
-      "GO TOKYO — Akihabara",
-      "https://www.gotokyo.org/en/destinations/eastern-tokyo/akihabara/"
-    ]
+  "d20a1": [
+    ["Nezu Shrine — official site", "https://www.nedujinja.or.jp/"]
   ]
 };
 
