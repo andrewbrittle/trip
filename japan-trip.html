@@ -466,10 +466,10 @@
 </div>
 
 <div class="app">
-  <div class="eyebrow">TRIP · 30 SEP – 14 OCT 2026</div>
+  <div class="eyebrow">TRIP · 29 SEP – 14 OCT 2026</div>
   <h1>Tokyo, Kyoto, Takayama <span style="color:var(--text-faint); font-style:italic; font-weight:400;">&amp;</span> Kanazawa</h1>
   <div class="daterange">
-    <span>15 days · 4 cities · trains between them</span>
+    <span>16 days · 4 cities · trains between them</span>
     <div class="nav-links">
       <button class="word-link" id="linkWords" type="button" onclick="selectWords()">日本語 Words</button>
     </div>
@@ -511,7 +511,8 @@ function hotelBlock(name, mapQuery, addr, checkin, checkout, note){
     </div>`;
 }
 
-function transitBlock(label, legs){
+function transitBlock(label, legs, detailPid){
+  const detailBtn = detailPid && activityDetails[detailPid] ? `<button class="detail-btn" type="button" onclick="showDetail('${detailPid}')" aria-label="More detail">ⓘ</button>` : '';
   const legsHtml = legs.map((leg, i) => `
     ${i > 0 ? `<div class="change">Change at ${leg.changeAt || leg.from.code} — ${leg.changeGap || ''}</div>` : ''}
     <div class="leg">
@@ -523,7 +524,7 @@ function transitBlock(label, legs){
       <div class="meta-row"><span>${leg.train}</span>${leg.refId ? bookingRefInput(leg.refId) : `<span>${leg.note || ''}</span>`}</div>
     </div>
   `).join('');
-  return `<div class="block block--transit"><div class="block-label">${label}</div>${legsHtml}</div>`;
+  return `<div class="block block--transit"><div class="block-label">${label}${detailBtn}</div>${legsHtml}</div>`;
 }
 
 function tipBlock(label, tips){
@@ -563,6 +564,8 @@ function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSO
 // via activityDetails[pid] — activityCard() below just checks whether an entry exists, so
 // expanding to more days later is only ever a matter of adding entries here.
 const activityDetails = {
+  d0a0: { title:"Arrive Haneda", body:`<p><strong>When you land:</strong> turn on roaming data on the Airalo SIM. You can turn off roaming on your normal one, though it's worth keeping it active if you can, since MFA codes for logging into things go to your normal number. Just don't answer any calls while you're there, as it's international rates — WhatsApp is fine. There's free wifi in the airport if the eSIM is being awkward, so don't panic if it doesn't connect right away.</p><p>You'll join the immigration queue, which can be long but the first steps are automated: a kiosk takes your passport, fingerprints and photo, and tells you which customs queue to use later — mine's been the purple one twice now, whatever letter that actually is. Passport control itself can feel a bit hectic but you'll get through it. If you forget which customs queue you need, you can scan your QR code again near the luggage carousels and it'll remind you.</p><p><strong>Through customs:</strong> collect your bags and join the customs queue — they'll put a customs/visa stamp in your passport there, and that's what shops ask for later when you're buying anything tax-free.</p><p><strong>Get a Suica card:</strong> follow the signs for the monorail — off to the right and round a corner — that's where the ticket machines are, even though you're not necessarily catching the monorail itself. Choose the red "Welcome Suica" machine, switch the language to English, and follow the prompts. Whatever you load onto it now will get used eventually, so don't worry about putting on too much — ¥5,000 lasted a few days.</p><p><strong>Metro generally:</strong> there are several separate sets of metro lines across Tokyo and the other cities, and they sometimes share a station and sometimes don't. Where they share a building, look for signs to the other line's gate and tap straight through. Where they don't, you might have to leave one building, walk down the road, and tap in again at the other — Google Maps will normally tell you what to do and where to go. The cost varies a little depending on the lines you use, but not by much.</p>` },
+  d4t0: { title:"Going to the Shinkansen", body:`<p>Going through the gates to the Shinkansen varies from place to place. In some places you go straight from the street to the train, so you just need your Shinkansen ticket or QR code on your phone. In others, if you're transferring from a metro line, you have to present your Suica and your Shinkansen ticket in a particular order — staff will tell you and it's pretty easy.</p><p>Some of the shops have queues for food if you want to take a bento box onto the train with you, so allow a bit of extra time.</p>` },
   d0a1: { title:"Tokyo National Museum", body:`<p>Japan's oldest and largest museum traces back to a public exhibition of imperial artwork and scientific specimens held in 1872, staged partly to prepare Japanese treasures for the 1873 Vienna World's Fair. The collection moved to Ueno Park in 1881, and passed to Imperial Household ownership in the late 1880s — the point at which the museum's mission shifted from industrial showcase to cultural preservation.</p><p>The main building (Honkan) seen today isn't the original — that was destroyed in the 1923 Great Kantō earthquake. Its replacement, completed in 1938 in the "Imperial Crown Style", now holds around 120,000 cultural properties, including roughly 10% of all of Japan's National Treasures.</p>` },
   d0a5: { title:"Sensō‑ji Temple", body:`<p>Tradition holds that in 628 CE, two fishermen brothers pulled a small statue of Kannon, the goddess of mercy, from the Sumida River. However many times they returned it to the water, it kept coming back to them — so a temple was built to house it, completed in 645. That makes Sensō‑ji Tokyo's oldest temple, older than the city itself.</p><p>Almost everything standing today is a postwar reconstruction — the original halls were destroyed in WWII bombing raids. The Kaminarimon ("Thunder Gate") out front has become the de facto symbol of Asakusa, and the Nakamise shopping street leading up to the main hall has been selling souvenirs and snacks to pilgrims for several centuries.</p>` },
   d13a0: { title:"Myōzen‑ji Temple", body:`<p>Built in 1744, Myōzen‑ji belongs to the Jōdo Shinshū (Pure Land) school and is one of the very few Buddhist temples anywhere with a thatched main hall and bell tower — gasshō‑zukuri roofs are almost always reserved for farmhouses, not places of worship.</p><p>The former monks' quarters next door, built without a single nail or screw around 200 years ago, are now a small museum: a permanently lit central hearth, and an attic once used for silkworm cultivation, show how a gasshō‑zukuri building doubled as both home and workshop.</p>` },
@@ -908,6 +911,22 @@ const calmingSayingsRaw = [
 const calmingSayings = calmingSayingsRaw.map(p => ({...p, saying: p.saying_kanji_kana, saying_phonetic: p.saying_romaji}));
 
 const days = [
+{ id:-1, date:"29 September", weekday:"Tuesday", month:"SEP", num:29, city:"tok", travel:true,
+  title:"London → Tokyo",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Tuesday, 29 September</div>
+    <div class="detail-title">London → Tokyo ✈</div>
+    <span class="badge tok">TRAVEL DAY · LONDON → TOKYO</span>
+  `, [
+    {fixed: tipBlock("Flight", [
+      "Details to follow once it's booked — London to Tokyo (Haneda)."
+    ])},
+    {fixed: tipBlock("Before you go", [
+      "Buy and install your eSIM — Airalo works well and won't force a shutter-click sound whenever you take a photo, like some Japanese SIMs do. Install it before you fly and it'll be ready to go; it doesn't start counting days until it connects to a network in Japan.",
+      "Register on Visit Japan Web (vjw.digital.go.jp) — there's an \"install\" option so it sits on your phone like an app. Fill in your details in advance so you already have your QR code ready for immigration."
+    ])}
+  ])
+},
 { id:0, date:"30 September", weekday:"Wednesday", month:"SEP", num:30, city:"tok", travel:true,
   title:"Home → Tokyo",
   render:()=>renderDayWithProverbs(`
@@ -1013,7 +1032,7 @@ const days = [
   `, [
     {fixed: transitBlock("Train", [
       { from:{code:"TOKYO", time:"10:12"}, to:{code:"KYOTO", time:"12:23"}, train:"Nazomi 23", dur:"2h 11m", refId:"d4-tokyo-kyoto" }
-    ])},
+    ], "d4t0")},
     {fixed: hotelBlock("Tokyu Stay Sanjo‑Karasuma", "Tokyu Stay Sanjo Karasuma Kyoto", null, "3:00pm", null)},
     {label:"Rest of the day", cards:[
       activityCard("d4a0", "", "Karasuma line to the hotel", "Drop bags at hotel and go for a wander before check‑in time, then back on the Karasuma line to Kyoto Station to visit the sights of:"),
@@ -1092,8 +1111,9 @@ const days = [
   `, [
     {fixed: tipBlock("Getting there", [
       "Japan's first permanent capital. It features over a thousand free‑roaming sacred deer, the massive Tōdai‑ji Temple housing a giant bronze Buddha, and ancient shrines filled with thousands of stone and bronze lanterns.",
-      "A return train ride from Kyoto to Nara costs between ¥720 and ¥1,280 (£8 to £16) depending on the line and train type. The trip takes about 35 to 45 minutes on direct express options. Arriving in Nara we can take a 15min bus ride to the main area of Nara Park"+pin("Nara Park")+" where we can find:",
-      "Deer crackers (shika senbei) are sold from street stalls and vending machines around the park for about ¥200 (~£1) a pack — a classic small cash purchase, so a few ¥100 coins are handy."
+      "A return train ride from Kyoto to Nara costs between ¥720 and ¥1,280 (£8 to £16) depending on the line and train type. The trip takes about 35 to 45 minutes on direct express options.",
+      "Getting a train to Kintetsu Nara takes us closer to the park and an easily walkable distance. Otherwise arriving in Nara we can take a 15min bus ride to the main area of Nara Park"+pin("Nara Park"),
+      "There we can find: deer crackers (shika senbei), sold from street stalls and vending machines around the park for about ¥200 (~£1) a pack — a classic small cash purchase, so a few ¥100 coins are handy."
     ])},
     {label:"In Nara", cards:[
       activityCard("d7a0", "", "Nandaimon Gate"+pin("Nandaimon Gate Todaiji Nara"), ""),
@@ -1390,9 +1410,9 @@ days.forEach(d => {
 });
 
 let todayIdx = days.findIndex(d => d.dateObj.getTime() === today.getTime());
-let defaultId = 0;
-if (todayIdx >= 0) defaultId = todayIdx;
-else if (today.getTime() > days[days.length - 1].dateObj.getTime()) defaultId = days.length - 1;
+let defaultId = days[0].id;
+if (todayIdx >= 0) defaultId = days[todayIdx].id;
+else if (today.getTime() > days[days.length - 1].dateObj.getTime()) defaultId = days[days.length - 1].id;
 
 // ---- day grid ----
 const week = document.getElementById('week');
@@ -1414,7 +1434,7 @@ const settingsToggle = document.getElementById('settingsToggle');
 let selected = {type:'day', id:0};
 
 function updateSelection(){
-  dayEls.forEach((el, i) => el.classList.toggle('selected', selected.type === 'day' && selected.id === i));
+  dayEls.forEach((el, i) => el.classList.toggle('selected', selected.type === 'day' && selected.id === days[i].id));
   linkWords.classList.toggle('selected', selected.type === 'words');
   settingsToggle.classList.toggle('selected', selected.type === 'settings' || selected.type === 'instructions');
 }
@@ -1422,9 +1442,9 @@ function updateSelection(){
 function selectDay(id){
   selected = {type:'day', id};
   updateSelection();
-  const d = days[id];
-  const prev = days[id-1];
-  const next = days[id+1];
+  const d = days.find(dd => dd.id === id);
+  const prev = days.find(dd => dd.id === id - 1);
+  const next = days.find(dd => dd.id === id + 1);
   const cityName = CITY_NAMES[d.city] || '';
   const quickAddCards = getQuickAdds(id).map(qa =>
     activityCard(qa.id, "Added", `${escapeHtml(qa.title)}${pin(`${qa.title} ${cityName}`)}`, "", {
@@ -1465,7 +1485,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260914.005';
+const APP_VERSION = 'v260921.004';
 
 function renderSettings(){
   const theme = getThemeSetting();
