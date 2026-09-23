@@ -920,7 +920,7 @@ const days = [
   `, [
     {fixed: transitBlock("Flight", [
       { from:{code:"LONDON", time:"20:35", tz:"28 Sep"}, to:{code:"DELHI", time:"11:00", tz:"29 Sep"}, train:"AI2018", dur:"9h 55m", refId:"dpre-lon-del" },
-      { from:{code:"DELHI", time:"20:10", tz:"29 Sep"}, to:{code:"TOKYO", time:"07:55", tz:"30 Sep"}, train:"AI358", dur:"8h 15m", changeAt:"Delhi", changeGap:"~9h 10m layover", refId:"dpre-del-tyo" }
+      { from:{code:"DELHI", time:"18:15", tz:"29 Sep"}, to:{code:"TOKYO", time:"05:55", tz:"30 Sep"}, train:"AI358", dur:"8h 15m", changeAt:"Delhi", changeGap:"~7h 15m layover", refId:"dpre-del-tyo" }
     ])},
     {fixed: tipBlock("Terminals", [
       "Heathrow Terminal 2 for departure. Both Delhi legs use Terminal 3 — arriving and departing from the same terminal, so no need to change buildings during the layover. Arrives into Haneda Terminal 3."
@@ -939,6 +939,9 @@ const days = [
     <span class="badge tok">ARRIVAL DAY · TOKYO</span>
   `, [
     {fixed: hotelBlock("Lang Hotel Ueno", "Lang Hotel Ueno Tokyo", null, "3:00pm", null, "Booked by Airbnb. Drop bags on arrival, head back to officially check in and rest once 3pm comes round.")},
+    {fixed: tipBlock("Worth noting", [
+      "A schedule change means the flight now lands at 05:55 instead of 07:55 — two extra hours before things get going. Immigration, customs, and the train into the city will fill some of that, but the museums don't open until 9:30, so there may be time to fill in the meantime."
+    ])},
     {label:"Morning", cards:[
       activityCard("d0a0", "", "Arrive Haneda"+pin("Haneda Airport"), "Collect bags — immigration/customs, train to hotel and drop bags at hotel."),
       activityCard("d0a1", "", "Tokyo National Museum"+pin("Tokyo National Museum"), "Huge collection covering samurai armor, ceramics, and Buddhist art.", {hours:"9:30–17:00 (Fri/Sat to 20:00) · closed Mon · ¥1,000 (~£5)"})
@@ -1313,8 +1316,8 @@ const days = [
     <span class="badge tok">TRAVEL DAY · TOKYO → LONDON</span>
   `, [
     {fixed: transitBlock("Flight", [
-      { from:{code:"TOKYO", time:"11:25", tz:"15 Oct"}, to:{code:"DELHI", time:"17:05", tz:"15 Oct"}, train:"AI357", dur:"9h 10m", refId:"dret-tyo-del" },
-      { from:{code:"DELHI", time:"01:30", tz:"16 Oct"}, to:{code:"LONDON", time:"07:30", tz:"16 Oct"}, train:"AI161", dur:"10h 30m", changeAt:"Delhi", changeGap:"~8h 25m layover", refId:"dret-del-lon" }
+      { from:{code:"TOKYO", time:"11:50", tz:"15 Oct"}, to:{code:"DELHI", time:"17:30", tz:"15 Oct"}, train:"AI357", dur:"9h 10m", refId:"dret-tyo-del" },
+      { from:{code:"DELHI", time:"00:55", tz:"16 Oct"}, to:{code:"LONDON", time:"07:30", tz:"16 Oct"}, train:"AI161", dur:"11h 05m", changeAt:"Delhi", changeGap:"~7h 25m layover", refId:"dret-del-lon" }
     ])},
     {fixed: tipBlock("Terminals", [
       "Departs Haneda Terminal 3. Both Delhi legs use Terminal 3, so no need to change buildings during the layover. Arrives into Heathrow Terminal 2, landing the morning of 16 October."
@@ -1506,7 +1509,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260923.001';
+const APP_VERSION = 'v260923.003';
 
 function renderSettings(){
   const theme = getThemeSetting();
