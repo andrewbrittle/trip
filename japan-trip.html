@@ -466,10 +466,10 @@
 </div>
 
 <div class="app">
-  <div class="eyebrow">TRIP · 29 SEP – 14 OCT 2026</div>
+  <div class="eyebrow">TRIP · 28 SEP – 15 OCT 2026</div>
   <h1>Tokyo, Kyoto, Takayama <span style="color:var(--text-faint); font-style:italic; font-weight:400;">&amp;</span> Kanazawa</h1>
   <div class="daterange">
-    <span>16 days · 4 cities · trains between them</span>
+    <span>17 days · 4 cities · trains between them</span>
     <div class="nav-links">
       <button class="word-link" id="linkWords" type="button" onclick="selectWords()">日本語 Words</button>
     </div>
@@ -911,15 +911,19 @@ const calmingSayingsRaw = [
 const calmingSayings = calmingSayingsRaw.map(p => ({...p, saying: p.saying_kanji_kana, saying_phonetic: p.saying_romaji}));
 
 const days = [
-{ id:-1, date:"29 September", weekday:"Tuesday", month:"SEP", num:29, city:"tok", travel:true,
+{ id:-1, date:"28 September", weekday:"Monday", month:"SEP", num:28, city:"tok", travel:true,
   title:"London → Tokyo",
   render:()=>renderDayWithProverbs(`
-    <div class="detail-date">Tuesday, 29 September</div>
+    <div class="detail-date">Monday, 28 September</div>
     <div class="detail-title">London → Tokyo ✈</div>
     <span class="badge tok">TRAVEL DAY · LONDON → TOKYO</span>
   `, [
-    {fixed: tipBlock("Flight", [
-      "Details to follow once it's booked — London to Tokyo (Haneda)."
+    {fixed: transitBlock("Flight", [
+      { from:{code:"LONDON", time:"20:35", tz:"28 Sep"}, to:{code:"DELHI", time:"11:00", tz:"29 Sep"}, train:"AI2018", dur:"9h 55m", refId:"dpre-lon-del" },
+      { from:{code:"DELHI", time:"20:10", tz:"29 Sep"}, to:{code:"TOKYO", time:"07:55", tz:"30 Sep"}, train:"AI358", dur:"8h 15m", changeAt:"Delhi", changeGap:"~9h 10m layover", refId:"dpre-del-tyo" }
+    ])},
+    {fixed: tipBlock("Terminals", [
+      "Heathrow Terminal 2 for departure. Both Delhi legs use Terminal 3 — arriving and departing from the same terminal, so no need to change buildings during the layover. Arrives into Haneda Terminal 3."
     ])},
     {fixed: tipBlock("Before you go", [
       "Buy and install your eSIM — Airalo works well and won't force a shutter-click sound whenever you take a photo, like some Japanese SIMs do. Install it before you fly and it'll be ready to go; it doesn't start counting days until it connects to a network in Japan.",
@@ -934,7 +938,7 @@ const days = [
     <div class="detail-title">Home → Tokyo</div>
     <span class="badge tok">ARRIVAL DAY · TOKYO</span>
   `, [
-    {fixed: hotelBlock("Tokyo hotel", null, null, "3:00pm", null, "Not named in the source plan yet. “Head back to hotel to officially check in, rest until undisclosed time.”")},
+    {fixed: hotelBlock("Lang Hotel Ueno", "Lang Hotel Ueno Tokyo", null, "3:00pm", null, "Booked by Airbnb. Drop bags on arrival, head back to officially check in and rest once 3pm comes round.")},
     {label:"Morning", cards:[
       activityCard("d0a0", "", "Arrive Haneda"+pin("Haneda Airport"), "Collect bags — immigration/customs, train to hotel and drop bags at hotel."),
       activityCard("d0a1", "", "Tokyo National Museum"+pin("Tokyo National Museum"), "Huge collection covering samurai armor, ceramics, and Buddhist art.", {hours:"9:30–17:00 (Fri/Sat to 20:00) · closed Mon · ¥1,000 (~£5)"})
@@ -1033,7 +1037,7 @@ const days = [
     {fixed: transitBlock("Train", [
       { from:{code:"TOKYO", time:"10:12"}, to:{code:"KYOTO", time:"12:23"}, train:"Nazomi 23", dur:"2h 11m", refId:"d4-tokyo-kyoto" }
     ], "d4t0")},
-    {fixed: hotelBlock("Tokyu Stay Sanjo‑Karasuma", "Tokyu Stay Sanjo Karasuma Kyoto", null, "3:00pm", null)},
+    {fixed: hotelBlock("Tokyu Stay Sanjo‑Karasuma", "Tokyu Stay Sanjo Karasuma Kyoto", null, "3:00pm", null, "Booked via Booking.com.")},
     {label:"Rest of the day", cards:[
       activityCard("d4a0", "", "Karasuma line to the hotel", "Drop bags at hotel and go for a wander before check‑in time, then back on the Karasuma line to Kyoto Station to visit the sights of:"),
       activityCard("d4a1", "", "Higashi Hongan‑ji Temple"+pin("Higashi Honganji Temple Kyoto"), "", {hours:"5:50–17:30 (Mar–Oct) · free"}),
@@ -1167,7 +1171,7 @@ const days = [
     {fixed: tipBlock("Worth double‑checking", [
       "The Kyoto‑side doc gives the Takayama arrival as 13:12pm; the Takayama‑side doc gives 13:15. Both say the same route (Hikari 644 to Nagoya, change to Hida 7) — just flagging the small mismatch between the two source documents rather than picking one."
     ])},
-    {fixed: hotelBlock("Airbnb", "Takayama accommodation", null, "4:00pm", null, "Store luggage at station or in a convenient place until check‑in.")},
+    {fixed: hotelBlock("Traditional Machiya House", "Traditional Machiya House Takayama", null, "4:00pm", null, "Booked by Airbnb. Store luggage at station or in a convenient place until check‑in.")},
     {label:"Afternoon", cards:[
       activityCard("d9a0", "", "Wander in town", "Until check‑in time allows us inside the accommodation."),
       activityCard("d9a1", "", "Old Town / Sanmachi Suji"+pin("Sanmachi Suji Takayama"), "Wander merchant streets, sake breweries, snacks.", {cash:"sake breweries' tasting samples (~¥100–500 / £0.50–£2.50) are commonly cash-only"}),
@@ -1219,7 +1223,7 @@ const days = [
       { from:{code:"TAKAYAMA", time:"15:17"}, to:{code:"TOYAMA", time:"16:44"}, train:"Hida 11", dur:"1h 27m", refId:"d11-takayama-toyama" },
       { from:{code:"TOYAMA", time:"17:31"}, to:{code:"KANAZAWA", time:"17:53"}, train:"Tsuguri 39", dur:"22m", changeAt:"Toyama", changeGap:"47 min to change", refId:"d11-toyama-kanazawa" }
     ])},
-    {fixed: hotelBlock("Hotel Torifito Kanazawa", "Hotel Torifito Kanazawa", null, null, null)},
+    {fixed: hotelBlock("Hotel Torifito Kanazawa", "Hotel Torifito Kanazawa", null, null, null, "Booked via Booking.com.")},
     {label:"Evening", cards:[
       activityCard("d11a6", "", "Higashi Chaya District"+pin("Higashi Chaya District Kanazawa"), "(8min bus/25 min walk) — easy stroll through the lantern‑lit teahouse streets. Walking down atmospheric Edo‑period streets lined with striking wooden lattice buildings (kimusuko) — dinner nearby. During the day the houses offer tours of preserved teahouses turned museums, experience Kanazawa's renowned gold leaf crafts shops and enjoy local treats.", {hours:"Streets free, open 24/7 · individual teahouse experiences extra (e.g. Shima ¥500/£2.55, Kaikaro ¥750/£3.85 — Kaikaro closed Wednesdays)"})
     ]}
@@ -1295,8 +1299,25 @@ const days = [
     {fixed: transitBlock("Train", [
       { from:{code:"KANAZAWA", time:"10:05"}, to:{code:"TOKYO", time:"12:36"}, train:"Kagayaki 508", dur:"2h 31m", refId:"d14-kanazawa-tokyo" }
     ])},
-    {fixed: tipBlock("Beyond this point", [
-      "The source plan doesn't yet cover onward travel or a flight home from here — nothing invented in its place."
+    {fixed: hotelBlock("Mercure Tokyo Haneda Airport", "Mercure Tokyo Haneda Airport", null, null, null, "Booked via Accor. Last night before flying home.")},
+    {fixed: tipBlock("Rest of the day", [
+      "Shopping and packing — last chance to pick up anything before heading home tomorrow."
+    ])}
+  ])
+},
+{ id:15, date:"15 October", weekday:"Thursday", month:"OCT", num:15, city:"tok", travel:true,
+  title:"Tokyo → London",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Thursday, 15 October</div>
+    <div class="detail-title">Tokyo → London ✈</div>
+    <span class="badge tok">TRAVEL DAY · TOKYO → LONDON</span>
+  `, [
+    {fixed: transitBlock("Flight", [
+      { from:{code:"TOKYO", time:"11:25", tz:"15 Oct"}, to:{code:"DELHI", time:"17:05", tz:"15 Oct"}, train:"AI357", dur:"9h 10m", refId:"dret-tyo-del" },
+      { from:{code:"DELHI", time:"01:30", tz:"16 Oct"}, to:{code:"LONDON", time:"07:30", tz:"16 Oct"}, train:"AI161", dur:"10h 30m", changeAt:"Delhi", changeGap:"~8h 25m layover", refId:"dret-del-lon" }
+    ])},
+    {fixed: tipBlock("Terminals", [
+      "Departs Haneda Terminal 3. Both Delhi legs use Terminal 3, so no need to change buildings during the layover. Arrives into Heathrow Terminal 2, landing the morning of 16 October."
     ])}
   ])
 }
@@ -1485,7 +1506,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260921.004';
+const APP_VERSION = 'v260923.001';
 
 function renderSettings(){
   const theme = getThemeSetting();
