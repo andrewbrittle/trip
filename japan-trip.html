@@ -634,7 +634,9 @@ const activityDetails = {
   d12a3: { title:"Nagamachi Samurai District", body:`<p>The Maeda clan required all their retainers to live in Kanazawa itself, and this is where many of them settled — Kaga was one of the wealthiest domains in the whole of Edo‑period Japan, and it shows in how well the district has survived.</p><p>The lanes are lined with distinctive ochre earthen walls, wrapped in straw matting each winter to protect them from snow and frost — a maintenance ritual that's carried on for generations, whatever the original reasoning behind building them that way.</p>` },
   d12a4: { title:"Nomura Samurai House", body:`<p>The Nomura family served the Maeda clan across generations in senior administrative roles, and their house still displays historical letters connecting them back to the Maeda and to Sengoku‑era warlords.</p><p>The garden is the real draw — a Japanese bayberry tree over 400 years old, a meandering stream, and striking rock arrangements good enough to be ranked third in the whole of Japan by an American gardening journal in 2003, and awarded two stars in the Michelin Green Guide Japon in 2009.</p>` },
   d12a5: { title:"Oyama Shrine", body:`<p>Dedicated to Maeda Toshiie, founder of the Kaga Domain — the shrine was established in 1599 and later relocated to this site in 1873.</p><p>Its gate is the real oddity: built in 1875, about 25 metres tall, mixing Japanese, Chinese and Dutch‑influenced European design in a way that's almost unheard of for a Shinto shrine. The top floor has Dutch stained glass and reportedly once doubled as a lighthouse for boats out on the Sea of Japan.</p>` },
-  d12a7: { title:"Nishi Chaya District", body:`<p>Established in 1820 alongside Higashi Chaya, as one of the city's three licensed geisha districts — but it's always been the quieter, smaller sibling: a single compact street rather than a sprawling quarter.</p><p>Traditional wooden teahouse buildings still line it, some still working as geiko establishments and others turned into cafes and shops — with far fewer visitors than its bigger counterpart across town.</p>` }
+  d12a7: { title:"Nishi Chaya District", body:`<p>Established in 1820 alongside Higashi Chaya, as one of the city's three licensed geisha districts — but it's always been the quieter, smaller sibling: a single compact street rather than a sprawling quarter.</p><p>Traditional wooden teahouse buildings still line it, some still working as geiko establishments and others turned into cafes and shops — with far fewer visitors than its bigger counterpart across town.</p>` },
+  d29redfort: { title:"Red Fort", body:`<p>Built by the Mughal emperor Shah Jahan as the fortified palace of his new capital, Shahjahanabad — construction ran from 1638 to 1648, the same decade he was also building the Taj Mahal in Agra for his late wife. Its red sandstone walls, up to 33 metres high, gave the fort its name, and originally enclosed palaces, gardens and a covered bazaar built for the elite of Mughal Delhi.</p><p>The fort's fortunes declined sharply after Nadir Shah's invasion in 1739, when the jewelled Peacock Throne was looted from inside it, and it later served as a British military base after the 1857 uprising. Since independence in 1947, India's Prime Minister has raised the national flag from its ramparts and addressed the country from here every Independence Day — a tradition that's made the fort as much a political symbol as a historical one. It was named a UNESCO World Heritage Site in 2007.</p>` },
+  d29indiagate: { title:"India Gate", body:`<p>Designed by British architect Edwin Lutyens and unveiled in 1931, built as a war memorial to roughly 70,000 Indian soldiers of the British Indian Army who died in World War I and the Third Anglo-Afghan War — their names are carved into the stone. It sits at the eastern end of Rajpath, the ceremonial avenue Lutyens also laid out, running toward what's now Rashtrapati Bhavan, the President's residence.</p><p>An eternal flame, the Amar Jawan Jyoti, was added beneath the arch in 1972 to commemorate soldiers killed in the 1971 India–Pakistan war; in 2019 it was formally merged into the flame at the newer National War Memorial nearby. Today the lawns around the arch are as much a public gathering spot as a monument — busiest, and most atmospheric, after dark when it's floodlit.</p>` }
 };
 function showDetail(pid){
   const detail = activityDetails[pid];
@@ -931,7 +933,7 @@ const days = [
     {fixed: tipBlock("Before you go", [
       "Buy and install your eSIM — Airalo works well and won't force a shutter-click sound whenever you take a photo, like some Japanese SIMs do. Install it before you fly and it'll be ready to go; it doesn't start counting days until it connects to a network in Japan.",
       "Register on Visit Japan Web (vjw.digital.go.jp) — there's an \"install\" option so it sits on your phone like an app. Fill in your details in advance so you already have your QR code ready for immigration.",
-      "There's a possible Red Fort side-trip during today's Delhi layover — see the 29th for the full plan."
+      "There's a possible side-trip into Delhi during today's layover — see the 29th for the options."
     ])}
   ])
 },
@@ -942,13 +944,26 @@ const days = [
     <div class="detail-title">Delhi layover 🕌</div>
     <span class="badge tok">LAYOVER · DELHI</span>
   `, [
-    {fixed: tipBlock("Red Fort — worth considering during the layover", [
-      "The Delhi layover today is long enough to make a real trip into Old Delhi possible: landing at 11:00 and not leaving until 18:15 leaves about seven hours, and going by metro rather than taxi means Delhi traffic can't swallow the afternoon. It's the only layover on the trip this works for — the return layover on 15 October lands at 17:30, after the fort's already closed for the day.",
-      "<strong>The route:</strong> from T3, the Airport Express Line runs straight to New Delhi Railway Station in about 25 minutes, then one change onto the Violet Line reaches Lal Qila station — right by the fort — in another ~18 minutes. Call it 70–85 minutes door to door each way, including walking and buying tickets.",
-      "<strong>How the day lines up:</strong> immigration in (30–60 min), metro out (~80 min), at the fort including its own security screening (45–60 min), metro back (~80 min). Even worked through slowly, that leaves roughly 2.5–3 hours spare before the 18:15 flight.",
-      "<strong>The one rule that makes this safe:</strong> agree a fixed turnaround time before setting off — leave the fort by a set time, no matter what — rather than deciding in the moment. Treat the whole thing as opportunistic, not committed: worth doing if immigration on arrival is quick and everyone's up for it, worth dropping without a second thought if it isn't.",
-      "<strong>Confirm, don't assume:</strong> whether bags are checked through to Tokyo on the same booking (if not, they'd need collecting and rechecking, which changes the plan), and the AI358 departure time nearer the date — it's already moved twice since booking.",
-      "<strong>Cash vs card:</strong> card covers most of it — Red Fort's foreign-visitor ticket (₹500, about £4) can be booked online in advance by card, and most places take card generally. The metro is the exception: ticket machines are mainly cash-based and foreign cards aren't reliably accepted there, so it's worth having a small amount of rupees on hand — around ₹500–1,000 (roughly £4–£8) comfortably covers the fares there and back for two people."
+    {fixed: tipBlock("Delhi layover — worth considering", [
+      "Landing at 11:00 and not leaving until 18:15 leaves about seven hours, which is enough to consider a real trip out of the airport — going by metro rather than taxi means Delhi traffic can't swallow the afternoon either way. It's the only layover on the trip this works for — the return layover on 15 October lands at 17:30, too late for either option below.",
+      "Two options follow: India Gate, quicker and lower-risk with nothing to queue for at all, and the Red Fort, bigger and more atmospheric but with a ticket and security queue to budget for. Which one fits depends on how the day's actually going.",
+      "<strong>Confirm, don't assume:</strong> whether bags are checked through to Tokyo on the same booking (if not, they'd need collecting and rechecking, which rules out either option), and the AI358 departure time nearer the date — it's already moved twice since booking.",
+      "<strong>The one rule that makes either safe:</strong> agree a fixed turnaround time before setting off, whichever option, and leave by it no matter what, rather than deciding in the moment. Treat the whole thing as opportunistic, not committed: worth doing if immigration on arrival is quick and everyone's up for it, worth dropping without a second thought if it isn't — staying airside with the extra padding room is a perfectly good outcome too.",
+      "<strong>Cash vs card:</strong> card covers most things generally. The metro is the exception for both options — ticket machines are mainly cash-based and foreign cards aren't reliably accepted there — so it's worth having a small amount of rupees on hand regardless of which way the day goes: around ₹500–1,000 (roughly £4–£8) comfortably covers the fares there and back for two people."
+    ])},
+    {label:"Option A — India Gate", cards:[
+      activityCard("d29indiagate", "", "India Gate"+pin("India Gate Delhi"), "The quicker, lower-risk option — a war memorial and lawns in central Delhi, no ticket and no security queue, open whenever you get there.", {hours:"Open 24 hours, every day · free, no ticket"})
+    ]},
+    {fixed: tipBlock("Getting there", [
+      "Airport Express from T3 to New Delhi station (~20–25 min), then change onto the Yellow Line — same station complex, no need to go back through security — three stops to Central Secretariat (~10 min). From there it's about a 20–25 minute walk, or a 5–10 minute auto-rickshaw ride (roughly ₹30–40), to India Gate itself.",
+      "Call it 50–60 minutes door to door each way — one line change total."
+    ])},
+    {label:"Option B — Red Fort", cards:[
+      activityCard("d29redfort", "", "Red Fort"+pin("Red Fort Delhi"), "The bigger, more atmospheric option if there's time and energy for it — a Mughal fortified palace right in the heart of Old Delhi.", {hours:"Tue–Sun 9:30–16:30, last entry ~16:00 · today's a Tuesday, so that's fine · foreign-visitor ticket ₹550 (~£4.50)", cash:"ticket's bookable online by card in advance; security screening at entry, allow 30–45 min"})
+    ]},
+    {fixed: tipBlock("Getting there", [
+      "Same first leg as India Gate: Airport Express to New Delhi station (~20–25 min), then the Yellow Line the other direction, two stops to Chandni Chowk (~8 min). From there it's a 10–15 minute walk to the Lahori Gate entrance, or a few minutes by cycle-rickshaw or auto through the market streets.",
+      "Call it 50–60 minutes door to door each way too — similar overall time to India Gate, just traded differently: a ticket queue instead of a longer final stretch on foot."
     ])}
   ])
 },
@@ -1532,7 +1547,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260925.003';
+const APP_VERSION = 'v260925.005';
 
 function renderSettings(){
   const theme = getThemeSetting();
