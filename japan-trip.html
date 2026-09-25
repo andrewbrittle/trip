@@ -215,6 +215,8 @@
   .tip{ font-size:14px; line-height:1.55; color:var(--text); }
   .tip strong{ color:var(--kan); font-weight:600; }
   .tip + .tip{ margin-top:9px; padding-top:9px; border-top:1px solid var(--line); }
+  .tip a{ color:var(--kan); text-decoration:underline; }
+  .tip a:hover{ opacity:.85; }
 
   .maplink{ display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; margin-left:5px; color:var(--text-faint); vertical-align:middle; opacity:.85; transition:opacity .15s ease, color .15s ease, transform .15s ease; }
   .maplink svg{ width:100%; height:100%; fill:currentColor; }
@@ -923,7 +925,8 @@ const days = [
       { from:{code:"DELHI", time:"18:15", tz:"29 Sep"}, to:{code:"TOKYO", time:"05:55", tz:"30 Sep"}, train:"AI358", dur:"8h 15m", changeAt:"Delhi", changeGap:"~7h 15m layover", refId:"dpre-del-tyo" }
     ])},
     {fixed: tipBlock("Terminals", [
-      "Heathrow Terminal 2 for departure. Both Delhi legs use Terminal 3 — arriving and departing from the same terminal, so no need to change buildings during the layover. Arrives into Haneda Terminal 3."
+      "Heathrow Terminal 2 for departure. Both Delhi legs use Terminal 3 — arriving and departing from the same terminal, so no need to change buildings during the layover. Arrives into Haneda Terminal 3.",
+      "Delhi T3's own interactive terminal map (with a Transit tab) is at <a href=\"https://www.newdelhiairport.in/airport-guide/terminal-maps/\" target=\"_blank\" rel=\"noopener\">newdelhiairport.in/airport-guide/terminal-maps</a> — worth a quick look beforehand to get a feel for where things are."
     ])},
     {fixed: tipBlock("Before you go", [
       "Buy and install your eSIM — Airalo works well and won't force a shutter-click sound whenever you take a photo, like some Japanese SIMs do. Install it before you fly and it'll be ready to go; it doesn't start counting days until it connects to a network in Japan.",
@@ -1320,7 +1323,8 @@ const days = [
       { from:{code:"DELHI", time:"00:55", tz:"16 Oct"}, to:{code:"LONDON", time:"07:30", tz:"16 Oct"}, train:"AI161", dur:"11h 05m", changeAt:"Delhi", changeGap:"~7h 25m layover", refId:"dret-del-lon" }
     ])},
     {fixed: tipBlock("Terminals", [
-      "Departs Haneda Terminal 3. Both Delhi legs use Terminal 3, so no need to change buildings during the layover. Arrives into Heathrow Terminal 2, landing the morning of 16 October."
+      "Departs Haneda Terminal 3. Both Delhi legs use Terminal 3, so no need to change buildings during the layover. Arrives into Heathrow Terminal 2, landing the morning of 16 October.",
+      "Delhi T3's own interactive terminal map (with a Transit tab) is at <a href=\"https://www.newdelhiairport.in/airport-guide/terminal-maps/\" target=\"_blank\" rel=\"noopener\">newdelhiairport.in/airport-guide/terminal-maps</a> — worth a quick look beforehand to get a feel for where things are."
     ])}
   ])
 }
@@ -1509,7 +1513,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260923.003';
+const APP_VERSION = 'v260925.001';
 
 function renderSettings(){
   const theme = getThemeSetting();
@@ -1587,6 +1591,10 @@ function renderInstructions(){
     <div class="block">
       <div class="block-label">Sending changes back</div>
       <p>Settings (⚙) → Export updates gathers everything you've added, ticked off, or noted into one block of text. Copy it (or download it as a file) and paste it into a chat with Claude to have it researched properly and folded into the plan for good.</p>
+    </div>
+    <div class="block">
+      <div class="block-label">Your data</div>
+      <p>Anything you tick off, add, or type into a Ref or Notes box is saved only in your own browser on this device — it's never sent anywhere, and it's not part of this page's code. The only way it leaves your device is if you use Export updates above and choose to copy or send it yourself.</p>
     </div>
     <div class="block">
       <div class="block-label">Currency</div>
