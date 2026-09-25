@@ -471,7 +471,7 @@
   <div class="eyebrow">TRIP · 28 SEP – 15 OCT 2026</div>
   <h1>Tokyo, Kyoto, Takayama <span style="color:var(--text-faint); font-style:italic; font-weight:400;">&amp;</span> Kanazawa</h1>
   <div class="daterange">
-    <span>17 days · 4 cities · trains between them</span>
+    <span>18 days · 4 cities · trains between them</span>
     <div class="nav-links">
       <button class="word-link" id="linkWords" type="button" onclick="selectWords()">日本語 Words</button>
     </div>
@@ -930,7 +930,25 @@ const days = [
     ])},
     {fixed: tipBlock("Before you go", [
       "Buy and install your eSIM — Airalo works well and won't force a shutter-click sound whenever you take a photo, like some Japanese SIMs do. Install it before you fly and it'll be ready to go; it doesn't start counting days until it connects to a network in Japan.",
-      "Register on Visit Japan Web (vjw.digital.go.jp) — there's an \"install\" option so it sits on your phone like an app. Fill in your details in advance so you already have your QR code ready for immigration."
+      "Register on Visit Japan Web (vjw.digital.go.jp) — there's an \"install\" option so it sits on your phone like an app. Fill in your details in advance so you already have your QR code ready for immigration.",
+      "There's a possible Red Fort side-trip during today's Delhi layover — see the 29th for the full plan."
+    ])}
+  ])
+},
+{ id:-0.5, date:"29 September", weekday:"Tuesday", month:"SEP", num:29, city:"tok", travel:true,
+  title:"Delhi (layover)",
+  render:()=>renderDayWithProverbs(`
+    <div class="detail-date">Tuesday, 29 September</div>
+    <div class="detail-title">Delhi layover 🕌</div>
+    <span class="badge tok">LAYOVER · DELHI</span>
+  `, [
+    {fixed: tipBlock("Red Fort — worth considering during the layover", [
+      "The Delhi layover today is long enough to make a real trip into Old Delhi possible: landing at 11:00 and not leaving until 18:15 leaves about seven hours, and going by metro rather than taxi means Delhi traffic can't swallow the afternoon. It's the only layover on the trip this works for — the return layover on 15 October lands at 17:30, after the fort's already closed for the day.",
+      "<strong>The route:</strong> from T3, the Airport Express Line runs straight to New Delhi Railway Station in about 25 minutes, then one change onto the Violet Line reaches Lal Qila station — right by the fort — in another ~18 minutes. Call it 70–85 minutes door to door each way, including walking and buying tickets.",
+      "<strong>How the day lines up:</strong> immigration in (30–60 min), metro out (~80 min), at the fort including its own security screening (45–60 min), metro back (~80 min). Even worked through slowly, that leaves roughly 2.5–3 hours spare before the 18:15 flight.",
+      "<strong>The one rule that makes this safe:</strong> agree a fixed turnaround time before setting off — leave the fort by a set time, no matter what — rather than deciding in the moment. Treat the whole thing as opportunistic, not committed: worth doing if immigration on arrival is quick and everyone's up for it, worth dropping without a second thought if it isn't.",
+      "<strong>Confirm, don't assume:</strong> whether bags are checked through to Tokyo on the same booking (if not, they'd need collecting and rechecking, which changes the plan), and the AI358 departure time nearer the date — it's already moved twice since booking.",
+      "<strong>Cash vs card:</strong> card covers most of it — Red Fort's foreign-visitor ticket (₹500, about £4) can be booked online in advance by card, and most places take card generally. The metro is the exception: ticket machines are mainly cash-based and foreign cards aren't reliably accepted there, so it's worth having a small amount of rupees on hand — around ₹500–1,000 (roughly £4–£8) comfortably covers the fares there and back for two people."
     ])}
   ])
 },
@@ -1470,9 +1488,10 @@ function updateSelection(){
 function selectDay(id){
   selected = {type:'day', id};
   updateSelection();
-  const d = days.find(dd => dd.id === id);
-  const prev = days.find(dd => dd.id === id - 1);
-  const next = days.find(dd => dd.id === id + 1);
+  const idx = days.findIndex(dd => dd.id === id);
+  const d = days[idx];
+  const prev = days[idx - 1];
+  const next = days[idx + 1];
   const cityName = CITY_NAMES[d.city] || '';
   const quickAddCards = getQuickAdds(id).map(qa =>
     activityCard(qa.id, "Added", `${escapeHtml(qa.title)}${pin(`${qa.title} ${cityName}`)}`, "", {
@@ -1485,8 +1504,8 @@ function selectDay(id){
     ${renderQuickAddBox(id)}
     ${renderNotesBox(id)}
     <div class="navrow">
-      <button class="navbtn ${prev ? '' : 'hidden'}" onclick="selectDay(${id-1})"><span>← Previous</span>${prev ? prev.weekday : ''}</button>
-      <button class="navbtn next ${next ? '' : 'hidden'}" onclick="selectDay(${id+1})"><span>Next →</span>${next ? next.weekday : ''}</button>
+      <button class="navbtn ${prev ? '' : 'hidden'}" onclick="selectDay(${prev ? prev.id : ''})"><span>← Previous</span>${prev ? prev.weekday : ''}</button>
+      <button class="navbtn next ${next ? '' : 'hidden'}" onclick="selectDay(${next ? next.id : ''})"><span>Next →</span>${next ? next.weekday : ''}</button>
     </div>
   `;
 }
@@ -1513,7 +1532,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260925.001';
+const APP_VERSION = 'v260925.003';
 
 function renderSettings(){
   const theme = getThemeSetting();
