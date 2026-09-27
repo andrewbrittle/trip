@@ -376,6 +376,8 @@
   .block--hotel .block-label{ color:var(--hotel-icon); }
 
   .weather-strip{
+    position:relative;
+    overflow:hidden;
     display:flex;
     align-items:center;
     flex-wrap:wrap;
@@ -388,10 +390,28 @@
     font-size:13.5px;
     color:var(--text);
   }
+  .weather-strip .weather-motif{
+    position:absolute;
+    z-index:0;
+    right:-8px;
+    bottom:-18px;
+    width:104px;
+    height:104px;
+    color:var(--weather-icon);
+    opacity:.16;
+    pointer-events:none;
+  }
+  .weather-strip .weather-icon,
+  .weather-strip .weather-temp,
+  .weather-strip .weather-rain,
+  .weather-strip .weather-tip,
+  .weather-strip .weather-when,
+  .weather-strip .weather-tag{ position:relative; z-index:1; }
   .weather-strip .weather-icon{ font-size:17px; line-height:1; }
   .weather-strip .weather-temp{ font-weight:600; color:var(--weather-icon); white-space:nowrap; }
   .weather-strip .weather-rain{ color:var(--text-dim); white-space:nowrap; }
   .weather-strip .weather-tip{ color:var(--text); }
+  .weather-strip .weather-when{ color:var(--text-dim); font-style:italic; }
   .weather-strip .weather-tag{
     margin-left:auto;
     font-size:11px;
@@ -1661,18 +1681,76 @@ function packingTip(high, low, rainPct){
   return parts.join(" · ");
 }
 
+function weatherMotifBucket(code){
+  if (code === 0) return "clear";
+  if (code === 1 || code === 2) return "partly";
+  if (code === 3) return "overcast";
+  if (code === 45 || code === 48) return "fog";
+  if ([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return "rain";
+  if ([71,73,75,77,85,86].includes(code)) return "snow";
+  if ([95,96,99].includes(code)) return "storm";
+  return "partly";
+}
+function weatherMotifSvg(code){
+  const cloud = `<circle cx="35" cy="55" r="16"/><circle cx="55" cy="45" r="20"/><circle cx="72" cy="55" r="14"/><rect x="30" y="55" width="50" height="20" rx="10"/>`;
+  const parts = {
+    clear: `<circle cx="50" cy="50" r="18"/><g stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none">
+        <line x1="50" y1="6" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="94"/>
+        <line x1="6" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="94" y2="50"/>
+        <line x1="19" y1="19" x2="29" y2="29"/><line x1="71" y1="71" x2="81" y2="81"/>
+        <line x1="81" y1="19" x2="71" y2="29"/><line x1="29" y1="71" x2="19" y2="81"/>
+      </g>`,
+    partly: `<circle cx="68" cy="30" r="14"/><g fill="currentColor">${cloud}</g>`,
+    overcast: `<g fill="currentColor" opacity=".55"><circle cx="24" cy="36" r="11"/><rect x="18" y="36" width="32" height="13" rx="6.5"/></g><g fill="currentColor">${cloud}</g>`,
+    fog: `<g stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none">
+        <line x1="14" y1="32" x2="86" y2="32"/><line x1="26" y1="50" x2="94" y2="50"/>
+        <line x1="10" y1="68" x2="78" y2="68"/><line x1="30" y1="86" x2="90" y2="86"/>
+      </g>`,
+    rain: `<g fill="currentColor">${cloud}</g><g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+        <line x1="38" y1="82" x2="32" y2="96"/><line x1="54" y1="82" x2="48" y2="96"/><line x1="70" y1="82" x2="64" y2="96"/>
+      </g>`,
+    snow: `<g fill="currentColor">${cloud}</g><g fill="currentColor">
+        <circle cx="35" cy="90" r="4"/><circle cx="55" cy="94" r="4"/><circle cx="72" cy="88" r="4"/>
+      </g>`,
+    storm: `<g fill="currentColor">${cloud}</g><path d="M58,80 L46,94 L55,94 L44,100" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+  };
+  return `<svg class="weather-motif" viewBox="0 0 100 100" aria-hidden="true">${parts[weatherMotifBucket(code)] || parts.partly}</svg>`;
+}
+
 function weatherStripHtml(d, data, isForecast){
   const info = cityWeatherInfo[d.city];
   const tempStr = `${Math.round(data.high)}° / ${Math.round(data.low)}°C`;
   const rainStr = `☂ ${Math.round(data.rainPct)}%`;
-  const tag = isForecast ? "Forecast" : `Typical for ${info.name} this time of year`;
+  // The tag only ever needs to explain a climate-normal figure standing in for a forecast — once
+  // it IS a real forecast, that's simply what the weather is doing, so no "Forecast" label is shown.
+  const tag = isForecast ? "" : `<span class="weather-tag">Typical for ${info.name} this time of year</span>`;
+  const whenHtml = (isForecast && data.rainWindow) ? `<span class="weather-when">Showers most likely in the ${data.rainWindow}</span>` : "";
   return `<div class="weather-strip" id="weather-strip-${d.id}">
+      ${weatherMotifSvg(data.code)}
       <span class="weather-icon">${weatherIcon(data.code)}</span>
       <span class="weather-temp">${tempStr}</span>
       <span class="weather-rain">${rainStr}</span>
       <span class="weather-tip">${packingTip(data.high, data.low, data.rainPct)}</span>
-      <span class="weather-tag">${tag}</span>
+      ${whenHtml}
+      ${tag}
     </div>`;
+}
+
+function rainWindowFromHourly(hourly){
+  if (!hourly || !hourly.precipitation_probability || !hourly.time || !hourly.precipitation_probability.length) return null;
+  const probs = hourly.precipitation_probability;
+  let maxIdx = 0;
+  for (let i = 1; i < probs.length; i++) if (probs[i] > probs[maxIdx]) maxIdx = i;
+  const maxP = probs[maxIdx];
+  const minP = Math.min(...probs);
+  if (maxP < 40 || (maxP - minP) < 20) return null; // no real peak — the daily % already covers it
+  const hour = parseInt(hourly.time[maxIdx].slice(11, 13), 10);
+  if (isNaN(hour)) return null;
+  if (hour < 6) return "early hours";
+  if (hour < 12) return "morning";
+  if (hour < 17) return "afternoon";
+  if (hour < 21) return "evening";
+  return "late evening";
 }
 
 function isoDate(dateObj){
@@ -1695,6 +1773,7 @@ async function fetchDayWeather(d){
     const dateStr = isoDate(d.dateObj);
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${info.lat}&longitude=${info.lon}` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode` +
+      `&hourly=precipitation_probability` +
       `&timezone=auto&start_date=${dateStr}&end_date=${dateStr}`;
     const res = await fetch(url);
     if (!res.ok) return;
@@ -1704,7 +1783,8 @@ async function fetchDayWeather(d){
       high: json.daily.temperature_2m_max[0],
       low: json.daily.temperature_2m_min[0],
       rainPct: json.daily.precipitation_probability_max[0],
-      code: json.daily.weathercode[0]
+      code: json.daily.weathercode[0],
+      rainWindow: rainWindowFromHourly(json.hourly)
     };
     weatherCache[key] = data;
     updateWeatherStripDOM(d, data);
