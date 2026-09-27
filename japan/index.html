@@ -463,10 +463,14 @@
   .detail-modal[hidden]{ display:none; }
   .detail-modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
   .detail-modal-card{
-    position:relative; width:min(480px, 100%); max-height:calc(100vh - 40px); overflow-y:auto;
+    position:relative; width:min(480px, 100%); max-height:calc(100vh - 40px); overflow:hidden;
+    display:flex; flex-direction:column;
     background:var(--surface); border:1px solid var(--dropdown-border); border-radius:16px;
     padding:22px 20px 20px; box-shadow:var(--dropdown-shadow); animation:panelIn .2s ease;
   }
+  /* the only scrolling element — the card itself now just clips (so the colour motif's deliberate
+     corner-bleed, below, can never itself count as "content" that forces a scrollbar) */
+  .detail-modal-scroll{ overflow-y:auto; flex:1 1 auto; min-height:0; }
   .detail-modal-close{
     position:absolute; top:12px; right:12px; width:28px; height:28px; border-radius:50%;
     border:none; background:var(--surface-hi); color:var(--text-dim); font-size:18px; line-height:1; cursor:pointer;
@@ -485,15 +489,15 @@
   #detailMotifColour[hidden]{ display:none; }
   #detailMotifColour svg{ width:100%; height:100%; display:block; }
 
-  .wd-sub{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:2px 0 16px; }
+  .wd-sub{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:2px 0 12px; }
   .wd-note{ position:relative; z-index:1; font-size:13px; line-height:1.55; color:var(--text-dim); }
-  .wd-times{ position:relative; z-index:1; display:flex; gap:4px; padding-bottom:10px; margin-bottom:14px; border-bottom:1px solid var(--line); }
+  .wd-times{ position:relative; z-index:1; display:flex; gap:4px; padding-bottom:8px; margin-bottom:10px; border-bottom:1px solid var(--line); }
   .wd-time{ flex:1 1 0; min-width:0; text-align:center; }
   .wd-time .tt{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; margin-bottom:5px; }
   .wd-time .ti{ font-size:18px; line-height:1; margin-bottom:3px; }
   .wd-time .tv{ font-size:13px; font-weight:600; color:var(--text); }
   .wd-time .tr{ font-size:10px; color:var(--weather-icon); margin-top:1px; }
-  .wd-stats{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px 8px; }
+  .wd-stats{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px 8px; }
   .wd-stat .sl{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.03em; margin-bottom:3px; }
   .wd-stat .sv{ font-size:14px; font-weight:600; color:var(--text); }
 </style>
@@ -535,8 +539,10 @@
   <div class="detail-modal-card">
     <button class="detail-modal-close" type="button" onclick="closeDetail()" aria-label="Close">×</button>
     <div id="detailMotifColour" hidden></div>
-    <div class="block-label" id="detailModalTitle"></div>
-    <div class="detail-modal-body" id="detailModalBody"></div>
+    <div class="detail-modal-scroll">
+      <div class="block-label" id="detailModalTitle"></div>
+      <div class="detail-modal-body" id="detailModalBody"></div>
+    </div>
   </div>
 </div>
 
@@ -1779,7 +1785,7 @@ function weatherDetailHtml(d, data, isForecast){
       </div>`;
   }).join('');
   return `
-    <div class="wd-sub">${packingTip(data.high, data.low, data.rainPct)}</div>
+    <div class="wd-sub">${rangeStr} · ☂ ${Math.round(data.rainPct)}%</div>
     <div class="wd-times">${timeChips}</div>
     <div class="wd-stats">
       <div class="wd-stat"><div class="sl">Feels like</div><div class="sv">${data.feelsLike != null ? Math.round(data.feelsLike) + '°' : '–'}</div></div>
@@ -1978,7 +1984,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260927.007'; // keep in sync with CACHE_VERSION in sw.js — bump both together
+const APP_VERSION = 'v260927.009'; // keep in sync with CACHE_VERSION in sw.js — bump both together
 
 function renderSettings(){
   const theme = getThemeSetting();

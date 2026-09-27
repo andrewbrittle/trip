@@ -2,7 +2,7 @@
 // Keep CACHE_VERSION in sync with APP_VERSION in index.html — bump both together on every release.
 // The cache name is derived from it, so shipping a new version automatically invalidates the old
 // cache (old caches matching this app's prefix are swept in activate(), below).
-const CACHE_VERSION = 'v260927.007';
+const CACHE_VERSION = 'v260927.009';
 const CACHE_NAME = 'japan-trip-' + CACHE_VERSION;
 
 // resolved at runtime from this file's own location, so it's correct wherever this folder actually
