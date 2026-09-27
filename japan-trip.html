@@ -1593,7 +1593,7 @@ function weatherStripHtml(d, data, isForecast){
   if (!info) return '';
   const tempStr = `${Math.round(data.high)}° / ${Math.round(data.low)}°C`;
   const rainStr = `☂ ${Math.round(data.rainPct)}%`;
-  const tag = isForecast ? "Forecast" : `Typical for ${info.name} this time of year`;
+  const tagHtml = isForecast ? '' : `<span class="weather-tag">Typical for ${info.name} this time of year</span>`;
   const whenHtml = (isForecast && data.rainWindow) ? `<span class="weather-when">Showers most likely in the ${data.rainWindow}</span>` : '';
   return `<div class="weather-strip" id="weather-strip-${d.id}">
       ${weatherMotifSvg(data.code)}
@@ -1602,7 +1602,7 @@ function weatherStripHtml(d, data, isForecast){
       <span class="weather-rain">${rainStr}</span>
       <span class="weather-tip">${packingTip(data.high, data.low, data.rainPct)}</span>
       ${whenHtml}
-      <span class="weather-tag">${tag}</span>
+      ${tagHtml}
     </div>`;
 }
 
@@ -1762,7 +1762,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260927.003';
+const APP_VERSION = 'v260927.004';
 
 function renderSettings(){
   const theme = getThemeSetting();
