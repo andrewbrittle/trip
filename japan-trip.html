@@ -39,6 +39,7 @@
 
     --status-blue:#5B9BD5; --status-skip:#6E7A85;
     --cat-rose:#D98BA5; --cat-teal:#4FB3A9; --cat-wood:#B98553; --cat-sky:#6FC3D9; --cat-lavender:#B79AE0;
+    --motif-clear:#F2C94C; --motif-partly:#6FB8E0; --motif-overcast:#93A5B8; --motif-fog:#9FB3BE; --motif-rain:#4FB8E8; --motif-snow:#B9D9EE; --motif-storm:#8B7FD6;
     --dropdown-border:#75818D; --dropdown-shadow:0 12px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05);
     color-scheme: dark;
   }
@@ -59,6 +60,7 @@
 
       --status-blue:#2F6EA8; --status-skip:#6B7075;
       --cat-rose:#B23E63; --cat-teal:#1E7F73; --cat-wood:#8A5A2E; --cat-sky:#2C7A94; --cat-lavender:#6A4FA0;
+      --motif-clear:#D9971F; --motif-partly:#2E76A8; --motif-overcast:#5C7186; --motif-fog:#6E7F87; --motif-rain:#1E7EA6; --motif-snow:#6F86AE; --motif-storm:#5B4FB0;
       --dropdown-border:#E3D9C6; --dropdown-shadow:0 14px 34px rgba(0,0,0,.16);
       color-scheme: light;
     }
@@ -79,6 +81,7 @@
 
     --status-blue:#2F6EA8; --status-skip:#6B7075;
     --cat-rose:#B23E63; --cat-teal:#1E7F73; --cat-wood:#8A5A2E; --cat-sky:#2C7A94; --cat-lavender:#6A4FA0;
+    --motif-clear:#D9971F; --motif-partly:#2E76A8; --motif-overcast:#5C7186; --motif-fog:#6E7F87; --motif-rain:#1E7EA6; --motif-snow:#6F86AE; --motif-storm:#5B4FB0;
     --dropdown-border:#E3D9C6; --dropdown-shadow:0 14px 34px rgba(0,0,0,.16);
     color-scheme: light;
   }
@@ -98,6 +101,7 @@
 
     --status-blue:#5B9BD5; --status-skip:#6E7A85;
     --cat-rose:#D98BA5; --cat-teal:#4FB3A9; --cat-wood:#B98553; --cat-sky:#6FC3D9; --cat-lavender:#B79AE0;
+    --motif-clear:#F2C94C; --motif-partly:#6FB8E0; --motif-overcast:#93A5B8; --motif-fog:#9FB3BE; --motif-rain:#4FB8E8; --motif-snow:#B9D9EE; --motif-storm:#8B7FD6;
     --dropdown-border:#75818D; --dropdown-shadow:0 12px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05);
     color-scheme: dark;
   }
@@ -207,6 +211,8 @@
   .weather-strip .weather-tag{ position:relative; z-index:1; }
   .weather-strip .weather-icon{ font-size:17px; line-height:1; }
   .weather-strip .weather-temp{ font-weight:600; color:var(--weather-icon); white-space:nowrap; }
+  .weather-strip .weather-temp .detail-btn{ color:var(--weather-icon); border-color:var(--weather-icon); opacity:.75; }
+  .weather-strip .weather-temp .detail-btn:hover{ opacity:1; }
   .weather-strip .weather-rain{ color:var(--text-dim); white-space:nowrap; }
   .weather-strip .weather-tip{ color:var(--text); }
   .weather-strip .weather-when{ color:var(--text-dim); }
@@ -294,23 +300,24 @@
   .status-marker.state-skipped{ border-color:var(--status-skip); background:var(--status-skip); color:#fff; }
 
   .proverb{
-    background:var(--surface);
+    position:relative; overflow:hidden;
+    background:color-mix(in srgb, var(--pc) 10%, var(--surface));
     border:1px solid var(--pc);
     border-radius:10px;
     padding:12px 14px;
     margin-bottom:12px;
-    opacity:.88;
   }
   .proverb.cat-rose{ --pc:var(--cat-rose); }
   .proverb.cat-teal{ --pc:var(--cat-teal); }
   .proverb.cat-wood{ --pc:var(--cat-wood); }
   .proverb.cat-sky{ --pc:var(--cat-sky); }
   .proverb.cat-lavender{ --pc:var(--cat-lavender); }
-  .proverb-cat{ font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--pc); font-weight:600; opacity:.85; margin-bottom:7px; }
-  .proverb-native{ font-family:'Fraunces', serif; font-size:14.5px; font-weight:500; color:var(--text-dim); margin-bottom:2px; }
-  .proverb-phonetic{ font-size:11.5px; font-style:italic; font-weight:500; color:var(--text-dim); margin-bottom:7px; }
-  .proverb-meaning{ font-size:12px; color:var(--text-dim); font-style:italic; font-weight:500; margin-bottom:7px; }
-  .proverb-advice{ font-size:12.5px; color:var(--text-dim); line-height:1.5; padding-top:7px; border-top:1px solid var(--line); }
+  .proverb .proverb-motif{ position:absolute; z-index:0; right:-10px; bottom:-14px; width:64px; height:64px; color:var(--pc); opacity:.16; pointer-events:none; }
+  .proverb-cat{ position:relative; z-index:1; font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--pc); font-weight:600; opacity:.85; margin-bottom:7px; }
+  .proverb-native{ position:relative; z-index:1; font-family:'Fraunces', serif; font-size:14.5px; font-weight:500; color:var(--text-dim); margin-bottom:2px; }
+  .proverb-phonetic{ position:relative; z-index:1; font-size:11.5px; font-style:italic; font-weight:500; color:var(--text-dim); margin-bottom:7px; }
+  .proverb-meaning{ position:relative; z-index:1; font-size:12px; color:var(--text-dim); font-style:italic; font-weight:500; margin-bottom:7px; }
+  .proverb-advice{ position:relative; z-index:1; font-size:12.5px; color:var(--text-dim); line-height:1.5; padding-top:7px; border-top:1px solid var(--line); }
 
   .navrow{ display:flex; justify-content:space-between; margin-top:24px; padding-top:16px; border-top:1px solid var(--line); }
   .navbtn{ background:none; border:none; color:var(--text-dim); font-family:'IBM Plex Sans', sans-serif; font-size:14px; cursor:pointer; display:flex; flex-direction:column; gap:2px; }
@@ -448,9 +455,30 @@
     border:none; background:var(--surface-hi); color:var(--text-dim); font-size:18px; line-height:1; cursor:pointer;
   }
   .detail-modal-close:active{ transform:scale(0.9); }
+  .detail-modal-close{ z-index:2; }
+  #detailModalTitle, .detail-modal-body{ position:relative; z-index:1; }
   .detail-modal-body{ font-size:14px; line-height:1.65; color:var(--text); }
   .detail-modal-body p{ margin:0 0 12px; }
   .detail-modal-body p:last-child{ margin-bottom:0; }
+
+  /* ---- colour SVG motif, weather-detail popup only — same silhouettes as the muted main-screen
+     motif, but full multi-hue colour; the vividness is deliberately kept to this popup, main screen
+     stays as-is ---- */
+  #detailMotifColour{ position:absolute; z-index:0; right:-26px; bottom:-30px; width:180px; height:180px; opacity:.32; pointer-events:none; }
+  #detailMotifColour[hidden]{ display:none; }
+  #detailMotifColour svg{ width:100%; height:100%; display:block; }
+
+  .wd-sub{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:2px 0 16px; }
+  .wd-note{ position:relative; z-index:1; font-size:13px; line-height:1.55; color:var(--text-dim); }
+  .wd-times{ position:relative; z-index:1; display:flex; gap:4px; padding-bottom:10px; margin-bottom:14px; border-bottom:1px solid var(--line); }
+  .wd-time{ flex:1 1 0; min-width:0; text-align:center; }
+  .wd-time .tt{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; margin-bottom:5px; }
+  .wd-time .ti{ font-size:18px; line-height:1; margin-bottom:3px; }
+  .wd-time .tv{ font-size:13px; font-weight:600; color:var(--text); }
+  .wd-time .tr{ font-size:10px; color:var(--weather-icon); margin-top:1px; }
+  .wd-stats{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px 8px; }
+  .wd-stat .sl{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.03em; margin-bottom:3px; }
+  .wd-stat .sv{ font-size:14px; font-weight:600; color:var(--text); }
 </style>
 </head>
 <body>
@@ -489,6 +517,7 @@
   <div class="detail-modal-backdrop" onclick="closeDetail()"></div>
   <div class="detail-modal-card">
     <button class="detail-modal-close" type="button" onclick="closeDetail()" aria-label="Close">×</button>
+    <div id="detailMotifColour" hidden></div>
     <div class="block-label" id="detailModalTitle"></div>
     <div class="detail-modal-body" id="detailModalBody"></div>
   </div>
@@ -665,15 +694,25 @@ const activityDetails = {
   d29redfort: { title:"Red Fort", body:`<p>Built by the Mughal emperor Shah Jahan as the fortified palace of his new capital, Shahjahanabad — construction ran from 1638 to 1648, the same decade he was also building the Taj Mahal in Agra for his late wife. Its red sandstone walls, up to 33 metres high, gave the fort its name, and originally enclosed palaces, gardens and a covered bazaar built for the elite of Mughal Delhi.</p><p>The fort's fortunes declined sharply after Nadir Shah's invasion in 1739, when the jewelled Peacock Throne was looted from inside it, and it later served as a British military base after the 1857 uprising. Since independence in 1947, India's Prime Minister has raised the national flag from its ramparts and addressed the country from here every Independence Day — a tradition that's made the fort as much a political symbol as a historical one. It was named a UNESCO World Heritage Site in 2007.</p>` },
   d29indiagate: { title:"India Gate", body:`<p>Designed by British architect Edwin Lutyens and unveiled in 1931, built as a war memorial to roughly 70,000 Indian soldiers of the British Indian Army who died in World War I and the Third Anglo-Afghan War — their names are carved into the stone. It sits at the eastern end of Rajpath, the ceremonial avenue Lutyens also laid out, running toward what's now Rashtrapati Bhavan, the President's residence.</p><p>An eternal flame, the Amar Jawan Jyoti, was added beneath the arch in 1972 to commemorate soldiers killed in the 1971 India–Pakistan war; in 2019 it was formally merged into the flame at the newer National War Memorial nearby. Today the lawns around the arch are as much a public gathering spot as a monument — busiest, and most atmospheric, after dark when it's floodlit.</p>` }
 };
+// tracks which day's weather-detail popup (if any) is currently open, so a background fetch
+// completing while it's on screen can refresh it in place — null whenever it's a plain history
+// popup, or nothing's open at all
+let currentWeatherDetailDayId = null;
+
 function showDetail(pid){
   const detail = activityDetails[pid];
   if (!detail) return;
+  currentWeatherDetailDayId = null;
+  const motifEl = document.getElementById('detailMotifColour');
+  motifEl.setAttribute('hidden', '');
+  motifEl.innerHTML = '';
   document.getElementById('detailModalTitle').textContent = detail.title;
   document.getElementById('detailModalBody').innerHTML = detail.body;
   document.getElementById('detailModal').removeAttribute('hidden');
 }
 function closeDetail(){
   document.getElementById('detailModal').setAttribute('hidden', '');
+  currentWeatherDetailDayId = null;
 }
 
 function activityCard(pid, when, titleHtml, bodyText, opts){
@@ -782,18 +821,35 @@ function renderNotesBox(dayId){
 }
 
 // ---- calming proverb cards: randomised per view, not persisted ----
+function categoryKey(category){
+  if (category.includes("Acceptance")) return "rose";
+  if (category.includes("Nature") || category.includes("Impermanence")) return "teal";
+  if (category.includes("Mindset") || category.includes("Inner Stillness")) return "wood";
+  if (category.includes("Resilience") || category.includes("Subtle Strength")) return "sky";
+  if (category.includes("Harmony") || category.includes("Balance")) return "lavender";
+  return "rose";
+}
 function categoryClass(category){
-  if (category.includes("Acceptance")) return "cat-rose";
-  if (category.includes("Nature") || category.includes("Impermanence")) return "cat-teal";
-  if (category.includes("Mindset") || category.includes("Inner Stillness")) return "cat-wood";
-  if (category.includes("Resilience") || category.includes("Subtle Strength")) return "cat-sky";
-  if (category.includes("Harmony") || category.includes("Balance")) return "cat-lavender";
-  return "cat-rose";
+  return "cat-" + categoryKey(category);
+}
+
+// small faded corner glyph per category, in the same spirit as the weather motifs — shape carries
+// the meaning, colour comes for free from the --pc the category class already sets
+function proverbMotifSvg(key){
+  const shapes = {
+    rose: `<g fill="currentColor"><circle cx="50" cy="30" r="12"/><circle cx="72" cy="45" r="12"/><circle cx="63" cy="70" r="12"/><circle cx="37" cy="70" r="12"/><circle cx="28" cy="45" r="12"/><circle cx="50" cy="48" r="9"/></g>`,
+    teal: `<path d="M50,10 C80,25 85,55 50,92 C15,55 20,25 50,10 Z" fill="currentColor"/><path d="M50,22 L50,84" stroke="var(--surface)" stroke-width="3" opacity=".5"/>`,
+    wood: `<path d="M50,14 L86,80 L14,80 Z" fill="currentColor"/><path d="M50,40 L70,80 L30,80 Z" fill="var(--surface)" opacity=".18"/>`,
+    sky: `<path d="M8,58 C28,40 40,40 50,52 C60,40 72,40 92,58 C72,50 62,54 50,68 C38,54 28,50 8,58 Z" fill="currentColor"/>`,
+    lavender: `<ellipse cx="50" cy="80" rx="26" ry="9" fill="currentColor"/><ellipse cx="50" cy="55" rx="19" ry="8" fill="currentColor"/><ellipse cx="50" cy="34" rx="12" ry="7" fill="currentColor"/>`
+  };
+  return `<svg class="proverb-motif" viewBox="0 0 100 100" aria-hidden="true">${shapes[key] || shapes.rose}</svg>`;
 }
 
 function proverbCardHtml(p){
-  const cls = categoryClass(p.category);
-  return `<div class="proverb ${cls}">
+  const key = categoryKey(p.category);
+  return `<div class="proverb cat-${key}">
+        ${proverbMotifSvg(key)}
         <div class="proverb-cat">${p.category}</div>
         <div class="proverb-native">${p.saying}</div>
         <div class="proverb-phonetic">${p.saying_phonetic}</div>
@@ -1595,15 +1651,145 @@ function weatherStripHtml(d, data, isForecast){
   const rainStr = `☂ ${Math.round(data.rainPct)}%`;
   const tagHtml = isForecast ? '' : `<span class="weather-tag">Typical for ${info.name} this time of year</span>`;
   const whenHtml = (isForecast && data.rainWindow) ? `<span class="weather-when">Showers most likely in the ${data.rainWindow}</span>` : '';
+  const detailBtn = `<button class="detail-btn" type="button" onclick="showWeatherDetail(${d.id})" aria-label="More detail">ⓘ</button>`;
   return `<div class="weather-strip" id="weather-strip-${d.id}">
       ${weatherMotifSvg(data.code)}
       <span class="weather-icon">${weatherIcon(data.code)}</span>
-      <span class="weather-temp">${tempStr}</span>
+      <span class="weather-temp">${tempStr}${detailBtn}</span>
       <span class="weather-rain">${rainStr}</span>
       <span class="weather-tip">${packingTip(data.high, data.low, data.rainPct)}</span>
       ${whenHtml}
       ${tagHtml}
     </div>`;
+}
+
+// ---- weather detail popup: a handful of time points across the day plus a few extra figures, only
+// meaningful once we're on the live-forecast branch (an hourly breakdown of a flat climate-normal
+// average would just be fabricated variation) — reuses the app's existing detail-modal chrome ----
+const DETAIL_HOURS = [
+  { h:5,  label:"5AM" },
+  { h:8,  label:"8AM" },
+  { h:11, label:"11AM" },
+  { h:14, label:"2PM" },
+  { h:17, label:"5PM" },
+  { h:20, label:"8PM" }
+];
+const DAYTIME_HOURS = [8, 11, 14, 17, 20]; // used to average feels-like/wind/humidity into one daytime figure
+
+function avgAtHours(values, times, dateStr, hours){
+  if (!values || !times) return null;
+  const picked = hours
+    .map(h => times.indexOf(`${dateStr}T${String(h).padStart(2,'0')}:00`))
+    .filter(idx => idx !== -1)
+    .map(idx => values[idx]);
+  if (!picked.length) return null;
+  return picked.reduce((a, b) => a + b, 0) / picked.length;
+}
+
+function to12hLabel(hhmm){
+  const [h, m] = hhmm.split(':').map(Number);
+  const ap = h < 12 ? 'am' : 'pm';
+  let h12 = h % 12; if (h12 === 0) h12 = 12;
+  return `${h12}:${String(m).padStart(2,'0')}${ap}`;
+}
+
+function uvLabel(uv){
+  const v = Math.round(uv);
+  let band;
+  if (v <= 2) band = 'Low';
+  else if (v <= 5) band = 'Moderate';
+  else if (v <= 7) band = 'High';
+  else if (v <= 10) band = 'Very high';
+  else band = 'Extreme';
+  return `${v} · ${band}`;
+}
+
+// ---- colour SVG motif, weather-detail popup only — same silhouettes as the muted single-blue
+// main-screen motif (weatherMotifSvg), but each condition gets its own full-saturation hue, so the
+// two stay visually related while the popup gets the extra vividness the main screen deliberately
+// doesn't ----
+function weatherMotifSvgColour(code){
+  const cloud = `<circle cx="35" cy="55" r="16"/><circle cx="55" cy="45" r="20"/><circle cx="72" cy="55" r="14"/><rect x="30" y="55" width="50" height="20" rx="10"/>`;
+  const parts = {
+    clear: `<circle cx="50" cy="50" r="18" fill="var(--motif-clear)"/><g stroke="var(--motif-clear)" stroke-width="5" stroke-linecap="round" fill="none">
+        <line x1="50" y1="6" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="94"/>
+        <line x1="6" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="94" y2="50"/>
+        <line x1="19" y1="19" x2="29" y2="29"/><line x1="71" y1="71" x2="81" y2="81"/>
+        <line x1="81" y1="19" x2="71" y2="29"/><line x1="29" y1="71" x2="19" y2="81"/>
+      </g>`,
+    partly: `<circle cx="68" cy="30" r="14" fill="var(--kan)"/><g fill="var(--motif-partly)">${cloud}</g>`,
+    overcast: `<g fill="var(--motif-overcast)" opacity=".7"><circle cx="24" cy="36" r="11"/><rect x="18" y="36" width="32" height="13" rx="6.5"/></g><g fill="var(--motif-overcast)">${cloud}</g>`,
+    fog: `<g stroke="var(--motif-fog)" stroke-width="5" stroke-linecap="round" fill="none">
+        <line x1="14" y1="32" x2="86" y2="32"/><line x1="26" y1="50" x2="94" y2="50"/>
+        <line x1="10" y1="68" x2="78" y2="68"/><line x1="30" y1="86" x2="90" y2="86"/>
+      </g>`,
+    rain: `<circle cx="70" cy="26" r="11" fill="var(--kan)" opacity=".85"/><g fill="var(--motif-rain)">${cloud}</g><g stroke="var(--motif-rain)" stroke-width="4" stroke-linecap="round">
+        <line x1="38" y1="82" x2="32" y2="96"/><line x1="54" y1="82" x2="48" y2="96"/><line x1="70" y1="82" x2="64" y2="96"/>
+      </g>`,
+    snow: `<g fill="var(--motif-snow)">${cloud}</g><g fill="var(--cat-lavender)">
+        <circle cx="35" cy="90" r="4"/><circle cx="55" cy="94" r="4"/><circle cx="72" cy="88" r="4"/>
+      </g>`,
+    storm: `<g fill="var(--motif-storm)">${cloud}</g><path d="M58,80 L46,94 L55,94 L44,100" stroke="var(--kan)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+  };
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">${parts[weatherMotifBucket(code)] || parts.partly}</svg>`;
+}
+
+function weatherDetailHtml(d, data, isForecast){
+  const info = cityWeatherInfo[weatherCityKeyFor(d)];
+  if (!info) return '';
+  const rangeStr = `high ${Math.round(data.high)}° · low ${Math.round(data.low)}°C`;
+  if (!isForecast || !data.hourlyTimes || !data.hourlyTimes.length){
+    const note = isForecast
+      ? `Hourly detail wasn't available from this forecast fetch — the summary above is still today's live figures.`
+      : `Hourly detail switches on automatically once we're within about two weeks of the date. For now, this is the seasonal average for ${info.name}.`;
+    return `
+      <div class="wd-sub">${rangeStr} · ☂ ${Math.round(data.rainPct)}%</div>
+      <p class="wd-note">${note}</p>
+    `;
+  }
+  const dateStr = isoDate(d.dateObj);
+  const timeChips = DETAIL_HOURS.map(({ h, label }) => {
+    const idx = data.hourlyTimes.indexOf(`${dateStr}T${String(h).padStart(2,'0')}:00`);
+    if (idx === -1) return '';
+    const temp = data.hourlyTemp ? Math.round(data.hourlyTemp[idx]) : null;
+    const code = data.hourlyCode ? data.hourlyCode[idx] : data.code;
+    const rain = data.hourlyPrecip ? Math.round(data.hourlyPrecip[idx]) : null;
+    return `<div class="wd-time">
+        <div class="tt">${label}</div>
+        <div class="ti">${weatherIcon(code)}</div>
+        <div class="tv">${temp !== null ? temp + '°' : '–'}</div>
+        <div class="tr">${rain !== null ? rain + '%' : ''}</div>
+      </div>`;
+  }).join('');
+  return `
+    <div class="wd-sub">${packingTip(data.high, data.low, data.rainPct)}</div>
+    <div class="wd-times">${timeChips}</div>
+    <div class="wd-stats">
+      <div class="wd-stat"><div class="sl">Feels like</div><div class="sv">${data.feelsLike != null ? Math.round(data.feelsLike) + '°' : '–'}</div></div>
+      <div class="wd-stat"><div class="sl">Wind</div><div class="sv">${data.windAvg != null ? Math.round(data.windAvg) + ' km/h' : '–'}</div></div>
+      <div class="wd-stat"><div class="sl">Humidity</div><div class="sv">${data.humidityAvg != null ? Math.round(data.humidityAvg) + '%' : '–'}</div></div>
+      <div class="wd-stat"><div class="sl">UV index</div><div class="sv">${data.uvIndexMax != null ? uvLabel(data.uvIndexMax) : '–'}</div></div>
+      <div class="wd-stat"><div class="sl">Sunrise</div><div class="sv">${data.sunrise ? to12hLabel(data.sunrise.slice(11,16)) : '–'}</div></div>
+      <div class="wd-stat"><div class="sl">Sunset</div><div class="sv">${data.sunset ? to12hLabel(data.sunset.slice(11,16)) : '–'}</div></div>
+    </div>
+  `;
+}
+
+function showWeatherDetail(dayId){
+  const d = days.find(dd => dd.id === dayId);
+  if (!d) return;
+  const info = cityWeatherInfo[weatherCityKeyFor(d)];
+  if (!info) return;
+  currentWeatherDetailDayId = dayId;
+  const cached = weatherCache[weatherCacheKey(d)];
+  const isForecast = !!cached;
+  const data = cached || info.normal;
+  document.getElementById('detailModalTitle').textContent = `${info.name} · ${d.weekday}, ${d.date}`;
+  document.getElementById('detailModalBody').innerHTML = weatherDetailHtml(d, data, isForecast);
+  const motifEl = document.getElementById('detailMotifColour');
+  motifEl.innerHTML = weatherMotifSvgColour(data.code);
+  motifEl.removeAttribute('hidden');
+  document.getElementById('detailModal').removeAttribute('hidden');
 }
 
 const weatherCache = {};
@@ -1633,22 +1819,35 @@ async function fetchDayWeather(d){
   try {
     const dateStr = isoDate(d.dateObj);
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${info.lat}&longitude=${info.lon}` +
-      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode` +
-      `&hourly=precipitation_probability` +
+      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode,uv_index_max,sunrise,sunset` +
+      `&hourly=precipitation_probability,temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code` +
       `&timezone=auto&start_date=${dateStr}&end_date=${dateStr}`;
     const res = await fetch(url);
     if (!res.ok) return;
     const json = await res.json();
     if (!json.daily || !json.daily.time || !json.daily.time.length) return;
+    const hourly = json.hourly || {};
     const data = {
       high: json.daily.temperature_2m_max[0],
       low: json.daily.temperature_2m_min[0],
       rainPct: json.daily.precipitation_probability_max[0],
       code: json.daily.weathercode[0],
-      rainWindow: rainWindowFromHourly(json.hourly)
+      rainWindow: rainWindowFromHourly(hourly),
+      // extra fields for the weather-detail popup only — the strip above never reads these
+      hourlyTimes: hourly.time || null,
+      hourlyTemp: hourly.temperature_2m || null,
+      hourlyCode: hourly.weather_code || null,
+      hourlyPrecip: hourly.precipitation_probability || null,
+      feelsLike: avgAtHours(hourly.apparent_temperature, hourly.time, dateStr, DAYTIME_HOURS),
+      windAvg: avgAtHours(hourly.wind_speed_10m, hourly.time, dateStr, DAYTIME_HOURS),
+      humidityAvg: avgAtHours(hourly.relative_humidity_2m, hourly.time, dateStr, DAYTIME_HOURS),
+      uvIndexMax: json.daily.uv_index_max ? json.daily.uv_index_max[0] : null,
+      sunrise: json.daily.sunrise ? json.daily.sunrise[0] : null,
+      sunset: json.daily.sunset ? json.daily.sunset[0] : null
     };
     weatherCache[key] = data;
     updateWeatherStripDOM(d, data);
+    if (currentWeatherDetailDayId === d.id) showWeatherDetail(d.id); // refresh the popup if it's open on this same day
   } catch(e){
     // offline, or the API's unreachable — the typical-weather fallback already on screen stays as is
   }
@@ -1762,7 +1961,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260927.004';
+const APP_VERSION = 'v260927.005';
 
 function renderSettings(){
   const theme = getThemeSetting();
