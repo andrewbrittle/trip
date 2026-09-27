@@ -35,6 +35,7 @@
 
     --transit-bg:#132A20; --transit-border:#3FA06B; --transit-icon:#7FDDA5;
     --hotel-bg:#241D14; --hotel-border:#B08838; --hotel-icon:#E4BE6F;
+    --weather-bg:#132530; --weather-border:#4F8FBE; --weather-icon:#8FC7EA;
 
     --status-blue:#5B9BD5; --status-skip:#6E7A85;
     --cat-rose:#D98BA5; --cat-teal:#4FB3A9; --cat-wood:#B98553; --cat-sky:#6FC3D9; --cat-lavender:#B79AE0;
@@ -54,6 +55,7 @@
 
       --transit-bg:#E3F3EA; --transit-border:#2F7D4F; --transit-icon:#1F6E45;
       --hotel-bg:#FBF2DF; --hotel-border:#A9791F; --hotel-icon:#7A5813;
+      --weather-bg:#E7F1F7; --weather-border:#2E6E96; --weather-icon:#1F5C82;
 
       --status-blue:#2F6EA8; --status-skip:#6B7075;
       --cat-rose:#B23E63; --cat-teal:#1E7F73; --cat-wood:#8A5A2E; --cat-sky:#2C7A94; --cat-lavender:#6A4FA0;
@@ -73,6 +75,7 @@
 
     --transit-bg:#E3F3EA; --transit-border:#2F7D4F; --transit-icon:#1F6E45;
     --hotel-bg:#FBF2DF; --hotel-border:#A9791F; --hotel-icon:#7A5813;
+    --weather-bg:#E7F1F7; --weather-border:#2E6E96; --weather-icon:#1F5C82;
 
     --status-blue:#2F6EA8; --status-skip:#6B7075;
     --cat-rose:#B23E63; --cat-teal:#1E7F73; --cat-wood:#8A5A2E; --cat-sky:#2C7A94; --cat-lavender:#6A4FA0;
@@ -91,6 +94,7 @@
 
     --transit-bg:#132A20; --transit-border:#3FA06B; --transit-icon:#7FDDA5;
     --hotel-bg:#241D14; --hotel-border:#B08838; --hotel-icon:#E4BE6F;
+    --weather-bg:#132530; --weather-border:#4F8FBE; --weather-icon:#8FC7EA;
 
     --status-blue:#5B9BD5; --status-skip:#6E7A85;
     --cat-rose:#D98BA5; --cat-teal:#4FB3A9; --cat-wood:#B98553; --cat-sky:#6FC3D9; --cat-lavender:#B79AE0;
@@ -184,6 +188,17 @@
   .block--transit .block-label{ color:var(--transit-icon); }
   .block--hotel{ background:var(--hotel-bg); border-color:var(--hotel-border); }
   .block--hotel .block-label{ color:var(--hotel-icon); }
+
+  .weather-strip{
+    display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px;
+    background:var(--weather-bg); border:1px solid var(--weather-border); border-radius:12px;
+    padding:11px 16px; margin-bottom:14px; font-size:13.5px; color:var(--text);
+  }
+  .weather-strip .weather-icon{ font-size:17px; line-height:1; }
+  .weather-strip .weather-temp{ font-weight:600; color:var(--weather-icon); white-space:nowrap; }
+  .weather-strip .weather-rain{ color:var(--text-dim); white-space:nowrap; }
+  .weather-strip .weather-tip{ color:var(--text); }
+  .weather-strip .weather-tag{ margin-left:auto; font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
 
   .leg{ margin-bottom:10px; }
   .leg:last-child{ margin-bottom:0; }
@@ -1477,6 +1492,118 @@ let defaultId = days[0].id;
 if (todayIdx >= 0) defaultId = days[todayIdx].id;
 else if (today.getTime() > days[days.length - 1].dateObj.getTime()) defaultId = days[days.length - 1].id;
 
+// ---- weather: climate-normal fallback that upgrades to a live Open-Meteo forecast within ~15 days ----
+// researched climate-normal figures, not guessed — see chat for sourcing; code:3 (overcast) is used
+// as a deliberately neutral default icon for the normal/average branch, same as the live branch would
+// use whatever code Open-Meteo actually returns.
+const cityWeatherInfo = {
+  tok: { name:"Tokyo",    lat:35.6762, lon:139.6503, normal:{ high:23, low:16, rainPct:33, code:3 } },
+  kyo: { name:"Kyoto",    lat:35.0116, lon:135.7681, normal:{ high:23, low:13, rainPct:45, code:3 } },
+  tak: { name:"Takayama", lat:36.1461, lon:137.2521, normal:{ high:18, low:8,  rainPct:55, code:3 } },
+  kan: { name:"Kanazawa", lat:36.5613, lon:136.6562, normal:{ high:21, low:13, rainPct:60, code:3 } },
+  del: { name:"Delhi",    lat:28.6139, lon:77.2090,  normal:{ high:33, low:23, rainPct:25, code:3 } }
+};
+// day.city is really "which leg of the trip this day belongs to" (used for the day-strip colour), which
+// isn't always where you physically are — the Delhi layover is tagged 'tok' for that reason. This maps
+// specific day ids to the city their weather should actually reflect, and suppresses the strip entirely
+// on the one day (the outbound flight itself) where no single city's weather is a useful answer yet.
+const weatherCityOverride = { '-0.5': 'del' };
+const noWeatherDayIds = new Set([-1]);
+
+function weatherIcon(code){
+  if (code === 0) return "☀️";
+  if (code === 1 || code === 2) return "⛅";
+  if (code === 3) return "☁️";
+  if (code === 45 || code === 48) return "🌫️";
+  if ([51,53,55,56,57,80,81,82].includes(code)) return "🌦️";
+  if ([61,63,65,66,67].includes(code)) return "🌧️";
+  if ([71,73,75,77,85,86].includes(code)) return "🌨️";
+  if ([95,96,99].includes(code)) return "⛈️";
+  return "⛅";
+}
+
+function packingTip(high, low, rainPct){
+  const parts = [];
+  if (low <= 3) parts.push("a proper warm layer for the evenings");
+  else if (high <= 11) parts.push("a jacket or warm layer");
+  else if (high <= 17) parts.push("a light jacket should be enough");
+  else parts.push("layers you can peel off — shouldn't need a coat");
+  if (rainPct >= 45) parts.push("bring an umbrella");
+  else if (rainPct >= 20) parts.push("worth packing a compact umbrella just in case");
+  return parts.join(" · ");
+}
+
+function weatherCityKeyFor(d){
+  return weatherCityOverride[String(d.id)] || d.city;
+}
+
+function weatherStripHtml(d, data, isForecast){
+  const info = cityWeatherInfo[weatherCityKeyFor(d)];
+  if (!info) return '';
+  const tempStr = `${Math.round(data.high)}° / ${Math.round(data.low)}°C`;
+  const rainStr = `☂ ${Math.round(data.rainPct)}%`;
+  const tag = isForecast ? "Forecast" : `Typical for ${info.name} this time of year`;
+  return `<div class="weather-strip" id="weather-strip-${d.id}">
+      <span class="weather-icon">${weatherIcon(data.code)}</span>
+      <span class="weather-temp">${tempStr}</span>
+      <span class="weather-rain">${rainStr}</span>
+      <span class="weather-tip">${packingTip(data.high, data.low, data.rainPct)}</span>
+      <span class="weather-tag">${tag}</span>
+    </div>`;
+}
+
+const weatherCache = {};
+
+function isoDate(dateObj){
+  const y = dateObj.getFullYear();
+  const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function weatherCacheKey(d){
+  return weatherCityKeyFor(d) + '-' + isoDate(d.dateObj);
+}
+
+async function fetchDayWeather(d){
+  if (noWeatherDayIds.has(d.id)) return;
+  const info = cityWeatherInfo[weatherCityKeyFor(d)];
+  if (!info) return;
+  const daysOut = Math.round((d.dateObj.getTime() - today.getTime()) / 86400000);
+  if (daysOut < 0 || daysOut > 15) return; // outside live-forecast range — the normal already shown is fine
+  const key = weatherCacheKey(d);
+  if (weatherCache[key]){
+    updateWeatherStripDOM(d, weatherCache[key]);
+    return;
+  }
+  try {
+    const dateStr = isoDate(d.dateObj);
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${info.lat}&longitude=${info.lon}` +
+      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode` +
+      `&timezone=auto&start_date=${dateStr}&end_date=${dateStr}`;
+    const res = await fetch(url);
+    if (!res.ok) return;
+    const json = await res.json();
+    if (!json.daily || !json.daily.time || !json.daily.time.length) return;
+    const data = {
+      high: json.daily.temperature_2m_max[0],
+      low: json.daily.temperature_2m_min[0],
+      rainPct: json.daily.precipitation_probability_max[0],
+      code: json.daily.weathercode[0]
+    };
+    weatherCache[key] = data;
+    updateWeatherStripDOM(d, data);
+  } catch(e){
+    // offline, or the API's unreachable — the typical-weather fallback already on screen stays as is
+  }
+}
+
+function updateWeatherStripDOM(d, data){
+  const el = document.getElementById('weather-strip-' + d.id);
+  if (!el) return; // navigated to a different day since this fetch started
+  el.outerHTML = weatherStripHtml(d, data, true);
+}
+
 // ---- day grid ----
 const week = document.getElementById('week');
 const dayEls = [];
@@ -1525,6 +1652,13 @@ function selectDay(id){
       <button class="navbtn next ${next ? '' : 'hidden'}" onclick="selectDay(${next ? next.id : ''})"><span>Next →</span>${next ? next.weekday : ''}</button>
     </div>
   `;
+  if (!noWeatherDayIds.has(id) && cityWeatherInfo[weatherCityKeyFor(d)]){
+    const cachedData = weatherCache[weatherCacheKey(d)];
+    const weatherHtml = weatherStripHtml(d, cachedData || cityWeatherInfo[weatherCityKeyFor(d)].normal, !!cachedData);
+    const badgeEl = panel.querySelector('.badge');
+    if (badgeEl) badgeEl.insertAdjacentHTML('afterend', weatherHtml);
+    fetchDayWeather(d);
+  }
 }
 
 function selectWords(){
@@ -1549,7 +1683,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260927.001';
+const APP_VERSION = 'v260927.002';
 
 function renderSettings(){
   const theme = getThemeSetting();
