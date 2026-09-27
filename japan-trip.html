@@ -945,10 +945,12 @@ const days = [
     <span class="badge tok">LAYOVER · DELHI</span>
   `, [
     {fixed: tipBlock("Delhi layover — worth considering", [
-      "Landing at 11:00 and not leaving until 18:15 leaves about seven hours, which is enough to consider a real trip out of the airport — going by metro rather than taxi means Delhi traffic can't swallow the afternoon either way. It's the only layover on the trip this works for — the return layover on 15 October lands at 17:30, too late for either option below.",
-      "Two options follow: India Gate, quicker and lower-risk with nothing to queue for at all, and the Red Fort, bigger and more atmospheric but with a ticket and security queue to budget for. Which one fits depends on how the day's actually going.",
-      "<strong>Confirm, don't assume:</strong> whether bags are checked through to Tokyo on the same booking (if not, they'd need collecting and rechecking, which rules out either option), and the AI358 departure time nearer the date — it's already moved twice since booking.",
-      "<strong>The one rule that makes either safe:</strong> agree a fixed turnaround time before setting off, whichever option, and leave by it no matter what, rather than deciding in the moment. Treat the whole thing as opportunistic, not committed: worth doing if immigration on arrival is quick and everyone's up for it, worth dropping without a second thought if it isn't — staying airside with the extra padding room is a perfectly good outcome too.",
+      "Landing at 11:00 and not leaving until 18:15 looks like seven hours, but the realistic window for actually being outside the airport is smaller once a proper immigration entry and a full standard departure process back in are both budgeted for — more like three to three and a half hours, not seven. It's still the only layover on the trip this could work for at all — the return layover on 15 October lands at 17:30, too late for either option below.",
+      "Two options follow: India Gate, quicker and lower-risk with nothing to queue for at all, and the Red Fort, bigger and more atmospheric but with a ticket and security queue to budget for. With a tighter real window than it first looks, India Gate is the safer bet of the two — but which one fits still depends on how the day's actually going.",
+      "<strong>Go to Immigration, not Transfer:</strong> because the tickets are through-booked on one PNR, Delhi's signage (and sometimes staff) will try to route connecting passengers toward the airside Transfer area, which doesn't lead outside the airport at all. To actually exit, ignore the Transfer signage and join the ordinary Arrivals immigration queue as if the journey ended in Delhi — that's the normal, legitimate way through-ticketed passengers leave, and it just needs a valid visa, which is already sorted.",
+      "<strong>Confirm, don't assume:</strong> Indian customs rules can require checked bags to be pulled off the flight and put through a customs check if a through-ticketed passenger exits the airport, even briefly, regardless of whether the bags themselves get collected — worth asking Air India directly beforehand whether that applies here. Also confirm the AI358 departure time nearer the date — it's already moved twice since booking.",
+      "<strong>Getting back in is a full re-departure, not a quick re-entry:</strong> once through immigration to leave, coming back for the flight means starting the normal international departure process again from scratch — document check at the terminal doors, check-in if needed, exit immigration, security screening — the same as if the trip began fresh in Delhi. Airlines generally recommend being at the terminal a full three hours before an international departure, which for an 18:15 flight means being back on site by around 15:00 at the latest.",
+      "<strong>The one rule that makes either safe:</strong> agree a fixed turnaround time before setting off — back at the airport by 15:00, no matter what, whichever option — rather than deciding in the moment. Treat the whole thing as opportunistic, not committed: worth doing if immigration on arrival is quick and everyone's up for it, worth dropping without a second thought if it isn't — staying airside with the extra padding room is a perfectly good outcome too.",
       "<strong>Cash vs card:</strong> card covers most things generally. The metro is the exception for both options — ticket machines are mainly cash-based and foreign cards aren't reliably accepted there — so it's worth having a small amount of rupees on hand regardless of which way the day goes: around ₹500–1,000 (roughly £4–£8) comfortably covers the fares there and back for two people."
     ])},
     {label:"Option A — India Gate", cards:[
@@ -1547,7 +1549,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260925.005';
+const APP_VERSION = 'v260927.001';
 
 function renderSettings(){
   const theme = getThemeSetting();
