@@ -490,6 +490,7 @@
   #detailMotifColour svg{ width:100%; height:100%; display:block; }
 
   .wd-sub{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:2px 0 12px; }
+  .wd-when{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:-8px 0 12px; }
   .wd-note{ position:relative; z-index:1; font-size:13px; line-height:1.55; color:var(--text-dim); }
   .wd-times{ position:relative; z-index:1; display:flex; gap:4px; padding-bottom:8px; margin-bottom:10px; border-bottom:1px solid var(--line); }
   .wd-time{ flex:1 1 0; min-width:0; text-align:center; }
@@ -1628,6 +1629,36 @@ function weatherCityKeyFor(d){
   return weatherCityOverride[String(d.id)] || d.city;
 }
 
+// ---- representative icon for the day, computed from real hourly data rather than trusting
+// Open-Meteo's own daily weathercode at face value — that field is documented as the single most
+// severe condition anywhere across the full 24 hours, INCLUDING overnight, so a 3am drizzle can
+// make an otherwise sunny day's top-level icon show rain even though nobody's awake to see it.
+// Scanning daytime hours only (6am–9pm) and picking the worst among those keeps the same
+// "don't get caught out" intent while actually matching what the hourly breakdown shows. Falls
+// back to the daily code when there's no hourly data at all (the climate-normal branch). ----
+const CODE_SEVERITY = {
+  0:0, 1:1, 2:1, 3:2, 45:2, 48:2,
+  51:3, 53:3, 55:3, 56:3, 57:3, 80:3, 81:3, 82:3,
+  61:4, 63:4, 65:4, 66:4, 67:4, 71:4, 73:4, 75:4, 77:4, 85:4, 86:4,
+  95:5, 96:5, 99:5
+};
+function codeSeverity(code){
+  return code in CODE_SEVERITY ? CODE_SEVERITY[code] : 1;
+}
+function representativeCode(d, data){
+  if (!data.hourlyCode || !data.hourlyTimes || !data.hourlyTimes.length) return data.code;
+  const dateStr = isoDate(d.dateObj);
+  let best = null, bestSeverity = -1;
+  for (let h = 6; h <= 21; h++){
+    const idx = data.hourlyTimes.indexOf(`${dateStr}T${String(h).padStart(2,'0')}:00`);
+    if (idx === -1) continue;
+    const c = data.hourlyCode[idx];
+    const sev = codeSeverity(c);
+    if (sev > bestSeverity){ bestSeverity = sev; best = c; }
+  }
+  return best !== null ? best : data.code;
+}
+
 // ---- faded background motif per condition — coarser than weatherIcon's 8 emoji buckets (a background
 // watermark doesn't need to distinguish drizzle from heavy rain the way the inline emoji does), one
 // consistent accent color throughout (var(--weather-icon)), shape is what signals the condition ----
@@ -1670,14 +1701,15 @@ function weatherMotifSvg(code){
 function weatherStripHtml(d, data, isForecast){
   const info = cityWeatherInfo[weatherCityKeyFor(d)];
   if (!info) return '';
+  const repCode = representativeCode(d, data);
   const tempStr = `${Math.round(data.high)}° / ${Math.round(data.low)}°C`;
   const rainStr = `☂ ${Math.round(data.rainPct)}%`;
   const tagHtml = isForecast ? '' : `<span class="weather-tag">Typical for ${info.name} this time of year</span>`;
   const whenHtml = (isForecast && data.rainWindow) ? `<span class="weather-when">Showers most likely in the ${data.rainWindow}</span>` : '';
   const detailBtn = `<button class="detail-btn" type="button" onclick="showWeatherDetail(${d.id})" aria-label="More detail">ⓘ</button>`;
   return `<div class="weather-strip" id="weather-strip-${d.id}">
-      ${weatherMotifSvg(data.code)}
-      <span class="weather-icon">${weatherIcon(data.code)}</span>
+      ${weatherMotifSvg(repCode)}
+      <span class="weather-icon">${weatherIcon(repCode)}</span>
       <span class="weather-temp">${tempStr}${detailBtn}</span>
       <span class="weather-rain">${rainStr}</span>
       <span class="weather-tip">${packingTip(data.high, data.low, data.rainPct)}</span>
@@ -1784,8 +1816,10 @@ function weatherDetailHtml(d, data, isForecast){
         <div class="tr">${rain !== null ? rain + '%' : ''}</div>
       </div>`;
   }).join('');
+  const whenHtml = data.rainWindow ? `<div class="wd-when">Showers most likely in the ${data.rainWindow}</div>` : '';
   return `
     <div class="wd-sub">${rangeStr} · ☂ ${Math.round(data.rainPct)}%</div>
+    ${whenHtml}
     <div class="wd-times">${timeChips}</div>
     <div class="wd-stats">
       <div class="wd-stat"><div class="sl">Feels like</div><div class="sv">${data.feelsLike != null ? Math.round(data.feelsLike) + '°' : '–'}</div></div>
@@ -1810,7 +1844,7 @@ function showWeatherDetail(dayId){
   document.getElementById('detailModalTitle').textContent = `${info.name} · ${d.weekday}, ${d.date}`;
   document.getElementById('detailModalBody').innerHTML = weatherDetailHtml(d, data, isForecast);
   const motifEl = document.getElementById('detailMotifColour');
-  motifEl.innerHTML = weatherMotifSvgColour(data.code);
+  motifEl.innerHTML = weatherMotifSvgColour(representativeCode(d, data));
   motifEl.removeAttribute('hidden');
   document.getElementById('detailModal').removeAttribute('hidden');
 }
@@ -1984,7 +2018,7 @@ function setThemeSetting(mode){
 }
 
 // Bump this on every shipped change: v[YYMMDD].[NNN], counter resets to 001 on a new date.
-const APP_VERSION = 'v260927.009'; // keep in sync with CACHE_VERSION in sw.js — bump both together
+const APP_VERSION = 'v260927.010'; // keep in sync with CACHE_VERSION in sw.js — bump both together
 
 function renderSettings(){
   const theme = getThemeSetting();
