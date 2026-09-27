@@ -445,6 +445,7 @@
 
   /* ---- Weather detail popup content ---- */
   .wd-sub{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:2px 0 12px; }
+  .wd-when{ position:relative; z-index:1; font-size:13px; color:var(--text-dim); margin:-8px 0 12px; }
   .wd-note{ position:relative; z-index:1; font-size:13px; line-height:1.55; color:var(--text-dim); }
   .wd-times{ position:relative; z-index:1; display:flex; gap:4px; padding-bottom:8px; margin-bottom:10px; border-bottom:1px solid var(--line); }
   .wd-time{ flex:1 1 0; min-width:0; text-align:center; }
@@ -1370,7 +1371,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v260927.002</div>
+  <div class="settings-version">v260927.003</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1457,7 +1458,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v260927.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v260927.003'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1855,8 +1856,40 @@ function weatherMotifSvgColour(code){
   return `<svg viewBox="0 0 100 100" aria-hidden="true">${parts[weatherMotifBucket(code)] || parts.partly}</svg>`;
 }
 
+// Open-Meteo's daily.weathercode is the single most severe condition occurring anywhere in the
+// full 24 hours, overnight included — not an average or predominant condition. A brief 2am shower
+// can make the whole day's icon show rain even if every waking hour was clear. So the icon (both
+// the muted strip and the popup's colour motif) is picked from a representative code scanned across
+// daytime hours only (6am–9pm), not the raw daily field. The daily high/low/rain% *numbers* are
+// left alone — Open-Meteo's daily aggregates are fine to trust for temperature range and peak rain
+// probability; it was specifically using the worst-case-of-the-full-day *code* to choose an icon
+// that disagreed with what the hourly detail (which was always reading real per-hour data) showed.
+const CODE_SEVERITY = {
+  0:0, 1:1, 2:1, 3:2, 45:2, 48:2,
+  51:3, 53:3, 55:3, 56:3, 57:3, 80:3, 81:3, 82:3,
+  61:4, 63:4, 65:4, 66:4, 67:4, 71:4, 73:4, 75:4, 77:4, 85:4, 86:4,
+  95:5, 96:5, 99:5
+};
+function codeSeverity(code){
+  return code in CODE_SEVERITY ? CODE_SEVERITY[code] : 1;
+}
+function representativeCode(d, data){
+  if (!data.hourlyCode || !data.hourlyTimes || !data.hourlyTimes.length) return data.code; // climate-normal branch — never had this problem, no hourly spread to scan
+  const dateStr = isoDate(d.dateObj);
+  let best = null, bestSeverity = -1;
+  for (let h = 6; h <= 21; h++){
+    const idx = data.hourlyTimes.indexOf(`${dateStr}T${String(h).padStart(2,'0')}:00`);
+    if (idx === -1) continue;
+    const c = data.hourlyCode[idx];
+    const sev = codeSeverity(c);
+    if (sev > bestSeverity){ bestSeverity = sev; best = c; }
+  }
+  return best !== null ? best : data.code;
+}
+
 function weatherStripHtml(d, data, isForecast){
   const info = cityWeatherInfo[d.city];
+  const repCode = representativeCode(d, data);
   const tempStr = `${Math.round(data.high)}° / ${Math.round(data.low)}°C`;
   const rainStr = `☂ ${Math.round(data.rainPct)}%`;
   // The tag only ever needs to explain a climate-normal figure standing in for a forecast — once
@@ -1865,8 +1898,8 @@ function weatherStripHtml(d, data, isForecast){
   const whenHtml = (isForecast && data.rainWindow) ? `<span class="weather-when">Showers most likely in the ${data.rainWindow}</span>` : "";
   const detailBtn = `<button class="detail-btn" type="button" onclick="showWeatherDetail(${d.id})" aria-label="More detail">ⓘ</button>`;
   return `<div class="weather-strip" id="weather-strip-${d.id}">
-      ${weatherMotifSvg(data.code)}
-      <span class="weather-icon">${weatherIcon(data.code)}</span>
+      ${weatherMotifSvg(repCode)}
+      <span class="weather-icon">${weatherIcon(repCode)}</span>
       <span class="weather-temp">${tempStr}${detailBtn}</span>
       <span class="weather-rain">${rainStr}</span>
       <span class="weather-tip">${packingTip(data.high, data.low, data.rainPct)}</span>
@@ -1938,8 +1971,10 @@ function weatherDetailHtml(d, data, isForecast){
         <div class="tr">${rain !== null ? rain + '%' : ''}</div>
       </div>`;
   }).join('');
+  const whenHtml = data.rainWindow ? `<div class="wd-when">Showers most likely in the ${data.rainWindow}</div>` : '';
   return `
     <div class="wd-sub">${rangeStr} · ☂ ${Math.round(data.rainPct)}%</div>
+    ${whenHtml}
     <div class="wd-times">${timeChips}</div>
     <div class="wd-stats">
       <div class="wd-stat"><div class="sl">Feels like</div><div class="sv">${data.feelsLike != null ? Math.round(data.feelsLike) + '°' : '–'}</div></div>
@@ -1964,7 +1999,7 @@ function showWeatherDetail(dayId){
   document.getElementById('detailModalTitle').textContent = `${info.name} · ${d.weekday}, ${d.date}`;
   document.getElementById('detailModalBody').innerHTML = weatherDetailHtml(d, data, isForecast);
   const motifEl = document.getElementById('detailMotifColour');
-  motifEl.innerHTML = weatherMotifSvgColour(data.code);
+  motifEl.innerHTML = weatherMotifSvgColour(representativeCode(d, data));
   motifEl.removeAttribute('hidden');
   document.getElementById('detailModal').removeAttribute('hidden');
 }
