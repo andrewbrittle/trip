@@ -195,33 +195,6 @@
     color:var(--gold-text);
   }
 
-  .word-link{
-    display:inline-block;
-    padding:3px 9px;
-    border-radius:20px;
-    text-decoration:none;
-    border:1px solid currentColor;
-    color:inherit;
-    background:none;
-    appearance:none;
-    -webkit-appearance:none;
-    font-family:inherit;
-    font-size:9.5px;
-    font-weight:600;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    opacity:.85;
-    cursor:pointer;
-    transition:transform .15s ease, opacity .15s ease, background .15s ease, color .15s ease;
-  }
-  .word-link:active{ transform:scale(0.94); opacity:1; }
-  .word-link.selected{
-    background:var(--text);
-    color:var(--bg);
-    border-color:var(--text);
-    opacity:1;
-  }
-
   /* ---- Words panel ---- */
   .words-legend{
     border-radius:12px;
@@ -495,8 +468,7 @@
     position:relative;
     margin:4px 0;
   }
-  .route .mid .line:after{
-    content:"✈";
+  .route .mid .line .mode-icon{
     position:absolute;
     left:50%;top:50%;
     transform:translate(-50%,-50%);
@@ -505,6 +477,9 @@
     font-size:13px;
   }
   .route .mid .dur{ font-size:12px; }
+  .leg{ margin-bottom:10px; }
+  .leg:last-child{ margin-bottom:0; }
+  .change{ font-size:11.5px; color:var(--text-faint); text-align:center; padding:6px 0; font-style:italic; }
   .meta-row{
     display:flex;
     justify-content:space-between;
@@ -975,6 +950,70 @@
   html[data-theme="light"] .theme-toggle .icon-moon{ display:none; }
   html[data-theme="light"] .theme-toggle .icon-sun{ display:block; }
 
+  /* ---- Phrasebook toggle + dropdown (mirrors the currency toggle's shape: a global icon plus a
+     panel of pills, one per distinct language — not one per city, see tripSummary.languages) ---- */
+  .words-toggle{
+    position:fixed;
+    top:22px;
+    right:116px;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--toggle-bg);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:20;
+    transition:background .25s ease, border-color .25s ease, transform .15s ease;
+  }
+  .words-toggle:active{ transform:scale(0.92); }
+  .words-toggle svg{
+    width:18px;
+    height:18px;
+    stroke:var(--toggle-icon);
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .words-panel{
+    position:fixed;
+    top:66px;
+    right:20px;
+    width:220px;
+    background:var(--surface);
+    border:1px solid var(--dropdown-border);
+    border-radius:14px;
+    padding:16px;
+    z-index:21;
+    box-shadow:var(--dropdown-shadow);
+    display:none;
+  }
+  .words-panel.open{ display:block; }
+  .words-lang-row{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .word-pill{
+    padding:8px 0;
+    text-align:center;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:none;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .word-pill:active{ transform:scale(0.97); }
+  .word-pill.words-ro{ background:var(--rust-dim); border-color:var(--rust-border); color:var(--rust-text); }
+  .word-pill.words-bg{ background:var(--gold-dim); border-color:var(--gold-border); color:var(--gold-text); }
+  .word-pill.selected{ background:var(--text); border-color:var(--text); color:var(--bg); }
+
   /* ---- Currency converter toggle + dropdown ---- */
   .money-toggle{
     position:fixed;
@@ -1285,6 +1324,10 @@
 </head>
 <body>
 
+<button class="words-toggle" id="wordsToggle" aria-label="Phrasebook">
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
 <button class="money-toggle" id="moneyToggle" aria-label="Currency converter">
   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 15.5c.5 1 1.5 1.5 2.5 1.5 1.5 0 2.5-.8 2.5-2s-1-1.7-2.5-2-2.5-.8-2.5-2 1-2 2.5-2c1 0 2 .5 2.5 1.5"/><path d="M12 6.5v1M12 16.5v1"/></svg>
 </button>
@@ -1293,12 +1336,14 @@
   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
 
+<div class="words-panel" id="wordsPanel">
+  <div class="fx-label">Phrasebook</div>
+  <div class="words-lang-row" id="wordsLangRow"></div>
+</div>
+
 <div class="fx-panel" id="fxPanel">
   <div class="fx-label">Exchange rate</div>
-  <div class="fx-currency-row">
-    <button class="fx-pill" id="fxPillRON" onclick="setFxCurrency('RON')">RON</button>
-    <button class="fx-pill" id="fxPillEUR" onclick="setFxCurrency('EUR')">EUR</button>
-  </div>
+  <div class="fx-currency-row" id="fxCurrencyRow"></div>
   <div class="fx-rate-row">
     <span>£1 =</span>
     <input type="number" step="0.01" class="fx-rate-input" id="fxRateInput" oninput="onFxRateInput()">
@@ -1375,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v260928.001</div>
+  <div class="settings-version">v260928.005</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1420,7 +1465,7 @@
 
     <div class="settings-card">
       <div class="settings-card-label">Currency</div>
-      <div class="settings-card-desc">The coin icon top-right converts between pounds and either RON or Sofia's euros, at whatever rate you set — pick the currency and direction, then type an amount to see it converted.</div>
+      <div class="settings-card-desc">The coin icon top-right converts between pounds and either RON or euros, at whatever rate you set — pick the currency and direction, then type an amount to see it converted.</div>
     </div>
 
     <div class="settings-card">
@@ -1430,7 +1475,7 @@
 
     <div class="settings-card">
       <div class="settings-card-label">Words</div>
-      <div class="settings-card-desc">The Words pills next to BUCHAREST and SOFIA in the calendar bar each open a small phrasebook for that language, with how to actually read each phrase out loud.</div>
+      <div class="settings-card-desc">The speech-bubble icon top-right opens a small phrasebook for Romanian or Bulgarian, with how to actually read each phrase out loud.</div>
     </div>
 
   </div>
@@ -1441,16 +1486,7 @@
   <h1>Bucharest <span class="and">&amp;</span> Sofia</h1>
   <div class="daterange">7 days · 2 cities · one flight between them</div>
 
-  <div class="timeline">
-    <div class="seg buc">
-      <a class="citylink" href="https://en.wikipedia.org/wiki/Bucharest" target="_blank" rel="noopener">BUCHAREST</a>
-      <button class="word-link" id="linkRomanian" type="button" onclick="selectWords('ro')">Words</button>
-    </div>
-    <div class="seg sof">
-      <a class="citylink" href="https://en.wikipedia.org/wiki/Sofia" target="_blank" rel="noopener">SOFIA</a>
-      <button class="word-link" id="linkBulgarian" type="button" onclick="selectWords('bg')">Words</button>
-    </div>
-  </div>
+  <div class="timeline" id="timeline"></div>
 
   <div class="weeklabels">
     <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
@@ -1462,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v260928.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v260928.005'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1483,6 +1519,31 @@ function saveFlightRef(flightId, value){
 function flightRefInputs(flightId){
   const r = getFlightRef(flightId);
   return `<input type="text" class="ref-input" placeholder="Ref" value="${r}" oninput="saveFlightRef('${flightId}', this.value)">`;
+}
+
+// ---- Generic transport block: one leg (this trip's two flights) or several with a change between
+// them — ported from the Japan trip app, which exercises the multi-leg/change path for real across
+// its train journeys. Kept as a single "leg" renderer rather than a flight-only one so a future train
+// day (or a genuinely multi-leg flight) doesn't need its own bespoke block.
+// One symbol per transport mode, shown at the midpoint of each leg — previously a single symbol
+// was baked into the CSS for the whole block (always a plane here, always a bullet train in the
+// Japan app it was ported from), which quietly mislabels any leg that isn't that one mode. A leg
+// with no `mode` set falls back to "flight", matching every leg written before this field existed.
+const TRANSIT_ICONS = { flight:"✈", train:"🚅", ferry:"⛴", bus:"🚌" };
+function transitBlock(label, legs, detailPid){
+  const detailBtn = detailPid && activityDetails[detailPid] ? `<button class="detail-btn" type="button" onclick="showDetail('${detailPid}')" aria-label="More detail">ⓘ</button>` : '';
+  const legsHtml = legs.map((leg, i) => `
+    ${i > 0 ? `<div class="change">Change at ${leg.changeAt || leg.from.code}${leg.changeGap ? ' — ' + leg.changeGap : ''}</div>` : ''}
+    <div class="leg">
+      <div class="route">
+        <div class="pt"><div class="code">${leg.from.code}</div><div class="time">${leg.from.time}</div>${leg.from.tz ? `<div class="tz">${leg.from.tz}</div>` : ''}</div>
+        <div class="mid"><div class="line"><span class="mode-icon">${TRANSIT_ICONS[leg.mode] || TRANSIT_ICONS.flight}</span></div><div class="dur">${leg.dur}</div></div>
+        <div class="pt"><div class="code">${leg.to.code}</div><div class="time">${leg.to.time}</div>${leg.to.tz ? `<div class="tz">${leg.to.tz}</div>` : ''}</div>
+      </div>
+      <div class="meta-row"><span>${leg.service}</span>${leg.refId ? flightRefInputs(leg.refId) : (leg.note ? `<span>${leg.note}</span>` : '')}</div>
+    </div>
+  `).join('');
+  return `<div class="block block--flight"><div class="block-label">${label}${detailBtn}</div>${legsHtml}</div>`;
 }
 
 // ---- extended detail/history popups: opt-in per activity via activityDetails[pid] ----
@@ -1602,15 +1663,9 @@ const days = [
       <span class="badge buc">ARRIVAL DAY · BUCHAREST</span>
     `,
     cards: () => [
-      `<div class="block block--flight">
-        <div class="block-label">Flight</div>
-        <div class="route">
-          <div class="pt"><div class="code">LHR</div><div class="time">09:50</div><div class="tz">GMT</div></div>
-          <div class="mid"><div class="line"></div><div class="dur">3h 15m · direct</div></div>
-          <div class="pt"><div class="code">OTP</div><div class="time">15:05</div><div class="tz">EET · UTC+2</div></div>
-        </div>
-        <div class="meta-row"><span>British Airways · BA874</span>${flightRefInputs('lhr-otp')}</div>
-      </div>`,
+      transitBlock("Flight", [
+        { from:{code:"LHR", time:"09:50", tz:"GMT"}, to:{code:"OTP", time:"15:05", tz:"EET · UTC+2"}, dur:"3h 15m · direct", mode:"flight", service:"British Airways · BA874", refId:"lhr-otp" }
+      ]),
       `<div class="block block--hotel">
         <div class="block-label">Stay</div>
         <div class="hotel-name">Hotel Berthelot${pin("Hotel Berthelot Bucharest")}</div>
@@ -1677,15 +1732,9 @@ const days = [
       activityCard("d3a0", "Morning", "Check out by 12:00", "<p>Leave bags with the hotel if they'll hold them — no need to lug them round.</p>"),
       activityCard("d3a1", "Late morning", "Anything you missed", "<p>A few hours free before heading to the airport — good for anything left on the list from Tue/Wed, or just a last coffee in Old Town.</p>"),
       activityCard("d3a2", "~15:30", "Head to the airport", "<p>Allow time for the 20km transfer plus check-in for an 18:15 departure.</p>"),
-      `<div class="block block--flight">
-        <div class="block-label">Flight</div>
-        <div class="route">
-          <div class="pt"><div class="code">OTP</div><div class="time">18:15</div><div class="tz">EET · UTC+2</div></div>
-          <div class="mid"><div class="line"></div><div class="dur">1h 15m · direct</div></div>
-          <div class="pt"><div class="code">SOF</div><div class="time">19:30</div><div class="tz">EET · UTC+2</div></div>
-        </div>
-        <div class="meta-row"><span>Tarom · RO297</span>${flightRefInputs('otp-sof')}</div>
-      </div>`,
+      transitBlock("Flight", [
+        { from:{code:"OTP", time:"18:15", tz:"EET · UTC+2"}, to:{code:"SOF", time:"19:30", tz:"EET · UTC+2"}, dur:"1h 15m · direct", mode:"flight", service:"Tarom · RO297", refId:"otp-sof" }
+      ]),
       `<div class="block block--hotel">
         <div class="block-label">Stay</div>
         <div class="hotel-name">Hotel Anel ★★★★★${pin("Hotel Anel Sofia")}</div>
@@ -1767,10 +1816,9 @@ const days = [
 // e.g. GitHub Pages) for any day within its ~16-day forecast window; before that, a researched
 // "typical for late Oct/early Nov" figure is shown instead so there's always something useful on
 // screen. Nothing is persisted — a fresh page load re-checks whether a day has entered forecast range.
-const cityWeatherInfo = {
-  buc: { name:"Bucharest", lat:44.4268, lon:26.1025, normal:{ high:13, low:5, rainPct:25, code:3 } },
-  sof: { name:"Sofia",     lat:42.6977, lon:23.3219, normal:{ high:13, low:4, rainPct:20, code:3 } }
-};
+// cityInfo itself lives further down (after the words/proverb data it references is defined) —
+// see the "---- cityInfo: one lookup table per city ----" block. Everything in this file that
+// used to branch on d.city (weather, currency, words, proverbs) reads from that table instead.
 const weatherCache = {};
 
 function weatherIcon(code){
@@ -1892,13 +1940,13 @@ function representativeCode(d, data){
 }
 
 function weatherStripHtml(d, data, isForecast){
-  const info = cityWeatherInfo[d.city];
+  const cityName = cityInfo[d.city].name;
   const repCode = representativeCode(d, data);
   const tempStr = `${Math.round(data.high)}° / ${Math.round(data.low)}°C`;
   const rainStr = `☂ ${Math.round(data.rainPct)}%`;
   // The tag only ever needs to explain a climate-normal figure standing in for a forecast — once
   // it IS a real forecast, that's simply what the weather is doing, so no "Forecast" label is shown.
-  const tag = isForecast ? "" : `<span class="weather-tag">Typical for ${info.name} this time of year</span>`;
+  const tag = isForecast ? "" : `<span class="weather-tag">Typical for ${cityName} this time of year</span>`;
   const whenHtml = (isForecast && data.rainWindow) ? `<span class="weather-when">Showers most likely in the ${data.rainWindow}</span>` : "";
   const detailBtn = `<button class="detail-btn" type="button" onclick="showWeatherDetail(${d.id})" aria-label="More detail">ⓘ</button>`;
   return `<div class="weather-strip" id="weather-strip-${d.id}">
@@ -1947,15 +1995,15 @@ function uvLabel(uv){
 }
 
 function weatherDetailHtml(d, data, isForecast){
-  const info = cityWeatherInfo[d.city];
-  if (!info) return '';
+  const cityData = cityInfo[d.city];
+  if (!cityData) return '';
   const rangeStr = `high ${Math.round(data.high)}° · low ${Math.round(data.low)}°C`;
   if (!isForecast || !data.hourlyTimes || !data.hourlyTimes.length){
     // Deliberately doesn't fabricate an hourly shape from a flat seasonal average — that would
     // just be invented precision. Same compact summary line as the live branch, plus a plain note.
     const note = isForecast
       ? `Hourly detail wasn't available from this forecast fetch — the summary above is still today's live figures.`
-      : `Hourly detail switches on automatically once we're within about two weeks of the date. For now, this is the seasonal average for ${info.name}.`;
+      : `Hourly detail switches on automatically once we're within about two weeks of the date. For now, this is the seasonal average for ${cityData.name}.`;
     return `
       <div class="wd-sub">${rangeStr} · ☂ ${Math.round(data.rainPct)}%</div>
       <p class="wd-note">${note}</p>
@@ -1994,13 +2042,13 @@ function weatherDetailHtml(d, data, isForecast){
 function showWeatherDetail(dayId){
   const d = days.find(dd => dd.id === dayId);
   if (!d) return;
-  const info = cityWeatherInfo[d.city];
-  if (!info) return;
+  const cityData = cityInfo[d.city];
+  if (!cityData) return;
   currentWeatherDetailDayId = dayId;
   const cached = weatherCache[d.city + '-' + isoDate(d.dateObj)];
   const isForecast = !!cached;
-  const data = cached || info.normal;
-  document.getElementById('detailModalTitle').textContent = `${info.name} · ${d.weekday}, ${d.date}`;
+  const data = cached || cityData.weather.normal;
+  document.getElementById('detailModalTitle').textContent = `${cityData.name} · ${d.weekday}, ${d.date}`;
   document.getElementById('detailModalBody').innerHTML = weatherDetailHtml(d, data, isForecast);
   const motifEl = document.getElementById('detailMotifColour');
   motifEl.innerHTML = weatherMotifSvgColour(representativeCode(d, data));
@@ -2033,7 +2081,7 @@ function isoDate(dateObj){
 }
 
 async function fetchDayWeather(d){
-  const info = cityWeatherInfo[d.city];
+  const info = cityInfo[d.city].weather;
   const daysOut = Math.round((d.dateObj.getTime() - today.getTime()) / 86400000);
   if (daysOut < 0 || daysOut > 15) return; // outside live-forecast range — the normal already shown is fine
   const key = d.city + '-' + isoDate(d.dateObj);
@@ -2736,8 +2784,8 @@ function renderNotesBox(dayId){
 }
 
 function renderDayContent(d){
-  const cityName = d.city === "sof" ? "Sofia" : "Bucharest";
-  const weatherHtml = weatherStripHtml(d, weatherCache[d.city + '-' + isoDate(d.dateObj)] || cityWeatherInfo[d.city].normal,
+  const cityName = cityInfo[d.city].name;
+  const weatherHtml = weatherStripHtml(d, weatherCache[d.city + '-' + isoDate(d.dateObj)] || cityInfo[d.city].weather.normal,
     !!weatherCache[d.city + '-' + isoDate(d.dateObj)]);
   const quickAdds = getQuickAdds(d.id).map(qa =>
     activityCard(qa.id, "Added", `${escapeHtml(qa.title)}${pin(`${qa.title} ${cityName}`)}`, "", "",
@@ -2749,7 +2797,7 @@ function renderDayContent(d){
     return d.header + weatherHtml + cards.join("") + renderAlternatives(d.id) + renderQuickAddBox(d.id) + renderNotesBox(d.id);
   }
 
-  const proverbSet = d.city === "buc" ? romanianProverbs : bulgarianProverbs;
+  const proverbSet = cityInfo[d.city].proverbs;
   const midProverb = proverbCardHtml(randomProverb(proverbSet));
   const bottomProverb = proverbCardHtml(randomProverb(proverbSet));
   const insertAt = cards.length > 1 ? 1 + Math.floor(Math.random() * (cards.length - 1)) : cards.length;
@@ -2892,13 +2940,20 @@ const bulgarianLegend = `<b>How to read it</b> — the transliteration is the im
     <span><b>ш</b> = "sh"</span>
   </div>`;
 
-function renderRomanian(){
-  let html = `<div class="detail-date">PHRASEBOOK</div><div class="detail-title">Romanian</div><div class="words-ro">`;
-  html += `<div class="words-legend">${romanianLegend}</div>`;
-  romanianCategories.forEach(cat => {
+// Single generic phrasebook renderer for any city's words entry: a row of [english, native] renders
+// with just the native form (e.g. Romanian, already Latin script); a row of [english, native,
+// transliteration] also renders the transliteration underneath (e.g. Bulgarian's Cyrillic).
+function renderWords(langKey){
+  const l = languageInfo[langKey];
+  let html = `<div class="detail-date">PHRASEBOOK</div><div class="detail-title">${l.name}</div><div class="${l.wordsClass}">`;
+  html += `<div class="words-legend">${l.legend}</div>`;
+  l.categories.forEach(cat => {
     html += `<div class="block"><div class="block-label">${cat.title}</div>`;
     cat.rows.forEach(r => {
-      html += `<div class="prow"><div class="pen">${r[0]}</div><div class="pnative"><div class="plat">${r[1]}</div></div></div>`;
+      const native = r.length === 3
+        ? `<div class="pcyr">${r[1]}</div><div class="ptranslit">${r[2]}</div>`
+        : `<div class="plat">${r[1]}</div>`;
+      html += `<div class="prow"><div class="pen">${r[0]}</div><div class="pnative">${native}</div></div>`;
     });
     html += `</div>`;
   });
@@ -2906,19 +2961,60 @@ function renderRomanian(){
   return html;
 }
 
-function renderBulgarian(){
-  let html = `<div class="detail-date">PHRASEBOOK</div><div class="detail-title">Bulgarian</div><div class="words-bg">`;
-  html += `<div class="words-legend">${bulgarianLegend}</div>`;
-  bulgarianCategories.forEach(cat => {
-    html += `<div class="block"><div class="block-label">${cat.title}</div>`;
-    cat.rows.forEach(r => {
-      html += `<div class="prow"><div class="pen">${r[0]}</div><div class="pnative"><div class="pcyr">${r[1]}</div><div class="ptranslit">${r[2]}</div></div></div>`;
-    });
-    html += `</div>`;
+// ---- languageInfo: one lookup table per LANGUAGE, not per city — a language is content that a
+// city merely points at (via cityInfo[x].lang), not something a city owns outright. Two cities
+// sharing a language (not the case on this trip, but real on e.g. a US/Ireland/London one) should
+// point at the same entry here rather than each carrying their own duplicate copy of it. ----
+const languageInfo = {
+  ro: { name: "Romanian", wordsClass: "words-ro", legend: romanianLegend, categories: romanianCategories },
+  bg: { name: "Bulgarian", wordsClass: "words-bg", legend: bulgarianLegend, categories: bulgarianCategories }
+};
+
+// ---- cityInfo: one lookup table per city, replacing the scattered d.city === "buc"/"sof" checks
+// that used to be spread across the weather, currency, words and proverb code. Same two cities and
+// same rendered output as before — this just gives them one home instead of five. `currency` and
+// `lang` are foreign keys (into fxRates-style currency codes and languageInfo respectively) rather
+// than owned content, precisely so two cities can share a value without duplicating it — see
+// buildTripSummary() below, which dedupes both down to "how many distinct ones does this trip
+// actually have", not "how many cities are there".
+// `currency` and `langs` are both optional: leave `currency` out for a city that trades in the
+// traveller's own home currency (no pill is worth showing for a 1:1-pegged place), and leave
+// `langs` out — or empty — for a city where no phrasebook is worth having (its official language
+// is the traveller's own). `langs` is a list, not a single value, because one city can genuinely
+// need more than one phrasebook (a former colonial or administrative second language alongside
+// the local one), which neither trip built here ever needed but a real one elsewhere will.
+const cityInfo = {
+  buc: {
+    name: "Bucharest", wiki: "https://en.wikipedia.org/wiki/Bucharest", currency: "RON", langs: ["ro"],
+    proverbs: romanianProverbs,
+    weather: { lat:44.4268, lon:26.1025, normal:{ high:13, low:5, rainPct:25, code:3 } }
+  },
+  sof: {
+    name: "Sofia", wiki: "https://en.wikipedia.org/wiki/Sofia", currency: "EUR", langs: ["bg"],
+    proverbs: bulgarianProverbs,
+    weather: { lat:42.6977, lon:23.3219, normal:{ high:13, low:4, rainPct:20, code:3 } }
+  }
+};
+
+// ---- Trip-level summary: cities in first-appearance order, plus the distinct currencies and
+// languages actually present across them (deduplicated — a currency or language shared by more
+// than one city should produce ONE entry, not one per city; a city that leaves either field out
+// entirely — see the note above cityInfo — contributes nothing to that list rather than breaking
+// it). Used to drive the city bar, the currency-converter pills, and the words/phrasebook picker,
+// all from the same derivation. ----
+function buildTripSummary(){
+  const cityOrder = [];
+  days.forEach(d => { if (!cityOrder.includes(d.city)) cityOrder.push(d.city); });
+  const currencies = [];
+  const languages = [];
+  cityOrder.forEach(c => {
+    const info = cityInfo[c];
+    if (info.currency && !currencies.includes(info.currency)) currencies.push(info.currency);
+    (info.langs || []).forEach(lk => { if (!languages.includes(lk)) languages.push(lk); });
   });
-  html += `</div>`;
-  return html;
+  return { cityOrder, currencies, languages };
 }
+const tripSummary = buildTripSummary();
 
 const today = new Date();
 today.setHours(0,0,0,0);
@@ -2946,8 +3042,61 @@ days.forEach((d, i) => {
 });
 
 const panel = document.getElementById('panel');
-const linkRomanian = document.getElementById('linkRomanian');
-const linkBulgarian = document.getElementById('linkBulgarian');
+
+// ---- City timeline bar: built from cityInfo + whichever cities actually appear in days, instead
+// of hand-written .seg divs — ported from Japan's approach. Segment WIDTHS are left to the existing
+// CSS rules (.timeline .buc / .timeline .sof), not set proportional to day count as Japan's version
+// does, so the bar looks pixel-identical to before this change for this trip. A real proportional-
+// width version would want a real 3+ city trip to check the look against, not a guess. The Words
+// link used to live inside each city's segment here — it's moved out to its own global toggle
+// below, alongside currency, since a language (like a currency) belongs to the trip's deduplicated
+// list, not to any one city's segment.
+(function buildTimeline(){
+  const timelineEl = document.getElementById('timeline');
+  tripSummary.cityOrder.forEach(c => {
+    const info = cityInfo[c];
+    const seg = document.createElement('div');
+    seg.className = `seg ${c}`;
+    seg.innerHTML = `<a class="citylink" href="${info.wiki}" target="_blank" rel="noopener">${info.name.toUpperCase()}</a>`;
+    timelineEl.appendChild(seg);
+  });
+})();
+
+// ---- Currency pills: one per distinct currency actually in use on the trip (tripSummary.currencies
+// is already deduplicated — two cities sharing a currency produce one pill, not two). ----
+const fxPillEls = {};
+(function buildFxPills(){
+  const row = document.getElementById('fxCurrencyRow');
+  tripSummary.currencies.forEach(cur => {
+    const btn = document.createElement('button');
+    btn.className = 'fx-pill';
+    btn.type = 'button';
+    btn.textContent = cur;
+    btn.onclick = () => setFxCurrency(cur);
+    row.appendChild(btn);
+    fxPillEls[cur] = btn;
+  });
+})();
+
+// ---- Words/phrasebook panel: one pill per distinct language actually in use on the trip
+// (tripSummary.languages, deduplicated the same way as currencies) — mirrors the currency toggle's
+// shape rather than living inline in the city bar, since a language can span more than one city
+// (not on this trip, but e.g. a US/Ireland/London one) just as a currency can. ----
+const wordsPillEls = {};
+(function buildWordsPills(){
+  const row = document.getElementById('wordsLangRow');
+  tripSummary.languages.forEach(lang => {
+    const info = languageInfo[lang];
+    const btn = document.createElement('button');
+    btn.className = `word-pill ${info.wordsClass}`;
+    btn.type = 'button';
+    btn.textContent = info.name;
+    btn.onclick = () => selectWords(lang);
+    row.appendChild(btn);
+    wordsPillEls[lang] = btn;
+  });
+})();
+
 let selected = {type:'day', id:0};
 
 // ---- Activity status persistence (done / skipped / default) ----
@@ -2973,8 +3122,9 @@ function toggleStatus(pid){
 
 function updateSelection(){
   dayEls.forEach((el, i) => el.classList.toggle('selected', selected.type === 'day' && selected.id === i));
-  linkRomanian.classList.toggle('selected', selected.type === 'words' && selected.id === 'ro');
-  linkBulgarian.classList.toggle('selected', selected.type === 'words' && selected.id === 'bg');
+  Object.keys(wordsPillEls).forEach(lang => {
+    wordsPillEls[lang].classList.toggle('selected', selected.type === 'words' && selected.id === lang);
+  });
 }
 
 function selectDay(id){
@@ -2994,10 +3144,11 @@ function selectDay(id){
   fetchDayWeather(d);
 }
 
-function selectWords(lang){
-  selected = {type:'words', id:lang};
+function selectWords(langKey){
+  selected = {type:'words', id:langKey};
   updateSelection();
-  panel.innerHTML = lang === 'ro' ? renderRomanian() : renderBulgarian();
+  panel.innerHTML = renderWords(langKey);
+  wordsPanel.classList.remove('open');
 }
 
 selectDay(defaultId);
@@ -3059,7 +3210,7 @@ try {
   fxRates = { ...fxRates, ...saved };
 } catch(e){}
 
-let fxCurrency = 'RON';
+let fxCurrency = tripSummary.currencies[0]; // whichever currency the trip's first city uses
 let fxDirection = 'to'; // 'from' = £ -> local, 'to' = local -> £
 try {
   const savedDir = localStorage.getItem('tripFxDirection');
@@ -3067,8 +3218,6 @@ try {
 } catch(e){}
 
 const fxPanel = document.getElementById('fxPanel');
-const fxPillRON = document.getElementById('fxPillRON');
-const fxPillEUR = document.getElementById('fxPillEUR');
 const fxRateInput = document.getElementById('fxRateInput');
 const fxRateCur = document.getElementById('fxRateCur');
 const fxDirFrom = document.getElementById('fxDirFrom');
@@ -3081,8 +3230,7 @@ function saveFxRates(){
 }
 
 function fxRefreshUI(){
-  fxPillRON.classList.toggle('active', fxCurrency === 'RON');
-  fxPillEUR.classList.toggle('active', fxCurrency === 'EUR');
+  Object.keys(fxPillEls).forEach(cur => fxPillEls[cur].classList.toggle('active', fxCurrency === cur));
   fxRateInput.value = fxRates[fxCurrency];
   fxRateCur.textContent = fxCurrency;
   document.querySelectorAll('.fx-cur-short').forEach(el => el.textContent = fxCurrency);
@@ -3127,11 +3275,15 @@ const moneyToggle = document.getElementById('moneyToggle');
 moneyToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   const opening = !fxPanel.classList.contains('open');
+  wordsPanel.classList.remove('open');
   fxPanel.classList.toggle('open');
   if (opening){
-    // Currency matches whichever day is currently open, if any; direction keeps whatever was last used
+    // Currency matches whichever day is currently open, if any; direction keeps whatever was last
+    // used. A city with no `currency` (it trades in the traveller's own) leaves fxCurrency as
+    // whatever it already was, rather than switching to nothing.
     if (selected.type === 'day'){
-      fxCurrency = days[selected.id].city === 'sof' ? 'EUR' : 'RON';
+      const dayCurrency = cityInfo[days[selected.id].city].currency;
+      if (dayCurrency) fxCurrency = dayCurrency;
     }
     fxRefreshUI();
   }
@@ -3139,6 +3291,20 @@ moneyToggle.addEventListener('click', (e) => {
 document.addEventListener('click', (e) => {
   if (fxPanel.classList.contains('open') && !fxPanel.contains(e.target) && e.target !== moneyToggle){
     fxPanel.classList.remove('open');
+  }
+});
+
+// ---- Phrasebook toggle: same open/close/outside-click shape as the currency toggle above ----
+const wordsToggle = document.getElementById('wordsToggle');
+const wordsPanel = document.getElementById('wordsPanel');
+wordsToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  fxPanel.classList.remove('open');
+  wordsPanel.classList.toggle('open');
+});
+document.addEventListener('click', (e) => {
+  if (wordsPanel.classList.contains('open') && !wordsPanel.contains(e.target) && e.target !== wordsToggle){
+    wordsPanel.classList.remove('open');
   }
 });
 
@@ -3208,6 +3374,7 @@ function closeInstructions(){
 }
 settingsToggle.addEventListener('click', () => {
   fxPanel.classList.remove('open');
+  wordsPanel.classList.remove('open');
   openSettings();
 });
 </script>
