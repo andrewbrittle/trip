@@ -1420,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261004.002</div>
+  <div class="settings-version">v261004.004</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261004.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261004.004'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1552,47 +1552,47 @@ function transitBlock(label, legs, detailPid){
 const activityDetails = {
   d1a0: {
     title: "Palace of the Parliament",
-    body: `<p>Ordered by Ceaușescu in the early 1980s, not long after a visit to North Korea left him wanting something similarly monumental. Construction began in 1984 and swallowed roughly a fifth of old Bucharest to clear the site — thousands of homes, along with dozens of churches and synagogues.</p><p>More than 20,000 workers built it in round-the-clock shifts. Ceaușescu was executed in the 1989 revolution before it was ever finished or lived in — he never set foot inside as its owner. It's now the second-largest administrative building in the world, beaten only by the Pentagon.</p>`
+    body: `<p>Ceaușescu was impressed by North Korea's mass mobilisation on a visit in 1971, and his plans to remake Bucharest began demolitions in 1980; work on the Palace itself began in 1984. Clearing the site swallowed a large part of old Bucharest — over 10,000 homes, plus about two dozen churches, monasteries and synagogues.</p><p>More than 20,000 workers built it in round-the-clock shifts. Ceaușescu was executed in the 1989 revolution before it was finished — it wasn't completed until 1997, and he never lived in it. It is one of the largest administrative buildings in the world; the Pentagon is bigger.</p>`
   },
   d1a3: {
     title: "Triumphal Arch",
-    body: `<p>The first arch on this spot was thrown up out of wood in 1878, in a hurry, just so victorious troops had something to march under after Romania's war of independence. It didn't last long.</p><p>The version standing now dates to 1936 — built in stone, modelled closely on Paris's own Arc de Triomphe, and raised to mark both Romania's WWI victory and the coronation of King Ferdinand and Queen Marie. Military parades still pass beneath it every 1 December, Romania's national day.</p>`
+    body: `<p>The first arch on this spot was thrown up out of wood in 1878, in a hurry, just so victorious troops had something to march under after Romania's war of independence. It didn't last long.</p><p>A provisional arch of wood and concrete stood here from the early 1920s, and the stone arch you see now was inaugurated on 1 December 1936 — modelled closely on Paris's Arc de Triomphe and raised to commemorate Romania's WWI victory and the union of 1918. Military parades still pass beneath it every 1 December, Romania's national day.</p>`
   },
   d4a0: {
     title: "Alexander Nevsky Cathedral",
-    body: `<p>Built as a thank-you, not just a church — Bulgaria's population raised it to honour the Russian soldiers who died freeing the country from Ottoman rule in the war of 1877–78. Construction dragged on for 30 years, from 1882 to 1912.</p><p>It's named after a 13th-century Russian prince who had nothing to do with Bulgaria directly — he was simply the patron saint of Tsar Alexander II, the "Liberator" who led that war. The gold on the domes really is gold: roughly 8kg of it, spread across about 700 square metres.</p>`
+    body: `<p>Built as a thank-you, not just a church — paid for by public donations and state funds to honour the Russian soldiers who died freeing the country from Ottoman rule in the war of 1877–78. The foundation stone was laid in 1882, but the main building work ran from 1904 to 1912, and it was consecrated in 1924.</p><p>It's named after a 13th-century Russian prince, the patron saint of Tsar Alexander II — the "Liberator" who declared that war. The domes are gilded with real gold leaf, reportedly more than 8kg of it across about 700 square metres.</p>`
   },
   d4a1: {
     title: "National Archaeological Museum",
-    body: `<p>The building is older than the museum inside it by more than 400 years. It started life as Buyuk Mosque, begun in 1451 and finished in 1494 — once the largest mosque in the city.</p><p>After Ottoman rule ended it became a library, then in 1905 reopened as Sofia's archaeological museum, a job it's held ever since — including through a WWII bombing raid that badly damaged it. Today it holds some of Bulgaria's most striking Thracian gold, including the Valchitran treasure.</p>`
+    body: `<p>The building is older than the museum inside it by more than 400 years. It started life as Buyuk Mosque, begun in 1451 and finished in 1494 — once the largest mosque in the city.</p><p>After Ottoman rule ended the abandoned mosque served as a hospital and then a library, before becoming the home of the national museum, officially opened there in 1905 — a job it's held ever since, including through a 1944 bombing raid that destroyed one wing (repairs ran until 1948). Today it holds some of Bulgaria's most striking Thracian gold, including the Valchitran treasure.</p>`
   },
   d2a0: {
     title: "Romanian Athenaeum",
-    body: `<p>Funded almost entirely by public subscription in the 1880s under a simple slogan — "Give one leu for the Athenaeum!" — after the site, originally meant for a riding school, was repurposed as a home for the arts. French architect Albert Galleron designed it, reusing the round foundation already laid for the stables.</p><p>It opened in 1888. Inside, a 70-metre fresco wraps the main hall, tracing key moments of Romanian history. The concert organ came later still — George Enescu personally led the fundraising for it in the 1930s, decades after conducting his first concerts here as a young violinist.</p>`
+    body: `<p>Paid for in large part by public subscription under a simple slogan — "Give one leu for the Athenaeum!" — and built on the foundations of an earlier riding school begun by the Romanian Equestrian Society. French architect Albert Galleron designed it, and it opened in 1888.</p><p>Inside, a 75-metre fresco by Costin Petrescu, finished in the 1930s, wraps the main hall in 25 scenes from Romanian history. The concert organ came later still — George Enescu led the fundraising for it from 1935.</p>`
   },
   d2a3: {
     title: "Curtea Veche & Manuc's Inn",
-    body: `<p>The ruins you can see today were once Vlad III's own palace, built in 1459 — yes, that Vlad, the historical "Impaler," who kept a residence here to watch over the Ottoman border along the Danube. It stayed the seat of Wallachian rulers for the next three centuries before falling into decay.</p><p>Manuc's Inn next door has its own story: built in 1806–08 by Manuc Bei, an Armenian merchant and diplomat who went on to become a semi-governor of Moldova. It sits on part of the same old princely court's land, right in the middle of what was once Bucharest's merchant quarter.</p>`
+    body: `<p>In 1459 Vlad III — yes, that Vlad, the historical "Impaler" — fortified a princely court here, and his charter of that year is the first document to mention Bucharest by name. Rulers of Wallachia lived here (sharing the role with Târgoviște for much of the time) until the court moved to Dealul Spirii in 1775; the ruins you can see today were rebuilt by later princes.</p><p>Manuc's Inn next door has its own story: built in 1806–08 by Manuc Bei, an Armenian merchant and diplomat who was briefly named prince of Moldavia in 1808 but never took the throne. It sits on part of the same old princely court's land, right in the middle of what was once Bucharest's merchant quarter.</p>`
   },
   d5a0: {
     title: "Boyana Church",
-    body: `<p>Small on the outside, remarkable on the inside — the church was built in three separate stages spanning nearly a thousand years, starting in the 10th century. The oldest section is barely bigger than a chapel.</p><p>Its real claim to fame is the 1259 fresco layer, painted a full century before the Italian Renaissance but showing the same startling realism — 240 individually rendered figures across 89 scenes. UNESCO listed it in 1979, and access is still deliberately restricted to small guided groups to protect the paint.</p>`
+    body: `<p>Small on the outside, remarkable on the inside — the church was built in three separate stages spanning roughly 900 years, from the 10th century to the 19th. The oldest section is a small single-apse church.</p><p>Its real claim to fame is the 1259 fresco layer — remarkably lifelike for its time and often compared with early Italian painting — with 240 individually rendered figures across 89 scenes. UNESCO listed it in 1979, and access is still deliberately restricted to small groups, 10 minutes at a time, to protect the paint.</p>`
   },
   d4a2: {
     title: "Ancient Serdica",
-    body: `<p>Constantine the Great liked this place enough to seriously consider making it his capital instead of Constantinople — he's said to have called it "Serdica is my Rome." A church council held here in 343 AD was a significant early Christian gathering, trying (and failing) to settle a doctrinal split across the empire.</p><p>What you're walking over today is a fraction of the ancient city — a Roman street plan that modern Sofia's centre still roughly follows, properly unearthed only during the metro's expansion. The city was later destroyed by the Huns in 447 AD and rebuilt more than once before becoming medieval Sofia.</p>`
+    body: `<p>Constantine the Great is said to have favoured this place as a residence — "Serdica is my Rome," he's supposed to have said — though he ended up founding Constantinople instead. A church council held here around 343 AD tried and failed to settle the Arian dispute: the eastern and western bishops never met as one body, and it ended in mutual excommunications.</p><p>What you're walking over today is a fraction of the ancient city — a Roman street plan that modern Sofia's centre still roughly follows, excavated for over a century and with major finds during the metro's construction. The city was later destroyed by the Huns in 447 AD and rebuilt more than once before becoming medieval Sofia.</p>`
   },
   d1a5: {
     title: "Village Museum",
-    body: `<p>Built from a decade of fieldwork, not architects' drawings — sociologist Dimitrie Gusti sent teams into more than 600 Romanian villages through the 1920s and 30s to document a rural world he could see disappearing, then had entire houses physically dismantled and rebuilt here, exactly as found.</p><p>It opened in 1936, one of the first open-air museums anywhere in the world — King Carol II himself attended. It's survived two serious fires since (1997 and 2002), with the damaged buildings painstakingly restored rather than replaced.</p>`
+    body: `<p>Built from a decade of fieldwork, not architects' drawings — sociologist Dimitrie Gusti sent teams into more than 600 Romanian villages between the wars to document a rural world he could see disappearing, then had real houses and farmsteads moved here from across the country.</p><p>It opened on 10 May 1936, one of Europe's earliest open-air museums — King Carol II himself attended. It has survived two serious fires since, in 1997 and 2002.</p>`
   },
   d1a1: {
     title: "Calea Victoriei",
-    body: `<p>This grand boulevard started life in 1692 as a very literal bridge — Prince Constantin Brâncoveanu paved a muddy track with oak logs to connect his residence to his estate at Mogoșoaia, and the road took the name "Mogoșoaia Bridge" from the planking underfoot.</p><p>It only became Calea Victoriei — "Victory Avenue" — in 1878, renamed the day Romanian troops marched back into the city as heroes of the War of Independence. Four years later it became the first street in Bucharest to get electric lighting.</p>`
+    body: `<p>This grand boulevard started life in 1692 as a very literal bridge — Prince Constantin Brâncoveanu paved a muddy track with oak logs to connect his residence to his estate at Mogoșoaia, and the road took the name "Mogoșoaia Bridge" from the planking underfoot.</p><p>It only became Calea Victoriei — "Victory Avenue" — in 1878, renamed that October as Romanian troops marched back into the city as heroes of the War of Independence. Four years later it became the first street in Bucharest with electrical installations.</p>`
   },
   d2a1: {
     title: "Cișmigiu Garden",
-    body: `<p>The name comes from the Turkish word for a fountain-keeper — a "cișmigiu" — after ruler Alexandru Ipsilanti had public wells dug here in 1779 to supply the city with clean water. Before that it was just a marshy fishing pond on the edge of town.</p><p>The English-style garden you're walking through now was designed by Austrian landscape architect Carl Meyer starting in the 1840s. He died of typhoid in 1852, just after finishing most of the work — the layout has been tweaked since, but the oldest trees are still his.</p>`
+    body: `<p>The name comes from the Turkish word for a fountain-keeper — a "cișmigiu" — after ruler Alexandru Ipsilanti had public wells dug here in 1779 to supply the city with clean water. Before that it was just a marshy fishing pond.</p><p>The English-style garden you're walking through now was designed by German landscape gardener Carl Meyer starting in the 1840s. He died of typhoid in 1852, as the works were being finished — the layout has been tweaked since.</p>`
   },
   d0a1: {
     title: "Old Town (Lipscani)",
@@ -1600,15 +1600,15 @@ const activityDetails = {
   },
   d1a2: {
     title: "Revolution Square",
-    body: `<p>Known simply as Palace Square until December 1989 — the name changed the same month everything else did. Ceaușescu gave his final speech from the balcony of the building here on the 21st, expecting the usual staged applause. He didn't get it.</p><p>Within a day the crowd had turned, the shooting started, and Ceaușescu fled by helicopter from the roof the following morning. The tall monument in the square today — officially the Memorial of Rebirth, unofficially "The Potato" to locals — lists the names of the 1,104 people killed.</p>`
+    body: `<p>Known simply as Palace Square until December 1989 — the name changed the same month everything else did. Ceaușescu gave his final speech from the balcony of the building here on the 21st, expecting the usual staged applause. He didn't get it.</p><p>Within a day the crowd had turned, the shooting started, and Ceaușescu fled by helicopter from the roof the following morning. The tall monument in the square today — officially the Memorial of Rebirth, unofficially "The Potato" to locals — commemorates those killed in the uprising.</p>`
   },
   d2a4: {
     title: "Patriarchal Cathedral",
-    body: `<p>Built in the 1650s by Prince Constantin Șerban and his wife Lady Bălașa as a thank-you offering after a period of war and instability — it wasn't actually a "Patriarchal" cathedral for another 270 years, only gaining that rank in 1925 when the Romanian Orthodox Church itself became a Patriarchate.</p><p>The hill it sits on has hosted more than one turning point in Romanian history — the 1859 vote to unify the Romanian principalities happened right here, and the country's independence and kingdom were both proclaimed from this same plateau.</p>`
+    body: `<p>Built in the 1650s by Prince Constantin Șerban and his wife Lady Bălașa — it wasn't actually a "Patriarchal" cathedral for roughly another 270 years, only gaining that rank in 1925 when the Romanian Orthodox Church itself became a Patriarchate.</p><p>The hill it sits on has hosted a turning point in Romanian history — in January 1859, more than 30,000 people gathered on Dealul Mitropoliei as the vote that united the Romanian principalities was held.</p>`
   },
   d4a4: {
     title: "Ivan Vazov National Theatre",
-    body: `<p>Designed by the Viennese firm of Fellner & Helmer, who built roughly 48 theatres across Europe and rarely repeated themselves — this one opened in January 1907, only to catch fire during a performance just 16 years later and burn out almost entirely.</p><p>It's named after Ivan Vazov, Bulgaria's most celebrated writer, who was such a devoted regular that he kept a permanently reserved seat in the second row until he died in 1921 — he never saw the fire, or the rebuilding that followed it.</p>`
+    body: `<p>Designed by the Viennese firm of Fellner & Helmer, who built about 48 theatres across Europe, often adapting the same template — this one opened in January 1907, only to catch fire during a performance in early 1923 and be devastated. It was rebuilt, finishing in 1929.</p><p>It carries the name of Ivan Vazov, the "Patriarch of Bulgarian literature" (the theatre only took his name in 1962), who was such a devoted regular that he kept a permanently reserved seat in the second row until he died in 1921 — he never saw the fire, or the rebuilding that followed it.</p>`
   }
 };
 
@@ -1669,7 +1669,7 @@ const days = [
       `<div class="block block--hotel">
         <div class="block-label">Stay</div>
         <div class="hotel-name">Hotel Berthelot${pin("Hotel Berthelot Bucharest")}</div>
-        <div class="addr">Bulevardul Berthelot 9, Sector 1, Bucharest</div>
+        <div class="addr">Strada General H. M. Berthelot 9, Sector 1, Bucharest</div>
         <div class="hoursrow">
           <div><span>Check-in</span>from 14:00</div>
           <div><span>Check-out</span>until 12:00</div>
@@ -1677,15 +1677,15 @@ const days = [
       </div>`,
       `<div class="block">
         <div class="block-label">Airport → hotel</div>
-        <div class="tip"><strong>Taxi/Bolt</strong> is simplest after landing — order via the kiosks in Arrivals or the app. ~80–100 RON, 30–40 min.</div>
-        <div class="tip"><strong>Bus 783</strong> runs from right outside Arrivals to the centre (Piața Unirii), ~4.5 RON.</div>
+        <div class="tip"><strong>Taxi</strong> is simplest after landing — the airport says its authorised taxis wait in front of the terminal and charge a metered ~1.4 RON/km, no pre-booking needed (check the tariff sticker on the door before you get in). <strong>Bolt/Uber</strong> no longer pick up at Arrivals — since April 2026 the pickup point is the Departures car park, about a 5–6 minute walk — and recent reports put their fares well above the old 80–100 RON, so compare before ordering. Allow roughly 30–45 min.</div>
+        <div class="tip"><strong>Line 100 Express</strong> (the old 783, renamed in Dec 2023) runs 24 hours from both airport terminals to the centre, with stops including Piața Victoriei, Piața Romană, Universitate and Piața Unirii — 3 RON for 90 minutes. I couldn't confirm whether its validators take bank cards, so check at the stop.</div>
       </div>`,
       `<div class="block">
         <div class="block-label">Paying for public transport in Bucharest</div>
-        <div class="tip"><strong>Buses &amp; trams</strong> — tap a contactless debit/credit card straight on the validator as you board (Mastercard/Maestro/Visa all work); one tap covers 90 minutes across the whole surface network, no separate ticket needed.</div>
-        <div class="tip"><strong>Metro</strong> — tap the same contactless card at the gate, same as buses/trams; it's been live system-wide (all stations) since 2020. The card readers do occasionally go down for everyone at once (happened as recently as 2023, Metrorex told riders to use cash until it was fixed) — worth having a few RON or an Activ card as backup, not because contactless itself is unreliable day-to-day.</div>
+        <div class="tip"><strong>Buses &amp; trams</strong> — STB accepts Visa, Mastercard and Maestro taps (3 RON, valid for 90 minutes on surface transport, not the metro), but its own page limits card taps to certain vehicles (some newer buses, night trams 1 and 10, and tram 41). Look for the card symbol on the validator; if you're travelling together each person taps separately (press "+" on buses, "Start" on trams). Keep a paper ticket or Activ card as a fallback.</div>
+        <div class="tip"><strong>Metro</strong> — don't count on tapping a bank card at the gate. Contactless entry has existed since 2019–20, but in October 2024 Metrorex said about 10 stations still needed upgrading for card access, the card provider changed in March 2025, and in October 2025 there were reports of validators failing. I couldn't find a 2026 status, so buy a ticket from a station machine or booth: since 1 May 2026 a single journey is 7 RON and a 10-journey ticket 55 RON (from news reports of the new tariffs).</div>
       </div>`,
-      activityCard("d0a0", "Settle in", "Check in, freshen up", "<p>You'll land mid-afternoon and be at the hotel by ~16:30 — no need to rush straight out.</p>"),
+      activityCard("d0a0", "Settle in", "Check in, freshen up", "<p>You'll land mid-afternoon and, after passport control and baggage, be at the hotel by ~16:30–17:00 — no need to rush straight out.</p>"),
       activityCard("d0a1", "Evening", `Old Town (Lipscani)${pin("Lipscani Old Town Bucharest")}`, "<p>Ten minutes' walk from the hotel. Wander the cobbled streets, pop into Stavropoleos Monastery if it's still open, and pick a restaurant for dinner — easy first night, nothing to plan ahead.</p>")
     ]
   },
@@ -1698,13 +1698,13 @@ const days = [
       <span class="badge buc">BUCHAREST</span>
     `,
     cards: () => [
-      activityCard("d1a0", "Morning", `Palace of the Parliament${pin("Palace of the Parliament Bucharest")}`, "<p>The must-see — second-largest administrative building in the world. Guided tours only. <strong>Book by phone</strong> — +40 733 558 102 or 103, for groups of 1–9 — up to 24 hours ahead (earlier is safer in case lines are busy). Bring your <strong>passport</strong> (original, physical — a photo or driving licence won't do) and arrive 15 minutes before the tour starts.</p>", "Open 9am–5pm daily · Adult ticket 85 RON (standard tour)"),
+      activityCard("d1a0", "Morning", `Palace of the Parliament${pin("Palace of the Parliament Bucharest")}`, "<p>The must-see — second-largest administrative building in the world. Guided tours only. <strong>Book by phone</strong> — +40 733 558 102 or 103, for groups of 1–9 — up to 24 hours ahead (earlier is safer in case lines are busy). Bring your <strong>passport</strong> (original, physical — a photo or driving licence won't do) and arrive 15 minutes before the tour starts. The booking line only takes calls <strong>Mon–Fri, 9am–4pm</strong> and there's no online booking — tickets are bought at the information desk on the day. You land on Monday afternoon, so call by Friday 23 Oct rather than leaving it until you arrive. Which halls are open can vary with events.</p>", "Open 9am–5pm daily · Adult ticket 85 RON (standard tour)"),
       activityCard("d1a1", "Midday", `Calea Victoriei${pin("Calea Victoriei Bucharest")}`, "<p>Walk the grand boulevard from the Palace area up past the Romanian Athenaeum — good for lunch somewhere along the route too.</p>"),
       activityCard("d1a2", "Midday", `Revolution Square${pin("Revolution Square Bucharest")}`, "<p>Right on the Calea Victoriei route — the site of the 1989 uprising against Ceaușescu, with the Memorial of Rebirth marking it. Easy to fold into the same walk without a detour.</p>"),
       activityCard("d1a3", "Early afternoon", `Triumphal Arch${pin("Triumphal Arch Bucharest")}`, "<p>Bucharest's own (smaller) Arc de Triomphe, on the way up towards Herăstrău — a quick, easy stop rather than a destination in itself, five minutes to look at and photograph before carrying on.</p>"),
       activityCard("d1a4", "Afternoon", `Herăstrău Park${pin("Herastrau Park Bucharest")}`, "<p>A short taxi or metro ride north — a pleasant, easy stroll by the lake before the Village Museum next door.</p>"),
-      activityCard("d1a5", "Afternoon", `Village Museum${pin("Muzeul Satului Bucharest")}`, "<p>The open-air museum of traditional Romanian houses, right next to Herăstrău Park — a nice change of pace from the day's walking.</p>", "Open 9am–5pm daily (winter hours by late Oct) · Adult ticket ~40 RON"),
-      activityCard("d1a6", "Evening", `Option: concert at the Athenaeum${pin("Romanian Athenaeum Bucharest")}`, "<p>There's a concert at the Romanian Athenaeum on this evening at 7pm that could be worth it — since it lines up with the day you're already in the centre for the Palace of the Parliament and Calea Victoriei. Dinner could shift earlier or later around it. If you do want to go, worth checking the Athenaeum's own box office/site closer to the date — concert programmes aren't confirmed this far out, and a popular evening can sell out.</p>"),
+      activityCard("d1a5", "Afternoon", `Village Museum${pin("Muzeul Satului Bucharest")}`, "<p>The open-air museum of traditional Romanian houses, right next to Herăstrău Park — a nice change of pace from the day's walking.</p>", "Winter hours last year were 9am–5pm daily from mid-October (2026 hours not yet announced — check the museum's site) · Adult ticket ~40 RON"),
+      activityCard("d1a6", "Evening", `Option: concert at the Athenaeum${pin("Romanian Athenaeum Bucharest")}`, "<p>A 7pm concert at the Romanian Athenaeum this evening could be worth it — it lines up with the day you're already in the centre for the Palace of the Parliament and Calea Victoriei. I couldn't confirm it: the Athenaeum's events page wouldn't load for me and the sources I could read listed no concert for 27 Oct, so check filarmonicaenescu.ro (events page) or the box office before planning dinner around it.</p>"),
       activityCard("d1a7", "Evening", "Dinner back in the centre", "<p>Head back towards Old Town or Calea Victoriei for dinner. Worth keeping an ear out too — Bucharest's smaller churches occasionally host organ or chamber recitals of an evening, a nice low-key alternative to a big concert hall if you spot a poster on the way past.</p>")
     ]
   },
@@ -1717,12 +1717,12 @@ const days = [
       <span class="badge buc">BUCHAREST</span>
     `,
     cards: () => [
-      activityCard("d2a0", "Morning", `Romanian Athenaeum — visit the building${pin("Romanian Athenaeum Bucharest")}`, "<p>Best in the morning, when there's no rehearsal or concert restricting access. Self-guided entry to the foyer and the main hall, with its huge fresco of Romanian history circling the walls — worth it for the interior alone, no concert required.</p>", "Open ~9:30am–5:30pm, small entry fee (~10 RON); access may be limited if a rehearsal is on"),
-      activityCard("d2a1", "Midday", `Cișmigiu Garden${pin("Cismigiu Garden Bucharest")}`, "<p>The oldest park in the city, right next to Old Town — flowerbeds, a big pond with pedal boats, and a genuinely calm break between the Athenaeum and the afternoon's walking.</p>"),
-      activityCard("d2a2", "Afternoon", "Coffee in Old Town", `<p>Maybe a browse through Cărturești Carusel${pin("Carturesti Carusel Bucharest")}, the six-storey bookshop housed in a restored 19th-century building nearby.</p>`, "Cărturești Carusel open 10am–10pm Mon–Wed"),
-      activityCard("d2a3", "Late afternoon", `Curtea Veche${pin("Curtea Veche Bucharest")} &amp; Manuc's Inn${pin("Hanul lui Manuc Bucharest")}`, "<p>Worth knowing before you go: the Old Princely Court ruins themselves have been closed to the public for restoration for some years, so it's an exterior stop — the courtyard and Vlad the Impaler bust are visible from the street. Manuc's Inn right next door is open as normal, with a lovely covered courtyard for coffee or a late lunch.</p>", "Manuc's Inn open 8am–midnight (till 2am Fri/Sat)"),
-      activityCard("d2a4", "Late afternoon", `Patriarchal Cathedral${pin("Patriarchal Cathedral of Bucharest")}`, "<p>A short walk south of Curtea Veche, on its own hill overlooking the area — the seat of the Romanian Orthodox Church, if you've got time and legs left.</p>", "Open daily 7am–8pm, free entry"),
-      activityCard("d2a5", "Evening", "Look for a concert in a smaller venue", `<p>Rather than a big philharmonic night, Bucharest's churches often host organ or chamber recitals that are easy to stumble into — St. Joseph's Catholic Cathedral${pin("St Joseph Catholic Cathedral Bucharest")} is literally on the same street as Hotel Berthelot, and the Anglican Church of the Resurrection${pin("Anglican Church of the Resurrection Bucharest")} runs an occasional recital series too. These aren't usually on the big ticketing sites — check posters at the door or local listings once you're there.</p>`)
+      activityCard("d2a0", "Morning", `Romanian Athenaeum — visit the building${pin("Romanian Athenaeum Bucharest")}`, "<p>The main hall, with its huge fresco of Romanian history circling the walls, is worth seeing even without a concert — but I couldn't confirm that walk-in visits are possible. The sources I found point to occasional guided tours (often booked ahead) rather than regular self-guided opening, and rehearsals can restrict access. Phone the Athenaeum on +40 21 315 2567 (the number on its site) to ask about a Wednesday-morning visit.</p>", "Visiting hours and fee unconfirmed — ask when you phone"),
+      activityCard("d2a1", "Midday", `Cișmigiu Garden${pin("Cismigiu Garden Bucharest")}`, "<p>The oldest park in the city, right next to Old Town — flowerbeds, a big lake (boat hire is seasonal, so probably closed by late October), and a genuinely calm break between the Athenaeum and the afternoon's walking.</p>"),
+      activityCard("d2a2", "Afternoon", "Coffee in Old Town", `<p>Maybe a browse through Cărturești Carusel${pin("Carturesti Carusel Bucharest")}, the six-storey bookshop housed in a restored 19th-century building nearby.</p>`, "Cărturești Carusel opens at 10am; listings agree it's open until at least 10pm"),
+      activityCard("d2a3", "Late afternoon", `Curtea Veche${pin("Curtea Veche Bucharest")} &amp; Manuc's Inn${pin("Hanul lui Manuc Bucharest")}`, "<p>Worth knowing before you go: the Old Princely Court ruins have been closed to the public since 2015, with emergency stabilisation works announced in July 2026, so it's an exterior stop at best — what you can see from the street depends on any fencing or scaffolding. Manuc's Inn right next door is a working inn and restaurant with a covered courtyard for coffee or a late lunch.</p>", "Manuc's Inn hours unconfirmed — check before you go"),
+      activityCard("d2a4", "Late afternoon", `Patriarchal Cathedral${pin("Patriarchal Cathedral of Bucharest")}`, "<p>A short walk south of Curtea Veche, on its own hill overlooking the area — the seat of the Romanian Orthodox Church, if you've got time and legs left. Expect crowds: Bucharest's patron saint, St Dimitrie the New, is celebrated on 27 October and his relics here draw a pilgrimage that ran from 19 to 29 October last year (this year's programme isn't published yet).</p>", "Opening hours unconfirmed — expect queues around the relics"),
+      activityCard("d2a5", "Evening", "Look for a concert in a smaller venue", `<p>Rather than a big philharmonic night, Bucharest's churches often host organ or chamber recitals that are easy to stumble into — St. Joseph's Catholic Cathedral${pin("St Joseph Catholic Cathedral Bucharest")} is on the same street as Hotel Berthelot (no. 19, versus the hotel's no. 9), and the Anglican Church of the Resurrection${pin("Anglican Church of the Resurrection Bucharest")} runs a monthly "Arts at the Anglican" concert series, usually at 7pm with a reservation form (a past ticket was 90 RON) — though nothing was listed for 26–29 October when I checked. These aren't usually on the big ticketing sites — check posters at the door or local listings once you're there.</p>`)
     ]
   },
   {
@@ -1736,7 +1736,7 @@ const days = [
     cards: () => [
       activityCard("d3a0", "Morning", "Check out by 12:00", "<p>Leave bags with the hotel if they'll hold them — no need to lug them round.</p>"),
       activityCard("d3a1", "Late morning", "Anything you missed", "<p>A few hours free before heading to the airport — good for anything left on the list from Tue/Wed, or just a last coffee in Old Town.</p>"),
-      activityCard("d3a2", "~15:30", "Head to the airport", "<p>Allow time for the 20km transfer plus check-in for an 18:15 departure.</p>"),
+      activityCard("d3a2", "~15:30", "Head to the airport", "<p>Tarom says check-in closes 45 minutes before departure and recommends arriving at least 2 hours ahead, so leave the hotel with time for the transfer (30–45 minutes) on top of that.</p>"),
       transitBlock("Flight", [
         { from:{code:"OTP", time:"18:15", tz:"EET · UTC+2"}, to:{code:"SOF", time:"19:30", tz:"EET · UTC+2"}, dur:"1h 15m · direct", mode:"flight", service:"Tarom · RO297", refId:"otp-sof" }
       ]),
@@ -1751,13 +1751,13 @@ const days = [
       </div>`,
       `<div class="block">
         <div class="block-label">Airport → hotel</div>
-        <div class="tip">Landing at 19:30, after a full day of travel — <strong>taxi or Bolt</strong> straight to the door is the easy call. Bulgaria's on the euro now (since Jan 2026), so it's official taxi (OK Supertrans) or Bolt, ~€5–8, 20–25 min.</div>
-        <div class="tip">Metro Line 1/2 also runs to Serdika until midnight (€0.80) if you'd rather save the walk from there is short.</div>
+        <div class="tip">Landing at 19:30, after a full day of travel — a <strong>taxi</strong> straight to the door is the easy call. Reports say OK Supertrans has desks at the terminals (I couldn't confirm that with the airport). Cars are metered: budget about €10–15 to the centre and 15–30 min depending on traffic. Bulgaria has been on the euro since 1 Jan 2026. <strong>Don't count on Bolt</strong> — two 2026 sources say it offers only scooters and food delivery in Sofia, not car rides. Local taxi apps (TaxiMe, Yellow, OK Taxi) exist, but I couldn't confirm their airport pickup rules.</div>
+        <div class="tip"><strong>Metro</strong> is the cheap option: Line 4 runs direct from Terminal 2 to Serdika (€0.80, ~20–30 min, last trains around 23:30–midnight) — so a ~20:30 arrival is fine. It only serves Terminal 2; Terminal 1 has a free shuttle. Check on the map how far the hotel is from Serdika before deciding.</div>
       </div>`,
       `<div class="block">
         <div class="block-label">Paying for public transport in Sofia</div>
-        <div class="tip"><strong>Buses, trams &amp; trolleybuses</strong> — tap a contactless debit/credit card on the reader as you board, no separate ticket needed.</div>
-        <div class="tip"><strong>Metro</strong> — same contactless tap at the gate as buses/trams; it's been live since 2021, with fare capping too (tap 3+ times in a day and you're automatically only charged for a day ticket).</div>
+        <div class="tip"><strong>Buses, trams &amp; trolleybuses</strong> — 2025–26 guides say you can tap a contactless bank card, Apple Pay or Google Pay on the validator as you board, no separate ticket needed. Each person needs their own card or phone — one card can't pay for two people.</div>
+        <div class="tip"><strong>Metro</strong> — the same tap works at the gates (single journey €0.80), and there's a daily cap of about €2 once you've taken several rides (sources disagree on whether it kicks in after 2 or 3). I couldn't reach any official Sofia transport page, so keep a few euro coins as a fallback.</div>
       </div>`
     ]
   },
@@ -1770,12 +1770,12 @@ const days = [
       <span class="badge sof">SOFIA</span>
     `,
     cards: () => [
-      activityCard("d4a0", "Morning", `Alexander Nevsky Cathedral${pin("Alexander Nevsky Cathedral Sofia")}`, "<p>Sofia's centrepiece — the gold-domed cathedral. Go early before the tour groups; the antique market along the square outside is worth a browse too.</p>", "Cathedral open 7am–7pm daily, free entry"),
-      activityCard("d4a1", "Midday", `National Archaeological Museum${pin("National Archaeological Museum Sofia")}`, "<p>Housed in a former Ottoman mosque, just off the same square as Nevsky — Thracian gold, the Valchitran treasure, and a genuinely striking building to see it in. Easy to combine with the cathedral since it's a two-minute walk.</p>"),
-      activityCard("d4a2", "Early afternoon", `Ancient Serdica ruins${pin("Ancient Serdica Sofia")}`, "<p>Roman remains sitting right in the modern city centre, near Serdika metro station — an easy, short stop on the way to lunch.</p>", "Open access during metro hours (~6am–11pm), free"),
+      activityCard("d4a0", "Morning", `Alexander Nevsky Cathedral${pin("Alexander Nevsky Cathedral Sofia")}`, "<p>Sofia's centrepiece — the gold-domed cathedral. Go early before the tour groups. The antique market on the square outside is usually worth a browse (its hours vary with the weather). The nave is free; the crypt below holds the National Gallery's Museum of Christian Art, which is separately ticketed.</p>", "Nave hours unconfirmed (a 2021 listing said 7am–7pm) · Crypt museum: Tue–Sun 10am–6pm, closed Mondays, adult €10"),
+      activityCard("d4a1", "Midday", `National Archaeological Museum${pin("National Archaeological Museum Sofia")}`, "<p>Housed in a former Ottoman mosque on Saborna Street — Thracian gold, the Valchitran treasure, and a genuinely striking building to see it in. It isn't on Nevsky's square, so check the walk on the map rather than assuming it's next door. A temporary \"Forgotten Deities\" exhibition of ancient religious artefacts runs there until January 2027.</p>", "Hours and ticket price unconfirmed — unofficial listings suggest about 10am–6pm until the end of October"),
+      activityCard("d4a2", "Early afternoon", `Ancient Serdica ruins${pin("Ancient Serdica Sofia")}`, "<p>Roman remains sitting right in the modern city centre, around Serdika metro station — an easy, short stop on the way to lunch.</p>", "Largo area: free, 7am–10pm daily per the Sofia History Museum (undated page) · Exhibition hall listed 10am–6pm, last entry 5:30pm"),
       activityCard("d4a3", "Afternoon", `Vitosha Boulevard${pin("Vitosha Boulevard Sofia")}`, "<p>The main pedestrian street for shops, cafés, and people-watching — a relaxed way to fill the afternoon.</p>"),
-      activityCard("d4a4", "Late afternoon", `Ivan Vazov National Theatre${pin("Ivan Vazov National Theatre Sofia")}`, "<p>Sits right at the northern end of Vitosha Boulevard, next to the City Garden — worth a look at the building even without a ticket for that evening.</p>"),
-      activityCard("d4a5", "Evening", "Dinner near Vitosha Boulevard", `<p>Plenty of options right along the street or just off it. Sofia's churches — Sveta Nedelya Cathedral${pin("Sveta Nedelya Cathedral Sofia")} or the small St. George Rotunda${pin("St George Rotunda Sofia")} among them — sometimes host organ or chamber recitals in the evening too; these tend to be advertised locally (posters at the door, programata.bg) rather than on the big ticketing sites, so worth a look once you're there.</p>`)
+      activityCard("d4a4", "Late afternoon", `Ivan Vazov National Theatre${pin("Ivan Vazov National Theatre Sofia")}`, "<p>Faces the City Garden, a short walk from the northern end of Vitosha Boulevard — worth a look at the building even without a ticket for that evening.</p>"),
+      activityCard("d4a5", "Evening", "Dinner near Vitosha Boulevard", `<p>Plenty of options right along the street or just off it. Sveta Nedelya Cathedral${pin("Sveta Nedelya Cathedral Sofia")} and the small St. George Rotunda${pin("St George Rotunda Sofia")} are both worth a look from outside; I couldn't confirm that either hosts regular evening recitals (the Rotunda is an active church, so visiting hours vary). If you want live music, check local listings (programata.bg is the usual Sofia events guide, though I couldn't load it) and posters at the door.</p>`)
     ]
   },
   {
@@ -1788,8 +1788,8 @@ const days = [
     `,
     cards: () => [
       activityCard("d5a0", "Morning", `Boyana Church${pin("Boyana Church Sofia")}`, "<p>A UNESCO World Heritage site on the way to Vitosha — small, 13th-century frescoes, genuinely remarkable given the size of the place. Only 9 visitors allowed in at a time (10 minutes per group), so it can mean a short wait. Individual visitors and small groups (up to 5) can turn up without booking, but it's <strong>worth reserving ahead</strong> given how busy it gets — email <strong>reservation@boyanachurch.info</strong>, pay by bank transfer, and the transfer receipt is your ticket.</p>", "Open 9:30am–6pm (summer hours run through 31 Oct, your visit date) · Adult €10"),
-      activityCard("d5a1", "Day trip", `Vitosha Mountain${pin("Vitosha Mountain Sofia")}`, "<p>Right on Sofia's doorstep — worth the whole day if the weather's clear. Bus/gondola up for hiking trails and views back over the city; a good change of pace from museums and streets. Lucky timing: outside ski season the Simeonovo–Aleko cable car and chairlifts only run on Saturdays and Sundays, and this trip lands on a Saturday.</p>", "Cable car/chairlifts run ~9am–4:30pm, weekends only outside ski season · Return ticket roughly €10–13 (worth confirming closer to the date)"),
-      activityCard("d5a2", "Evening", `Spa at Hotel Anel${pin("Hotel Anel Sofia")}`, "<p>Good timing after a day on the mountain — build in proper time to actually use it rather than rushing straight to dinner.</p>")
+      activityCard("d5a1", "Day trip", `Vitosha Mountain${pin("Vitosha Mountain Sofia")}`, "<p>Right on Sofia's doorstep — worth the day if the weather's clear, with hiking trails and views back over the city; a good change of pace from museums and streets. Outside ski season the Aleko chairlifts (Vitoshko Lale 1 and 2) run on Saturdays, Sundays and public holidays — that's from a June 2026 report on the summer season, but I couldn't find the season's end date, so confirm they're still running on Saturday 31 Oct. Don't plan around the Simeonovo gondola: it's described as a winter, skiers-only service and has had reliability problems. One 2026 guide says bus 66 runs from Vitosha metro station to Aleko about every 30 minutes at weekends. Late October can mean cold, wet or icy conditions up top.</p>", "Chairlifts: weekends only, about 9am–4:30/5pm, weather permitting — confirm closer to the date · One guide says ~€2.50 per lift each way (unconfirmed)"),
+      activityCard("d5a2", "Evening", `Spa at Hotel Anel${pin("Hotel Anel Sofia")}`, "<p>Good timing after a day on the mountain — build in proper time to actually use it rather than rushing straight to dinner. The hotel's own site calls it \"Anel Sport\": a heated indoor pool, gym, sauna, steam bath and treatments. I couldn't confirm its opening hours or whether use is included in your stay, so ring the hotel on +359 2 911 9900 before you count on it (one listing says pool caps and slippers are mandatory).</p>")
     ]
   },
   {
@@ -1803,7 +1803,7 @@ const days = [
     cards: () => [
       activityCard("d6a0", "Morning", "Check out by 12:00", "<p>Ask the hotel to hold bags for the day — the airport transfer is quick, so no rush to keep them with you.</p>"),
       activityCard("d6a1", "Afternoon", "Anything you missed", `<p>A full afternoon free — good for whatever didn't fit earlier in the week, or just a last wander down Vitosha Boulevard${pin("Vitosha Boulevard Sofia")}.</p>`),
-      activityCard("d6a2", "~17:00", "Head to the airport", "<p>Plenty of margin for a 19:45 departure — metro from Serdika takes ~20 min.</p>"),
+      activityCard("d6a2", "~17:00", "Head to the airport", "<p>Comfortable margin for a 19:45 departure — BA's short-haul bag drop typically closes about 45 minutes before departure, and the metro from Serdika (Line 4, direct) takes ~20–30 min. Check your terminal on the booking: the metro only serves Terminal 2.</p>"),
       `<div class="block block--flight">
         <div class="block-label">Flight</div>
         <div class="route">
@@ -1815,7 +1815,7 @@ const days = [
       </div>`,
       `<div class="block">
         <div class="block-label">Hotel → airport</div>
-        <div class="tip">Metro Line 1/2 from Serdika to the airport takes ~20 min, €0.80 — easy with the whole afternoon free. Taxi/Bolt is ~€5–8 if you'd rather not carry bags on the metro.</div>
+        <div class="tip">Metro Line 4 runs direct from Serdika to Terminal 2 in ~20–30 min for €0.80 (Terminal 1 has a free shuttle from T2) — easy with the whole afternoon free. A metered taxi is roughly €10–15 if you'd rather not carry bags on the metro; don't rely on Bolt for car rides in Sofia.</div>
       </div>`
     ]
   }
