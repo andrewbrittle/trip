@@ -1420,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261003.001</div>
+  <div class="settings-version">v261004.001</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261003.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261004.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1680,6 +1680,11 @@ const days = [
         <div class="tip"><strong>Taxi/Bolt</strong> is simplest after landing — order via the kiosks in Arrivals or the app. ~80–100 RON, 30–40 min.</div>
         <div class="tip"><strong>Bus 783</strong> runs from right outside Arrivals to the centre (Piața Unirii), ~4.5 RON.</div>
       </div>`,
+      `<div class="block">
+        <div class="block-label">Paying for public transport in Bucharest</div>
+        <div class="tip"><strong>Buses &amp; trams</strong> — tap a contactless debit/credit card straight on the validator as you board (Mastercard/Maestro/Visa all work); one tap covers 90 minutes across the whole surface network, no separate ticket needed.</div>
+        <div class="tip"><strong>Metro</strong> — contactless card payment is only live at some stations and has had reliability issues reported, so buy an Activ card or single-journey ticket from a station machine instead, to be safe.</div>
+      </div>`,
       activityCard("d0a0", "Settle in", "Check in, freshen up", "<p>You'll land mid-afternoon and be at the hotel by ~16:30 — no need to rush straight out.</p>"),
       activityCard("d0a1", "Evening", `Old Town (Lipscani)${pin("Lipscani Old Town Bucharest")}`, "<p>Ten minutes' walk from the hotel. Wander the cobbled streets, pop into Stavropoleos Monastery if it's still open, and pick a restaurant for dinner — easy first night, nothing to plan ahead.</p>")
     ]
@@ -1693,13 +1698,13 @@ const days = [
       <span class="badge buc">BUCHAREST</span>
     `,
     cards: () => [
-      activityCard("d1a0", "Morning", `Palace of the Parliament${pin("Palace of the Parliament Bucharest")}`, "<p>The must-see — second-largest administrative building in the world. Guided tours only; worth booking a slot in advance rather than turning up.</p>", "Open 9am–5pm daily · Adult ticket 85 RON (standard tour)"),
+      activityCard("d1a0", "Morning", `Palace of the Parliament${pin("Palace of the Parliament Bucharest")}`, "<p>The must-see — second-largest administrative building in the world. Guided tours only. <strong>Book by phone</strong> — +40 733 558 102 or 103, for groups of 1–9 — up to 24 hours ahead (earlier is safer in case lines are busy). Bring your <strong>passport</strong> (original, physical — a photo or driving licence won't do) and arrive 15 minutes before the tour starts.</p>", "Open 9am–5pm daily · Adult ticket 85 RON (standard tour)"),
       activityCard("d1a1", "Midday", `Calea Victoriei${pin("Calea Victoriei Bucharest")}`, "<p>Walk the grand boulevard from the Palace area up past the Romanian Athenaeum — good for lunch somewhere along the route too.</p>"),
       activityCard("d1a2", "Midday", `Revolution Square${pin("Revolution Square Bucharest")}`, "<p>Right on the Calea Victoriei route — the site of the 1989 uprising against Ceaușescu, with the Memorial of Rebirth marking it. Easy to fold into the same walk without a detour.</p>"),
       activityCard("d1a3", "Early afternoon", `Triumphal Arch${pin("Triumphal Arch Bucharest")}`, "<p>Bucharest's own (smaller) Arc de Triomphe, on the way up towards Herăstrău — a quick, easy stop rather than a destination in itself, five minutes to look at and photograph before carrying on.</p>"),
       activityCard("d1a4", "Afternoon", `Herăstrău Park${pin("Herastrau Park Bucharest")}`, "<p>A short taxi or metro ride north — a pleasant, easy stroll by the lake before the Village Museum next door.</p>"),
       activityCard("d1a5", "Afternoon", `Village Museum${pin("Muzeul Satului Bucharest")}`, "<p>The open-air museum of traditional Romanian houses, right next to Herăstrău Park — a nice change of pace from the day's walking.</p>", "Open 9am–5pm daily (winter hours by late Oct) · Adult ticket ~40 RON"),
-      activityCard("d1a6", "Evening", `Option: concert at the Athenaeum${pin("Romanian Athenaeum Bucharest")}`, "<p>There's a concert at the Romanian Athenaeum on this evening at 7pm that could be worth it — since it lines up with the day you're already in the centre for the Palace of the Parliament and Calea Victoriei. Dinner could shift earlier or later around it.</p>"),
+      activityCard("d1a6", "Evening", `Option: concert at the Athenaeum${pin("Romanian Athenaeum Bucharest")}`, "<p>There's a concert at the Romanian Athenaeum on this evening at 7pm that could be worth it — since it lines up with the day you're already in the centre for the Palace of the Parliament and Calea Victoriei. Dinner could shift earlier or later around it. If you do want to go, worth checking the Athenaeum's own box office/site closer to the date — concert programmes aren't confirmed this far out, and a popular evening can sell out.</p>"),
       activityCard("d1a7", "Evening", "Dinner back in the centre", "<p>Head back towards Old Town or Calea Victoriei for dinner. Worth keeping an ear out too — Bucharest's smaller churches occasionally host organ or chamber recitals of an evening, a nice low-key alternative to a big concert hall if you spot a poster on the way past.</p>")
     ]
   },
@@ -1748,6 +1753,11 @@ const days = [
         <div class="block-label">Airport → hotel</div>
         <div class="tip">Landing at 19:30, after a full day of travel — <strong>taxi or Bolt</strong> straight to the door is the easy call. Bulgaria's on the euro now (since Jan 2026), so it's official taxi (OK Supertrans) or Bolt, ~€5–8, 20–25 min.</div>
         <div class="tip">Metro Line 1/2 also runs to Serdika until midnight (€0.80) if you'd rather save the walk from there is short.</div>
+      </div>`,
+      `<div class="block">
+        <div class="block-label">Paying for public transport in Sofia</div>
+        <div class="tip"><strong>Buses, trams &amp; trolleybuses</strong> — tap a contactless debit/credit card on the reader as you board, no separate ticket needed.</div>
+        <div class="tip"><strong>Metro</strong> — contactless card payment isn't live on the metro yet, so buy a paper ticket or top up a Sofia transport card at the station instead.</div>
       </div>`
     ]
   },
@@ -1777,7 +1787,7 @@ const days = [
       <span class="badge sof">SOFIA</span>
     `,
     cards: () => [
-      activityCard("d5a0", "Morning", `Boyana Church${pin("Boyana Church Sofia")}`, "<p>A UNESCO World Heritage site on the way to Vitosha — small, 13th-century frescoes, genuinely remarkable given the size of the place. Only a handful of visitors allowed in at a time, so it can mean a short wait.</p>", "Usually open ~9am–5pm; check ahead, entry is timed"),
+      activityCard("d5a0", "Morning", `Boyana Church${pin("Boyana Church Sofia")}`, "<p>A UNESCO World Heritage site on the way to Vitosha — small, 13th-century frescoes, genuinely remarkable given the size of the place. Only 9 visitors allowed in at a time (10 minutes per group), so it can mean a short wait. Individual visitors and small groups (up to 5) can turn up without booking, but it's <strong>worth reserving ahead</strong> given how busy it gets — email <strong>reservation@boyanachurch.info</strong>, pay by bank transfer, and the transfer receipt is your ticket.</p>", "Open 9:30am–6pm (summer hours run through 31 Oct, your visit date) · Adult €10"),
       activityCard("d5a1", "Day trip", `Vitosha Mountain${pin("Vitosha Mountain Sofia")}`, "<p>Right on Sofia's doorstep — worth the whole day if the weather's clear. Bus/gondola up for hiking trails and views back over the city; a good change of pace from museums and streets. Lucky timing: outside ski season the Simeonovo–Aleko cable car and chairlifts only run on Saturdays and Sundays, and this trip lands on a Saturday.</p>", "Cable car/chairlifts run ~9am–4:30pm, weekends only outside ski season · Return ticket roughly €10–13 (worth confirming closer to the date)"),
       activityCard("d5a2", "Evening", `Spa at Hotel Anel${pin("Hotel Anel Sofia")}`, "<p>Good timing after a day on the mountain — build in proper time to actually use it rather than rushing straight to dinner.</p>")
     ]
