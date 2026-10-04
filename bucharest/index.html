@@ -1420,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261004.001</div>
+  <div class="settings-version">v261004.002</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261004.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261004.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1683,7 +1683,7 @@ const days = [
       `<div class="block">
         <div class="block-label">Paying for public transport in Bucharest</div>
         <div class="tip"><strong>Buses &amp; trams</strong> — tap a contactless debit/credit card straight on the validator as you board (Mastercard/Maestro/Visa all work); one tap covers 90 minutes across the whole surface network, no separate ticket needed.</div>
-        <div class="tip"><strong>Metro</strong> — contactless card payment is only live at some stations and has had reliability issues reported, so buy an Activ card or single-journey ticket from a station machine instead, to be safe.</div>
+        <div class="tip"><strong>Metro</strong> — tap the same contactless card at the gate, same as buses/trams; it's been live system-wide (all stations) since 2020. The card readers do occasionally go down for everyone at once (happened as recently as 2023, Metrorex told riders to use cash until it was fixed) — worth having a few RON or an Activ card as backup, not because contactless itself is unreliable day-to-day.</div>
       </div>`,
       activityCard("d0a0", "Settle in", "Check in, freshen up", "<p>You'll land mid-afternoon and be at the hotel by ~16:30 — no need to rush straight out.</p>"),
       activityCard("d0a1", "Evening", `Old Town (Lipscani)${pin("Lipscani Old Town Bucharest")}`, "<p>Ten minutes' walk from the hotel. Wander the cobbled streets, pop into Stavropoleos Monastery if it's still open, and pick a restaurant for dinner — easy first night, nothing to plan ahead.</p>")
@@ -1757,7 +1757,7 @@ const days = [
       `<div class="block">
         <div class="block-label">Paying for public transport in Sofia</div>
         <div class="tip"><strong>Buses, trams &amp; trolleybuses</strong> — tap a contactless debit/credit card on the reader as you board, no separate ticket needed.</div>
-        <div class="tip"><strong>Metro</strong> — contactless card payment isn't live on the metro yet, so buy a paper ticket or top up a Sofia transport card at the station instead.</div>
+        <div class="tip"><strong>Metro</strong> — same contactless tap at the gate as buses/trams; it's been live since 2021, with fare capping too (tap 3+ times in a day and you're automatically only charged for a day ticket).</div>
       </div>`
     ]
   },
