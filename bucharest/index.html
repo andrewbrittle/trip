@@ -1420,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261004.004</div>
+  <div class="settings-version">v261014.002</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261004.004'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261014.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1668,25 +1668,31 @@ const days = [
       ]),
       `<div class="block block--hotel">
         <div class="block-label">Stay</div>
-        <div class="hotel-name">Hotel Berthelot${pin("Hotel Berthelot Bucharest")}</div>
-        <div class="addr">Strada General H. M. Berthelot 9, Sector 1, Bucharest</div>
+        <div class="hotel-name">Old Town Apartments by Olala Homes${pin("Old Town Apartments by Olala Homes, Bulevardul Ion C. Bratianu 12, Sector 3, Bucharest")}</div>
+        <div class="addr">Bulevardul Ion C. Bratianu 12, Sector 3, 030167 Bucharest</div>
         <div class="hoursrow">
-          <div><span>Check-in</span>from 14:00</div>
-          <div><span>Check-out</span>until 12:00</div>
+          <div><span>Check-in</span>15:00 – 00:00</div>
+          <div><span>Check-out</span>until 11:00</div>
         </div>
       </div>`,
       `<div class="block">
+        <div class="block-label">Getting into the apartment</div>
+        <div class="tip"><strong>Self check-in, no front desk.</strong> The Hotels.com listing for this apartment says you'll get an email within 24 hours of arrival with check-in instructions and an access code, and you enter by a private entrance. Watch your email and Booking.com messages on 25–26 Oct.</div>
+        <div class="tip"><strong>Do before you travel.</strong> The same listing says guests must complete an online registration through a secure link, send a copy of photo ID, and pay a €150 damage deposit through a secure link within 72 hours of booking — before check-in. A credit card is needed for incidentals (cash isn't accepted). That's another site's listing, so follow your own Booking.com confirmation and the host's messages, but check them now.</div>
+        <div class="tip"><strong>Around it.</strong> Per the listing: University Square about 2 minutes' walk (0.2 km), Universitate metro 4 minutes, Piața Unirii 5 minutes (0.5 km), Stavropoleos Church 5 minutes (0.5 km). Quiet hours are 22:00–08:00.</div>
+      </div>`,
+      `<div class="block">
         <div class="block-label">Airport → hotel</div>
-        <div class="tip"><strong>Taxi</strong> is simplest after landing — the airport says its authorised taxis wait in front of the terminal and charge a metered ~1.4 RON/km, no pre-booking needed (check the tariff sticker on the door before you get in). <strong>Bolt/Uber</strong> no longer pick up at Arrivals — since April 2026 the pickup point is the Departures car park, about a 5–6 minute walk — and recent reports put their fares well above the old 80–100 RON, so compare before ordering. Allow roughly 30–45 min.</div>
-        <div class="tip"><strong>Line 100 Express</strong> (the old 783, renamed in Dec 2023) runs 24 hours from both airport terminals to the centre, with stops including Piața Victoriei, Piața Romană, Universitate and Piața Unirii — 3 RON for 90 minutes. I couldn't confirm whether its validators take bank cards, so check at the stop.</div>
+        <div class="tip"><strong>Taxi</strong> is simplest after landing — the airport says its authorised taxis wait in front of the terminal and charge a metered ~1.4 RON/km, no pre-booking needed (check the tariff sticker on the door before you get in). <strong>Bolt/Uber</strong> no longer pick up at Arrivals — since April 2026 the pickup point is the Departures car park, about a 5–6 minute walk — and recent reports put their fares well above the old 80–100 RON, so compare before ordering. Allow roughly 30–45 min (the listing puts the drive to your apartment at about 38 minutes).</div>
+        <div class="tip"><strong>Line 100 Express</strong> (the old 783, renamed in Dec 2023) runs 24 hours from both airport terminals to the centre, with stops including Piața Victoriei, Piața Romană, Universitate and Piața Unirii — Universitate (about 4 minutes' walk from your apartment) or Piața Unirii (about 5) is where you'd get off. 3 RON for 90 minutes. I couldn't confirm whether its validators take bank cards, so check at the stop.</div>
       </div>`,
       `<div class="block">
         <div class="block-label">Paying for public transport in Bucharest</div>
         <div class="tip"><strong>Buses &amp; trams</strong> — STB accepts Visa, Mastercard and Maestro taps (3 RON, valid for 90 minutes on surface transport, not the metro), but its own page limits card taps to certain vehicles (some newer buses, night trams 1 and 10, and tram 41). Look for the card symbol on the validator; if you're travelling together each person taps separately (press "+" on buses, "Start" on trams). Keep a paper ticket or Activ card as a fallback.</div>
         <div class="tip"><strong>Metro</strong> — don't count on tapping a bank card at the gate. Contactless entry has existed since 2019–20, but in October 2024 Metrorex said about 10 stations still needed upgrading for card access, the card provider changed in March 2025, and in October 2025 there were reports of validators failing. I couldn't find a 2026 status, so buy a ticket from a station machine or booth: since 1 May 2026 a single journey is 7 RON and a 10-journey ticket 55 RON (from news reports of the new tariffs).</div>
       </div>`,
-      activityCard("d0a0", "Settle in", "Check in, freshen up", "<p>You'll land mid-afternoon and, after passport control and baggage, be at the hotel by ~16:30–17:00 — no need to rush straight out.</p>"),
-      activityCard("d0a1", "Evening", `Old Town (Lipscani)${pin("Lipscani Old Town Bucharest")}`, "<p>Ten minutes' walk from the hotel. Wander the cobbled streets, pop into Stavropoleos Monastery if it's still open, and pick a restaurant for dinner — easy first night, nothing to plan ahead.</p>")
+      activityCard("d0a0", "Settle in", "Check in, freshen up", "<p>You'll land mid-afternoon and, after passport control and baggage, be at the apartment by ~16:30–17:00 (check-in is open 15:00 to midnight) — no need to rush straight out.</p>"),
+      activityCard("d0a1", "Evening", `Old Town (Lipscani)${pin("Lipscani Old Town Bucharest")}`, "<p>Stavropoleos Monastery, on the edge of Lipscani, is about a 5-minute walk from your apartment (0.5 km, per the Hotels.com listing). Wander the cobbled streets, pop into the monastery if it's still open, and pick a restaurant for dinner — easy first night, nothing to plan ahead.</p>")
     ]
   },
   {
@@ -1718,11 +1724,11 @@ const days = [
     `,
     cards: () => [
       activityCard("d2a0", "Morning", `Romanian Athenaeum — visit the building${pin("Romanian Athenaeum Bucharest")}`, "<p>The main hall, with its huge fresco of Romanian history circling the walls, is worth seeing even without a concert — but I couldn't confirm that walk-in visits are possible. The sources I found point to occasional guided tours (often booked ahead) rather than regular self-guided opening, and rehearsals can restrict access. Phone the Athenaeum on +40 21 315 2567 (the number on its site) to ask about a Wednesday-morning visit.</p>", "Visiting hours and fee unconfirmed — ask when you phone"),
-      activityCard("d2a1", "Midday", `Cișmigiu Garden${pin("Cismigiu Garden Bucharest")}`, "<p>The oldest park in the city, right next to Old Town — flowerbeds, a big lake (boat hire is seasonal, so probably closed by late October), and a genuinely calm break between the Athenaeum and the afternoon's walking.</p>"),
+      activityCard("d2a1", "Midday", `Cișmigiu Garden${pin("Cismigiu Garden Bucharest")}`, "<p>The oldest park in the city, about a 10-minute walk from your apartment (0.9 km, per the Hotels.com listing) — flowerbeds, a big lake (boat hire is seasonal, so probably closed by late October), and a genuinely calm break between the Athenaeum and the afternoon's walking.</p>"),
       activityCard("d2a2", "Afternoon", "Coffee in Old Town", `<p>Maybe a browse through Cărturești Carusel${pin("Carturesti Carusel Bucharest")}, the six-storey bookshop housed in a restored 19th-century building nearby.</p>`, "Cărturești Carusel opens at 10am; listings agree it's open until at least 10pm"),
       activityCard("d2a3", "Late afternoon", `Curtea Veche${pin("Curtea Veche Bucharest")} &amp; Manuc's Inn${pin("Hanul lui Manuc Bucharest")}`, "<p>Worth knowing before you go: the Old Princely Court ruins have been closed to the public since 2015, with emergency stabilisation works announced in July 2026, so it's an exterior stop at best — what you can see from the street depends on any fencing or scaffolding. Manuc's Inn right next door is a working inn and restaurant with a covered courtyard for coffee or a late lunch.</p>", "Manuc's Inn hours unconfirmed — check before you go"),
       activityCard("d2a4", "Late afternoon", `Patriarchal Cathedral${pin("Patriarchal Cathedral of Bucharest")}`, "<p>A short walk south of Curtea Veche, on its own hill overlooking the area — the seat of the Romanian Orthodox Church, if you've got time and legs left. Expect crowds: Bucharest's patron saint, St Dimitrie the New, is celebrated on 27 October and his relics here draw a pilgrimage that ran from 19 to 29 October last year (this year's programme isn't published yet).</p>", "Opening hours unconfirmed — expect queues around the relics"),
-      activityCard("d2a5", "Evening", "Look for a concert in a smaller venue", `<p>Rather than a big philharmonic night, Bucharest's churches often host organ or chamber recitals that are easy to stumble into — St. Joseph's Catholic Cathedral${pin("St Joseph Catholic Cathedral Bucharest")} is on the same street as Hotel Berthelot (no. 19, versus the hotel's no. 9), and the Anglican Church of the Resurrection${pin("Anglican Church of the Resurrection Bucharest")} runs a monthly "Arts at the Anglican" concert series, usually at 7pm with a reservation form (a past ticket was 90 RON) — though nothing was listed for 26–29 October when I checked. These aren't usually on the big ticketing sites — check posters at the door or local listings once you're there.</p>`)
+      activityCard("d2a5", "Evening", "Look for a concert in a smaller venue", `<p>Rather than a big philharmonic night, Bucharest's churches often host organ or chamber recitals that are easy to stumble into — St. Joseph's Catholic Cathedral${pin("St Joseph Catholic Cathedral Bucharest")} is at Strada General Berthelot 19, and the Anglican Church of the Resurrection${pin("Anglican Church of the Resurrection Bucharest")} runs a monthly "Arts at the Anglican" concert series, usually at 7pm with a reservation form (a past ticket was 90 RON) — though nothing was listed for 26–29 October when I checked. These aren't usually on the big ticketing sites — check posters at the door or local listings once you're there.</p>`)
     ]
   },
   {
@@ -1734,9 +1740,9 @@ const days = [
       <span class="badge buc">DEPARTURE DAY · BUCHAREST → SOFIA</span>
     `,
     cards: () => [
-      activityCard("d3a0", "Morning", "Check out by 12:00", "<p>Leave bags with the hotel if they'll hold them — no need to lug them round.</p>"),
+      activityCard("d3a0", "Morning", "Check out by 11:00", "<p>There's no front desk, and listings disagree on luggage storage (one lists it, another doesn't) — message the host beforehand to ask whether bags can stay after 11:00, otherwise you'll be carrying them round for the free hours.</p>"),
       activityCard("d3a1", "Late morning", "Anything you missed", "<p>A few hours free before heading to the airport — good for anything left on the list from Tue/Wed, or just a last coffee in Old Town.</p>"),
-      activityCard("d3a2", "~15:30", "Head to the airport", "<p>Tarom says check-in closes 45 minutes before departure and recommends arriving at least 2 hours ahead, so leave the hotel with time for the transfer (30–45 minutes) on top of that.</p>"),
+      activityCard("d3a2", "~15:30", "Head to the airport", "<p>Tarom says check-in closes 45 minutes before departure and recommends arriving at least 2 hours ahead, so leave the apartment with time for the transfer (30–45 minutes) on top of that.</p>"),
       transitBlock("Flight", [
         { from:{code:"OTP", time:"18:15", tz:"EET · UTC+2"}, to:{code:"SOF", time:"19:30", tz:"EET · UTC+2"}, dur:"1h 15m · direct", mode:"flight", service:"Tarom · RO297", refId:"otp-sof" }
       ]),
