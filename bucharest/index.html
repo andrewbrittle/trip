@@ -1420,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261014.002</div>
+  <div class="settings-version">v261014.003</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261014.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261014.003'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1677,14 +1677,14 @@ const days = [
       </div>`,
       `<div class="block">
         <div class="block-label">Getting into the apartment</div>
-        <div class="tip"><strong>Self check-in, no front desk.</strong> The Hotels.com listing for this apartment says you'll get an email within 24 hours of arrival with check-in instructions and an access code, and you enter by a private entrance. Watch your email and Booking.com messages on 25–26 Oct.</div>
-        <div class="tip"><strong>Do before you travel.</strong> The same listing says guests must complete an online registration through a secure link, send a copy of photo ID, and pay a €150 damage deposit through a secure link within 72 hours of booking — before check-in. A credit card is needed for incidentals (cash isn't accepted). That's another site's listing, so follow your own Booking.com confirmation and the host's messages, but check them now.</div>
+        <div class="tip"><strong>Self check-in, no front desk.</strong> Listings describe the host emailing check-in instructions and an access code shortly before arrival, with a private entrance. Watch your email and Booking.com messages on 25–26 Oct.</div>
+        <div class="tip"><strong>Deposit.</strong> Some listings mention a €150 damage deposit for this apartment; Booking.com will advise whether one applies to your booking.</div>
         <div class="tip"><strong>Around it.</strong> Per the listing: University Square about 2 minutes' walk (0.2 km), Universitate metro 4 minutes, Piața Unirii 5 minutes (0.5 km), Stavropoleos Church 5 minutes (0.5 km). Quiet hours are 22:00–08:00.</div>
       </div>`,
       `<div class="block">
         <div class="block-label">Airport → hotel</div>
-        <div class="tip"><strong>Taxi</strong> is simplest after landing — the airport says its authorised taxis wait in front of the terminal and charge a metered ~1.4 RON/km, no pre-booking needed (check the tariff sticker on the door before you get in). <strong>Bolt/Uber</strong> no longer pick up at Arrivals — since April 2026 the pickup point is the Departures car park, about a 5–6 minute walk — and recent reports put their fares well above the old 80–100 RON, so compare before ordering. Allow roughly 30–45 min (the listing puts the drive to your apartment at about 38 minutes).</div>
-        <div class="tip"><strong>Line 100 Express</strong> (the old 783, renamed in Dec 2023) runs 24 hours from both airport terminals to the centre, with stops including Piața Victoriei, Piața Romană, Universitate and Piața Unirii — Universitate (about 4 minutes' walk from your apartment) or Piața Unirii (about 5) is where you'd get off. 3 RON for 90 minutes. I couldn't confirm whether its validators take bank cards, so check at the stop.</div>
+        <div class="tip"><strong>Taxi</strong> is simplest after landing. The airport's own page (updated June 2026) says authorised taxis charge 2.29–3.50 RON/km. Over roughly 15–20 km that works out at about 35–70 RON — my arithmetic: I couldn't find a start fee or the exact road distance to your apartment. Use the ranks outside the Arrivals exit, or order at the touch-screen kiosks on floor 1 (it prints a ticket with the taxi's number and tariff — keep it). <strong>Bolt/Uber</strong> pick up from Departures since 23 April 2026 (follow the app's instructions); fares are set in the app, so compare before ordering. Allow roughly 30–45 min (a listing puts the drive to your apartment at about 38 minutes).</div>
+        <div class="tip"><strong>Line 100 Express</strong> (the old 783, renamed in Dec 2023) runs 24 hours from both airport terminals to the centre, with stops including Piața Victoriei, Piața Romană, Universitate and Piața Unirii — Universitate (about 4 minutes' walk from your apartment) or Piața Unirii (about 5) is where you'd get off. A single ticket is 3 RON and stays valid for 90 minutes from when you validate it; the ride itself takes about 45 minutes on average to the centre (a January 2026 report). I couldn't confirm whether its validators take bank cards, so check at the stop.</div>
       </div>`,
       `<div class="block">
         <div class="block-label">Paying for public transport in Bucharest</div>
