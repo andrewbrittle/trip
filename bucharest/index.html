@@ -1420,7 +1420,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261014.003</div>
+  <div class="settings-version">v261019.002</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,7 +1498,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261014.003'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261019.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
@@ -1754,6 +1754,16 @@ const days = [
           <div><span>Check-in</span>from 14:00</div>
           <div><span>Check-out</span>until 12:00</div>
         </div>
+      </div>`,
+      `<div class="block block--hotel">
+        <div class="block-label">Ian's stay</div>
+        <div class="hotel-name">Design Hotel 36${pin("Design Hotel 36, 36 Alexander Stamboliyski Blvd, Sofia")}</div>
+        <div class="addr">36 Alexander Stamboliyski Blvd, 1000 Sofia</div>
+        <div class="hoursrow">
+          <div><span>Check-in</span>from 14:00</div>
+          <div><span>Check-out</span>before 12:00</div>
+        </div>
+        <div class="tip">Listings put it about 0.5 km from the centre, with Serdika metro roughly three blocks east. A listing also says check-in is with a receptionist until 16:45 and self-service after 17:00 — worth confirming how that works with the hotel. <strong>From Hotel Anel:</strong> about a 7-minute walk (450 m) — east along Todor Alexandrov Blvd to the Hristo Botev junction, south down Hristo Botev, then east along Aleksandar Stamboliyski Blvd (route from Google Maps).</div>
       </div>`,
       `<div class="block">
         <div class="block-label">Airport → hotel</div>
