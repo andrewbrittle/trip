@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8">
+<!-- Never auto-translate (2026-10-08): a phone set to translate Japanese pages turned
+     は into "teeth", を into "of", the sentences into English. -->
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Instructions — Japanese Drill</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface2: #242424;
+    --text: #f8f6f2;
+    --text-muted: rgba(248,246,242,0.66);
+    --text-dim: rgba(248,246,242,0.42);
+    --accent: #e8c97a;
+    --accent-dim: rgba(232,201,122,0.12);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.16);
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --surface2: #efece4;
+    --text: #1a1a1a;
+    --text-muted: rgba(26,26,26,0.66);
+    --text-dim: rgba(26,26,26,0.45);
+    --accent: #a9740f;
+    --accent-dim: rgba(169,116,15,0.12);
+    --border: rgba(0,0,0,0.10);
+    --border-hover: rgba(0,0,0,0.20);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 20px 64px; }
+  .back-link {
+    display: inline-block; font-size: 13px; font-weight: 600; color: var(--text-muted);
+    text-decoration: none; border: 1px solid var(--border); border-radius: 99px;
+    padding: 6px 14px; margin-bottom: 20px;
+  }
+  .back-link:hover { border-color: var(--border-hover); color: var(--text); }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h1 span { color: var(--accent); }
+  .byline { font-size: 13px; font-weight: 600; color: var(--text-dim); margin-bottom: 18px; }
+  .intro { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; }
+  h2 {
+    font-size: 17px; color: var(--accent); border-top: 1px solid var(--border);
+    padding-top: 24px; margin: 32px 0 12px;
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 { font-size: 15px; color: var(--text); margin: 20px 0 8px; }
+  p { font-size: 14.5px; color: var(--text-muted); margin: 0 0 12px; }
+  .setting {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 8px;
+  }
+  .setting-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .setting-desc { font-size: 13.5px; color: var(--text-muted); }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { font-size: 14.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .note {
+    font-size: 13px; color: var(--text-dim); background: var(--surface2);
+    border-radius: 8px; padding: 8px 12px; margin: 10px 0 16px;
+  }
+  .footer { margin-top: 40px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="./index.html">← Back to the app</a>
+
+  <h1>A simple Japanese <span>language drilling app</span></h1>
+  <div class="byline">Andrew Brittle, 2026</div>
+  <p class="intro">
+    I started putting this together as a simple tool to help me drill Japanese —
+    I have a trip to Japan coming up, and I've tried to learn hiragana and katakana
+    a few times and failed miserably. This time I did it as part of Japanese
+    language lessons. As the lessons went on I expanded it to cover the vocabulary
+    we were covering in class, and started building some extra bits for myself
+    that were outside the scope of the lessons.
+  </p>
+  <p class="intro">
+    What you see here is that development to date. It's changing all the time and
+    new bits are being added, but in theory you can turn off "Untaught vocabulary"
+    and focus just on what's being taught in class.
+  </p>
+
+  <h2>Getting around</h2>
+  <p>The tabs along the top are in Japanese — かな (kana), 漢字 (kanji), ことば (words: Vocabulary), さくぶん (composition), すうじ (numbers) and ぶんぽう (grammar) — and each page's title is in English. They take you to each part of the app. Once you go deeper — into a word list, a grammar card, a drill — a link at the top left says where Back will take you ("← Tourist", "← Grammar", "← Food &amp; drink") and goes one step back. Your phone's own back gesture or button does the same. On a tab's main page Back does nothing, so you can't leave the app by accident. Back from a drill, or from its results, goes to wherever you started it. The ⚙ button (top right, next to the sound button) opens Settings, and tapping it again takes you back to where you were. The longer pages (word lists, grammar cards) also have a Back button at the bottom, so you don't need to scroll up.</p>
+
+  <h2>Installing the app</h2>
+  <p>The app works as an ordinary web page, but it's better installed: it then opens full screen from its own icon on your home screen and works with no signal. If you're using it in a browser, Settings shows an <strong>Install the app</strong> card with the steps for your phone, and it disappears once the app is installed.</p>
+  <ul>
+    <li><strong>iPhone:</strong> in Safari, tap the Share button (the square with an arrow) at the bottom, scroll down, tap Add to Home Screen, then Add. In Chrome on iPhone the Share button is at the top right.</li>
+    <li><strong>Android:</strong> in Chrome, tap Install on the card if it's there, or the menu (⋮) at the top right, then Install app or Add to Home screen.</li>
+  </ul>
+
+  <h2>Sentence builder</h2>
+  <p><strong>さくぶん</strong> (作文, "composition", the word Japanese schools use for writing sentences) is the tab for putting sentences together: the Sentence order card and the Desk sheets first, then the Sentence builder and the Sentence challenge, with how each part of your sentences is going under the challenge.</p>
+  <p><strong>さくぶん</strong> → <strong>Sentence builder</strong> is the desk sheets you can tap: the same coloured columns, in the same order, for Doing, Going, Giving or Being. <strong>Being</strong> is the "X is Y" sentence — who or what は, then a job, a nationality (イギリスじん) or a describing word, then です: あには いしゃです ("My older brother is a doctor"), えいがは おもしろいです. Its verb column is です and its endings — じゃありません (isn't), でした (was), じゃありませんでした (wasn't) — and its time column いま (now), きょねん (last year) and らいねん (next year). い-words like おもしろい only take です for now, as their own negative and past haven't been taught. It works best with your phone turned sideways (the columns scroll left and right).</p>
+  <p><strong>Sentence builder</strong>: tap one word from each column you want, skipping any you don't. The sentence builds along the top with the particles added (は, と, で, を, に). In the verb column, pick the ending (〜ます, 〜ません, 〜ました, 〜ませんでした) and ＋か for a question. Tapping a word says it with its particle (or the verb with its ending). Tap a word again to take it out. Underneath, the English of what you've built appears as you go — odd combinations come out as odd English, which is half the fun — with a note if the time word and the verb's tense don't match (きのう needs 〜ました) or あまり / ぜんぜん is used without 〜ません. <strong>Hear it</strong> reads the sentence aloud, and <strong>Shuffle words</strong> fills the columns with a different selection.</p>
+  <p><strong>Sentence challenge</strong>: an English sentence appears at the top; build it in Japanese and tap <strong>Check</strong>. Right parts stay; anything not right is taken off, and you're told which parts are missing, for one more go. If you picked the right verb with the wrong ending (or missed the か), the verb stays and you're told to check the ending. After that the answer is shown and read out. Every challenge adds to a score for each <em>part</em> of the sentence — who, when, how often, with whom, where, what, the verb and its ending — shown on the Composition page under Sentence challenge as how often you got that part right first time, over your last 20 tries of it (a dash until there have been 5). It points at the part with most room to grow. It never touches your word scores. The columns are picked fresh for every challenge.</p>
+  <p><strong>Reading challenge</strong>: the other way round. A Japanese sentence appears (tap it to hear it); pick the <em>English</em> for each part from the columns, and the English sentence builds underneath. The cards show English first and romaji second; <strong>Kana on cards</strong> adds the kana if you need it, and <strong>Show romaji</strong> shows the sentence in romaji as a hint. The verb endings are labelled by meaning (does / will, doesn't / won't, did, didn't, a question). Checking works the same way as the Sentence challenge, and it keeps its own part scores — reading is a different skill from building — shown under the Reading challenge card.</p>
+
+  <h2>Desk sheets</h2>
+  <p><strong>さくぶん</strong> → <strong>Desk sheets</strong> opens four pages to keep in front of you whenever you want to make up sentences of your own: one for "doing something", one for "going somewhere", one for "giving &amp; receiving" and one for "being" (X is Y). The sentence order runs across the top (who は → when → how often → with whom と → where で / how で → what を / where to に → verb), and under each part is a column of word cards with kana, romaji and English. Pick a word from each column and concentrate on putting it together. The things you eat, drink, watch and so on are listed under their verb, so they always fit. The verb column lists handy verbs that don't need a thing from the What column (get up, go to bed, work, study…; go, come, go home on the second page), with the endings underneath (ます, ません, ました, ませんでした, ませんか, ましょう).</p>
+  <p>Every word has been taught. Each column has a few core words plus a random selection of the rest, so everyone's sheets are different. <strong>Shuffle words</strong> picks a new set. <strong>Print / save PDF</strong> prints the two pages on A4 landscape (if your phone's print screen starts in portrait, switch it to landscape); they're designed to work in black and white, and in colour on a tablet. Print again after each lesson to pick up the new words.</p>
+
+  <h2>Opening screen</h2>
+  <p>The first time you open the app each day you get a greeting, today's date and the time — all in Japanese, with the romaji and English underneath, so you see them read out every day: おはようございます in the morning (until 11am), こんにちは during the day, こんばんは from 6pm. Tap any of the three lines to hear it.</p>
+  <p>Below that is a sentence to read — sometimes a short question and answer — put together from words you've been taught and the grammar covered so far (particles, frequency words, past and present, times, going places, meeting people, where things happen, "what kind of…?", and family). It's different every time. The kana has a space between every word and before each particle, so it lines up word for word with the romaji underneath; tap it to hear it. It only ever uses taught words, so it grows as the course does. The two panels get a different pair of colours each time. Tapping 日本語 at the top of the app brings the screen back any time with a fresh sentence.</p>
+
+  <h2>Sound</h2>
+  <p>The speaker button next to ⚙ at the top switches all sound on or off. Off means the app makes no sound at all — handy if you're listening to music, since some phones pause it the moment an app speaks. While it's off, the drill's "hear it" button and "Tap a card to hear it" are greyed out, and holding a card shows its other spelling without saying it. The app remembers your choice.</p>
+  <p><strong>No sound on an iPhone or iPad?</strong> Check the phone isn't in silent mode — on most iPhones that's the switch on the side (orange showing = silent), on an iPad (and newer iPhones) it's the bell in Control Centre. Silent mode mutes the app's speech without any warning, even when the app's own sound button is on. Also make sure the volume is up, and that a Japanese voice is available under Settings → Accessibility → Spoken Content → Voices.</p>
+
+  <h2>Settings</h2>
+  <p>The app works offline automatically — once it's been opened with a signal, it still opens without one. (There used to be a switch for this; it's now always on. With a signal you always get the latest version.)</p>
+  <div class="setting">
+    <div class="setting-name">Light theme</div>
+    <div class="setting-desc">Switches from a dark to light theme.</div>
+  </div>
+  <div class="setting">
+    <div class="setting-name">Show kanji content</div>
+    <div class="setting-desc">At the beginning of this project I collected together a small set of survival kanji, as things I might encounter on my trip. The list grew and eventually there was significant overlap with N5 kanji. The collection here is now genuinely N5-complete, plus a handful of common N4 characters (colours, seasons) that are useful enough to include despite sitting just past N5. You can turn this off if you don't want to see it.</div>
+  </div>
+  <div class="setting">
+    <div class="setting-name">Half credit for hinted answers</div>
+    <div class="setting-desc">All drilling offers an audio clip to help you answer, but some people might think that's cheating. If you agree, you can penalise yourself by only getting half marks if you listen to a hint before answering. You can still listen as many times as you like afterwards.</div>
+  </div>
+  <div class="setting">
+    <div class="setting-name">Fade confidence colours over time</div>
+    <div class="setting-desc">Confidence scores now quietly fade back toward neutral the longer a word goes unpractised — never past neutral, and never for words you've actually got wrong (those stay exactly as they are until you're tested on them again, not gradually recovering just by being left alone, and not getting worse for it either). This always affects which words come up more often in the random drills. This setting is just about whether it also affects the colours you see on tiles and cards — off by default, so colours only ever change when you're actually tested.</div>
+  </div>
+  <div class="setting">
+    <div class="setting-name">Tourist words</div>
+    <div class="setting-desc">About 265 hand-picked words and phrases for a trip to Japan, in eight sections (see "Tourist words" below). Switching it on adds a <strong>Tourist</strong> pill on a second row under the main Vocab pills. It's separate from Untaught vocabulary, so you can have the trip words without the several hundred harder words from photos. Off by default.</div>
+  </div>
+  <div class="setting">
+    <div class="setting-name">Untaught vocabulary</div>
+    <div class="setting-desc">Real words and phrases pulled from photos I've actually taken in Japan (signs, menus, receipts, announcements), and any private word lists you've loaded on this device, such as Genki textbook vocab (see Private vocab below). Switching it on adds an <strong>Untaught</strong> pill on the second row. The tourist words used to be in here too; since 15 October they have their own switch above. Private word lists (like Genki) lead the Untaught list. Any Genki word that's already taught in the course keeps showing up in its usual place too — this just adds a second way to find it, nothing is duplicated or replaced. This entire section will only appear if you turn it on — otherwise the whole app will act as if none of this exists.</div>
+  </div>
+  <div class="setting">
+    <div class="setting-name">Share this app</div>
+    <div class="setting-desc">At the bottom of Settings there's a QR code for the app — let a friend scan it with their phone camera to open it straight away. Underneath are links to two companion apps: <strong>Kanji cards</strong>, for drilling a set of the 500 most common kanji, and <strong>Kanji strokes</strong>, for practising writing hiragana, katakana and kanji stroke by stroke.</div>
+  </div>
+
+  <div class="setting">
+    <div class="setting-name">Private vocab</div>
+    <div class="setting-desc">Adds extra word lists from a file that stays on your own device and is never part of the shared app — for example vocab from a textbook you're working through on your own (Genki is the first). Tap <strong>Load file</strong> and pick the file; to get it onto a phone, AirDrop or email it to yourself, or put it in iCloud Drive or Google Drive, then pick it from Files. The lists then appear at the top of Untaught vocabulary (Untaught needs to be switched on). Loading a newer file replaces the old one; <strong>Remove</strong> takes the lists off this device but keeps your scores. If your browser's data is ever cleared you'll need to load the file again, so keep the file somewhere safe.</div>
+  </div>
+
+  <h3>Keyboard</h3>
+  <p>Not a setting, but if you're using the app on something with a physical keyboard: you can use 1–4 to select the cards, and space to move to the next one.</p>
+
+  <h2>Scoring</h2>
+  <p>
+    In the background everything is scored 0.5 for a correct answer and -0.75 for
+    an incorrect one. The lower limit for scoring is -2 and the upper limit is +2.
+    The score will show as a shade of red or green (or blue if it's back to zero
+    again).
+  </p>
+  <p>
+    Category and word-set tiles used to show one solid colour for their average
+    score. They now show a thin bar split into segments — the actual spread of
+    confidence across everything in that set, not just the average — so you can
+    tell "I'm evenly okay at this" apart from "I'm great at most of it and
+    terrible at a few". By default the bar only counts words you've actually been
+    tested on; tap it to fold in untested words too (shown as a grey segment),
+    tap again to go back. This doesn't persist between visits — it always starts
+    tested-only.
+  </p>
+
+  <h2>Kana</h2>
+  <p>Hiragana and katakana used to be two separate pills, each with its own base/dakuten/contracted picker inside. As the course has moved on from learning kana towards just reading and using them, that felt like too much screen space for content that matters less and less — so there's now one "かな" pill, leading to an index page listing six rows: Hiragana, Hiragana — Dakuten/handakuten, Hiragana — Contracted, then the same three for Katakana. Each row shows the same confidence-spread bar described under Scoring above, and tapping one takes you to that set's own selection screen.</p>
+  <p>Each selection screen works as before: there's a handy reference card to show the kana and corresponding dakuten kana (on the dakuten/handakuten rows), you can select the whole set for drilling or individual rows, and there's a toggle before you start to drill that lets you decide whether to have the kana character as the big one on screen and choose from 4 romaji options, or romaji as the big character and choose from 4 kana. Katakana also has another toggle that will replace the romaji completely and only show a comparison between katakana and hiragana — it felt like it might be a nice challenge to remove the romaji from this, if you feel brave.</p>
+  <p><strong>Stroke order:</strong> on any of the six kana pages, touch and hold a character for half a second and a bubble draws it stroke by stroke, with its romaji and stroke count (and says it, if sound is on). Let go to close it — holding doesn't select the row. Contracted kana (きゃ, ショ…) are drawn as the pair, with the small kana smaller and tucked in as it's written. The base kana are the same drawings as in the Kanji strokes app; all of them come from KanjiVG (© Ulrich Apel, CC BY-SA 3.0).</p>
+  <p>You can click to hear an audio clip. You'll get your score at the end of the session and an option to either drill the same overall set of characters again, or just the ones you got wrong. The "← Kana" link at the top of each selection screen returns to the Kana index.</p>
+
+  <h2>Kanji drilling</h2>
+  <p>This will only appear if you have kanji switched on.</p>
+  <p>The Kanji page works the same way as Kana and Vocab: a list of sets, each with its confidence bar — Numbers, Nature, Food, Places, Travel, People, General and Verbs. Tap one to open its own screen, choose kanji (or Select all), then start the drill; Back returns to the list. (It used to be one screen with a row of pills along the top.)</p>
+  <p><strong>Random 20 from all</strong> is at the top of the list — 20 kanji from every set, with the ones you're weakest on coming up more often. It's the kanji equivalent of "All vocabulary" on the Vocab dice tab.</p>
+  <p>You can either select individual kanji or the whole set for drilling. Yes, you can game the system by selecting one and continuously drilling it, because there's only one right answer. But that's just letting yourself down.</p>
+  <p>There's another toggle that will replace the romaji with English and only show a large kanji, with the options shown in English and hiragana — so there's no romaji to immediately match with the audio clip.</p>
+  <p>You can click to hear an audio clip.</p>
+  <p>You'll get your score at the end of the session and an option to either drill the same overall set of characters again, or just the ones you got wrong.</p>
+
+  <h2>Numbers</h2>
+  <p>This brings together some functions that deal with reading numbers and times.</p>
+
+  <h3>Reading numbers</h3>
+  <p>Presents 10 random numbers. These are mostly 1–9,999 but there's a 1 in 20 chance of a bigger number up to 50,000, to practice <em>man</em>. Correct answers score 0.1, incorrect answers score -0.1.</p>
+
+  <h3>Specific number</h3>
+  <p>Instead of a random number, you can put an actual number in here and it will tell you how that number would be read.</p>
+
+  <h3>Reading times</h3>
+  <p>Presents 10 times with from/until/at and around qualifiers, and am/pm indicators. Correct answers score 0.1, incorrect answers score -0.1.</p>
+
+  <h3>Specific time</h3>
+  <p>Instead of a random time, you can put an actual time in here together with the qualifiers, and it will tell you how that time would be read. It starts with the current time and has a refresh button.</p>
+
+  <h3>Counters</h3>
+  <p>Counters are hidden for now — the course reaches them in Minna no Nihongo lesson 11, and they'll come back then, checked against how the class teaches them. Your scores from the counters drill are kept.</p>
+  <p>You don't have to turn this off if you don't want it — just ignore it.</p>
+
+  <h3>Money</h3>
+  <p>An editable GBP↔JPY exchange rate — starts off around the going rate, but you can update it any time — plus a two-way currency converter: put in a value in either currency and see the other straight away.</p>
+  <p>Alongside the conversion there's also a tax-free price, working out what you'd pay with Japan's 10% consumption tax taken off (¥ ÷ 1.1) — handy for checking whether a price you're looking at already has tax included.</p>
+
+  <h2>Vocab</h2>
+  <p>This has a few options.</p>
+  <p><strong>Hold to peek:</strong> on any word list, hold a card for about half a second and a bubble pops up above it (or beside it, near the top of the screen) showing the kana, the romaji and the English, and says the word if sound is on. Once it's showing, a slight wobble of your finger won't close it — only lifting your finger does. It's a peek rather than a switch, so the list keeps testing you on the kana, and it doesn't affect your scores. For course and tourist words, a gold strip underneath then writes the word out stroke by stroke, so you can see how it's written; a kanji or a number just appears, in grey, when the writing gets to it. (The untaught words from photos don't have it.)</p>
+  <p><strong>Hold and slide on a verb:</strong> on a verb, the bubble has an extra line with an arrow — "slide here for all forms". Keep holding and slide your finger towards the bubble; it turns gold when it's ready, and letting go opens a window with every form of that verb: ます, ません, ました, ませんでした, the four たい ("want to") forms, and the inviting pair ませんか / ましょう ("why don't we…?" / "let's…"), each with romaji and English. Tap any form to hear it, and tap Close (or outside the window) when you're done. Slide back before letting go and it just closes as normal. It works for every taught verb, on any list where verbs appear (the verb categories, Core grammar words, Latest words), and new verbs get it automatically.</p>
+
+  <h3>Search</h3>
+  <p>There's a search pill next to the level tabs. Type at least two characters and press enter — it only searches when you submit, not as you type. It matches the start of any word in the English meaning or the romaji, so partial words still work ("cred" finds "credit card") but coincidental letter runs in the middle of a word don't ("up" won't match inside "supermarket" just because the letters happen to sit next to each other). It only searches real taught or added vocabulary, never the extra background sentences shown as context on some Untaught cards. Results respect whatever you've currently got switched on — Tourist and Untaught words only turn up if those are on — and take you to the normal selection screen to drill whichever ones you pick, colour-coded by which level they're from.</p>
+
+  <h3>Groups</h3>
+  <p>The first tab. The level tabs (L1, L2, L3) list the categories from one level of the course; Groups go across levels, and can also include words from any additional categories you've got turned on. Tap a group, choose the words you want (or Random 20), set the options, then Start — the same way as any category. (Groups were called "Collections" for a while; the original name came back to make room for the dice tab.)</p>
+  <p>Note that the size of a group depends on whether you're just using vocab from the lessons or including other categories too.</p>
+  <p>Latest words is always first. The other groups are ordered by their newest word, so whichever has had words added most recently sits at the top (alphabetical when there's a tie), and groups nobody's added to in a while drift down.</p>
+  <ul>
+    <li>Latest words — the newest words in the app. Pills at the top choose how far back: <strong>Newest</strong> (only the very latest batch of words added), <strong>1 week</strong> (anything brand new from the most recent lesson — words you already knew from earlier levels don't count, even if the latest lesson used them again), <strong>2 weeks</strong> (the last two lessons' new words), or <strong>This level</strong> (every word in the current level of the course, including ones carried over from earlier levels). Your choice is remembered.</li>
+    <li>Transport &amp; UK Places</li>
+    <li>Around the world</li>
+    <li>Everyday items &amp; general vocab — Level 1's Everyday items (clothing included) with Level 2 and 3's General vocabulary</li>
+    <li>Food &amp; drink — every taught food and drink word from all levels, food first, then drink</li>
+    <li>Occupations — the Level 1 jobs and the Level 3 ones from the Lesson 2 homework, in one place</li>
+    <li>Core grammar words — Verbs (Level 2 and Level 3), Adjectives, Question &amp; location words, and Level 3's Frequency &amp; linking words: the "functional" categories that build a sentence, rather than themed nouns</li>
+    <li>Question words — every word tagged as a question word, wherever it actually lives, rather than a fixed list of categories. Right now that's a handful already taught in Question &amp; location words (including なん, and なに now that it's been taught) plus a set pulled from an outside reference source (only in Untaught vocabulary). Nothing's duplicated — a word that's taught in the lessons and also tagged here is still just one word with one score, it just shows up in both places. If Untaught vocabulary is off, this group quietly shrinks to only the taught ones rather than disappearing outright.</li>
+    <li>Getting around — Transport, Places to go, and Directions, brought together. Places to go includes the places from Level 3 (the mountains, the sea, the zoo, church, a bar…); rooms in the house aren't here, since you don't "go" to them. Transport and Places to go are ordinary taught words, always here; Directions is Untaught, so that slice only appears once Untaught vocabulary is switched on — the card itself never disappears, it just has fewer words in it</li>
+    <li>Time words — the frequency words (いつも, よく, ときどき, あまり, ぜんぜん) first, then Level 2's Time vocabulary and Level 3's time expressions (けさ, こんばん, まいあさ, やすみのひ). Days of the week, months and days of the month are deliberately left out: mixed in, a "Monday" question could get a month name as an obviously wrong option.</li>
+  </ul>
+  <p>In any group with dividers, the wrong answers offered come from the same part of the group when there are enough words there — so a frequency word is only ever tested against other frequency words, a form of transport against other transport, a food against other food.</p>
+  <p>And if you have Untaught vocabulary turned on you'll also see a further set of groups gathering together everything encountered on the trip so far — see "Untaught vocabulary" below.</p>
+
+  <h3>Random drills (the dice tab)</h3>
+  <p>The small dice tab next to Groups has every random drill in one place. Tap one to choose it, set the options underneath, then Start:</p>
+  <ul>
+    <li><strong>All vocabulary</strong> — 20 random words from across the taught course. This is deliberately kept to the standard taught content regardless of what you've got switched on in Settings, on the basis that you should generally recognise something that turns up here if you've seen it before (a small number of taught words with a single kanji in them, like Sherwood Forest, can still slip through - that's expected, not a bug).</li>
+    <li><strong>Weakest 20</strong> — the 20 lowest-scoring words you've actually been tested on at least once. Untested words are deliberately left out of this one, so it never overlaps with Untested 20. Greyed out until you've been tested on something.</li>
+    <li><strong>Untested 20</strong> — 20 words you've never been tested on yet, if there are that many; otherwise all of them. Course words come first; once those run out it fills up with tourist words, then private word lists (like Genki), then the rest of Untaught — whichever of those you have switched on. The count after it shows how many are left.</li>
+    <li><strong>Verb forms</strong> — 20 random forms of the taught verbs (ます / ません / ました / ませんでした, and from Level 3 Lesson 3 the inviting forms ませんか / ましょう). You see a form, say たべませんでした, and pick which one it is (Past negative). With "Reverse the drill direction" on, it's the other way round: you see "Past negative · たべます" and pick たべませんでした. The wrong answers are always the same verb's other forms, so you can't get it right just by recognising the verb. Its scores are kept apart from vocab scores, so verb forms never turn up in Weakest 20 or Untested 20. Reversed with "Type the answer" on, you type the form yourself (たべませんでした) instead of choosing — so you can't get it from the ending alone. Kanji typed by your keyboard (食べませんでした) counts too. It covers every taught verb, so it grows as verbs are added; the たい forms can join later. "Highlight the meaning" and "Listen" don't apply to it, so they fade while it's chosen.</li>
+    <li><strong>Particles</strong> — 20 sentences, each with one particle missing (は, を, に, で, と or の); pick the one that fits from the same seven buttons every time (へ is there too). The English underneath tells you what the sentence means, so you know which particle it needs. Where two particles are both right — に or へ for where you're going, に or と with あいます, に or は after a day of the week — either counts, and the feedback says so. Aa shows the romaji (counts as a hint), and once you've answered, tap the sentence to hear it. The sentences come from the same word lists and rules as the daily sentence, so this grows with every lesson. The three toggles don't apply to it, so they fade while it's chosen.</li>
+    <li><strong>Small っ</strong> — pairs of real words that differ only by a small っ, like きて / きって (come / stamp) and いた / いった. With sound on you hear one and pick it; listen for the little silent beat. With sound off you see its romaji (kitte — a doubled letter means a small っ) and pick the kana. The two buttons show the English, never the romaji, so the answer can't be matched by spelling. After answering, tap the word to hear it again.</li>
+    <li><strong>Random – Level 1 / Level 2 / Level 3</strong> — 20 random words from one level (these used to sit at the bottom of each level's list). <strong>Random – Untaught</strong> and <strong>Random – Tourist</strong> join them when those are switched on in Settings.</li>
+  </ul>
+  <p>So the level tabs and Groups are now purely lists to choose words from, and everything random lives behind the dice.</p>
+  <p><strong>Highlight the meaning instead of sound</strong> — sounds complicated but it just changes the emphasis on the four answer cards. By default you could look at the kana and think "that starts with 'mi'" and guess the word from there by looking at the four romaji alternatives and choosing the one where the it starts with 'mi'. Highlighting the meaning, in English, means you can read and recognise the word but to get it right you need to know the meaning as well – it starts with "mi", but what does it mean? The romaji is still there down below and slightly less visible so it doesn't actually stop you doing it the easy way, but it's a mild deterrent.</p>
+  <p><strong>Reverse the drill direction</strong> — shows the English word as the big word and four kana words as the options.</p>
+  <p><strong>Type the answer instead of choosing</strong> — an alternative to the four multiple-choice options: type the romaji reading yourself. The scoring is lenient about how you spell it - case, spacing, long vowels (ou/oo/ō), and the usual si/shi-style kunrei-vs-Hepburn variants all count as the same answer - and shows the app's own accepted spelling either way once you've answered, so you can see if what you typed just happened to be a different valid spelling. It doesn't combine with "Highlight the meaning" (English meanings can't be checked reliably when typed).</p>
+  <p><strong>Typing can't cost you your greens.</strong> Producing a word yourself is harder than picking it out of four, so a correct typed answer adds to the word's score as usual, but a wrong or nearly-right one leaves it alone. One slip on a longer word counts as <strong>Nearly!</strong>. Verb forms have to be exact, since one kana out is usually the ending itself.</p>
+  <p><strong>With Reverse on as well, you type the Japanese:</strong> you see the English and type the word with your phone's (or computer's) Japanese keyboard. Spaces and punctuation are ignored, hiragana and katakana count as the same (びーる for ビール is right, with a note of how it's usually written), and the kanji form counts too, since keyboards often turn たべます into 食べます by themselves.</p>
+  <p><strong>Listen instead of reading</strong> — the word isn't shown; you hear it as the question appears, then pick the answer (or type the romaji, with Type on). Tap the big speaker to hear it again — replaying doesn't count as a hint. The word appears once you've answered. Needs sound on, and doesn't combine with Reverse (a reversed question shows English, so there's nothing to listen to). Combine it with "Highlight the meaning" to answer with the meaning rather than the romaji.</p>
+
+  <h3>Level 1</h3>
+  <p>Sets of words covered in Level 1 of the course. These all work in the same way.</p>
+  <ul>
+    <li>Greetings &amp; phrases</li>
+    <li>Countries</li>
+    <li>Occupations</li>
+    <li>Everyday items — including the few clothing words (hat, jeans, necktie, shoes), which used to have a card of their own</li>
+    <li>Places &amp; around the building</li>
+    <li>Numbers</li>
+    <li>Colours</li>
+  </ul>
+  <p>Loanwords and foreign place names — countries, a few everyday words like ペン, ネクタイ and オフィス, and the Level 2 world cities — were written in hiragana in the early class notes, before katakana had been taught. They're now in katakana, which is what you'll actually see in Japan. After you answer, the hiragana version shows as "Also seen as", so it still links back to the notes. Where the same word was in the app twice in the two spellings (ワイン, カメラ, and six countries from Genki Lesson 1), the two have been merged into one word.</p>
+  <div class="note">"Highlight the meaning instead of sound", "Reverse the drill direction", "Type the answer instead of choosing" and "Listen instead of reading" are all available here.</div>
+
+  <h3>Level 2</h3>
+  <p>Sets of words covered in Level 2 of the course, so still developing. These all work in the same way.</p>
+  <ul>
+    <li>General vocabulary</li>
+    <li>Question &amp; location words</li>
+    <li>Verbs — now two batches: the original nine (none of which take a direct object) plus Week 6's set introduced alongside を, the object particle — eat/drink/read/watch/listen/write/buy/smoke/take (a photo)/do/meet. あいます (to meet) is the one exception that takes に instead of を.</li>
+    <li>Family — father, mother, older/younger brother, older/younger sister, grandfather, grandmother</li>
+    <li>Food &amp; drink — a Level 2 set of everyday food and drink words taught in class, separate from Trip's own "Food and drink" category</li>
+    <li>Animals — the 12 everyday zodiac animal words, with a reference page for the Japanese zodiac clock they're tied to (the animal hours behind 午前/午後, "before/after the horse"), plus ねこ (cat) as a 13th bonus entry — famously not one of the 12 zodiac animals, so it's deliberately left out of that reference page</li>
+    <li>Adjectives — long/short and old/new as antonym pairs, plus "cute"</li>
+    <li>Transport</li>
+    <li>Places to go</li>
+    <li>UK Places</li>
+    <li>World Cities — also covers Kyoto, Osaka, Hokkaido, Yokohama, and Nagoya alongside the international cities</li>
+    <li>Months — the twelve month names, fully regular (number + がつ)</li>
+    <li>Days of the month — 1st–31st, drillable rather than just a lookup, since this set has real irregularities worth testing yourself on (14th/19th/20th/24th/29th keep native-style readings instead of the expected pattern); has its own reference page above the category too, and the tile-selection screen lets you drill just the five irregular ones in isolation if that's what needs the practice</li>
+    <li>Time vocabulary — there are reference pages for the endings of the minute words, and for day/week/month/year against past/present/future</li>
+    <li>Days of the week — there's a reference page with the days of the week listed in order</li>
+  </ul>
+  <div class="note">"Highlight the meaning instead of sound", "Reverse the drill direction", "Type the answer instead of choosing" and "Listen instead of reading" are all available here.</div>
+
+  <h3>Level 3</h3>
+  <p>Level 3 of the course, starting from Lesson 1 (29 September). Same pill, same mechanics as Level 1/2. Words that were already in the app from Level 1/2, Genki, or the trip lists aren't duplicated — they're simply also tagged as Level 3, so they show up here and in their original place with one shared score. Words the trip lists had as untaught now count as taught. No kanji yet: new words are in kana, and where a word is normally written in kanji, that's shown as "also written" after you answer.</p>
+  <ul>
+    <li>Food &amp; drink — Lesson 1's breakfast/lunch/dinner foods, drinks, meats and seafood (including ones like ラーメン and えび that were previously only in the trip lists)</li>
+    <li>Verbs — the eat/drink/watch/listen/read/buy/write/take/do/study/go verbs from Level 2, now used with を and frequency words</li>
+    <li>Hobbies &amp; activities — the しゅみ list plus the things you can say します with (barbecue, picnic, afternoon tea…), and photography. DIY is written in Latin letters, as it is in Japan</li>
+    <li>Frequency &amp; linking words — always/often/sometimes/seldom/never, それから and そして, なにも, and time words like けさ and こんばん. あまり, ぜんぜん and なにも are marked "+ negative verb"</li>
+    <li>General vocabulary — other nouns from the lesson and homework (news, email, selfie…) plus the seasonal events (September's, and October's ころもがえ and Halloween)</li>
+    <li>Family &amp; people (Lesson 2) — two sets: the plain words for <em>your own</em> family (ちち, はは, あに…, shown as "my father", "my mother"…) and the polite words for <em>someone else's</em> (おとうさん, おかあさん, おくさん, むすこさん…, shown as "father (someone else's)"). The Level 2 family words are in here too and were re-labelled the same way, so their scores started again. しゅじん / おっと and かない / つま are both taught, marked (traditional) and (neutral). Also ともだち and どうりょう (colleague)</li>
+    <li>Places &amp; rooms (Lesson 2) — places where something happens (the mountains, the countryside, the zoo, church, bar…) and rooms in the house. いま here is "living room", a different word from いま "now"; the two are never offered as each other's wrong answer</li>
+    <li>Occupations (Lesson 2) — the jobs from the homework reading task (nurse, shop assistant, architect, pharmacist…)</li>
+    <li>Gifts &amp; souvenirs (Lesson 3) — presents from the birthday-gift page (keyring, mug, soft toy, handkerchief, phone case…) and the moving-in gifts (soap, cling film, towel, soy sauce, udon). Most are also in the Everyday items group</li>
+    <li>Adjectives (Lesson 3) — for reacting to things: かわいい, おもしろい, いい, かっこいい, きれい, すてき. Just the words; adjective forms come later in the course</li>
+    <li>Phrases &amp; replies (Lesson 3) — inviting and arranging to meet (いっしょに, ええ, いいですね, いいですよ, 〜は ちょっと…, どうですか, じゃあ, わかりました) and the set phrases for giving a souvenir or a moving-in gift</li>
+  </ul>
+  <p>Lesson 3's other words: activities to invite people to (shopping, sightseeing, camping, hiking, festivals…) in Hobbies &amp; activities; meeting points (かいさつ, きっぷうりば, キオスク, いりぐち, でぐち), ロビー, ねこカフェ and ぎんざ / しぶや / あきはばら in Places &amp; rooms; かのじょ in Family &amp; people; and あいます joined Level 3's Verbs.</p>
+  <p>Lesson 2's other words joined the existing categories: どんな in Frequency &amp; linking words, およぎます / うんどうします / うたいます in Verbs (and so in the Core grammar words group), ramen types and サンド sandwiches in Food and drink, and ドラマ / コンサート / ポップス / ジョギング in Hobbies &amp; activities (plus おしばい, "play", which the handout writes without the お).</p>
+
+  <h3>Grammar</h3>
+  <p>The <strong>ぶんぽう</strong> (Grammar) tab at the top has every grammar note on one page. Every note is listed newest first (the Sentence order card, the Sentence builder and the Desk sheets are on the さくぶん tab), so the grammar from the latest lesson is always near the top. Each note shows the level it was taught in (L2, L3). Back from a note returns to this page. The cards themselves are described below.</p>
+
+  <h3>Grammar notes</h3>
+  <p>The Level 2 notes (on the Grammar page) gather every sentence/particle reference in one place rather than leaving them scattered near whichever category happened to be nearby when each one was added:</p>
+  <ul>
+    <li>を — the object particle, with the one exception in this batch called out (あいます, "to meet", takes に instead). Level 3 has a follow-on card — the Level 2 card points to it</li>
+    <li>で — its two separate jobs: the method or tool used to get somewhere (でんしゃで, "by train"), and where an action takes place — easily confused with に, which marks where something exists or a destination, never where an action happens</li>
+    <li>だれも/どこも/なにも + negative — "nobody" / "nowhere" / "nothing", flags いつ as the one exception (いつも is a fixed idiom meaning "always", not part of this pattern)</li>
+    <li>Verb tense &amp; affirmative/negative — two cards, one for the original nine verbs and one for the newer object-taking set, each switchable with pills at the top (sorted alphabetically by meaning) and each verb showing its たい ("want to") form alongside the plain ます-form, since たい conjugates differently (like an adjective, not a verb). Kept as taught for the Level 2 verbs; a note at the bottom points to holding and sliding on any verb, Level 3's "How verbs conjugate" card and the Verb forms drill</li>
+  </ul>
+  <p>Two more links appear at the bottom of this list, but only once Untaught vocabulary is switched on: standalone notes pages on Japanese sentence structure, and Japanese vs English structure. They used to live only in Andrew mode; they moved here once every word had a clear taught/untaught status of its own and there was no longer a good reason to keep them tucked away from anyone doing the course.</p>
+
+  <h3>Grammar notes — Level 3</h3>
+  <p>The Level 3 notes are marked L3 on the Grammar page, so each note matches what was taught at that level. Where a Level 3 card builds on a Level 2 one, the Level 2 card stays as it was and just points across.</p>
+  <ul>
+    <li>Frequency words — いつも/よく/ときどき go with a positive verb, あまり/ぜんぜん only with a negative one; where they sit in the sentence, examples from class, and how to answer a question with one</li>
+    <li>Sentence order — one card for the whole basic sentence, in the class order: who は → when → how often → with whom と → where で (or how で) → what を (or where to に) → verb. A switch at the top changes between <strong>Being</strong> (X is Y: あには いしゃです), <strong>Doing</strong> (doing something: place で + object を: ははと デパートで くつを かいます) and <strong>Going</strong> (going somewhere: means で + destination に/へ: まさるさんと でんしゃで こうえんに いきます). Going somewhere also uses きます (come) where it fits — to my house, to school, to a party. A third setting, <strong>Giving</strong> (giving &amp; receiving, from Lesson 4), has its own order: who は → when → how often → to / from whom に → what を → verb (わたしは たんじょうびに ともだちに ぼうしを もらいました). It covers あげます / もらいます, かします / かります, おしえます / ならいます, and writing, sending and phoning; に means "to" or "from" depending on the verb, the time slot includes occasions (たんじょうびに, クリスマスに), and it never says someone あげます to わたし. Its verb steps through statement and question only. Tap a slot to include it, skip it, or ask it as a question (だれが, いつ, だれと, どこで, なにで, なにを, どこに). Tapping the verb steps through statement → question (か) → invitation (ませんか) → "let's" (ましょう); inviting drops the topic and frequency, turns the companion into いっしょに (together) and picks a future time word. Frequency steps through the five words, and the verb turns negative for あまり / ぜんぜん. The time word sets the tense — きのう gives いきました, あした gives "going to" — and turning Frequency on keeps it to habits. Questions never use わたし or あまり / ぜんぜん (a negative question like いきませんか is an invitation, not a question). Its words and rules come from the daily sentence, so a place always suits the activity and the time. Each slot has its own colour — on its row and as a coloured line under its words in the Japanese and romaji — so a skipped slot shows up as a missing colour. The English underneath uses the same colours, as plain (and quieter) coloured words, so you can see where each part ends up — English often puts the time at the end, for example. Words English needs that have no slot of their own (I, do, is going to, it) stay grey. <strong>▶ Step through</strong> lights up each slot in turn, saying its words if sound is on (skipped slots flash grey for a moment), then lights and says the whole sentence, waiting for each part to finish being read before moving on; tap it again to stop. Tap any coloured part of the sentence to light up its slot. It replaced the earlier "を + object + frequency" card, and since 15 October the two Level 2 sentence order cards (motion, and を + object) too — this card does everything they did. Romaji writes を as "o" here; Level 2 wrote "wo".</li>
+    <li>を — Level 3 additions: のみます for soup and medicine, なにを vs なにも, and the past-tense question and answers</li>
+    <li>と vs や — a complete list vs "things like…", and why neither can join two sentences</li>
+    <li>それから and そして — "and then" (order) vs "and also" (adding), plus the lesson's time words and which tense each needs</li>
+    <li>なん vs なに — なん before です/の/と and counters, なに everywhere else</li>
+    <li>Noun + します — including the two ways to say "I study English" and the activities that go with します</li>
+    <li>どんな — "what kind of…?": どんな + noun, answering with the kind (みそ ラーメン, かんこくの ドラマ), the サンド sandwiches, and どんな vs なに</li>
+    <li>Place + で — where something happens, compared with に / へ for where you're going; asking どこで…? and [place]で なにを しますか</li>
+    <li>My family vs someone else's — both sets side by side, when each is used, しゅじん / おっと and かない / つま, and と for who you go with (わたしは あねと…, never わたしと あねは…)</li>
+    <li>How verbs conjugate (ます form) — the rule (take off ます, add ません / ました / ませんでした, or たい) with one worked example, たべます. Rather than a screen of pills for every verb, each verb's own forms are one hold-and-slide away on any word list, and the dice tab has a Verb forms drill</li>
+    <li>Inviting — ませんか / ましょう: how to invite, say yes, or say no politely with 〜は ちょっと… (never いいえ), then fix a time and place with 〜は どうですか. The daily sentence now sometimes shows a short invitation exchange too</li>
+    <li>お / ご — the polite prefix, as four rules: only on the other person's things (ごしゅみ, but わたしの しゅみ), ご for Chinese-origin words and お for native ones (with the exceptions), words like おちゃ that always have お, and no お/ご on katakana words</li>
+  </ul>
+
+  <h3>Tourist words</h3>
+  <p>Only appears if you've switched on Tourist words in Settings — tap the <strong>Tourist</strong> pill on the second row of the Vocabulary page (ことば tab). Going to Japan, start here. It's a hand-picked trip set: about 265 words and ready-made phrases in eight headed sections — Phrases, Little words (maybe, of course, more, not yet, I'm tired…), Food &amp; drink, Getting around (including on, under, behind, opposite, turn and cross), Hotel &amp; travel kit, Shops &amp; money, Health &amp; emergencies (including body parts and pharmacy words), and Weather, seasons &amp; signs. The phrases include polite ones like "do you speak English?", "this one, please" and "where is the toilet?" — including a few things staff will say to you, like いらっしゃいませ and あたためますか, so they don't catch you off guard. Pair it with Level 1's Greetings (すみません, ありがとうございます, もういちど おねがいします…), which it deliberately doesn't repeat. It leaves out the several hundred words photographed from real signs and menus in Japan, which are mostly kanji and much harder (those are under Untaught). <strong>All tourist words</strong> comes first, then a card for each section on its own. There's a "Show romaji instead of kana" switch at the top of each of these pages: turn it on and the page becomes a quick phrasebook you can read without knowing kana (the drills themselves still use kana, and the switch is remembered next time). Below it, "Tap a card to hear it" makes each card speak its Japanese out loud when tapped, instead of picking it for a drill — handy for showing or playing a phrase to someone on the spot. Turn it off again to choose words to drill. It uses your phone's own Japanese voice; if nothing is heard, a Japanese voice may need adding in the phone's text-to-speech settings. On All tourist words each section has its own heading, and when you drill, the answer choices come from the same section. As with any category, you can tap words to drill just a few at a time, or use Random 20. On the dice page, <strong>Random – Tourist</strong> gives 20 random tourist words.</p>
+
+  <h3>Untaught vocabulary</h3>
+  <p>Only appears if you've got it switched on — tap the <strong>Untaught</strong> pill on the second row. Real words and phrases pulled from photos taken in Japan itself (signs, menus, receipts, announcements), and any private word lists loaded on this device (such as Genki textbook vocab). Cards work the same way as Level 1/2/3: tap a category, pick which words to drill (or select them all), then go. The tourist words aren't in these cards any more; they're under Tourist.</p>
+  <p><strong>Private word lists</strong> follow, ahead of a divider — only on a device where a private vocab file has been loaded (see Private vocab under Settings), for example Genki Lesson 1. Everything below the divider is alphabetical, currently:</p>
+  <ul>
+    <li>Accommodation</li>
+    <li>Airport & flights</li>
+    <li>Dining phrases — things you'd actually say at a restaurant (asking for the bill, whether there's an English menu, cheers), as opposed to Food/Drink below, which are the nouns for what's on the table</li>
+    <li>Drink</li>
+    <li>Emergency & survival</li>
+    <li>Entertainment</li>
+    <li>Food</li>
+    <li>Food descriptions — the adjectives that show up on menus and signs (spicy, rich, freshly made, and so on), split out from Food itself since they're a different kind of word to actually drill against</li>
+    <li>Hotel appliances & machines — has its own reference page grouping words by which device they were actually seen on: air conditioning, TV remote, laundry (the washing machine's own panel plus things like detergent bottle labels), microwave, door lock/key card, toilet/bidet. Lookup-only, not drillable on its own — the words themselves are still scored through the main Hotel appliances category, this is just a filtered, grouped view over that same list. Words that aren't literally on a panel/button/dispenser (payment logistics, warning text, and so on) aren't tagged, so they don't show up here</li>
+    <li>Preparation & cooking — the verbs (grill, simmer, deep-fry) and cooking-process words (fermented, aged, smoked) that showed up on menus and signs</li>
+    <li>Profile & self-introduction words — pulled from a self-introduction/idol-profile card rather than a menu or a sign, split out separately since it's a genuinely different kind of vocabulary</li>
+    <li>Service & shop operations</li>
+    <li>Shopping</li>
+    <li>Signage & warnings</li>
+    <li>Stations & trains</li>
+    <li>Street & neighbourhood — signage and notices run into incidentally while wandering a town on foot (historical plaques, shopfronts, community noticeboards), as opposed to the other categories here which are mostly places gone to on purpose</li>
+  </ul>
+  <p>Food, Drink, Food descriptions, Preparation & cooking, and Dining phrases used to be one single "Food and drink" card. It grew to 218 words - by far the biggest pool in the app - and mixed genuinely different kinds of word together (dish names, drink names, adjectives, cooking verbs, whole phrases), which made for a worse multiple-choice pool than five smaller, more focused ones. Nothing was deleted or re-tagged to do this split - the five sub-categories these all sort into already existed.</p>
+  <p>The words here were properly encountered and photographed on the trip itself (the hand-picked, generally useful ones are under Tourist, with purple card edges; these have green ones). Where a word was seen as part of a longer sentence or sign, that context shows on the drill card itself (and again after answering) since it's just background that might help it stick, not something to test on — and for words with photo evidence, roughly where and when it was photographed. Quite a few of these words only exist as kanji, with no kana form recorded — rather than leaving them undrillable, the app has a per-character reading breakdown for the ones that have been worked out, and an honest explanation on the ones that genuinely don't have a clean one yet (irregular readings, sound changes the matching script doesn't model, and so on).</p>
+  <p>If you have Untaught or Tourist turned on, those words feed into the Groups above, into search, and into the "random words" tests. If they're turned off you'll never see them, in any of those places.</p>
+  <div class="note">"Highlight the meaning instead of sound", "Reverse the drill direction", "Type the answer instead of choosing" and "Listen instead of reading" are all available here.</div>
+
+
+  <div class="footer">
+    <a class="back-link" href="./index.html">← Back to the app</a>
+  </div>
+</div>
+<script>
+  // Match whichever theme the app itself is currently set to, since this page
+  // shares localStorage with index.html on the same origin.
+  try {
+    const s = JSON.parse(localStorage.getItem('jpDrillSettings') || '{}');
+    if (s.theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {}
+</script>
+</body>
+</html>
