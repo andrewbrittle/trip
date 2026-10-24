@@ -1318,7 +1318,19 @@
 </style>
 <script>
   if ('serviceWorker' in navigator){
-    window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloadedForUpdate = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloadedForUpdate) return; // first install: nothing stale to replace
+      reloadedForUpdate = true;
+      location.reload();
+    });
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
+        reg.update().catch(() => {});
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) reg.update().catch(() => {}); });
+      }).catch(() => {});
+    });
   }
 </script>
 </head>
@@ -1419,8 +1431,17 @@
       <div class="export-status" id="exportStatus"></div>
     </div>
 
+    <div class="settings-card">
+      <div class="settings-card-label">Not seeing the latest changes?</div>
+      <div class="settings-card-desc">This clears this app's saved copy on this device and reloads it fresh. Your ticked-off activities stay.</div>
+      <div class="export-btn-row">
+        <button class="quickadd-btn" onclick="forceUpdate()">Update now</button>
+      </div>
+      <div class="export-status" id="updateStatus"></div>
+    </div>
+
   </div>
-  <div class="settings-version">v261019.002</div>
+  <div class="settings-version">v261024.001</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1498,8 +1519,29 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261019.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261024.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
+// Clears this app's own service worker registration and its own caches (prefix 'bucharest-trip-'),
+// then reloads with a throwaway query string so no HTTP cache can serve the old page. getRegistration()
+// (not getRegistrations()) so sibling apps on the same origin — e.g. the Japan trip — are left alone.
+async function forceUpdate(){
+  const st = document.getElementById('updateStatus');
+  if (st) st.textContent = 'Clearing saved copy…';
+  try {
+    if ('serviceWorker' in navigator){
+      const reg = await navigator.serviceWorker.getRegistration();
+      if (reg) await reg.unregister();
+    }
+    if (window.caches){
+      const keys = await caches.keys();
+      await Promise.all(keys.filter(k => k.startsWith('bucharest-trip-')).map(k => caches.delete(k)));
+    }
+  } catch(e){}
+  if (st) st.textContent = 'Reloading…';
+  location.replace(location.pathname + '?u=' + Date.now());
+}
+if (/^\?u=\d+$/.test(location.search)) history.replaceState(null, '', location.pathname); // tidy the URL after a forced update
+
 function pin(query){
   return `<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener" aria-label="Open in Google Maps">${PIN_SVG}</a>`;
 }

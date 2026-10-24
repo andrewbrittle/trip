@@ -4,7 +4,7 @@
 // at install with the cross-origin font fetch kept separate and best-effort (a flaky connection to
 // Google Fonts during install shouldn't be able to prevent the app's own files from caching —
 // cache.addAll() is all-or-nothing across everything you hand it, so it's split in two here).
-const CACHE_VERSION = 'v261019.002'; // keep in sync with APP_VERSION in index.html — bump both together
+const CACHE_VERSION = 'v261024.001'; // keep in sync with APP_VERSION in index.html — bump both together
 const CACHE_NAME = 'bucharest-trip-' + CACHE_VERSION;
 const APP_ROOT = new URL('.', self.location).href; // resolves correctly wherever this file actually lives
 
@@ -45,7 +45,7 @@ self.addEventListener('fetch', event => {
 
   if (isOwnPage && (req.mode === 'navigate' || req.destination === 'document')) {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' }) // revalidate with the server: a host's HTTP cache can't hand back an old page
         .then(res => { const copy = res.clone(); caches.open(CACHE_NAME).then(cache => cache.put(req, copy)); return res; })
         .catch(() => caches.match(req).then(cached => cached || caches.match('./')))
     );
