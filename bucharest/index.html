@@ -1441,7 +1441,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261027.001</div>
+  <div class="settings-version">v261031.002</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1519,7 +1519,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261027.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261031.002'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 // Clears this app's own service worker registration and its own caches (prefix 'bucharest-trip-'),
 // then reloads with a throwaway query string so no HTTP cache can serve the old page. getRegistration()
@@ -1837,7 +1837,7 @@ const days = [
     `,
     cards: () => [
       activityCard("d4a0", "Morning", `Alexander Nevsky Cathedral${pin("Alexander Nevsky Cathedral Sofia")}`, "<p>Sofia's centrepiece — the gold-domed cathedral. Go early before the tour groups. The antique market on the square outside is usually worth a browse (its hours vary with the weather). The nave is free; the crypt below holds the National Gallery's Museum of Christian Art, which is separately ticketed.</p>", "Nave hours unconfirmed (a 2021 listing said 7am–7pm) · Crypt museum: Tue–Sun 10am–6pm, closed Mondays, adult €10"),
-      activityCard("d4a1", "Midday", `National Archaeological Museum${pin("National Archaeological Museum Sofia")}`, "<p>Housed in a former Ottoman mosque on Saborna Street — Thracian gold, the Valchitran treasure, and a genuinely striking building to see it in. It isn't on Nevsky's square, so check the walk on the map rather than assuming it's next door. A temporary \"Forgotten Deities\" exhibition of ancient religious artefacts runs there until January 2027.</p>", "Hours and ticket price unconfirmed — unofficial listings suggest about 10am–6pm until the end of October"),
+      activityCard("d4a1", "Midday", `National Archaeological Museum${pin("National Archaeological Museum Sofia")}`, "<p>Housed in a former Ottoman mosque on Saborna Street — Thracian gold, the Valchitran treasure, and a genuinely striking building to see it in. It isn't on Nevsky's square, so check the walk on the map rather than assuming it's next door. A temporary \"Forgotten Deities\" exhibition of ancient religious artefacts runs there until January 2027.</p>", "Summer hours 10am–6pm daily to 31 Oct; winter hours 10am–5pm from 1 Nov, closed Mondays; last entry 30 min before closing (museum's own site) · Adult about €6"),
       activityCard("d4a2", "Early afternoon", `Ancient Serdica ruins${pin("Ancient Serdica Sofia")}`, "<p>Roman remains sitting right in the modern city centre, around Serdika metro station — an easy, short stop on the way to lunch.</p>", "Largo area: free, 7am–10pm daily per the Sofia History Museum (undated page) · Exhibition hall listed 10am–6pm, last entry 5:30pm"),
       activityCard("d4a3", "Afternoon", `Vitosha Boulevard${pin("Vitosha Boulevard Sofia")}`, "<p>The main pedestrian street for shops, cafés, and people-watching — a relaxed way to fill the afternoon.</p>"),
       activityCard("d4a4", "Late afternoon", `Ivan Vazov National Theatre${pin("Ivan Vazov National Theatre Sofia")}`, "<p>Faces the City Garden, a short walk from the northern end of Vitosha Boulevard — worth a look at the building even without a ticket for that evening.</p>"),
@@ -1855,6 +1855,11 @@ const days = [
     cards: () => [
       activityCard("d5a0", "Morning", `Boyana Church${pin("Boyana Church Sofia")}`, "<p>A UNESCO World Heritage site on the way to Vitosha — small, 13th-century frescoes, genuinely remarkable given the size of the place. Only 9 visitors allowed in at a time (10 minutes per group), so it can mean a short wait. Individual visitors and small groups (up to 5) can turn up without booking, but it's <strong>worth reserving ahead</strong> given how busy it gets — email <strong>reservation@boyanachurch.info</strong>, pay by bank transfer, and the transfer receipt is your ticket.</p>", "Open 9:30am–6pm (summer hours run through 31 Oct, your visit date) · Adult €10"),
       activityCard("d5a1", "Day trip", `Vitosha Mountain${pin("Vitosha Mountain Sofia")}`, "<p>Right on Sofia's doorstep — worth the day if the weather's clear, with hiking trails and views back over the city; a good change of pace from museums and streets. Outside ski season the Aleko chairlifts (Vitoshko Lale 1 and 2) run on Saturdays, Sundays and public holidays — that's from a June 2026 report on the summer season, but I couldn't find the season's end date, so confirm they're still running on Saturday 31 Oct. Don't plan around the Simeonovo gondola: it's described as a winter, skiers-only service and has had reliability problems. One 2026 guide says bus 66 runs from Vitosha metro station to Aleko about every 30 minutes at weekends. Late October can mean cold, wet or icy conditions up top.</p>", "Chairlifts: weekends only, about 9am–4:30/5pm, weather permitting — confirm closer to the date · One guide says ~€2.50 per lift each way (unconfirmed)"),
+      activityCard("d5b0", "Weather call", "Pick the plan once you see the sky", "<p>The forecast I pulled at about 05:30 on Saturday showed a roughly 35% chance of rain and a high of about 12°C today, then about 70% rain and 9°C on Sunday. That makes today the better day to be outdoors and Sunday the one to keep indoor options for. Forecasts shift, so look again before you set out. If the mountain is under cloud or feels too cold, use the city stops below instead of Vitosha.</p>"),
+      activityCard("d5b1", "Midday", `City landmark circuit — the most-photographed stops${pin("Sveta Nedelya Church Sofia")}`, `<p>Sofia's best-known photo spots sit close together in the centre: Sveta Nedelya Church${pin("Sveta Nedelya Cathedral Sofia")}, the small St George Rotunda${pin("St George Rotunda Sofia")} in its courtyard, Banya Bashi Mosque${pin("Banya Bashi Mosque Sofia")}, the Sveta Sofia statue near the Largo${pin("Sveta Sofia statue Sofia")}, and the Russian Church of St Nikolai${pin("Russian Church Sofia")}. The yellow-paved boulevard runs past several of them. All five are central, but I haven't measured the walks, so check the map. Sveta Nedelya, the Rotunda and Banya Bashi are active places of worship, so visiting hours vary and I couldn't confirm them. The outsides photograph well in any weather, and a few of them can be done between showers.</p>`),
+      activityCard("d5b2", "Afternoon", `National Archaeological Museum — moved from Friday${pin("National Archaeological Museum Sofia")}`, "<p>The best wet-weather choice on the list, and it didn't get done on Friday. It's in a former Ottoman mosque, with Thracian gold, the Valchitran treasure and the temporary Forgotten Deities exhibition running until January 2027. The museum's own site gives summer hours (10am–6pm daily) running to the end of October, so today is the last day on those, and from tomorrow it moves to winter hours and closes on Mondays. Last admission is 30 minutes before closing.</p>", "Today 10am–6pm · From 1 Nov 10am–5pm, closed Mondays · Adult about €6"),
+      activityCard("d5b3", "Afternoon", `Museum of Socialist Art${pin("Museum of Socialist Art Sofia")}`, "<p>It fits the communism thread you've been following, after the Red Flat: more than 70 monumental sculptures, the big five-pointed star that once topped the former Party House, a film room and a temporary exhibition hall. The sculptures are in a park, so it's partly outdoors and worth waiting for a drier spell. It's on Luchezar Stanchev Street, further out from the centre. I haven't checked how long the journey takes, so look at the route before committing.</p>", "Tue–Sun 10am–6pm, ticket office closes 5:30pm, closed Mondays (the gallery's own site) · Adult €8"),
+      activityCard("d5b4", "Afternoon", `Sofia History Museum${pin("Sofia History Museum")}`, "<p>Housed in the old Central Mineral Baths building, close to Banya Bashi, so it combines well with the landmark circuit. I couldn't confirm its opening days, hours or ticket price (the pages I tried wouldn't load), so check before you go.</p>", "Hours and price unconfirmed — check first"),
       activityCard("d5a2", "Evening", `Spa at Hotel Anel${pin("Hotel Anel Sofia")}`, "<p>Good timing after a day on the mountain — build in proper time to actually use it rather than rushing straight to dinner. The hotel's own site calls it \"Anel Sport\": a heated indoor pool, gym, sauna, steam bath and treatments. I couldn't confirm its opening hours or whether use is included in your stay, so ring the hotel on +359 2 911 9900 before you count on it (one listing says pool caps and slippers are mandatory).</p>")
     ]
   },
@@ -1868,6 +1873,10 @@ const days = [
     `,
     cards: () => [
       activityCard("d6a0", "Morning", "Check out by 12:00", "<p>Ask the hotel to hold bags for the day — the airport transfer is quick, so no rush to keep them with you.</p>"),
+      activityCard("d6b0", "Weather call", "Sunday looks wetter", "<p>The 05:30 Saturday forecast gave Sunday about a 70% chance of rain and a high of about 9°C. Leave the bags at the hotel as above, keep to indoor stops, and check the forecast again in the morning. Also, 1 November is Bulgaria's Day of the National Revival Leaders, which can change opening hours or admission at some venues, so confirm each place before you walk over.</p>"),
+      activityCard("d6b1", "Morning", `National Archaeological Museum — if you didn't go on Saturday${pin("National Archaeological Museum Sofia")}`, "<p>It's open on Sunday on its winter hours (10am–5pm from 1 November, last entry 30 minutes before closing) and closed on Monday, so this is the last chance. If you went on Saturday, skip it.</p>", "10am–5pm from 1 Nov · Adult about €6"),
+      activityCard("d6b2", "Late morning", `Short landmark stops between showers${pin("Banya Bashi Mosque Sofia")}`, `<p>If you missed any of the central landmarks on Saturday (Sveta Nedelya${pin("Sveta Nedelya Cathedral Sofia")}, the St George Rotunda${pin("St George Rotunda Sofia")}, Banya Bashi, the Russian Church${pin("Russian Church Sofia")}), they're quick exterior stops you can fit between the rain.</p>`),
+      activityCard("d6b3", "Early afternoon", `Option: Museum of Socialist Art or Sofia History Museum${pin("Museum of Socialist Art Sofia")}`, "<p>Pick one, and only if the timing works. The Museum of Socialist Art is further out and partly outdoors, which is a poor match for a wet Sunday, so the Sofia History Museum (see Saturday) may suit better, though I couldn't confirm its hours. With a 17:00 departure for the airport, aim to be back at the hotel for your bags by about 15:30.</p>", "Socialist Art: Tue–Sun 10am–6pm, ticket office closes 5:30pm · Sofia History Museum hours unconfirmed"),
       activityCard("d6a1", "Afternoon", "Anything you missed", `<p>A full afternoon free — good for whatever didn't fit earlier in the week, or just a last wander down Vitosha Boulevard${pin("Vitosha Boulevard Sofia")}.</p>`),
       activityCard("d6a2", "~17:00", "Head to the airport", "<p>Comfortable margin for a 19:45 departure — BA's short-haul bag drop typically closes about 45 minutes before departure, and the metro from Serdika (Line 4, direct) takes ~20–30 min. Check your terminal on the booking: the metro only serves Terminal 2.</p>"),
       `<div class="block block--flight">
@@ -3124,6 +3133,19 @@ let statusStore = {};
 try { statusStore = JSON.parse(localStorage.getItem('tripActivityStatus') || '{}'); } catch(e){ statusStore = {}; }
 function getStatus(pid){ return statusStore[pid] || 'default'; }
 function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSON.stringify(statusStore)); } catch(e){} }
+
+// One-off: copy Andrew's ticked/skipped stops (as of 31 Oct) onto a device that hasn't recorded them yet.
+// Runs once per device, never overwrites a status already set there, and ignores 'default'.
+(function seedStatus(){
+  const SEED_KEY = 'tripSeed261031';
+  const seed = {"d0a0":"done","d0a1":"done","d1a0":"done","d1a1":"done","d1a3":"done","d2a5":"done","d4a3":"done","d4a4":"done","d1b3":"done","d1b5":"done","d1b4":"done","d1b6":"done","d2b1":"done","d2b0":"done","d2c0":"done","d2c1":"done","d2a2":"done","d3a0b":"done","d2a3":"skipped","d3a0":"done","d2a1":"skipped","d3a1":"skipped","d4a0":"done","d4a2":"done","d4a5":"skipped","d5a2":"skipped","d1a2":"done","d1a7":"done","d3a2":"done"};
+  try {
+    if (localStorage.getItem(SEED_KEY)) return;
+    Object.keys(seed).forEach(k => { if (!statusStore[k] || statusStore[k] === 'default') statusStore[k] = seed[k]; });
+    saveStatusStore();
+    localStorage.setItem(SEED_KEY, '1');
+  } catch(e){}
+})();
 function toggleStatus(pid){
   const order = ['default','done','skipped'];
   const next = order[(order.indexOf(getStatus(pid)) + 1) % order.length];
