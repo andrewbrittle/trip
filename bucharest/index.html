@@ -1441,7 +1441,7 @@
     </div>
 
   </div>
-  <div class="settings-version">v261031.003</div>
+  <div class="settings-version">v261101.001</div>
 </div>
 
 <div class="instructions-screen" id="instructionsScreen" hidden>
@@ -1519,7 +1519,7 @@
 </div>
 
 <script>
-const APP_VERSION = 'v261031.003'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
+const APP_VERSION = 'v261101.001'; // keep in sync with CACHE_VERSION in sw.js, and the number shown in Settings — bump all three together
 const PIN_SVG = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-7.05-7-12a7 7 0 1 1 14 0c0 4.95-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>';
 // Clears this app's own service worker registration and its own caches (prefix 'bucharest-trip-'),
 // then reloads with a throwaway query string so no HTTP cache can serve the old page. getRegistration()
@@ -1864,6 +1864,7 @@ const days = [
       activityCard("d5b2", "Afternoon", `National Archaeological Museum — moved from Friday${pin("National Archaeological Museum Sofia")}`, "<p>The best wet-weather choice on the list, and it didn't get done on Friday. It's in a former Ottoman mosque, with Thracian gold, the Valchitran treasure and the temporary Forgotten Deities exhibition running until January 2027. The museum's own site gives summer hours (10am–6pm daily) running to the end of October, so today is the last day on those, and from tomorrow it moves to winter hours and closes on Mondays. Last admission is 30 minutes before closing.</p>", "Today 10am–6pm · From 1 Nov 10am–5pm, closed Mondays · Adult about €6"),
       activityCard("d5b3", "Afternoon", `Museum of Socialist Art${pin("Museum of Socialist Art Sofia")}`, "<p>It fits the communism thread you've been following, after the Red Flat: more than 70 monumental sculptures, the big five-pointed star that once topped the former Party House, a film room and a temporary exhibition hall. The sculptures are in a park, so it's partly outdoors and worth waiting for a drier spell. It's on Luchezar Stanchev Street, further out from the centre. I haven't checked how long the journey takes, so look at the route before committing.</p>", "Tue–Sun 10am–6pm, ticket office closes 5:30pm, closed Mondays (the gallery's own site) · Adult €8"),
       activityCard("d5b4", "Afternoon", `Sofia History Museum${pin("Sofia History Museum")}`, "<p>Housed in the old Central Mineral Baths building, close to Banya Bashi, so it combines well with the landmark circuit. I couldn't confirm its opening days, hours or ticket price (the pages I tried wouldn't load), so check before you go.</p>", "Hours and price unconfirmed — check first"),
+      activityCard("d5b5", "Evening", `Concert at Bulgaria Hall${pin("Bulgaria Hall Sofia")}`, "<p><strong>Tekfen Philharmonic Orchestra</strong>, conducted by <strong>Aziz Shokhakimov</strong>, with violinist <strong>Daniel Lozakovich</strong>. Part of the Sofia Philharmonic's World Orchestras series, 19:00.</p><p><strong>First half:</strong> Shostakovich, Violin Concerto No. 1 in A minor, Op. 77. Lozakovich (born Stockholm, 2001) plays the &ldquo;ex-Sancy&rdquo; Stradivarius of 1713, played for decades by Ivry Gitlis.</p><p><strong>Second half:</strong> Tchaikovsky, The Nutcracker, Act II: the Land of Sweets, with the character dances and the Waltz of the Flowers.</p><p>The Tekfen Philharmonic was founded in 1992 as the Black Sea Chamber Orchestra and is based in Turkey, with players from 23 countries around the Black Sea, Caspian and eastern Mediterranean. Shokhakimov, born in Tashkent, is also music director of the Strasbourg Philharmonic.</p>"),
       activityCard("d5a2", "Evening", `Spa at Hotel Anel${pin("Hotel Anel Sofia")}`, "<p>Good timing after a day on the mountain — build in proper time to actually use it rather than rushing straight to dinner. The hotel's own site calls it \"Anel Sport\": a heated indoor pool, gym, sauna, steam bath and treatments. I couldn't confirm its opening hours or whether use is included in your stay, so ring the hotel on +359 2 911 9900 before you count on it (one listing says pool caps and slippers are mandatory).</p>")
     ]
   },
@@ -3143,6 +3144,19 @@ function saveStatusStore(){ try { localStorage.setItem('tripActivityStatus', JSO
 (function seedStatus(){
   const SEED_KEY = 'tripSeed261031';
   const seed = {"d0a0":"done","d0a1":"done","d1a0":"done","d1a1":"done","d1a3":"done","d2a5":"done","d4a3":"done","d4a4":"done","d1b3":"done","d1b5":"done","d1b4":"done","d1b6":"done","d2b1":"done","d2b0":"done","d2c0":"done","d2c1":"done","d2a2":"done","d3a0b":"done","d2a3":"skipped","d3a0":"done","d2a1":"skipped","d3a1":"skipped","d4a0":"done","d4a2":"done","d4a5":"skipped","d5a2":"skipped","d1a2":"done","d1a7":"done","d3a2":"done"};
+  try {
+    if (localStorage.getItem(SEED_KEY)) return;
+    Object.keys(seed).forEach(k => { if (!statusStore[k] || statusStore[k] === 'default') statusStore[k] = seed[k]; });
+    saveStatusStore();
+    localStorage.setItem(SEED_KEY, '1');
+  } catch(e){}
+})();
+// Second one-off (1 Nov): Saturday's landmarks, the concert, and the weather-cancelled Boyana/Vitosha.
+// Includes the 31 Oct set too, for a device that never opened v261031.002. Same rules: once per device, never overwrites.
+(function seedStatus2(){
+  const SEED_KEY = 'tripSeed261101';
+  const seed = {"d0a0":"done","d0a1":"done","d1a0":"done","d1a1":"done","d1a3":"done","d2a5":"done","d4a3":"done","d4a4":"done","d1b3":"done","d1b5":"done","d1b4":"done","d1b6":"done","d2b1":"done","d2b0":"done","d2c0":"done","d2c1":"done","d2a2":"done","d3a0b":"done","d2a3":"skipped","d3a0":"done","d2a1":"skipped","d3a1":"skipped","d4a0":"done","d4a2":"done","d4a5":"skipped","d5a2":"skipped","d1a2":"done","d1a7":"done","d3a2":"done",
+    "d5a0":"skipped","d5a1":"skipped","d5b1a":"done","d5b1b":"done","d5b1c":"done","d5b1d":"done","d5b1e":"done","d5b5":"done"};
   try {
     if (localStorage.getItem(SEED_KEY)) return;
     Object.keys(seed).forEach(k => { if (!statusStore[k] || statusStore[k] === 'default') statusStore[k] = seed[k]; });
